@@ -1,0 +1,98 @@
+// Balance Lounge — Prisma schema
+// Dev: SQLite. Production: switch provider to "postgresql" and set DATABASE_URL.
+// Translatable fields are stored as JSON strings shaped { pl, ru, en, ua }.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  // Production (Vercel) uses PostgreSQL. For offline local dev you may switch this
+  // to "sqlite" and set DATABASE_URL="file:./dev.db" (see DEPLOY.md).
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Bar {
+  id          Int      @id @default(autoincrement())
+  name        String   @default("BALANCE")
+  subtitle    String   @default("COCTAILS & SHISHA")
+  address     String
+  phone       String
+  email       String   @default("")
+  hours       String // JSON: [{ day, open, close }]
+  instagram   String   @default("")
+  whatsapp    String   @default("")
+  telegram    String   @default("")
+  lat         Float    @default(53.4285)
+  lng         Float    @default(14.5528)
+  heroImage   String   @default("")
+  heroNeon    String   @default("YOU'RE IN THE RIGHT PLACE")
+  gallery     String   @default("[]") // JSON: string[]
+  updatedAt   DateTime @updatedAt
+}
+
+model AboutContent {
+  id        Int      @id @default(autoincrement())
+  heading   String // JSON translatable
+  subheading String // JSON translatable
+  body      String // JSON translatable (paragraphs joined with \n\n)
+  images    String   @default("[]") // JSON: string[]
+  updatedAt DateTime @updatedAt
+}
+
+model Category {
+  id        Int        @id @default(autoincrement())
+  slug      String     @unique
+  name      String // JSON translatable
+  order     Int        @default(0)
+  items     MenuItem[]
+  updatedAt DateTime   @updatedAt
+}
+
+model MenuItem {
+  id          Int      @id @default(autoincrement())
+  categoryId  Int
+  category    Category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  name        String // JSON translatable
+  description String // JSON translatable
+  price       Float
+  photo       String   @default("")
+  available   Boolean  @default(true)
+  badges      String   @default("[]") // JSON: string[] e.g. ["nowosc","popularne","18+"]
+  order       Int      @default(0)
+  updatedAt   DateTime @updatedAt
+}
+
+model Reservation {
+  id        Int      @id @default(autoincrement())
+  date      String // YYYY-MM-DD
+  time      String // HH:mm
+  guests    Int
+  name      String
+  phone     String
+  comment   String   @default("")
+  zone      String   @default("")
+  status    String   @default("pending") // pending | confirmed | seated | cancelled
+  guestId   Int?
+  guest     GuestUser? @relation(fields: [guestId], references: [id], onDelete: SetNull)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model GuestUser {
+  id           Int           @id @default(autoincrement())
+  email        String?       @unique
+  phone        String?       @unique
+  name         String        @default("")
+  passwordHash String
+  createdAt    DateTime      @default(now())
+  reservations Reservation[]
+}
+
+model AdminUser {
+  id           Int      @id @default(autoincrement())
+  username     String   @unique
+  passwordHash String
+  createdAt    DateTime @default(now())
+}
