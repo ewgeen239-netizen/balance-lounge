@@ -80,7 +80,7 @@ export function ReservationsPanel({ initial }: { initial: AdminReservation[] }) 
                       <th className="px-4 py-3">Time</th>
                       <th className="px-4 py-3">Guest</th>
                       <th className="px-4 py-3">Pax</th>
-                      <th className="px-4 py-3">Zone / notes</th>
+                      <th className="px-4 py-3">Notes</th>
                       <th className="px-4 py-3">Status</th>
                       <th className="px-4 py-3 text-right">Actions</th>
                     </tr>
@@ -95,7 +95,7 @@ export function ReservationsPanel({ initial }: { initial: AdminReservation[] }) 
                         </td>
                         <td className="px-4 py-3 text-neutral-300">{r.guests}</td>
                         <td className="px-4 py-3 text-neutral-400">
-                          {r.zone}{r.comment ? <div className="text-xs text-neutral-500">{r.comment}</div> : null}
+                          {r.comment || <span className="text-neutral-600">—</span>}
                         </td>
                         <td className="px-4 py-3">
                           <span className={cn("rounded-full px-2.5 py-1 text-xs capitalize", STATUS_STYLE[r.status])}>{r.status}</span>

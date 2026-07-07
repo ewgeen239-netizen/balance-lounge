@@ -51,7 +51,7 @@ export function AccountDashboard({
               <div>
                 <p className="font-medium text-neutral-100">{r.date} — {r.time}</p>
                 <p className="text-sm text-neutral-400">
-                  {r.guests} {t("book.guests").toLowerCase()}{r.zone ? ` · ${r.zone}` : ""}
+                  {r.guests} {t("book.guests").toLowerCase()}
                 </p>
                 {r.comment && <p className="mt-1 text-sm text-neutral-500">{r.comment}</p>}
               </div>

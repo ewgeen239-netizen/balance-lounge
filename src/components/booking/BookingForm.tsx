@@ -14,7 +14,6 @@ export function BookingForm({ hours, loggedIn }: { hours: HoursRow[]; loggedIn: 
     guests: 2,
     name: "",
     phone: "",
-    zone: "",
     comment: "",
   });
   const [status, setStatus] = useState<"idle" | "loading" | "done" | "error">("idle");
@@ -65,7 +64,6 @@ export function BookingForm({ hours, loggedIn }: { hours: HoursRow[]; loggedIn: 
           <Row label={t("book.guests")} value={String(form.guests)} />
           <Row label={t("book.name")} value={form.name} />
           <Row label={t("book.phone")} value={form.phone} />
-          {form.zone && <Row label={t("book.zone")} value={form.zone} />}
           {form.comment && <Row label={t("book.comment")} value={form.comment} />}
         </div>
 
@@ -117,15 +115,6 @@ export function BookingForm({ hours, loggedIn }: { hours: HoursRow[]; loggedIn: 
         <div>
           <label className="label">{t("book.guests")}</label>
           <input type="number" min={1} max={30} value={form.guests} onChange={(e) => set("guests", Number(e.target.value))} className="input" required />
-        </div>
-        <div>
-          <label className="label">{t("book.zone")}</label>
-          <select value={form.zone} onChange={(e) => set("zone", e.target.value)} className="input">
-            <option value="">{t("book.zoneAny")}</option>
-            <option value={t("book.zoneHall")}>{t("book.zoneHall")}</option>
-            <option value={t("book.zoneLounge")}>{t("book.zoneLounge")}</option>
-            <option value={t("book.zoneBar")}>{t("book.zoneBar")}</option>
-          </select>
         </div>
         <div>
           <label className="label">{t("book.name")}</label>
