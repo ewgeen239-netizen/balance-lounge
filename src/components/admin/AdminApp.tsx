@@ -44,20 +44,20 @@ export function AdminApp({
   return (
     <div className="min-h-screen bg-ink-950">
       <header className="sticky top-0 z-40 border-b border-white/10 bg-ink-950/90 backdrop-blur-xl">
-        <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-4">
-          <div className="flex items-center gap-4">
-            <span className="wordmark text-lg text-neutral-50">BALANCE</span>
+        <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-x-3 gap-y-2 px-5 py-4">
+          <div className="flex items-center gap-3">
+            <span className="wordmark text-base text-neutral-50 sm:text-lg">BALANCE</span>
             <span className="rounded-full border border-ember/30 px-2 py-0.5 text-[10px] uppercase tracking-widest text-ember">Admin</span>
           </div>
-          <div className="flex items-center gap-3 text-sm">
-            <Link href="/" target="_blank" className="text-neutral-400 hover:text-neon">View site ↗</Link>
-            <span className="text-neutral-500">·</span>
-            <span className="text-neutral-300">{adminName}</span>
-            <button onClick={() => setShowChangePw(true)} className="btn-ghost px-4 py-1.5 text-xs">Change password</button>
-            <button onClick={logout} className="btn-ghost px-4 py-1.5 text-xs">Log out</button>
+          <div className="flex items-center gap-2 text-sm sm:gap-3">
+            <Link href="/" target="_blank" className="hidden text-neutral-400 hover:text-neon sm:inline">View site ↗</Link>
+            <span className="hidden text-neutral-500 sm:inline">·</span>
+            <span className="hidden text-neutral-300 sm:inline">{adminName}</span>
+            <button onClick={() => setShowChangePw(true)} className="btn-ghost px-3 py-1.5 text-xs sm:px-4">Change password</button>
+            <button onClick={logout} className="btn-ghost px-3 py-1.5 text-xs sm:px-4">Log out</button>
           </div>
         </div>
-        <div className="mx-auto flex max-w-6xl gap-1 px-5">
+        <div className="mx-auto flex max-w-6xl gap-1 overflow-x-auto px-5">
           {tabs.map((tb) => (
             <button
               key={tb.id}

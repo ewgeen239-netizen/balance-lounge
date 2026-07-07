@@ -64,7 +64,7 @@ export function MenuBrowser({ categories }: { categories: CategoryDTO[] }) {
   return (
     <div>
       {/* Sticky controls */}
-      <div className="sticky top-[68px] z-30 -mx-5 mb-8 bg-ink-950/85 px-5 py-4 backdrop-blur-xl sm:-mx-8 sm:px-8">
+      <div className="sticky top-[92px] z-30 -mx-5 mb-8 bg-ink-950/85 px-5 py-4 backdrop-blur-xl sm:-mx-8 sm:px-8 md:top-[60px]">
         <div className="container-x flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
           <div className="flex gap-2 overflow-x-auto pb-1">
             <TabBtn active={active === "all"} onClick={() => setActive("all")}>{t("menu.all")}</TabBtn>

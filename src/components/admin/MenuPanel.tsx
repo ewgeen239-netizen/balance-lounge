@@ -124,8 +124,8 @@ export function MenuPanel({ initial }: { initial: AdminCategory[] }) {
               </div>
             </div>
 
-            <div className="overflow-hidden rounded-2xl border border-white/10">
-              <table className="w-full text-sm">
+            <div className="overflow-x-auto rounded-2xl border border-white/10">
+              <table className="w-full min-w-[520px] text-sm">
                 <tbody>
                   {cat.items.length === 0 && (
                     <tr><td className="px-4 py-6 text-center text-neutral-600">No items yet.</td></tr>

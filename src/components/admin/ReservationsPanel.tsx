@@ -73,8 +73,8 @@ export function ReservationsPanel({ initial }: { initial: AdminReservation[] }) 
           {byDay.map(([day, list]) => (
             <section key={day}>
               <h3 className="mb-3 text-sm font-semibold uppercase tracking-widest text-ember">{day} · {list.length}</h3>
-              <div className="overflow-hidden rounded-2xl border border-white/10">
-                <table className="w-full text-sm">
+              <div className="overflow-x-auto rounded-2xl border border-white/10">
+                <table className="w-full min-w-[640px] text-sm">
                   <thead className="bg-ink-800/60 text-left text-xs uppercase tracking-wider text-neutral-500">
                     <tr>
                       <th className="px-4 py-3">Time</th>
