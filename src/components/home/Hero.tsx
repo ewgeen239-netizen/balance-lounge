@@ -20,37 +20,35 @@ export function Hero({ image, neon }: { image: string; neon: string }) {
       <div className="absolute inset-0 bg-gradient-to-b from-ink-950/70 via-ink-950/50 to-ink-950" />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_30%,rgba(10,7,8,0.85)_100%)]" />
 
-      {/* Neon sign in background */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1.4, delay: 0.2 }}
-        className="absolute left-1/2 top-[26%] -translate-x-1/2 select-none"
-      >
-        <span className="neon animate-flicker block text-center text-lg font-semibold uppercase tracking-[0.35em] sm:text-2xl">
+      {/* Center content — stacked so nothing overlaps on any screen */}
+      <div className="relative z-10 flex h-full flex-col items-center justify-center gap-6 px-6 text-center sm:gap-8">
+        {/* Neon sign */}
+        <motion.span
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1.4, delay: 0.2 }}
+          className="neon animate-flicker max-w-[90vw] text-sm font-semibold uppercase leading-tight tracking-[0.3em] sm:text-2xl sm:tracking-[0.35em]"
+        >
           {neon}
-        </span>
-      </motion.div>
+        </motion.span>
 
-      {/* Center content */}
-      <div className="relative z-10 flex h-full flex-col items-center justify-center px-6 text-center">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.5 }}
         >
-          <Wordmark className="logo-glow h-9 w-auto sm:h-14 text-neutral-50" />
-          <p className="wordmark-sub mt-4 text-[10px] text-ember/90 sm:text-base">COCTAILS &amp; SHISHA</p>
+          <Wordmark className="logo-glow h-8 w-auto text-neutral-50 sm:h-14" />
+          <p className="wordmark-sub mt-3 text-[10px] text-ember/90 sm:mt-4 sm:text-base">COCTAILS &amp; SHISHA</p>
         </motion.div>
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.9 }}
-          className="mt-10 flex flex-col items-center gap-3 sm:flex-row"
+          className="flex w-full max-w-xs flex-col items-center gap-3 sm:w-auto sm:max-w-none sm:flex-row"
         >
-          <Link href="/menu" className="btn-ghost min-w-[180px]">{t("cta.viewMenu")}</Link>
-          <button onClick={open} className="btn-primary min-w-[180px]">{t("cta.reserve")}</button>
+          <Link href="/menu" className="btn-ghost w-full sm:w-auto sm:min-w-[180px]">{t("cta.viewMenu")}</Link>
+          <button onClick={open} className="btn-primary w-full sm:w-auto sm:min-w-[180px]">{t("cta.reserve")}</button>
         </motion.div>
       </div>
 
