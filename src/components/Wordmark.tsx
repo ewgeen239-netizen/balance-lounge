@@ -28,7 +28,7 @@ export function Wordmark({ className }: { className?: string }) {
       {/* E — three bars */}
       <g transform="translate(1538 0)">
         <rect x="0" y="0" width="125" height="26" />
-        <rect x="0" y="74" width="125" height="26" />
+        <rect x="0" y="74" width="96" height="26" />
         <rect x="0" y="148" width="125" height="26" />
       </g>
     </svg>
