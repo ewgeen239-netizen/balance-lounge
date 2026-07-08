@@ -2,7 +2,7 @@
 // crossbar-less "A" (inverted V) and a three-bar "E".
 // Colour follows currentColor; size with a height class (h-*).
 
-const A_PATH = "M217 0 L243 0 L318 174 L289 174 L230 52 L171 174 L143 174 Z";
+const A_PATH = "M215 0 L245 0 L318 174 L278 174 L230 64 L182 174 L143 174 Z";
 
 export function Wordmark({ className }: { className?: string }) {
   return (
@@ -28,7 +28,7 @@ export function Wordmark({ className }: { className?: string }) {
       {/* E — three bars */}
       <g transform="translate(1538 0)">
         <rect x="0" y="0" width="95" height="26" />
-        <rect x="0" y="74" width="78" height="26" />
+        <rect x="0" y="74" width="95" height="26" />
         <rect x="0" y="148" width="95" height="26" />
       </g>
     </svg>
