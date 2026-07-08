@@ -14,24 +14,34 @@ type ReservationLike = {
  *  Fails silently (logs only) so booking never breaks because of notification issues. */
 export async function notifyNewReservation(r: ReservationLike): Promise<void> {
   const token = process.env.TELEGRAM_BOT_TOKEN;
-  const chatId = process.env.TELEGRAM_CHAT_ID;
+  const chatIds = (process.env.TELEGRAM_CHAT_ID ?? "")
+    .split(",")
+    .map((id) => id.trim())
+    .filter(Boolean);
   const text =
     `🆕 Nowa rezerwacja — BALANCE\n\n` +
     `👤 ${r.name}\n📞 ${r.phone}\n📅 ${r.date} ${r.time}\n👥 ${r.guests}\n` +
     (r.zone ? `📍 ${r.zone}\n` : "") +
     (r.comment ? `💬 ${r.comment}\n` : "");
 
-  if (!token || !chatId) {
+  if (!token || chatIds.length === 0) {
     console.info("[notify] Telegram not configured, skipping. Reservation:\n" + text);
     return;
   }
-  try {
-    await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ chat_id: chatId, text }),
-    });
-  } catch (err) {
-    console.error("[notify] Telegram send failed:", err);
-  }
+  await Promise.allSettled(
+    chatIds.map(async (chatId) => {
+      try {
+        const res = await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ chat_id: chatId, text }),
+        });
+        if (!res.ok) {
+          console.error(`[notify] Telegram send failed for ${chatId}:`, await res.text());
+        }
+      } catch (err) {
+        console.error(`[notify] Telegram send failed for ${chatId}:`, err);
+      }
+    }),
+  );
 }

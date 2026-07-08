@@ -38,7 +38,7 @@ Copy the connection string (looks like `postgresql://user:pass@host/db?sslmode=r
    | `ADMIN_USERNAME`  | `admin` (or your choice)                          |
    | `ADMIN_PASSWORD`  | a strong password                                 |
    | `TELEGRAM_BOT_TOKEN` | optional                                       |
-   | `TELEGRAM_CHAT_ID`   | optional                                       |
+   | `TELEGRAM_CHAT_ID`   | optional — one id or comma-separated ids      |
    | `BLOB_READ_WRITE_TOKEN` | auto-added when you connect a Blob store (step 5) |
 
 4. Deploy.

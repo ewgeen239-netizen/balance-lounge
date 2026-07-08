@@ -53,12 +53,13 @@ AUTH_SECRET="change-me-in-production" # signs session cookies (JWT)
 ADMIN_USERNAME="admin"
 ADMIN_PASSWORD="balance123"
 TELEGRAM_BOT_TOKEN=""                 # optional — new-reservation alerts
-TELEGRAM_CHAT_ID=""                   # optional
+TELEGRAM_CHAT_ID=""                   # optional — one id or comma-separated ids
 ```
 
 **Telegram alerts:** create a bot via [@BotFather](https://t.me/BotFather), get the token,
 message your bot, then find your chat id (e.g. via `@userinfobot`). Fill both vars and
-restart — every reservation posts to that chat. Left blank, notifications are skipped
+restart — every reservation posts to that chat. For multiple recipients, separate ids with
+commas, e.g. `6166155438,-1001234567890`. Left blank, notifications are skipped
 (logged to the server console instead), booking still works.
 
 ---
