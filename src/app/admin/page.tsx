@@ -19,6 +19,7 @@ export default async function AdminPage() {
   return (
     <AdminApp
       adminName={session.name ?? "admin"}
+      role={session.adminRole === "staff" ? "staff" : "owner"}
       initialCategories={JSON.parse(JSON.stringify(categories))}
       initialReservations={JSON.parse(JSON.stringify(reservations))}
       bar={JSON.parse(JSON.stringify(bar))}

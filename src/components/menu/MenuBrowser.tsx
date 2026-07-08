@@ -4,7 +4,8 @@ import { useMemo, useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLang } from "@/components/LangProvider";
-import { parseJSON, formatPrice, cn } from "@/lib/utils";
+import { parseJSON, formatPrice, cn, categoryClosedNow } from "@/lib/utils";
+import { ItemModal } from "./ItemModal";
 
 export type MenuItemDTO = {
   id: number;
@@ -14,11 +15,13 @@ export type MenuItemDTO = {
   photo: string;
   available: boolean;
   badges: string;
+  options: string; // JSON option groups
 };
 export type CategoryDTO = {
   id: number;
   slug: string;
   name: string;
+  scheduled: boolean;
   items: MenuItemDTO[];
 };
 
@@ -42,6 +45,7 @@ export function MenuBrowser({ categories }: { categories: CategoryDTO[] }) {
   const { t, tr } = useLang();
   const [active, setActive] = useState<string>("all");
   const [query, setQuery] = useState("");
+  const [selected, setSelected] = useState<MenuItemDTO | null>(null);
 
   const q = query.trim().toLowerCase();
 
@@ -95,47 +99,88 @@ export function MenuBrowser({ categories }: { categories: CategoryDTO[] }) {
               {t("menu.empty")}
             </motion.p>
           ) : (
-            visible.map((c) => (
-              <section key={c.id} id={c.slug}>
-                <h2 className="wordmark accent-underline mb-8 text-3xl text-neutral-50">{tr(c.name)}</h2>
-                <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-                  {c.items.map((it, idx) => (
-                    <motion.article
-                      key={it.id}
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.4, delay: (idx % 6) * 0.05 }}
-                      className={cn("glass card-hover flex overflow-hidden rounded-2xl", !it.available && "opacity-60")}
-                    >
-                      {it.photo && (
-                        <div className="relative hidden w-28 shrink-0 sm:block">
-                          <Image src={it.photo} alt={tr(it.name)} fill className="object-cover" sizes="120px" />
-                        </div>
-                      )}
-                      <div className="flex-1 p-5">
-                        <div className="flex items-start justify-between gap-3">
-                          <h3 className="font-medium text-neutral-50">{tr(it.name)}</h3>
-                          <span className="whitespace-nowrap font-semibold text-ember">{formatPrice(it.price)}</span>
-                        </div>
-                        <p className="mt-1.5 text-sm text-neutral-400">{tr(it.description)}</p>
-                        <div className="mt-3 flex flex-wrap items-center gap-2">
-                          {parseJSON<string[]>(it.badges, []).map((b) => <Badge key={b} code={b} />)}
-                          {!it.available && (
-                            <span className="rounded-full border border-neutral-600 px-2 py-0.5 text-[10px] uppercase tracking-wider text-neutral-400">
-                              {t("menu.soldout")}
-                            </span>
+            visible.map((c) => {
+              const closed = categoryClosedNow(c.scheduled);
+              return (
+                <section key={c.id} id={c.slug} className="relative">
+                  <div className="mb-6 flex flex-wrap items-center gap-3 sm:mb-8">
+                    <h2 className="wordmark accent-underline text-2xl text-neutral-50 sm:text-3xl">{tr(c.name)}</h2>
+                    {closed && (
+                      <span className="rounded-full border border-neon/40 bg-neon/10 px-3 py-1 text-xs text-neon">
+                        {t("menu.closedToday")}
+                      </span>
+                    )}
+                  </div>
+
+                  <div className={cn("relative", closed && "pointer-events-none select-none")}>
+                    <div className={cn("grid grid-cols-2 gap-3 sm:gap-5 xl:grid-cols-3", closed && "blur-[6px] saturate-50 opacity-70")}>
+                      {c.items.map((it, idx) => (
+                        <motion.article
+                          key={it.id}
+                          initial={{ opacity: 0, y: 16 }}
+                          whileInView={{ opacity: 1, y: 0 }}
+                          viewport={{ once: true }}
+                          transition={{ duration: 0.4, delay: (idx % 6) * 0.04 }}
+                          onClick={() => setSelected(it)}
+                          role="button"
+                          tabIndex={0}
+                          onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && setSelected(it)}
+                          className={cn("glass card-hover flex cursor-pointer flex-col overflow-hidden rounded-2xl", !it.available && "opacity-60")}
+                        >
+                          {it.photo && (
+                            <div className="relative aspect-[4/3] w-full shrink-0">
+                              <Image src={it.photo} alt={tr(it.name)} fill className="object-cover" sizes="(max-width:640px) 50vw, 300px" />
+                            </div>
                           )}
-                        </div>
+                          <div className="flex flex-1 flex-col p-3.5 sm:p-5">
+                            <div className="flex items-start justify-between gap-2">
+                              <h3 className="text-sm font-medium text-neutral-50 sm:text-base">{tr(it.name)}</h3>
+                              <span className="whitespace-nowrap text-sm font-semibold text-ember">
+                                {parseJSON<{ portion?: boolean }[]>(it.options, []).some((g) => g.portion) && (
+                                  <span className="mr-1 text-[10px] font-normal uppercase tracking-wider text-neutral-500">{t("menu.from")}</span>
+                                )}
+                                {formatPrice(it.price)}
+                              </span>
+                            </div>
+                            <p className="mt-1.5 line-clamp-3 text-xs text-neutral-400 sm:text-sm sm:line-clamp-none">{tr(it.description)}</p>
+                            <div className="mt-2.5 flex flex-wrap items-center gap-1.5 sm:gap-2">
+                              {parseJSON<string[]>(it.badges, []).map((b) => <Badge key={b} code={b} />)}
+                              {!it.available && (
+                                <span className="rounded-full border border-neutral-600 px-2 py-0.5 text-[10px] uppercase tracking-wider text-neutral-400">
+                                  {t("menu.soldout")}
+                                </span>
+                              )}
+                            </div>
+                            {tr(it.name).toLowerCase().includes("cybuch") && (
+                              <div className="mt-auto pt-3">
+                                <div className="flex items-center gap-2 rounded-xl border border-ember/30 bg-gradient-to-r from-ember/10 to-transparent px-3 py-2">
+                                  <span className="text-ember">✦</span>
+                                  <span className="text-[11px] font-medium italic leading-snug text-ember/90 sm:text-xs">
+                                    {t("menu.eshishaNote")}
+                                  </span>
+                                </div>
+                              </div>
+                            )}
+                          </div>
+                        </motion.article>
+                      ))}
+                    </div>
+                    {closed && (
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <span className="rounded-2xl border border-white/15 bg-ink-950/70 px-5 py-3 text-sm text-neutral-200 backdrop-blur-sm">
+                          {t("menu.closedTodayLong")}
+                        </span>
                       </div>
-                    </motion.article>
-                  ))}
-                </div>
-              </section>
-            ))
+                    )}
+                  </div>
+                </section>
+              );
+            })
           )}
         </AnimatePresence>
       </div>
+
+      <ItemModal item={selected} onClose={() => setSelected(null)} />
     </div>
   );
 }

@@ -22,6 +22,7 @@ model Bar {
   email       String   @default("")
   hours       String // JSON: [{ day, open, close }]
   instagram   String   @default("")
+  facebook    String   @default("")
   whatsapp    String   @default("")
   telegram    String   @default("")
   lat         Float    @default(53.4285)
@@ -46,6 +47,9 @@ model Category {
   slug      String     @unique
   name      String // JSON translatable
   order     Int        @default(0)
+  // Auto-schedule: when true, category is available Fri–Mon and disabled Tue–Thu.
+  // Toggled by an on/off button in admin. Disabled categories render blurred on the site.
+  scheduled Boolean    @default(false)
   items     MenuItem[]
   updatedAt DateTime   @updatedAt
 }
@@ -60,6 +64,7 @@ model MenuItem {
   photo       String   @default("")
   available   Boolean  @default(true)
   badges      String   @default("[]") // JSON: string[] e.g. ["nowosc","popularne","18+"]
+  options     String   @default("[]") // JSON: option groups [{name, required, list:[{name, price}]}]
   order       Int      @default(0)
   updatedAt   DateTime @updatedAt
 }
@@ -90,9 +95,20 @@ model GuestUser {
   reservations Reservation[]
 }
 
+model TranslationCache {
+  id     Int    @id @default(autoincrement())
+  lang   String
+  source String // source (English) text
+  text   String // translated text
+  updatedAt DateTime @updatedAt
+
+  @@unique([lang, source])
+}
+
 model AdminUser {
   id           Int      @id @default(autoincrement())
   username     String   @unique
   passwordHash String
+  role         String   @default("owner") // "owner" = full access, "staff" = reservations only
   createdAt    DateTime @default(now())
 }

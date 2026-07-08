@@ -1,12 +1,12 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/db";
-import { requireAdmin } from "@/lib/adminGuard";
+import { requireOwner } from "@/lib/adminGuard";
 
 const asJSON = (v: unknown) => (typeof v === "string" ? v : JSON.stringify(v));
 
 // Update Bar info and/or About content in one call.
 export async function PATCH(req: Request) {
-  const denied = await requireAdmin();
+  const denied = await requireOwner();
   if (denied) return denied;
   const body = await req.json().catch(() => ({}));
 
@@ -15,7 +15,7 @@ export async function PATCH(req: Request) {
     const bar = await prisma.bar.findFirst();
     if (bar) {
       const data: Record<string, unknown> = {};
-      for (const k of ["name", "subtitle", "address", "phone", "email", "instagram", "whatsapp", "telegram", "heroImage", "heroNeon"]) {
+      for (const k of ["name", "subtitle", "address", "phone", "email", "instagram", "facebook", "whatsapp", "telegram", "heroImage", "heroNeon"]) {
         if (b[k] !== undefined) data[k] = String(b[k]);
       }
       if (b.lat !== undefined) data.lat = Number(b.lat);

@@ -18,7 +18,8 @@ export async function verifyPassword(pw: string, hash: string): Promise<boolean>
   return bcrypt.compare(pw, hash);
 }
 
-type SessionPayload = { sub: string; role: "guest" | "admin"; name?: string };
+type AdminRole = "owner" | "staff";
+type SessionPayload = { sub: string; role: "guest" | "admin"; name?: string; adminRole?: AdminRole };
 
 async function sign(payload: SessionPayload): Promise<string> {
   return new SignJWT(payload)
@@ -63,8 +64,8 @@ export function clearGuestSession() {
 }
 
 // ---- Admin session ----
-export async function createAdminSession(adminId: number, name: string) {
-  const token = await sign({ sub: String(adminId), role: "admin", name });
+export async function createAdminSession(adminId: number, name: string, adminRole: AdminRole = "owner") {
+  const token = await sign({ sub: String(adminId), role: "admin", name, adminRole });
   cookies().set(ADMIN_COOKIE, token, cookieOpts());
 }
 export async function getAdminSession(): Promise<SessionPayload | null> {
@@ -72,6 +73,9 @@ export async function getAdminSession(): Promise<SessionPayload | null> {
   if (!token) return null;
   const p = await verify(token);
   return p?.role === "admin" ? p : null;
+}
+export function isOwner(session: SessionPayload | null): boolean {
+  return session?.role === "admin" && (session.adminRole ?? "owner") === "owner";
 }
 export function clearAdminSession() {
   cookies().delete(ADMIN_COOKIE);

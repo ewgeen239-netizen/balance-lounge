@@ -5,7 +5,7 @@ import type { AdminBar, AdminAbout } from "./types";
 import { TranslatableInput } from "./TranslatableInput";
 import { ImageUpload } from "./ImageUpload";
 import { parseJSON, type HoursRow } from "@/lib/utils";
-import { WEEKDAYS } from "@/lib/i18n";
+import { weekdays } from "@/lib/i18n";
 
 export function ContentPanel({ bar, about }: { bar: AdminBar; about: AdminAbout }) {
   const [b, setB] = useState<AdminBar>(bar);
@@ -33,7 +33,7 @@ export function ContentPanel({ bar, about }: { bar: AdminBar; about: AdminAbout 
       body: JSON.stringify({
         bar: {
           address: b.address, phone: b.phone, email: b.email,
-          instagram: b.instagram, whatsapp: b.whatsapp, telegram: b.telegram,
+          instagram: b.instagram, facebook: b.facebook, whatsapp: b.whatsapp, telegram: b.telegram,
           heroImage: b.heroImage, heroNeon: b.heroNeon,
           lat: b.lat, lng: b.lng,
           hours, gallery,
@@ -65,6 +65,7 @@ export function ContentPanel({ bar, about }: { bar: AdminBar; about: AdminAbout 
           <Field label="Email"><input value={b.email} onChange={(e) => setBar("email", e.target.value)} className="input" /></Field>
           <Field label="Hero neon text"><input value={b.heroNeon} onChange={(e) => setBar("heroNeon", e.target.value)} className="input" /></Field>
           <Field label="Instagram URL"><input value={b.instagram} onChange={(e) => setBar("instagram", e.target.value)} className="input" /></Field>
+          <Field label="Facebook URL"><input value={b.facebook} onChange={(e) => setBar("facebook", e.target.value)} className="input" /></Field>
           <Field label="WhatsApp URL"><input value={b.whatsapp} onChange={(e) => setBar("whatsapp", e.target.value)} className="input" /></Field>
           <Field label="Telegram URL"><input value={b.telegram} onChange={(e) => setBar("telegram", e.target.value)} className="input" /></Field>
           <Field label="Latitude"><input type="number" step="0.0001" value={b.lat} onChange={(e) => setBar("lat", Number(e.target.value))} className="input" /></Field>
@@ -80,7 +81,7 @@ export function ContentPanel({ bar, about }: { bar: AdminBar; about: AdminAbout 
         <div className="space-y-2">
           {hours.map((h) => (
             <div key={h.day} className="flex flex-wrap items-center gap-3">
-              <span className="w-28 text-sm text-neutral-300">{WEEKDAYS.en[h.day]}</span>
+              <span className="w-28 text-sm text-neutral-300">{weekdays("en")[h.day]}</span>
               <label className="flex items-center gap-2 text-xs text-neutral-400">
                 <input type="checkbox" checked={!h.closed} onChange={(e) => setHour(h.day, { closed: !e.target.checked })} className="h-4 w-4 accent-[#ff2d3a]" />
                 Open

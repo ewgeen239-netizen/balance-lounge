@@ -7,10 +7,10 @@ const J = (o: Record<string, string>) => JSON.stringify(o);
 type Translatable = { pl: string; ru: string; en: string; ua: string };
 type ChoiceItem = {
   name: string; description: string; price: number; image: string; available: boolean; labels: string[];
-  nameI18n: Translatable; descI18n: Translatable;
+  nameI18n: Translatable; descI18n: Translatable; optionsI18n?: unknown[];
 };
 type ChoiceCategory = { hurl: string; name: string; desc: string; items: ChoiceItem[]; nameI18n: Translatable };
-const CHOICE = choiceData as { categories: ChoiceCategory[]; gallery: string[] };
+const CHOICE = choiceData as unknown as { categories: ChoiceCategory[]; gallery: string[] };
 
 const ALCOHOL = new Set([
   "signature-cocktails", "classic-cocktails", "shot-menu", "shot-sets",
@@ -49,11 +49,12 @@ export async function seedDatabase(prisma: PrismaClient) {
       phone: "729 559 179",
       email: "kontakt@balancecoctails.pl",
       instagram: "https://instagram.com/balancecoctails",
+      facebook: "https://facebook.com/balancecoctails",
       whatsapp: "https://wa.me/48729559179",
       telegram: "https://t.me/balancecoctails",
-      lat: 53.4285,
-      lng: 14.5528,
-      heroImage: "/hero.webp",
+      lat: 53.430730108255155,
+      lng: 14.544568385793067,
+      heroImage: "/head.jpg",
       heroNeon: "YOU'RE IN THE RIGHT PLACE",
       gallery: JSON.stringify(CHOICE.gallery.length ? CHOICE.gallery : ["/interior-1.webp", "/interior-2.webp", "/hero.webp"]),
       hours: JSON.stringify([
@@ -102,7 +103,12 @@ export async function seedDatabase(prisma: PrismaClient) {
   let catOrder = 0;
   for (const c of CHOICE.categories) {
     const cat = await prisma.category.create({
-      data: { slug: c.hurl, name: JSON.stringify(c.nameI18n), order: catOrder++ },
+      data: {
+        slug: c.hurl,
+        name: JSON.stringify(c.nameI18n),
+        order: catOrder++,
+        scheduled: c.hurl === "desery-premium", // desserts on Fri–Mon, off Tue–Thu
+      },
     });
     let i = 0;
     for (const item of c.items) {
@@ -114,6 +120,7 @@ export async function seedDatabase(prisma: PrismaClient) {
           price: item.price,
           photo: item.image || "",
           badges: JSON.stringify(badgesFor(c, item)),
+          options: JSON.stringify(item.optionsI18n ?? []),
           available: item.available,
           order: i++,
         },
@@ -124,7 +131,11 @@ export async function seedDatabase(prisma: PrismaClient) {
   const adminUser = process.env.ADMIN_USERNAME || "admin";
   const adminPass = process.env.ADMIN_PASSWORD || "balance123";
   await prisma.adminUser.create({
-    data: { username: adminUser, passwordHash: await bcrypt.hash(adminPass, 10) },
+    data: { username: adminUser, passwordHash: await bcrypt.hash(adminPass, 10), role: "owner" },
+  });
+  // Demo staff account (reservations only).
+  await prisma.adminUser.create({
+    data: { username: "worker", passwordHash: await bcrypt.hash("worker123", 10), role: "staff" },
   });
 
   const guest = await prisma.guestUser.create({

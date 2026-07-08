@@ -30,6 +30,7 @@ export default async function HomePage() {
             phone: bar.phone,
             hours: bar.hours,
             instagram: bar.instagram,
+            facebook: bar.facebook,
             whatsapp: bar.whatsapp,
             telegram: bar.telegram,
             lat: bar.lat,

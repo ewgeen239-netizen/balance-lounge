@@ -1,14 +1,32 @@
 // Languages + UI dictionaries. Translatable DB fields use the same Lang keys.
 
-export const LANGS = ["pl", "ru", "en", "ua"] as const;
+// Main languages (always shown in the switcher) + extra languages (behind the arrow,
+// filled in by on-demand machine translation).
+export const MAIN_LANGS = ["pl", "ru", "en", "de"] as const;
+export const EXTRA_LANGS = ["ua", "es", "fr", "it", "pt", "tr", "cs", "nl", "zh"] as const;
+export const LANGS = [...MAIN_LANGS, ...EXTRA_LANGS] as const;
 export type Lang = (typeof LANGS)[number];
 export const DEFAULT_LANG: Lang = "pl";
 
+// Languages that have hand-written translations. Everything else is auto-translated
+// (and cached in the DB via /api/translate).
+export const HAND_LANGS: Lang[] = ["pl", "ru", "en", "ua"];
+
 export const LANG_LABEL: Record<Lang, string> = {
-  pl: "PL",
-  ru: "RU",
-  en: "EN",
-  ua: "UA",
+  pl: "PL", ru: "RU", en: "EN", de: "DE", ua: "UA",
+  es: "ES", fr: "FR", it: "IT", pt: "PT", tr: "TR", cs: "CS", nl: "NL", zh: "ZH",
+};
+
+// ISO codes for the translation API (MyMemory).
+export const LANG_ISO: Record<Lang, string> = {
+  pl: "pl", ru: "ru", en: "en", de: "de", ua: "uk",
+  es: "es", fr: "fr", it: "it", pt: "pt", tr: "tr", cs: "cs", nl: "nl", zh: "zh",
+};
+
+export const LANG_FULL: Record<Lang, string> = {
+  pl: "Polski", ru: "Русский", en: "English", de: "Deutsch", ua: "Українська",
+  es: "Español", fr: "Français", it: "Italiano", pt: "Português", tr: "Türkçe",
+  cs: "Čeština", nl: "Nederlands", zh: "中文",
 };
 
 // Translatable value stored in DB as JSON string { pl, ru, en, ua }.
@@ -33,7 +51,30 @@ export function makeTranslatable(t: Translatable): string {
   return JSON.stringify(t);
 }
 
-type Dict = Record<string, Record<Lang, string>>;
+/** Parse a translatable field and return its English (or default) base — the source
+ *  used for auto-translation into languages without a hand-written value. */
+export function trBase(value: unknown): string {
+  let obj: Translatable = {};
+  if (typeof value === "string") {
+    try { obj = JSON.parse(value); } catch { return value; }
+  } else if (value && typeof value === "object") {
+    obj = value as Translatable;
+  }
+  return obj.en || obj[DEFAULT_LANG] || Object.values(obj)[0] || "";
+}
+
+/** Does a translatable value already contain a hand value for this language? */
+export function hasHand(value: unknown, lang: Lang): boolean {
+  let obj: Translatable = {};
+  if (typeof value === "string") {
+    try { obj = JSON.parse(value); } catch { return true; }
+  } else if (value && typeof value === "object") {
+    obj = value as Translatable;
+  }
+  return Boolean(obj[lang]);
+}
+
+type Dict = Record<string, Partial<Record<Lang, string>>>;
 
 export const UI: Dict = {
   "nav.home": { pl: "Główna", ru: "Главная", en: "Home", ua: "Головна" },
@@ -66,6 +107,20 @@ export const UI: Dict = {
   "menu.soldout": { pl: "Wyprzedane", ru: "Нет в наличии", en: "Sold out", ua: "Немає" },
   "menu.available": { pl: "Dostępne", ru: "В наличии", en: "Available", ua: "В наявності" },
   "menu.empty": { pl: "Brak pozycji.", ru: "Ничего не найдено.", en: "Nothing found.", ua: "Нічого не знайдено." },
+  "menu.closedToday": { pl: "Dziś niedostępne", ru: "Сегодня недоступно", en: "Unavailable today", ua: "Сьогодні недоступно" },
+  "menu.closedTodayLong": { pl: "Ta kategoria jest dziś niedostępna", ru: "Эта категория сегодня недоступна", en: "This category is unavailable today", ua: "Ця категорія сьогодні недоступна" },
+  "lang.more": { pl: "Więcej języków", ru: "Ещё языки", en: "More languages", ua: "Більше мов" },
+  "menu.required": { pl: "Wymagane", ru: "Обязательно", en: "Required", ua: "Обов'язково" },
+  "menu.free": { pl: "W cenie", ru: "Включено", en: "Included", ua: "Включено" },
+  "menu.addons": { pl: "Dodatki", ru: "Дополнения", en: "Add-ons", ua: "Додатки" },
+  "menu.portions": { pl: "Porcje", ru: "Порции", en: "Servings", ua: "Порції" },
+  "menu.from": { pl: "od", ru: "от", en: "from", ua: "від" },
+  "menu.eshishaNote": {
+    pl: "Możesz wybrać zamiast klasycznej shishy",
+    ru: "Можно выбрать вместо обычного кальяна",
+    en: "Can be chosen instead of a classic shisha",
+    ua: "Можна обрати замість звичайного кальяну",
+  },
 
   "badge.nowosc": { pl: "Nowość", ru: "Новинка", en: "New", ua: "Новинка" },
   "badge.popularne": { pl: "Popularne", ru: "Популярное", en: "Popular", ua: "Популярне" },
@@ -117,12 +172,23 @@ export const UI: Dict = {
 };
 
 export function t(key: string, lang: Lang): string {
-  return UI[key]?.[lang] ?? key;
+  const e = UI[key];
+  if (!e) return key;
+  return e[lang] ?? e.en ?? e[DEFAULT_LANG] ?? key;
 }
 
-export const WEEKDAYS: Record<Lang, string[]> = {
+/** English source string for a UI key (used as the base for auto-translation). */
+export function tBase(key: string): string {
+  const e = UI[key];
+  return e?.en ?? e?.[DEFAULT_LANG] ?? key;
+}
+
+export const WEEKDAYS: Partial<Record<Lang, string[]>> = {
   pl: ["Niedziela", "Poniedziałek", "Wtorek", "Środa", "Czwartek", "Piątek", "Sobota"],
   ru: ["Воскресенье", "Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота"],
   en: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
   ua: ["Неділя", "Понеділок", "Вівторок", "Середа", "Четвер", "П'ятниця", "Субота"],
 };
+export function weekdays(lang: Lang): string[] {
+  return WEEKDAYS[lang] ?? WEEKDAYS.en!;
+}

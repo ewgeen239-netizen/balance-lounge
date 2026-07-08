@@ -3,8 +3,6 @@
   {
    "hurl": "shisha",
    "name": "SHISHA",
-   "desc": "Shisha w Balance to chwila relaksu przygotowana przez doświadczonych Shisha Masterów, którzy dbają o idealny balans smaku i temperatury. \nOptymalny czas sesji to około 60–75 minut. Aby każda sesja zachowała swój najlepszy charakter, obowiązuje u nas mała zasada: 1 shisha maksymalnie dla 3 osób.\nW kwestii regulacji ciepła prosimy o kontakt z obsługą. Niech ten wieczór stanie się chwilą prawdziwego relaksu.\n — Zespół Balance.",
-   "section": "shisha-balance",
    "items": [
     {
      "name": "Light",
@@ -13,6 +11,38 @@
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_BqKue-UwXTC-VianC.webp",
      "available": true,
      "labels": [],
+     "options": [
+      {
+       "name": "Dodatki",
+       "required": false,
+       "list": [
+        {
+         "name": "Baza na soku – głębszy, bardziej nasycony aromat",
+         "price": 0.0
+        },
+        {
+         "name": "Baza na mleku – aksamitna, kremowa struktura dymu",
+         "price": 20.0
+        },
+        {
+         "name": "Alkohol w asortymencie – indywidualny akcent charakteru",
+         "price": 0.0
+        },
+        {
+         "name": "Ice bazooka - chłodzący dodatek do shisha, zapewniający lodowy efekt",
+         "price": 10.0
+        },
+        {
+         "name": "Owocowy cybuch – maksymalna intensywność i trwałość",
+         "price": 50.0
+        },
+        {
+         "name": "Nie wiesz co wybrać? Dopasujemy shishę do Twojego nastroju, herbaty lub drinka.",
+         "price": 0.0
+        }
+       ]
+      }
+     ],
      "nameI18n": {
       "pl": "Light",
       "ru": "Light",
@@ -24,7 +54,53 @@
       "ru": "Чистый аромат и мягкий дым без излишней тяжести.\nДеликатный выбор для спокойного вечера и беседы.",
       "en": "Clean aroma and soft smoke without excess weight.\nA discreet choice for a calm evening and conversation.",
       "ua": "Чистий аромат і м'який дим без надмірної важкості.\nДелікатний вибір для спокійного вечора та розмови."
-     }
+     },
+     "optionsI18n": [
+      {
+       "name": {
+        "pl": "Dodatki"
+       },
+       "required": false,
+       "list": [
+        {
+         "name": {
+          "pl": "Baza na soku – głębszy, bardziej nasycony aromat"
+         },
+         "price": 0.0
+        },
+        {
+         "name": {
+          "pl": "Baza na mleku – aksamitna, kremowa struktura dymu"
+         },
+         "price": 20.0
+        },
+        {
+         "name": {
+          "pl": "Alkohol w asortymencie – indywidualny akcent charakteru"
+         },
+         "price": 0.0
+        },
+        {
+         "name": {
+          "pl": "Ice bazooka - chłodzący dodatek do shisha, zapewniający lodowy efekt"
+         },
+         "price": 10.0
+        },
+        {
+         "name": {
+          "pl": "Owocowy cybuch – maksymalna intensywność i trwałość"
+         },
+         "price": 50.0
+        },
+        {
+         "name": {
+          "pl": "Nie wiesz co wybrać? Dopasujemy shishę do Twojego nastroju, herbaty lub drinka."
+         },
+         "price": 0.0
+        }
+       ]
+      }
+     ]
     },
     {
      "name": "Medium",
@@ -33,6 +109,38 @@
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_QFHRQ-YewOV-ZdZCe.webp",
      "available": true,
      "labels": [],
+     "options": [
+      {
+       "name": "Dodatki",
+       "required": false,
+       "list": [
+        {
+         "name": "Baza na soku – głębszy, bardziej nasycony aromat",
+         "price": 0.0
+        },
+        {
+         "name": "Baza na mleku – aksamitna, kremowa struktura dymu",
+         "price": 20.0
+        },
+        {
+         "name": "Alkohol w asortymencie – indywidualny akcent charakteru",
+         "price": 0.0
+        },
+        {
+         "name": "Ice bazooka - chłodzący dodatek do shisha, zapewniający lodowy efekt",
+         "price": 10.0
+        },
+        {
+         "name": "Owocowy cybuch – maksymalna intensywność i trwałość",
+         "price": 50.0
+        },
+        {
+         "name": "Nie wiesz co wybrać? Dopasujemy shishę do Twojego nastroju, herbaty lub drinka.",
+         "price": 0.0
+        }
+       ]
+      }
+     ],
      "nameI18n": {
       "pl": "Medium",
       "ru": "Medium",
@@ -44,7 +152,53 @@
       "ru": "Уверенный характер и выраженный профиль вкуса.\nЗолотой стандарт — баланс крепости и удовольствия.",
       "en": "Confident character and a distinct flavour profile.\nThe gold standard — a balance of strength and pleasure.",
       "ua": "Впевнений характер і виразний профіль смаку.\nЗолотий стандарт — баланс міцності та задоволення."
-     }
+     },
+     "optionsI18n": [
+      {
+       "name": {
+        "pl": "Dodatki"
+       },
+       "required": false,
+       "list": [
+        {
+         "name": {
+          "pl": "Baza na soku – głębszy, bardziej nasycony aromat"
+         },
+         "price": 0.0
+        },
+        {
+         "name": {
+          "pl": "Baza na mleku – aksamitna, kremowa struktura dymu"
+         },
+         "price": 20.0
+        },
+        {
+         "name": {
+          "pl": "Alkohol w asortymencie – indywidualny akcent charakteru"
+         },
+         "price": 0.0
+        },
+        {
+         "name": {
+          "pl": "Ice bazooka - chłodzący dodatek do shisha, zapewniający lodowy efekt"
+         },
+         "price": 10.0
+        },
+        {
+         "name": {
+          "pl": "Owocowy cybuch – maksymalna intensywność i trwałość"
+         },
+         "price": 50.0
+        },
+        {
+         "name": {
+          "pl": "Nie wiesz co wybrać? Dopasujemy shishę do Twojego nastroju, herbaty lub drinka."
+         },
+         "price": 0.0
+        }
+       ]
+      }
+     ]
     },
     {
      "name": "Strong",
@@ -53,6 +207,38 @@
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_hxHHe-duVmD-WxCHr.webp",
      "available": true,
      "labels": [],
+     "options": [
+      {
+       "name": "Dodatki",
+       "required": false,
+       "list": [
+        {
+         "name": "Baza na soku – głębszy, bardziej nasycony aromat",
+         "price": 0.0
+        },
+        {
+         "name": "Baza na mleku – aksamitna, kremowa struktura dymu",
+         "price": 20.0
+        },
+        {
+         "name": "Alkohol w asortymencie – indywidualny akcent charakteru",
+         "price": 0.0
+        },
+        {
+         "name": "Ice bazooka - chłodzący dodatek do shisha, zapewniający lodowy efekt",
+         "price": 10.0
+        },
+        {
+         "name": "Owocowy cybuch – maksymalna intensywność i trwałość",
+         "price": 50.0
+        },
+        {
+         "name": "Nie wiesz co wybrać? Dopasujemy shishę do Twojego nastroju, herbaty lub drinka.",
+         "price": 0.0
+        }
+       ]
+      }
+     ],
      "nameI18n": {
       "pl": "Strong",
       "ru": "Strong",
@@ -64,7 +250,53 @@
       "ru": "Густо, интенсивно, решительно.\nДля тех, кто знает, чего хочет.",
       "en": "Dense, intense, decisive.\nFor those who know what they want.",
       "ua": "Густо, інтенсивно, рішуче.\nДля тих, хто знає, чого хоче."
-     }
+     },
+     "optionsI18n": [
+      {
+       "name": {
+        "pl": "Dodatki"
+       },
+       "required": false,
+       "list": [
+        {
+         "name": {
+          "pl": "Baza na soku – głębszy, bardziej nasycony aromat"
+         },
+         "price": 0.0
+        },
+        {
+         "name": {
+          "pl": "Baza na mleku – aksamitna, kremowa struktura dymu"
+         },
+         "price": 20.0
+        },
+        {
+         "name": {
+          "pl": "Alkohol w asortymencie – indywidualny akcent charakteru"
+         },
+         "price": 0.0
+        },
+        {
+         "name": {
+          "pl": "Ice bazooka - chłodzący dodatek do shisha, zapewniający lodowy efekt"
+         },
+         "price": 10.0
+        },
+        {
+         "name": {
+          "pl": "Owocowy cybuch – maksymalna intensywność i trwałość"
+         },
+         "price": 50.0
+        },
+        {
+         "name": {
+          "pl": "Nie wiesz co wybrać? Dopasujemy shishę do Twojego nastroju, herbaty lub drinka."
+         },
+         "price": 0.0
+        }
+       ]
+      }
+     ]
     },
     {
      "name": "Electroniczny cybuch",
@@ -73,6 +305,7 @@
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_DmbVL-EbDsk-KIGCt.webp",
      "available": true,
      "labels": [],
+     "options": [],
      "nameI18n": {
       "pl": "Electroniczny cybuch",
       "ru": "Electroniczny cybuch",
@@ -84,7 +317,8 @@
       "ru": "",
       "en": "",
       "ua": ""
-     }
+     },
+     "optionsI18n": []
     },
     {
      "name": "Perfume",
@@ -93,6 +327,7 @@
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_jIBkh-YJRln-twIZL.webp",
      "available": true,
      "labels": [],
+     "options": [],
      "nameI18n": {
       "pl": "Perfume",
       "ru": "Perfume",
@@ -104,7 +339,8 @@
       "ru": "Исключительная композиция парфюмерного характера. Глубина аромата, элегантность и незабываемые ощущения в каждой сессии.\n\nВ ассортименте:\n\nPSYCHEDELIC LOVE\nСладкий / восточный\nСоблазнительная и чувственная композиция богатого парфюмерного характера.\n\nANYMEDE\nСвежий / минеральный\nСовременный, элегантный аромат с лёгкой свежестью и особым характером.\n\nLAST SEASON\nДревесный / элегантный\nБлагородная композиция, соединяющая глубину древесных нот с тонкой свежестью.",
       "en": "An exceptional composition with a perfume-like character. Depth of aroma, elegance and unforgettable sensations during every session.\n\nIn the range:\n\nPSYCHEDELIC LOVE\nSweet / oriental\nA seductive and sensual blend of rich perfume character.\n\nANYMEDE\nFresh / mineral\nA modern, elegant aroma with light freshness and a unique character.\n\nLAST SEASON\nWoody / elegant\nA noble composition combining the depth of woody notes with subtle freshness.",
       "ua": "Виняткова композиція парфумерного характеру. Глибина аромату, елегантність і незабутні відчуття в кожній сесії.\n\nВ асортименті:\n\nPSYCHEDELIC LOVE\nСолодкий / східний\nСпокуслива й чуттєва композиція багатого парфумерного характеру.\n\nANYMEDE\nСвіжий / мінеральний\nСучасний, елегантний аромат з легкою свіжістю та особливим характером.\n\nLAST SEASON\nДеревний / елегантний\nШляхетна композиція, що поєднує глибину деревних нот із тонкою свіжістю."
-     }
+     },
+     "optionsI18n": []
     }
    ],
    "nameI18n": {
@@ -117,8 +353,6 @@
   {
    "hurl": "signature-cocktails",
    "name": "SIGNATURE COCKTAILS",
-   "desc": "",
-   "section": "menu-barowe",
    "items": [
     {
      "name": "Valentine Sour",
@@ -127,6 +361,7 @@
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_EiYDl-ylJRM-JXEwo.webp",
      "available": true,
      "labels": [],
+     "options": [],
      "nameI18n": {
       "pl": "Valentine Sour",
       "ru": "Valentine Sour",
@@ -138,7 +373,8 @@
       "ru": "Розовый джин, лимон, малина, сливки, белок.\nБархатистый коктейль с фруктовой свежестью и мягкой сладостью.\n• sweet • sour",
       "en": "Pink gin, lemon, raspberry, cream, egg white.\nA velvety cocktail with fruity freshness and gentle sweetness.\n• sweet • sour",
       "ua": "Рожевий джин, лимон, малина, вершки, білок.\nОксамитовий коктейль із фруктовою свіжістю та ніжною солодкістю.\n• sweet • sour"
-     }
+     },
+     "optionsI18n": []
     },
     {
      "name": "Bee’s Knees",
@@ -147,6 +383,7 @@
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_jtlcH-MUafB-DZJCN.webp",
      "available": true,
      "labels": [],
+     "options": [],
      "nameI18n": {
       "pl": "Bee’s Knees",
       "ru": "Bee’s Knees",
@@ -158,7 +395,8 @@
       "ru": "Джин, лимон, апельсин, мёд.\nЛёгкая и освежающая классика с цитрусовой нотой и медовой сладостью.\n• sweet • sour",
       "en": "Gin, lemon, orange, honey.\nA light and refreshing classic with a citrus note and honey sweetness.\n• sweet • sour",
       "ua": "Джин, лимон, апельсин, мед.\nЛегка й освіжаюча класика з цитрусовою нотою та медовою солодкістю.\n• sweet • sour"
-     }
+     },
+     "optionsI18n": []
     },
     {
      "name": "Hot Passion",
@@ -167,6 +405,7 @@
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_blitH-uEofj-xNRBF.webp",
      "available": true,
      "labels": [],
+     "options": [],
      "nameI18n": {
       "pl": "Hot Passion",
       "ru": "Hot Passion",
@@ -178,7 +417,8 @@
       "ru": "Водка, Passoã, клюква, апельсин.\nСочный и тропический коктейль с выраженной фруктовой нотой.\n• sweet • fruity",
       "en": "Vodka, Passoã, cranberry, orange.\nA juicy, tropical cocktail with a pronounced fruity note.\n• sweet • fruity",
       "ua": "Горілка, Passoã, журавлина, апельсин.\nСоковитий і тропічний коктейль із виразною фруктовою нотою.\n• sweet • fruity"
-     }
+     },
+     "optionsI18n": []
     },
     {
      "name": "Rose Balance",
@@ -187,6 +427,7 @@
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_eKVOs-EdISG-DyLVM.webp",
      "available": true,
      "labels": [],
+     "options": [],
      "nameI18n": {
       "pl": "Rose Balance",
       "ru": "Rose Balance",
@@ -198,7 +439,8 @@
       "ru": "Ванильная водка, лимон, розовый сироп, сухой вермут, белок.\nЭлегантный и кремовый коктейль с цветочной нотой розы.\n• floral • sweet • sour",
       "en": "Vanilla vodka, lemon, rose syrup, dry vermouth, egg white.\nAn elegant, creamy cocktail with a floral rose note.\n• floral • sweet • sour",
       "ua": "Ванільна горілка, лимон, трояндовий сироп, сухий вермут, білок.\nЕлегантний і кремовий коктейль із квітковою нотою троянди.\n• floral • sweet • sour"
-     }
+     },
+     "optionsI18n": []
     },
     {
      "name": "Cherry Manhattan",
@@ -207,6 +449,7 @@
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_CCFDl-fEVHH-FtnEN.webp",
      "available": true,
      "labels": [],
+     "options": [],
      "nameI18n": {
       "pl": "Cherry Manhattan",
       "ru": "Cherry Manhattan",
@@ -218,7 +461,8 @@
       "ru": "Виски/бурбон, вермут россо, вишня, ангостура.\nКлассический, глубокий вкус с выраженной вишнёвой сладостью.\n• spirit-forward • sweet",
       "en": "Whisky/bourbon, rosso vermouth, cherry, angostura.\nA classic, deep flavour with a distinct cherry sweetness.\n• spirit-forward • sweet",
       "ua": "Віскі/бурбон, вермут росо, вишня, ангостура.\nКласичний, глибокий смак із виразною вишневою солодкістю.\n• spirit-forward • sweet"
-     }
+     },
+     "optionsI18n": []
     },
     {
      "name": "Punta Cana",
@@ -227,6 +471,7 @@
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_KlCTg-VDhJd-wNpTD.webp",
      "available": true,
      "labels": [],
+     "options": [],
      "nameI18n": {
       "pl": "Punta Cana",
       "ru": "Punta Cana",
@@ -238,7 +483,8 @@
       "ru": "Белый ром, трипл сек, лайм, клюква, арбуз, гренадин.\nЭкзотическая композиция сладко-кислого, отпускного характера.\n• sweet • sour • fruity",
       "en": "White rum, triple sec, lime, cranberry, watermelon, grenadine.\nAn exotic blend with a sweet-sour, holiday character.\n• sweet • sour • fruity",
       "ua": "Білий ром, трипл сек, лайм, журавлина, кавун, гренадин.\nЕкзотична композиція солодко-кислого, відпускного характеру.\n• sweet • sour • fruity"
-     }
+     },
+     "optionsI18n": []
     },
     {
      "name": "Lavender Paloma",
@@ -247,6 +493,7 @@
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_thKzE-LWYCd-LrIRl.webp",
      "available": true,
      "labels": [],
+     "options": [],
      "nameI18n": {
       "pl": "Lavender Paloma",
       "ru": "Lavender Paloma",
@@ -258,7 +505,8 @@
       "ru": "Текила, грейпфрут, лимон, лаванда, газированная вода/тоник.\nОсвежающая палома с деликатным цветочным акцентом.\n• fresh • citrus • floral",
       "en": "Tequila, grapefruit, lemon, lavender, soda/tonic.\nA refreshing paloma with a delicate floral accent.\n• fresh • citrus • floral",
       "ua": "Текіла, грейпфрут, лимон, лаванда, газована вода/тонік.\nОсвіжаюча палома з делікатним квітковим акцентом.\n• fresh • citrus • floral"
-     }
+     },
+     "optionsI18n": []
     },
     {
      "name": "Grateful Dead",
@@ -267,6 +515,7 @@
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_QvwLl-JCIXn-JZMPK.webp",
      "available": true,
      "labels": [],
+     "options": [],
      "nameI18n": {
       "pl": "Grateful Dead",
       "ru": "Grateful Dead",
@@ -278,7 +527,8 @@
       "ru": "Водка, джин, текила, ром, трипл сек, малина, лайм, сахарный сироп.\nИнтенсивный и фруктовый микс крепкого характера.\n• sweet • sour • strong",
       "en": "Vodka, gin, tequila, rum, triple sec, raspberry, lime, sugar syrup.\nAn intense and fruity mix with a strong character.\n• sweet • sour • strong",
       "ua": "Горілка, джин, текіла, ром, трипл сек, малина, лайм, цукровий сироп.\nІнтенсивний і фруктовий мікс міцного характеру.\n• sweet • sour • strong"
-     }
+     },
+     "optionsI18n": []
     },
     {
      "name": "Apple Cinnamon Whiskey Smash",
@@ -287,6 +537,7 @@
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_rDEbu-klzIg-JsUSH.webp",
      "available": true,
      "labels": [],
+     "options": [],
      "nameI18n": {
       "pl": "Apple Cinnamon Whiskey Smash",
       "ru": "Apple Cinnamon Whiskey Smash",
@@ -298,7 +549,8 @@
       "ru": "Виски, яблоко, лимон, корица.\nСогревающий коктейль с яблочно-пряным ароматом.\n• fresh • sweet • spicy",
       "en": "Whisky, apple, lemon, cinnamon.\nA warming cocktail with an apple-and-spice aroma.\n• fresh • sweet • spicy",
       "ua": "Віскі, яблуко, лимон, кориця.\nЗігріваючий коктейль із яблучно-пряним ароматом.\n• fresh • sweet • spicy"
-     }
+     },
+     "optionsI18n": []
     },
     {
      "name": "A Perfect Day",
@@ -307,6 +559,7 @@
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_HPIYQ-JloYU-cSbCS.webp",
      "available": true,
      "labels": [],
+     "options": [],
      "nameI18n": {
       "pl": "A Perfect Day",
       "ru": "A Perfect Day",
@@ -318,7 +571,8 @@
       "ru": "Виски, лаванда, лимон, лайм.\nГармоничное сочетание цитрусовой свежести с нотой лаванды.\n• citrus • floral",
       "en": "Whisky, lavender, lemon, lime.\nA harmonious blend of citrus freshness with a lavender note.\n• citrus • floral",
       "ua": "Віскі, лаванда, лимон, лайм.\nГармонійне поєднання цитрусової свіжості з нотою лаванди.\n• citrus • floral"
-     }
+     },
+     "optionsI18n": []
     },
     {
      "name": "Spicy Mango Margarita",
@@ -327,6 +581,7 @@
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_DCxzE-tFGkk-ZCiBU.webp",
      "available": true,
      "labels": [],
+     "options": [],
      "nameI18n": {
       "pl": "Spicy Mango Margarita",
       "ru": "Spicy Mango Margarita",
@@ -338,7 +593,8 @@
       "ru": "Текила, трипл сек, манго, лайм, острый перчик.\nВыразительная маргарита с тропической сладостью и пикантным финишем.\n• sweet • spicy • sour",
       "en": "Tequila, triple sec, mango, lime, chilli.\nA vivid margarita with tropical sweetness and a spicy finish.\n• sweet • spicy • sour",
       "ua": "Текіла, трипл сек, манго, лайм, гострий перчик.\nВиразна маргарита з тропічною солодкістю та пікантним фінішем.\n• sweet • spicy • sour"
-     }
+     },
+     "optionsI18n": []
     },
     {
      "name": "Niespodzianka od barmana",
@@ -347,6 +603,7 @@
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_tjrzb-gtgYL-tmDJe.webp",
      "available": true,
      "labels": [],
+     "options": [],
      "nameI18n": {
       "pl": "Niespodzianka od barmana",
       "ru": "Niespodzianka od barmana",
@@ -358,7 +615,8 @@
       "ru": "Уникальное предложение вечера — авторский коктейль-сюрприз, составленный специально для тебя.",
       "en": "The evening's unique offer — a signature surprise cocktail composed especially for you.",
       "ua": "Унікальна пропозиція вечора — авторський коктейль-сюрприз, складений спеціально для тебе."
-     }
+     },
+     "optionsI18n": []
     }
    ],
    "nameI18n": {
@@ -371,8 +629,6 @@
   {
    "hurl": "classic-cocktails",
    "name": "CLASSIC COCKTAILS",
-   "desc": "",
-   "section": "menu-barowe",
    "items": [
     {
      "name": "Old Fashioned",
@@ -381,6 +637,7 @@
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_PVLrk-IDeHi-KNbAP.webp",
      "available": true,
      "labels": [],
+     "options": [],
      "nameI18n": {
       "pl": "Old Fashioned",
       "ru": "Old Fashioned",
@@ -392,7 +649,8 @@
       "ru": "Бурбон, ангостура, тростниковый сахар.\nВневременная классика глубокого янтарного характера и тонкой сладости.\n• spirit-forward • smooth",
       "en": "Bourbon, angostura, cane sugar.\nA timeless classic with a deep amber character and subtle sweetness.\n• spirit-forward • smooth",
       "ua": "Бурбон, ангостура, тростинний цукор.\nПозачасова класика глибокого бурштинового характеру та тонкої солодкості.\n• spirit-forward • smooth"
-     }
+     },
+     "optionsI18n": []
     },
     {
      "name": "Negroni",
@@ -401,6 +659,7 @@
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_goJGB-WoIqJ-hfJJX.webp",
      "available": true,
      "labels": [],
+     "options": [],
      "nameI18n": {
       "pl": "Negroni",
       "ru": "Negroni",
@@ -412,7 +671,8 @@
       "ru": "Джин, мартини россо, Campari.\nВыразительный и сбалансированный коктейль с характерной горчинкой и травяным ароматом.\n• bitter • herbal",
       "en": "Gin, martini rosso, Campari.\nAn expressive, balanced cocktail with a signature bitterness and herbal aroma.\n• bitter • herbal",
       "ua": "Джин, мартіні росо, Campari.\nВиразний і збалансований коктейль із характерною гірчинкою та трав'яним ароматом.\n• bitter • herbal"
-     }
+     },
+     "optionsI18n": []
     },
     {
      "name": "Whiskey Sour",
@@ -421,6 +681,7 @@
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_VuJEx-IlrCD-IlkNi.webp",
      "available": true,
      "labels": [],
+     "options": [],
      "nameI18n": {
       "pl": "Whiskey Sour",
       "ru": "Whiskey Sour",
@@ -432,7 +693,8 @@
       "ru": "Виски, лимонный сок, сахарный сироп, ангостура, белок.\nОсвежающее сочетание цитрусовой кислинки и мягкой сладости с бархатной пенкой.\n• sweet • sour",
       "en": "Whisky, lemon juice, sugar syrup, angostura, egg white.\nA refreshing balance of citrus acidity and gentle sweetness with a velvety foam.\n• sweet • sour",
       "ua": "Віскі, лимонний сік, цукровий сироп, ангостура, білок.\nОсвіжаюче поєднання цитрусової кислинки та м'якої солодкості з оксамитовою пінкою.\n• sweet • sour"
-     }
+     },
+     "optionsI18n": []
     },
     {
      "name": "Aperol Spritz",
@@ -441,6 +703,7 @@
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_JCGmQ-vCDbb-vRWoZ.webp",
      "available": true,
      "labels": [],
+     "options": [],
      "nameI18n": {
       "pl": "Aperol Spritz",
       "ru": "Aperol Spritz",
@@ -452,15 +715,17 @@
       "ru": "Aperol, просекко, газированная вода.\nЛёгкий и игристый аперитив фруктово-горького профиля.\n• fresh • bitter • sparkling",
       "en": "Aperol, prosecco, soda.\nA light, sparkling aperitif with a fruity-bitter profile.\n• fresh • bitter • sparkling",
       "ua": "Aperol, просекко, газована вода.\nЛегкий і ігристий аперитив фруктово-гіркого профілю.\n• fresh • bitter • sparkling"
-     }
+     },
+     "optionsI18n": []
     },
     {
      "name": "Mojito",
      "description": "Limonka, cukier trzcinowy, mięta, biały rum.\nOrzeźwiający klasyk z nutą mięty i cytrusowej świeżości.\n• fresh • citrus",
      "price": 34.0,
-     "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_TTEaf-bvDHT-KbbDX.webp",
+     "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_ejpxH-bweJr-pMaVP.webp",
      "available": true,
      "labels": [],
+     "options": [],
      "nameI18n": {
       "pl": "Mojito",
       "ru": "Mojito",
@@ -472,7 +737,8 @@
       "ru": "Лайм, тростниковый сахар, мята, белый ром.\nОсвежающая классика с нотой мяты и цитрусовой свежести.\n• fresh • citrus",
       "en": "Lime, cane sugar, mint, white rum.\nA refreshing classic with a mint note and citrus freshness.\n• fresh • citrus",
       "ua": "Лайм, тростинний цукор, м'ята, білий ром.\nОсвіжаюча класика з нотою м'яти та цитрусової свіжості.\n• fresh • citrus"
-     }
+     },
+     "optionsI18n": []
     },
     {
      "name": "Cuba Libre",
@@ -481,6 +747,7 @@
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_ZIcGI-bkKDE-aLcZe.webp",
      "available": true,
      "labels": [],
+     "options": [],
      "nameI18n": {
       "pl": "Cuba Libre",
       "ru": "Cuba Libre",
@@ -492,7 +759,8 @@
       "ru": "Белый ром, сок лайма, Pepsi.\nПростое и культовое сочетание сладко-цитрусового характера.\n• sweet • citrus",
       "en": "White rum, lime juice, Pepsi.\nA simple, iconic combination with a sweet-citrus character.\n• sweet • citrus",
       "ua": "Білий ром, сік лайма, Pepsi.\nПросте й культове поєднання солодко-цитрусового характеру.\n• sweet • citrus"
-     }
+     },
+     "optionsI18n": []
     },
     {
      "name": "Pornstar Martini",
@@ -501,6 +769,7 @@
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_OFRUJ-HEpDB-eaMDx.webp",
      "available": true,
      "labels": [],
+     "options": [],
      "nameI18n": {
       "pl": "Pornstar Martini",
       "ru": "Pornstar Martini",
@@ -512,7 +781,8 @@
       "ru": "Ванильная водка, сахарный сироп, пюре маракуйи, Passoã, просекко.\nЭкзотический и ароматный коктейль с интенсивной нотой маракуйи.\n• fruity • sweet",
       "en": "Vanilla vodka, sugar syrup, passion fruit purée, Passoã, prosecco.\nAn exotic, aromatic cocktail with an intense passion fruit note.\n• fruity • sweet",
       "ua": "Ванільна горілка, цукровий сироп, пюре маракуї, Passoã, просекко.\nЕкзотичний і ароматний коктейль з інтенсивною нотою маракуї.\n• fruity • sweet"
-     }
+     },
+     "optionsI18n": []
     },
     {
      "name": "Piña Colada",
@@ -521,6 +791,7 @@
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_AVaKC-RGDkK-kntVU.webp",
      "available": true,
      "labels": [],
+     "options": [],
      "nameI18n": {
       "pl": "Piña Colada",
       "ru": "Piña Colada",
@@ -532,7 +803,8 @@
       "ru": "Белый ром, сливки, ананасовый сок, Malibu.\nКремовый, тропический коктейль с выраженной нотой кокоса и ананаса.\n• creamy • tropical • sweet",
       "en": "White rum, cream, pineapple juice, Malibu.\nA creamy, tropical cocktail with a distinct coconut and pineapple note.\n• creamy • tropical • sweet",
       "ua": "Білий ром, вершки, ананасовий сік, Malibu.\nКремовий, тропічний коктейль із виразною нотою кокоса й ананаса.\n• creamy • tropical • sweet"
-     }
+     },
+     "optionsI18n": []
     },
     {
      "name": "Zombie",
@@ -541,6 +813,7 @@
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_tfbCe-oVxQX-NdJbb.webp",
      "available": true,
      "labels": [],
+     "options": [],
      "nameI18n": {
       "pl": "Zombie",
       "ru": "Zombie",
@@ -552,7 +825,8 @@
       "ru": "Белый ром, золотой ром, тёмный ром, трипл сек, вишнёвый ликёр, апельсиновый сок, ананасовый сок, гренадин, сок лайма.\nИнтенсивная, фруктовая композиция экзотического и крепкого характера.\n• fruity • strong • sweet",
       "en": "White rum, gold rum, dark rum, triple sec, cherry liqueur, orange juice, pineapple juice, grenadine, lime juice.\nAn intense, fruity blend with an exotic and strong character.\n• fruity • strong • sweet",
       "ua": "Білий ром, золотий ром, темний ром, трипл сек, вишневий лікер, апельсиновий сік, ананасовий сік, гренадин, сік лайма.\nІнтенсивна, фруктова композиція екзотичного й міцного характеру.\n• fruity • strong • sweet"
-     }
+     },
+     "optionsI18n": []
     },
     {
      "name": "Long Island Iced Tea",
@@ -561,6 +835,7 @@
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_FQMCU-Lanpu-GJvGn.webp",
      "available": true,
      "labels": [],
+     "options": [],
      "nameI18n": {
       "pl": "Long Island Iced Tea",
       "ru": "Long Island Iced Tea",
@@ -572,7 +847,8 @@
       "ru": "Белый ром, текила, водка, джин, трипл сек, лимонный сок, сахарный сироп, Pepsi.\nКрепкий и удивительно гладкий коктейль с цитрусовым финишем.\n• strong • citrus • smooth",
       "en": "White rum, tequila, vodka, gin, triple sec, lemon juice, sugar syrup, Pepsi.\nA strong and surprisingly smooth cocktail with a citrus finish.\n• strong • citrus • smooth",
       "ua": "Білий ром, текіла, горілка, джин, трипл сек, лимонний сік, цукровий сироп, Pepsi.\nМіцний і напрочуд гладкий коктейль із цитрусовим фінішем.\n• strong • citrus • smooth"
-     }
+     },
+     "optionsI18n": []
     }
    ],
    "nameI18n": {
@@ -585,8 +861,6 @@
   {
    "hurl": "shot-menu",
    "name": "SHOT MENU",
-   "desc": "",
-   "section": "menu-barowe",
    "items": [
     {
      "name": "B-52",
@@ -595,6 +869,7 @@
      "image": "",
      "available": true,
      "labels": [],
+     "options": [],
      "nameI18n": {
       "pl": "B-52",
       "ru": "B-52",
@@ -606,7 +881,8 @@
       "ru": "Кофейный ликёр, сливочный ликёр, апельсиновый ликёр.\n• sweet • creamy",
       "en": "Coffee liqueur, cream liqueur, orange liqueur.\n• sweet • creamy",
       "ua": "Кавовий лікер, вершковий лікер, апельсиновий лікер.\n• sweet • creamy"
-     }
+     },
+     "optionsI18n": []
     },
     {
      "name": "B-53",
@@ -615,6 +891,7 @@
      "image": "",
      "available": true,
      "labels": [],
+     "options": [],
      "nameI18n": {
       "pl": "B-53",
       "ru": "B-53",
@@ -626,7 +903,8 @@
       "ru": "Кофейный ликёр, сливочный ликёр, абсент.\n• strong • spicy",
       "en": "Coffee liqueur, cream liqueur, absinthe.\n• strong • spicy",
       "ua": "Кавовий лікер, вершковий лікер, абсент.\n• strong • spicy"
-     }
+     },
+     "optionsI18n": []
     },
     {
      "name": "Medusa",
@@ -635,6 +913,7 @@
      "image": "",
      "available": true,
      "labels": [],
+     "options": [],
      "nameI18n": {
       "pl": "Medusa",
       "ru": "Medusa",
@@ -646,7 +925,8 @@
       "ru": "Кокосовый ликёр, сливочный ликёр, Blue Curaçao, гренадин.\n• sweet • creamy",
       "en": "Coconut liqueur, cream liqueur, Blue Curaçao, grenadine.\n• sweet • creamy",
       "ua": "Кокосовий лікер, вершковий лікер, Blue Curaçao, гренадин.\n• sweet • creamy"
-     }
+     },
+     "optionsI18n": []
     },
     {
      "name": "Hiroshima",
@@ -655,6 +935,7 @@
      "image": "",
      "available": true,
      "labels": [],
+     "options": [],
      "nameI18n": {
       "pl": "Hiroshima",
       "ru": "Hiroshima",
@@ -666,7 +947,8 @@
       "ru": "Самбука, сливочный ликёр, абсент, гренадин.\n• strong • sweet",
       "en": "Sambuca, cream liqueur, absinthe, grenadine.\n• strong • sweet",
       "ua": "Самбука, вершковий лікер, абсент, гренадин.\n• strong • sweet"
-     }
+     },
+     "optionsI18n": []
     },
     {
      "name": "Berry Drop",
@@ -675,6 +957,7 @@
      "image": "",
      "available": true,
      "labels": [],
+     "options": [],
      "nameI18n": {
       "pl": "Berry Drop",
       "ru": "Berry Drop",
@@ -686,7 +969,8 @@
       "ru": "Водка, ягодный ликёр, лимон.\n• sweet • sour",
       "en": "Vodka, berry liqueur, lemon.\n• sweet • sour",
       "ua": "Горілка, ягідний лікер, лимон.\n• sweet • sour"
-     }
+     },
+     "optionsI18n": []
     },
     {
      "name": "Honey Lemon",
@@ -695,6 +979,7 @@
      "image": "",
      "available": true,
      "labels": [],
+     "options": [],
      "nameI18n": {
       "pl": "Honey Lemon",
       "ru": "Honey Lemon",
@@ -706,7 +991,8 @@
       "ru": "Водка, мёд, лимон.\n• sweet • smooth",
       "en": "Vodka, honey, lemon.\n• sweet • smooth",
       "ua": "Горілка, мед, лимон.\n• sweet • smooth"
-     }
+     },
+     "optionsI18n": []
     }
    ],
    "nameI18n": {
@@ -719,8 +1005,6 @@
   {
    "hurl": "shot-sets",
    "name": "SHOT SETS",
-   "desc": "",
-   "section": "menu-barowe",
    "items": [
     {
      "name": "Balance Shot Set (6)",
@@ -729,6 +1013,7 @@
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_etXQE-vWNGH-QnbvU.webp",
      "available": true,
      "labels": [],
+     "options": [],
      "nameI18n": {
       "pl": "Balance Shot Set (6)",
       "ru": "Balance Shot Set (6)",
@@ -740,7 +1025,8 @@
       "ru": "Текила, маракуйя, ананасовый сок.\nНабор тропических шотов интенсивного фруктового профиля. Идеально сбалансирован свежим лаймом и деликатной сладостью — гармоничная композиция вкусов.\n• fruity • sweet • sour",
       "en": "Tequila, passion fruit, pineapple juice.\nA set of tropical shots with an intense fruity profile. Perfectly balanced with fresh lime and gentle sweetness for a harmonious blend of flavours.\n• fruity • sweet • sour",
       "ua": "Текіла, маракуя, ананасовий сік.\nНабір тропічних шотів інтенсивного фруктового профілю. Ідеально збалансований свіжим лаймом і делікатною солодкістю — гармонійна композиція смаків.\n• fruity • sweet • sour"
-     }
+     },
+     "optionsI18n": []
     },
     {
      "name": "Sweet Shot Set (4)",
@@ -749,6 +1035,7 @@
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_RhQhf-KGhzk-KJPEb.webp",
      "available": true,
      "labels": [],
+     "options": [],
      "nameI18n": {
       "pl": "Sweet Shot Set (4)",
       "ru": "Sweet Shot Set (4)",
@@ -760,7 +1047,8 @@
       "ru": "Ром, ананасовый сок, кокосовый сироп.\nНабор тропических шотов сладкого, кокосово-ананасового характера. Идеален для совместных праздников.\n• sweet • tropical",
       "en": "Rum, pineapple juice, coconut syrup.\nA set of tropical shots with a sweet coconut-pineapple character. Perfect for celebrating together.\n• sweet • tropical",
       "ua": "Ром, ананасовий сік, кокосовий сироп.\nНабір тропічних шотів солодкого, кокосово-ананасового характеру. Ідеальний для спільних святкувань.\n• sweet • tropical"
-     }
+     },
+     "optionsI18n": []
     },
     {
      "name": "Mega Kamikaze Set (24)",
@@ -769,6 +1057,26 @@
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_ltbJc-qdIlM-nCLNX.webp",
      "available": true,
      "labels": [],
+     "options": [
+      {
+       "name": "Wybierz sok",
+       "required": true,
+       "list": [
+        {
+         "name": "pomarańcza",
+         "price": 0.0
+        },
+        {
+         "name": "ananas",
+         "price": 0.0
+        },
+        {
+         "name": "jabłko",
+         "price": 0.0
+        }
+       ]
+      }
+     ],
      "nameI18n": {
       "pl": "Mega Kamikaze Set (24)",
       "ru": "Mega Kamikaze Set (24)",
@@ -780,7 +1088,35 @@
       "ru": "12 × Kamikaze + 12 × сок для запивки\n(апельсин / ананас / яблоко)\n• strong • sour • party style",
       "en": "12 × Kamikaze + 12 × chaser juice\n(orange / pineapple / apple)\n• strong • sour • party style",
       "ua": "12 × Kamikaze + 12 × сік для запивки\n(апельсин / ананас / яблуко)\n• strong • sour • party style"
-     }
+     },
+     "optionsI18n": [
+      {
+       "name": {
+        "pl": "Wybierz sok"
+       },
+       "required": true,
+       "list": [
+        {
+         "name": {
+          "pl": "pomarańcza"
+         },
+         "price": 0.0
+        },
+        {
+         "name": {
+          "pl": "ananas"
+         },
+         "price": 0.0
+        },
+        {
+         "name": {
+          "pl": "jabłko"
+         },
+         "price": 0.0
+        }
+       ]
+      }
+     ]
     }
    ],
    "nameI18n": {
@@ -793,8 +1129,6 @@
   {
    "hurl": "balance-zero----bezalkoholowe",
    "name": "BALANCE ZERO — BEZALKOHOLOWE",
-   "desc": "",
-   "section": "menu-barowe",
    "items": [
     {
      "name": "Piña Colada Zero",
@@ -803,6 +1137,7 @@
      "image": "",
      "available": true,
      "labels": [],
+     "options": [],
      "nameI18n": {
       "pl": "Piña Colada Zero",
       "ru": "Piña Colada Zero",
@@ -814,7 +1149,8 @@
       "ru": "Ананасовый сок, кокосовый сироп, сливки.\nТропический и кремовый коктейль с деликатным кокосово-ананасовым вкусом.\n• сладкий • кремовый • тропический",
       "en": "Pineapple juice, coconut syrup, cream.\nA tropical, creamy mocktail with a delicate coconut-pineapple taste.\n• sweet • creamy • tropical",
       "ua": "Ананасовий сік, кокосовий сироп, вершки.\nТропічний і кремовий коктейль із делікатним кокосово-ананасовим смаком.\n• солодкий • кремовий • тропічний"
-     }
+     },
+     "optionsI18n": []
     },
     {
      "name": "Berry Fizz",
@@ -823,6 +1159,7 @@
      "image": "",
      "available": true,
      "labels": [],
+     "options": [],
      "nameI18n": {
       "pl": "Berry Fizz",
       "ru": "Berry Fizz",
@@ -834,7 +1171,8 @@
       "ru": "Малиновое пюре, лимонный сок, сахарный сироп, газированная вода.\nЛёгкий, фруктовый напиток с малиновой свежестью и нежными пузырьками.\n• фруктовый • свежий • игристый",
       "en": "Raspberry purée, lemon juice, sugar syrup, soda.\nA light, fruity drink with raspberry freshness and gentle bubbles.\n• fruity • fresh • sparkling",
       "ua": "Малинове пюре, лимонний сік, цукровий сироп, газована вода.\nЛегкий, фруктовий напій із малиновою свіжістю та ніжними бульбашками.\n• фруктовий • свіжий • ігристий"
-     }
+     },
+     "optionsI18n": []
     },
     {
      "name": "Apple Ginger",
@@ -843,6 +1181,7 @@
      "image": "",
      "available": true,
      "labels": [],
+     "options": [],
      "nameI18n": {
       "pl": "Apple Ginger",
       "ru": "Apple Ginger",
@@ -854,7 +1193,8 @@
       "ru": "Яблочный сок, имбирный сироп, лимонный сок.\nОсвежающее сочетание яблока с лёгкой остротой имбиря.\n• свежий • слегка пикантный • освежающий",
       "en": "Apple juice, ginger syrup, lemon juice.\nA refreshing blend of apple with a light ginger spice.\n• fresh • lightly spicy • refreshing",
       "ua": "Яблучний сік, імбирний сироп, лимонний сік.\nОсвіжаюче поєднання яблука з легкою гостротою імбиру.\n• свіжий • злегка пікантний • освіжаючий"
-     }
+     },
+     "optionsI18n": []
     },
     {
      "name": "Green Fizz",
@@ -863,6 +1203,7 @@
      "image": "",
      "available": true,
      "labels": [],
+     "options": [],
      "nameI18n": {
       "pl": "Green Fizz",
       "ru": "Green Fizz",
@@ -874,7 +1215,8 @@
       "ru": "Пюре киви, мята, огурец, лимонный сок, газированная вода.\nСвежий зелёный микс с нотой мяты и огурца.\n• свежий • лёгкий • игристый",
       "en": "Kiwi purée, mint, cucumber, lemon juice, soda.\nA fresh green mix with a note of mint and cucumber.\n• fresh • light • sparkling",
       "ua": "Пюре ківі, м'ята, огірок, лимонний сік, газована вода.\nСвіжий зелений мікс із нотою м'яти й огірка.\n• свіжий • легкий • ігристий"
-     }
+     },
+     "optionsI18n": []
     },
     {
      "name": "Raspberry Passion",
@@ -883,6 +1225,7 @@
      "image": "",
      "available": true,
      "labels": [],
+     "options": [],
      "nameI18n": {
       "pl": "Raspberry Passion",
       "ru": "Raspberry Passion",
@@ -894,7 +1237,8 @@
       "ru": "Малиновое пюре, пюре маракуйи, сахарный сироп, газированная вода, мята.\nФруктовое и экзотическое сочетание малины с маракуйей.\n• фруктовый • экзотический • игристый",
       "en": "Raspberry purée, passion fruit purée, sugar syrup, soda, mint.\nA fruity, exotic pairing of raspberry with passion fruit.\n• fruity • exotic • sparkling",
       "ua": "Малинове пюре, пюре маракуї, цукровий сироп, газована вода, м'ята.\nФруктове й екзотичне поєднання малини з маракуєю.\n• фруктовий • екзотичний • ігристий"
-     }
+     },
+     "optionsI18n": []
     },
     {
      "name": "Bumble Balance",
@@ -903,6 +1247,7 @@
      "image": "",
      "available": true,
      "labels": [],
+     "options": [],
      "nameI18n": {
       "pl": "Bumble Balance",
       "ru": "Bumble Balance",
@@ -914,7 +1259,8 @@
       "ru": "Эспрессо, апельсиновый сок, сироп солёная карамель.\nВыразительное сочетание кофе, апельсина и солёной карамели.\n• интенсивный • цитрусовый • бодрящий",
       "en": "Espresso, orange juice, salted-caramel syrup.\nA bold combination of coffee, orange and salted caramel.\n• intense • citrus • energising",
       "ua": "Еспресо, апельсиновий сік, сироп солона карамель.\nВиразне поєднання кави, апельсина й солоної карамелі.\n• інтенсивний • цитрусовий • бадьорий"
-     }
+     },
+     "optionsI18n": []
     }
    ],
    "nameI18n": {
@@ -927,8 +1273,6 @@
   {
    "hurl": "wino-musujace",
    "name": "WINO MUSUJĄCE",
-   "desc": "",
-   "section": "alkohol",
    "items": [
     {
      "name": "Bacio della Luna",
@@ -937,6 +1281,7 @@
      "image": "",
      "available": true,
      "labels": [],
+     "options": [],
      "nameI18n": {
       "pl": "Bacio della Luna",
       "ru": "Bacio della Luna",
@@ -948,7 +1293,8 @@
       "ru": "• brut\n\nВино яркого, соломенно-жёлтого цвета с деликатным и живым перляжем. Интенсивный и обаятельный букет, хорошо сбалансированные ароматы свежих зелёных яблок, персиков и цветов акации. Вкус богатый, интенсивный и одновременно мягкий и свежий.\nСтрана — Италия\nРегион — Венето",
       "en": "• brut\n\nA wine of bright, straw-yellow colour with a delicate, lively perlage. An intense and charming bouquet, well-balanced aromas of fresh green apples, peaches and acacia flowers. The taste is rich, intense yet soft and fresh.\nCountry — Italy\nRegion — Veneto",
       "ua": "• brut\n\nВино яскравого, солом'яно-жовтого кольору з делікатним і живим перляжем. Інтенсивний і чарівний букет, добре збалансовані аромати свіжих зелених яблук, персиків і квітів акації. Смак багатий, інтенсивний і водночас м'який і свіжий.\nКраїна — Італія\nРегіон — Венето"
-     }
+     },
+     "optionsI18n": []
     },
     {
      "name": "Rivani extra dry",
@@ -957,6 +1303,7 @@
      "image": "",
      "available": true,
      "labels": [],
+     "options": [],
      "nameI18n": {
       "pl": "Rivani extra dry",
       "ru": "Rivani extra dry",
@@ -968,7 +1315,8 @@
       "ru": "Игристое вино, произведённое методом Charmat — исключительно из сорта Glera.\nВино со сложным ароматом тропических фруктов, медовой дыни, зелёных яблок, абрикоса, груши и цитрусов. Необычайно свежее и приятное.\nСтрана — Италия\nРегион — Венето",
       "en": "A sparkling wine made by the Charmat method — exclusively from the Glera variety.\nA wine with a complex aroma of tropical fruit, honeydew melon, green apples, apricot, pear and citrus. Exceptionally fresh and pleasant.\nCountry — Italy\nRegion — Veneto",
       "ua": "Ігристе вино, вироблене методом Charmat — виключно із сорту Glera.\nВино зі складним ароматом тропічних фруктів, медової дині, зелених яблук, абрикоса, груші й цитрусів. Надзвичайно свіже й приємне.\nКраїна — Італія\nРегіон — Венето"
-     }
+     },
+     "optionsI18n": []
     }
    ],
    "nameI18n": {
@@ -981,8 +1329,6 @@
   {
    "hurl": "biale-wino",
    "name": "BIAŁE WINO",
-   "desc": "",
-   "section": "alkohol",
    "items": [
     {
      "name": "Marquis des Bois",
@@ -991,6 +1337,7 @@
      "image": "",
      "available": true,
      "labels": [],
+     "options": [],
      "nameI18n": {
       "pl": "Marquis des Bois",
       "ru": "Marquis des Bois",
@@ -1002,7 +1349,8 @@
       "ru": "Moelleux — определение, часто встречающееся на этикетках французских вин. Оно всегда означает более высокое содержание остаточного сахара, поэтому мы знаем, что это будет полусладкое или сладкое вино.\nMarquis des Bois Moelleux — деликатное десертное вино естественной сладости из сортов Semillon, Muscadelle и Sauvignon Blanc.\nИмеет светлый соломенный цвет с нежными золотыми отблесками. В аромате ощутимы персик, карамель и мёд.\nСтрана — Франция\nРегион — Бордо",
       "en": "Moelleux is a term often found on French wine labels. It always indicates a higher-than-usual residual sugar content, so we know it will be a semi-sweet or sweet wine.\nMarquis des Bois Moelleux is a delicate dessert wine of natural sweetness, made from Semillon, Muscadelle and Sauvignon Blanc.\nIt has a pale straw colour with delicate golden reflections. On the nose, notes of peach, caramel and honey.\nCountry — France\nRegion — Bordeaux",
       "ua": "Moelleux — визначення, що часто зустрічається на етикетках французьких вин. Воно завжди означає вищий вміст залишкового цукру, тож ми знаємо, що це буде напівсолодке або солодке вино.\nMarquis des Bois Moelleux — делікатне десертне вино природної солодкості із сортів Semillon, Muscadelle і Sauvignon Blanc.\nМає світлий солом'яний колір із ніжними золотими відблисками. В ароматі відчутні персик, карамель і мед.\nКраїна — Франція\nРегіон — Бордо"
-     }
+     },
+     "optionsI18n": []
     },
     {
      "name": "Pinot Grigio Straccali",
@@ -1011,6 +1359,7 @@
      "image": "",
      "available": true,
      "labels": [],
+     "options": [],
      "nameI18n": {
       "pl": "Pinot Grigio Straccali",
       "ru": "Pinot Grigio Straccali",
@@ -1022,15 +1371,32 @@
       "ru": "Вино восхищает интенсивным, светло-соломенным цветом с тонкими золотистыми или слегка розовыми отблесками. В аромате выразительное и элегантное, с нотами свежих фруктов — яблок и персиков — и деликатными цветочными нотами. На нёбе хорошо сложенное, сбалансированное, с приятным, долгим послевкусием.\nСтрана — Италия\nРегион — Provincia di Pavia",
       "en": "The wine delights with an intense, pale-straw colour with subtle golden or slightly pink reflections. On the nose it is expressive and elegant, with aromas of fresh fruit — apples and peaches — and delicate floral notes. On the palate well-structured, balanced, with a pleasant, lasting finish.\nCountry — Italy\nRegion — Provincia di Pavia",
       "ua": "Вино захоплює інтенсивним, світло-солом'яним кольором із тонкими золотистими або злегка рожевими відблисками. В ароматі виразне й елегантне, з нотами свіжих фруктів — яблук і персиків — та делікатними квітковими нотами. На піднебінні добре складене, збалансоване, з приємним, тривалим післясмаком.\nКраїна — Італія\nРегіон — Provincia di Pavia"
-     }
+     },
+     "optionsI18n": []
     },
     {
      "name": "Portillo Chardonnay",
      "description": "Jest to świeże i dobrze zbudowane wino, z wyraźnymi\nakcentami cytrusów i dojrzałych owoców\npołudniowych. Bogate w aromaty jabłek i cytrusów, z\nsubtelnymi nutami mango i papi. W ustach\norzeźwiające, doskonałe na gorące dni.\n\nKraj - Argentyna\nRegion - Mendoza",
-     "price": 0.0,
+     "price": 27.0,
      "image": "",
      "available": true,
      "labels": [],
+     "options": [
+      {
+       "name": "WINO BIAŁE",
+       "required": true,
+       "list": [
+        {
+         "name": "150ml",
+         "price": 27.0
+        },
+        {
+         "name": "0.75L",
+         "price": 119.0
+        }
+       ]
+      }
+     ],
      "nameI18n": {
       "pl": "Portillo Chardonnay",
       "ru": "Portillo Chardonnay",
@@ -1042,7 +1408,30 @@
       "ru": "Свежее и хорошо сложенное вино с выраженными акцентами цитрусов и спелых южных фруктов. Богатое ароматами яблок и цитрусов, с тонкими нотами манго и папайи. Во рту освежающее, идеально для жарких дней.\nСтрана — Аргентина\nРегион — Мендоса",
       "en": "A fresh, well-structured wine with pronounced accents of citrus and ripe southern fruit. Rich in aromas of apple and citrus, with subtle notes of mango and papaya. Refreshing on the palate, perfect for hot days.\nCountry — Argentina\nRegion — Mendoza",
       "ua": "Свіже й добре складене вино з виразними акцентами цитрусів і стиглих південних фруктів. Багате ароматами яблук і цитрусів, із тонкими нотами манго й папаї. У роті освіжаюче, ідеальне для спекотних днів.\nКраїна — Аргентина\nРегіон — Мендоса"
-     }
+     },
+     "optionsI18n": [
+      {
+       "name": {
+        "pl": "WINO BIAŁE"
+       },
+       "required": true,
+       "list": [
+        {
+         "name": {
+          "pl": "150ml"
+         },
+         "price": 27.0
+        },
+        {
+         "name": {
+          "pl": "0.75L"
+         },
+         "price": 119.0
+        }
+       ],
+       "portion": true
+      }
+     ]
     }
    ],
    "nameI18n": {
@@ -1055,16 +1444,30 @@
   {
    "hurl": "czerwone-wino",
    "name": "CZERWONE WINO",
-   "desc": "",
-   "section": "alkohol",
    "items": [
     {
      "name": "Primitivo Straccali",
      "description": "Intensywny bukiet konfitur z czerwonych owoców. W\nustach bogate i miękkie, z delikatnym owocowo-\nsłodkim finiszem.\n\nKraj - Włochy\nRegion - Apulia",
-     "price": 0.0,
+     "price": 25.0,
      "image": "",
      "available": true,
      "labels": [],
+     "options": [
+      {
+       "name": "WINO CZERWONE",
+       "required": true,
+       "list": [
+        {
+         "name": "150ML",
+         "price": 25.0
+        },
+        {
+         "name": "0.75l",
+         "price": 109.0
+        }
+       ]
+      }
+     ],
      "nameI18n": {
       "pl": "Primitivo Straccali",
       "ru": "Primitivo Straccali",
@@ -1076,7 +1479,30 @@
       "ru": "Интенсивный букет конфитюра из красных фруктов. Во рту богатое и мягкое, с деликатным фруктово-сладким послевкусием.\nСтрана — Италия\nРегион — Апулия",
       "en": "An intense bouquet of red-fruit jam. On the palate rich and soft, with a delicate fruity-sweet finish.\nCountry — Italy\nRegion — Apulia",
       "ua": "Інтенсивний букет конфітюру з червоних фруктів. У роті багате й м'яке, з делікатним фруктово-солодким післясмаком.\nКраїна — Італія\nРегіон — Апулія"
-     }
+     },
+     "optionsI18n": [
+      {
+       "name": {
+        "pl": "WINO CZERWONE"
+       },
+       "required": true,
+       "list": [
+        {
+         "name": {
+          "pl": "150ML"
+         },
+         "price": 25.0
+        },
+        {
+         "name": {
+          "pl": "0.75l"
+         },
+         "price": 109.0
+        }
+       ],
+       "portion": true
+      }
+     ]
     },
     {
      "name": "Rota de Cabral tinto",
@@ -1085,6 +1511,7 @@
      "image": "",
      "available": true,
      "labels": [],
+     "options": [],
      "nameI18n": {
       "pl": "Rota de Cabral tinto",
       "ru": "Rota de Cabral tinto",
@@ -1096,7 +1523,8 @@
       "ru": "Вино красивого красного цвета и высокой плотности. В аромате ощутимы интенсивные красные, лесные фрукты с акцентом ванили и шоколада. Во рту обширное, демонстрирует гармонию между хорошей структурой и освежающей кислотностью, что создаёт элегантность этого вина.\nСтрана — Португалия\nРегион — Тежу",
       "en": "A wine of beautiful red colour and great density. On the nose, intense red and forest fruit with accents of vanilla and chocolate. On the palate expansive, showing harmony between good structure and refreshing acidity, creating the elegance of this wine.\nCountry — Portugal\nRegion — Tejo",
       "ua": "Вино гарного червоного кольору й високої щільності. В ароматі відчутні інтенсивні червоні, лісові фрукти з акцентом ванілі й шоколаду. У роті об'ємне, демонструє гармонію між доброю структурою та освіжаючою кислотністю, що створює елегантність цього вина.\nКраїна — Португалія\nРегіон — Тежу"
-     }
+     },
+     "optionsI18n": []
     },
     {
      "name": "Syrah rosso",
@@ -1105,6 +1533,7 @@
      "image": "",
      "available": true,
      "labels": [],
+     "options": [],
      "nameI18n": {
       "pl": "Syrah rosso",
       "ru": "Syrah rosso",
@@ -1116,7 +1545,8 @@
       "ru": "Вино глубокого рубинового, чистого цвета с пурпурными отблесками. Ароматы красных фруктов, среди которых особенно выделяются тёмные ягоды, чёрная смородина и ноты спелых слив. Во рту пряное, насыщенное, с живыми танинами и свежим завершением.\nСтрана — Италия\nРегион — Сицилия",
       "en": "A wine of deep ruby, clear colour with purple reflections. Aromas of red fruit, among which dark berries, blackcurrant and notes of ripe plums stand out. On the palate spicy, saturated, with lively tannins and a fresh finish.\nCountry — Italy\nRegion — Sicily",
       "ua": "Вино глибокого рубінового, чистого кольору з пурпуровими відблисками. Аромати червоних фруктів, серед яких особливо вирізняються темні ягоди, чорна смородина й ноти стиглих слив. У роті пряне, насичене, із живими танінами та свіжим завершенням.\nКраїна — Італія\nРегіон — Сицилія"
-     }
+     },
+     "optionsI18n": []
     }
    ],
    "nameI18n": {
@@ -1129,16 +1559,30 @@
   {
    "hurl": "whisky-bourbon",
    "name": "WHISKY / BOURBON",
-   "desc": "",
-   "section": "alkohol",
    "items": [
     {
      "name": "Glenfiddich 12",
      "description": "Klasyczny szkocki single malt z nutami gruszki, wanilii i delikatnego dębu.",
-     "price": 0.0,
+     "price": 32.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_ZHlfh-FOVxG-CELWZ.webp",
      "available": true,
      "labels": [],
+     "options": [
+      {
+       "name": "Whisky / Bourbon",
+       "required": true,
+       "list": [
+        {
+         "name": "40ml",
+         "price": 32.0
+        },
+        {
+         "name": "0.7L",
+         "price": 470.0
+        }
+       ]
+      }
+     ],
      "nameI18n": {
       "pl": "Glenfiddich 12",
       "ru": "Glenfiddich 12",
@@ -1150,15 +1594,54 @@
       "ru": "Классический шотландский single malt с нотами груши, ванили и деликатного дуба.",
       "en": "A classic Scotch single malt with notes of pear, vanilla and gentle oak.",
       "ua": "Класичний шотландський single malt із нотами груші, ванілі й делікатного дуба."
-     }
+     },
+     "optionsI18n": [
+      {
+       "name": {
+        "pl": "Whisky / Bourbon"
+       },
+       "required": true,
+       "list": [
+        {
+         "name": {
+          "pl": "40ml"
+         },
+         "price": 32.0
+        },
+        {
+         "name": {
+          "pl": "0.7L"
+         },
+         "price": 470.0
+        }
+       ],
+       "portion": true
+      }
+     ]
     },
     {
      "name": "Jameson",
      "description": "Łagodna irlandzka whiskey z nutami wanilii, lekką słodyczą i delikatnym finiszem.",
-     "price": 0.0,
+     "price": 22.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_uDEHb-zbwmk-BLaha.webp",
      "available": true,
      "labels": [],
+     "options": [
+      {
+       "name": "Whisky / Bourbon",
+       "required": true,
+       "list": [
+        {
+         "name": "40ml",
+         "price": 22.0
+        },
+        {
+         "name": "0.7L",
+         "price": 289.0
+        }
+       ]
+      }
+     ],
      "nameI18n": {
       "pl": "Jameson",
       "ru": "Jameson",
@@ -1170,15 +1653,54 @@
       "ru": "Мягкий ирландский виски с нотами ванили, лёгкой сладостью и деликатным финишем.",
       "en": "A smooth Irish whiskey with notes of vanilla, light sweetness and a delicate finish.",
       "ua": "М'який ірландський віскі з нотами ванілі, легкою солодкістю й делікатним фінішем."
-     }
+     },
+     "optionsI18n": [
+      {
+       "name": {
+        "pl": "Whisky / Bourbon"
+       },
+       "required": true,
+       "list": [
+        {
+         "name": {
+          "pl": "40ml"
+         },
+         "price": 22.0
+        },
+        {
+         "name": {
+          "pl": "0.7L"
+         },
+         "price": 289.0
+        }
+       ],
+       "portion": true
+      }
+     ]
     },
     {
      "name": "Bulleit Bourbon",
      "description": "Wyrazisty bourbon z nutami wanilii, karmelu i przyjemnie korzennym charakterem.",
-     "price": 0.0,
+     "price": 25.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_pGFLH-HzKJI-CFIpB.webp",
      "available": true,
      "labels": [],
+     "options": [
+      {
+       "name": "Whisky / Bourbon",
+       "required": true,
+       "list": [
+        {
+         "name": "40ml",
+         "price": 25.0
+        },
+        {
+         "name": "0.7L",
+         "price": 329.0
+        }
+       ]
+      }
+     ],
      "nameI18n": {
       "pl": "Bulleit Bourbon",
       "ru": "Bulleit Bourbon",
@@ -1190,15 +1712,54 @@
       "ru": "Выразительный бурбон с нотами ванили, карамели и приятно пряным характером.",
       "en": "An expressive bourbon with notes of vanilla, caramel and a pleasantly spicy character.",
       "ua": "Виразний бурбон із нотами ванілі, карамелі й приємно пряним характером."
-     }
+     },
+     "optionsI18n": [
+      {
+       "name": {
+        "pl": "Whisky / Bourbon"
+       },
+       "required": true,
+       "list": [
+        {
+         "name": {
+          "pl": "40ml"
+         },
+         "price": 25.0
+        },
+        {
+         "name": {
+          "pl": "0.7L"
+         },
+         "price": 329.0
+        }
+       ],
+       "portion": true
+      }
+     ]
     },
     {
      "name": "Jack Daniel’s",
      "description": "Klasyczna Tennessee whiskey z nutami karmelu, wanilii i delikatnego drewna.",
-     "price": 0.0,
+     "price": 23.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_CatZW-OpjWf-ylZah.webp",
      "available": true,
      "labels": [],
+     "options": [
+      {
+       "name": "Whisky / Bourbon",
+       "required": true,
+       "list": [
+        {
+         "name": "40ml",
+         "price": 23.0
+        },
+        {
+         "name": "0.7L",
+         "price": 299.0
+        }
+       ]
+      }
+     ],
      "nameI18n": {
       "pl": "Jack Daniel’s",
       "ru": "Jack Daniel’s",
@@ -1210,15 +1771,54 @@
       "ru": "Классический Tennessee whiskey с нотами карамели, ванили и деликатного дерева.",
       "en": "A classic Tennessee whiskey with notes of caramel, vanilla and gentle oak.",
       "ua": "Класичний Tennessee whiskey з нотами карамелі, ванілі й делікатного дерева."
-     }
+     },
+     "optionsI18n": [
+      {
+       "name": {
+        "pl": "Whisky / Bourbon"
+       },
+       "required": true,
+       "list": [
+        {
+         "name": {
+          "pl": "40ml"
+         },
+         "price": 23.0
+        },
+        {
+         "name": {
+          "pl": "0.7L"
+         },
+         "price": 299.0
+        }
+       ],
+       "portion": true
+      }
+     ]
     },
     {
      "name": "Ardbeg",
      "description": "Intensywna torfowa whisky z Islay z nutami dymu, przypraw i morskiego charakteru.",
-     "price": 0.0,
+     "price": 34.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_mEBJV-QAPLk-FxpIH.webp",
      "available": true,
      "labels": [],
+     "options": [
+      {
+       "name": "Whisky / Bourbon",
+       "required": true,
+       "list": [
+        {
+         "name": "40ml",
+         "price": 34.0
+        },
+        {
+         "name": "0.7L",
+         "price": 490.0
+        }
+       ]
+      }
+     ],
      "nameI18n": {
       "pl": "Ardbeg",
       "ru": "Ardbeg",
@@ -1230,15 +1830,54 @@
       "ru": "Интенсивный торфяной виски с Islay с нотами дыма, специй и морского характера.",
       "en": "An intense peated whisky from Islay with notes of smoke, spice and a maritime character.",
       "ua": "Інтенсивний торф'яний віскі з Islay із нотами диму, спецій і морського характеру."
-     }
+     },
+     "optionsI18n": [
+      {
+       "name": {
+        "pl": "Whisky / Bourbon"
+       },
+       "required": true,
+       "list": [
+        {
+         "name": {
+          "pl": "40ml"
+         },
+         "price": 34.0
+        },
+        {
+         "name": {
+          "pl": "0.7L"
+         },
+         "price": 490.0
+        }
+       ],
+       "portion": true
+      }
+     ]
     },
     {
      "name": "Monkey Shoulder",
      "description": "Łagodna whisky typu blended malt z nutami miodu, wanilii, cytrusów i przypraw.",
-     "price": 0.0,
+     "price": 28.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_JRBFl-cblbN-JqCJC.webp",
      "available": true,
      "labels": [],
+     "options": [
+      {
+       "name": "Whisky / Bourbon",
+       "required": true,
+       "list": [
+        {
+         "name": "40ml",
+         "price": 28.0
+        },
+        {
+         "name": "0.7L",
+         "price": 369.0
+        }
+       ]
+      }
+     ],
      "nameI18n": {
       "pl": "Monkey Shoulder",
       "ru": "Monkey Shoulder",
@@ -1250,15 +1889,54 @@
       "ru": "Мягкий виски типа blended malt с нотами мёда, ванили, цитрусов и специй.",
       "en": "A smooth blended malt whisky with notes of honey, vanilla, citrus and spice.",
       "ua": "М'який віскі типу blended malt із нотами меду, ванілі, цитрусів і спецій."
-     }
+     },
+     "optionsI18n": [
+      {
+       "name": {
+        "pl": "Whisky / Bourbon"
+       },
+       "required": true,
+       "list": [
+        {
+         "name": {
+          "pl": "40ml"
+         },
+         "price": 28.0
+        },
+        {
+         "name": {
+          "pl": "0.7L"
+         },
+         "price": 369.0
+        }
+       ],
+       "portion": true
+      }
+     ]
     },
     {
      "name": "Maker’s Mark",
      "description": "Gładki bourbon z nutami karmelu, wanilii, dębu i subtelnych przypraw.",
-     "price": 0.0,
+     "price": 27.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_HCdtd-OMkfV-xOFDk.webp",
      "available": true,
      "labels": [],
+     "options": [
+      {
+       "name": "Whisky / Bourbon",
+       "required": true,
+       "list": [
+        {
+         "name": "40ml",
+         "price": 27.0
+        },
+        {
+         "name": "0.7L",
+         "price": 359.0
+        }
+       ]
+      }
+     ],
      "nameI18n": {
       "pl": "Maker’s Mark",
       "ru": "Maker’s Mark",
@@ -1270,7 +1948,30 @@
       "ru": "Гладкий бурбон с нотами карамели, ванили, дуба и тонких специй.",
       "en": "A smooth bourbon with notes of caramel, vanilla, oak and subtle spice.",
       "ua": "Гладкий бурбон із нотами карамелі, ванілі, дуба й тонких спецій."
-     }
+     },
+     "optionsI18n": [
+      {
+       "name": {
+        "pl": "Whisky / Bourbon"
+       },
+       "required": true,
+       "list": [
+        {
+         "name": {
+          "pl": "40ml"
+         },
+         "price": 27.0
+        },
+        {
+         "name": {
+          "pl": "0.7L"
+         },
+         "price": 359.0
+        }
+       ],
+       "portion": true
+      }
+     ]
     }
    ],
    "nameI18n": {
@@ -1283,8 +1984,6 @@
   {
    "hurl": "likiery",
    "name": "LIKIERY",
-   "desc": "",
-   "section": "alkohol",
    "items": [
     {
      "name": "Jägermeister",
@@ -1293,6 +1992,7 @@
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_uxIHz-LGlcv-LoiHY.webp",
      "available": true,
      "labels": [],
+     "options": [],
      "nameI18n": {
       "pl": "Jägermeister",
       "ru": "Jägermeister",
@@ -1304,7 +2004,8 @@
       "ru": "",
       "en": "",
       "ua": ""
-     }
+     },
+     "optionsI18n": []
     },
     {
      "name": "Baileys",
@@ -1313,6 +2014,7 @@
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_IxBwZ-zIGLn-iOGFN.webp",
      "available": true,
      "labels": [],
+     "options": [],
      "nameI18n": {
       "pl": "Baileys",
       "ru": "Baileys",
@@ -1324,7 +2026,8 @@
       "ru": "",
       "en": "",
       "ua": ""
-     }
+     },
+     "optionsI18n": []
     },
     {
      "name": "Sambuca Fire",
@@ -1333,6 +2036,7 @@
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_dLrsk-prhWG-ZUfoS.webp",
      "available": true,
      "labels": [],
+     "options": [],
      "nameI18n": {
       "pl": "Sambuca Fire",
       "ru": "Sambuca Fire",
@@ -1344,7 +2048,8 @@
       "ru": "",
       "en": "",
       "ua": ""
-     }
+     },
+     "optionsI18n": []
     },
     {
      "name": "Amaretto",
@@ -1353,6 +2058,7 @@
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_nlHJe-LKGHk-szJQw.webp",
      "available": true,
      "labels": [],
+     "options": [],
      "nameI18n": {
       "pl": "Amaretto",
       "ru": "Amaretto",
@@ -1364,7 +2070,8 @@
       "ru": "",
       "en": "",
       "ua": ""
-     }
+     },
+     "optionsI18n": []
     },
     {
      "name": "Absinth",
@@ -1373,6 +2080,7 @@
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_yXBUM-bvZCY-uFPPp.webp",
      "available": true,
      "labels": [],
+     "options": [],
      "nameI18n": {
       "pl": "Absinth",
       "ru": "Absinth",
@@ -1384,7 +2092,8 @@
       "ru": "",
       "en": "",
       "ua": ""
-     }
+     },
+     "optionsI18n": []
     }
    ],
    "nameI18n": {
@@ -1397,8 +2106,6 @@
   {
    "hurl": "wermuty",
    "name": "WERMUTY",
-   "desc": "",
-   "section": "alkohol",
    "items": [
     {
      "name": "Martini Rosso",
@@ -1407,6 +2114,7 @@
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_NTXSb-hGjTe-vxleL.webp",
      "available": true,
      "labels": [],
+     "options": [],
      "nameI18n": {
       "pl": "Martini Rosso",
       "ru": "Martini Rosso",
@@ -1418,7 +2126,8 @@
       "ru": "",
       "en": "",
       "ua": ""
-     }
+     },
+     "optionsI18n": []
     },
     {
      "name": "Martini Extra Dry",
@@ -1427,6 +2136,7 @@
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_LeRUj-pNTEW-zNbcc.webp",
      "available": true,
      "labels": [],
+     "options": [],
      "nameI18n": {
       "pl": "Martini Extra Dry",
       "ru": "Martini Extra Dry",
@@ -1438,7 +2148,8 @@
       "ru": "",
       "en": "",
       "ua": ""
-     }
+     },
+     "optionsI18n": []
     },
     {
      "name": "Martini Bianco",
@@ -1447,6 +2158,7 @@
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_wbHda-dDDeG-oWsxX.webp",
      "available": true,
      "labels": [],
+     "options": [],
      "nameI18n": {
       "pl": "Martini Bianco",
       "ru": "Martini Bianco",
@@ -1458,7 +2170,8 @@
       "ru": "",
       "en": "",
       "ua": ""
-     }
+     },
+     "optionsI18n": []
     }
    ],
    "nameI18n": {
@@ -1471,16 +2184,30 @@
   {
    "hurl": "koniak-brandy",
    "name": "KONIAK / BRANDY",
-   "desc": "",
-   "section": "alkohol",
    "items": [
     {
      "name": "Rémy Martin VSOP",
      "description": "",
-     "price": 0.0,
+     "price": 36.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_cRmWD-fnzCj-NmiMk.webp",
      "available": true,
      "labels": [],
+     "options": [
+      {
+       "name": "KONIAK/BRANDY",
+       "required": true,
+       "list": [
+        {
+         "name": "40ml",
+         "price": 36.0
+        },
+        {
+         "name": "0.7L",
+         "price": 560.0
+        }
+       ]
+      }
+     ],
      "nameI18n": {
       "pl": "Rémy Martin VSOP",
       "ru": "Rémy Martin VSOP",
@@ -1492,15 +2219,54 @@
       "ru": "",
       "en": "",
       "ua": ""
-     }
+     },
+     "optionsI18n": [
+      {
+       "name": {
+        "pl": "KONIAK/BRANDY"
+       },
+       "required": true,
+       "list": [
+        {
+         "name": {
+          "pl": "40ml"
+         },
+         "price": 36.0
+        },
+        {
+         "name": {
+          "pl": "0.7L"
+         },
+         "price": 560.0
+        }
+       ],
+       "portion": true
+      }
+     ]
     },
     {
      "name": "Martell VS",
      "description": "",
-     "price": 0.0,
+     "price": 26.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_glFeF-kmpIH-ijBbj.webp",
      "available": true,
      "labels": [],
+     "options": [
+      {
+       "name": "KONIAK/BRANDY",
+       "required": true,
+       "list": [
+        {
+         "name": "40ml",
+         "price": 26.0
+        },
+        {
+         "name": "0.7L",
+         "price": 390.0
+        }
+       ]
+      }
+     ],
      "nameI18n": {
       "pl": "Martell VS",
       "ru": "Martell VS",
@@ -1512,15 +2278,54 @@
       "ru": "",
       "en": "",
       "ua": ""
-     }
+     },
+     "optionsI18n": [
+      {
+       "name": {
+        "pl": "KONIAK/BRANDY"
+       },
+       "required": true,
+       "list": [
+        {
+         "name": {
+          "pl": "40ml"
+         },
+         "price": 26.0
+        },
+        {
+         "name": {
+          "pl": "0.7L"
+         },
+         "price": 390.0
+        }
+       ],
+       "portion": true
+      }
+     ]
     },
     {
      "name": "Metaxa 5★",
      "description": "",
-     "price": 0.0,
+     "price": 20.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_NlFNt-CHuhx-CReTo.webp",
      "available": true,
      "labels": [],
+     "options": [
+      {
+       "name": "KONIAK/BRANDY",
+       "required": true,
+       "list": [
+        {
+         "name": "40ml",
+         "price": 20.0
+        },
+        {
+         "name": "0.7L",
+         "price": 300.0
+        }
+       ]
+      }
+     ],
      "nameI18n": {
       "pl": "Metaxa 5★",
       "ru": "Metaxa 5★",
@@ -1532,7 +2337,30 @@
       "ru": "",
       "en": "",
       "ua": ""
-     }
+     },
+     "optionsI18n": [
+      {
+       "name": {
+        "pl": "KONIAK/BRANDY"
+       },
+       "required": true,
+       "list": [
+        {
+         "name": {
+          "pl": "40ml"
+         },
+         "price": 20.0
+        },
+        {
+         "name": {
+          "pl": "0.7L"
+         },
+         "price": 300.0
+        }
+       ],
+       "portion": true
+      }
+     ]
     }
    ],
    "nameI18n": {
@@ -1545,16 +2373,30 @@
   {
    "hurl": "rum",
    "name": "RUM",
-   "desc": "",
-   "section": "alkohol",
    "items": [
     {
      "name": "Kraken",
      "description": "",
-     "price": 0.0,
+     "price": 30.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_UIYka-cRZtm-epkDl.webp",
      "available": true,
      "labels": [],
+     "options": [
+      {
+       "name": "RUM",
+       "required": true,
+       "list": [
+        {
+         "name": "40ml",
+         "price": 30.0
+        },
+        {
+         "name": "0.7L",
+         "price": 380.0
+        }
+       ]
+      }
+     ],
      "nameI18n": {
       "pl": "Kraken",
       "ru": "Kraken",
@@ -1566,15 +2408,54 @@
       "ru": "",
       "en": "",
       "ua": ""
-     }
+     },
+     "optionsI18n": [
+      {
+       "name": {
+        "pl": "RUM"
+       },
+       "required": true,
+       "list": [
+        {
+         "name": {
+          "pl": "40ml"
+         },
+         "price": 30.0
+        },
+        {
+         "name": {
+          "pl": "0.7L"
+         },
+         "price": 380.0
+        }
+       ],
+       "portion": true
+      }
+     ]
     },
     {
      "name": "Havana Club 3",
      "description": "",
-     "price": 0.0,
+     "price": 20.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_AHyLy-DXirO-RChlK.webp",
      "available": true,
      "labels": [],
+     "options": [
+      {
+       "name": "RUM",
+       "required": true,
+       "list": [
+        {
+         "name": "40ml",
+         "price": 20.0
+        },
+        {
+         "name": "0.7L",
+         "price": 249.0
+        }
+       ]
+      }
+     ],
      "nameI18n": {
       "pl": "Havana Club 3",
       "ru": "Havana Club 3",
@@ -1586,15 +2467,54 @@
       "ru": "",
       "en": "",
       "ua": ""
-     }
+     },
+     "optionsI18n": [
+      {
+       "name": {
+        "pl": "RUM"
+       },
+       "required": true,
+       "list": [
+        {
+         "name": {
+          "pl": "40ml"
+         },
+         "price": 20.0
+        },
+        {
+         "name": {
+          "pl": "0.7L"
+         },
+         "price": 249.0
+        }
+       ],
+       "portion": true
+      }
+     ]
     },
     {
      "name": "Havana Club 7",
      "description": "",
-     "price": 0.0,
+     "price": 26.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_LDADi-OMZEx-FFBBc.webp",
      "available": true,
      "labels": [],
+     "options": [
+      {
+       "name": "RUM",
+       "required": true,
+       "list": [
+        {
+         "name": "40ml",
+         "price": 26.0
+        },
+        {
+         "name": "0.7L",
+         "price": 349.0
+        }
+       ]
+      }
+     ],
      "nameI18n": {
       "pl": "Havana Club 7",
       "ru": "Havana Club 7",
@@ -1606,15 +2526,54 @@
       "ru": "",
       "en": "",
       "ua": ""
-     }
+     },
+     "optionsI18n": [
+      {
+       "name": {
+        "pl": "RUM"
+       },
+       "required": true,
+       "list": [
+        {
+         "name": {
+          "pl": "40ml"
+         },
+         "price": 26.0
+        },
+        {
+         "name": {
+          "pl": "0.7L"
+         },
+         "price": 349.0
+        }
+       ],
+       "portion": true
+      }
+     ]
     },
     {
      "name": "Havana Club especial",
      "description": "",
-     "price": 0.0,
+     "price": 22.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_UOPVg-ZiWIk-cliUR.webp",
      "available": true,
      "labels": [],
+     "options": [
+      {
+       "name": "RUM",
+       "required": true,
+       "list": [
+        {
+         "name": "40ml",
+         "price": 22.0
+        },
+        {
+         "name": "0.7L",
+         "price": 289.0
+        }
+       ]
+      }
+     ],
      "nameI18n": {
       "pl": "Havana Club especial",
       "ru": "Havana Club especial",
@@ -1626,7 +2585,30 @@
       "ru": "",
       "en": "",
       "ua": ""
-     }
+     },
+     "optionsI18n": [
+      {
+       "name": {
+        "pl": "RUM"
+       },
+       "required": true,
+       "list": [
+        {
+         "name": {
+          "pl": "40ml"
+         },
+         "price": 22.0
+        },
+        {
+         "name": {
+          "pl": "0.7L"
+         },
+         "price": 289.0
+        }
+       ],
+       "portion": true
+      }
+     ]
     }
    ],
    "nameI18n": {
@@ -1639,16 +2621,30 @@
   {
    "hurl": "wodka",
    "name": "WÓDKA",
-   "desc": "",
-   "section": "alkohol",
    "items": [
     {
      "name": "Absolut Blue",
      "description": "",
-     "price": 0.0,
+     "price": 18.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_eeocZ-mbHAt-Fbfbs.webp",
      "available": true,
      "labels": [],
+     "options": [
+      {
+       "name": "WÓDKA",
+       "required": true,
+       "list": [
+        {
+         "name": "40ml",
+         "price": 18.0
+        },
+        {
+         "name": "0.7L",
+         "price": 220.0
+        }
+       ]
+      }
+     ],
      "nameI18n": {
       "pl": "Absolut Blue",
       "ru": "Absolut Blue",
@@ -1660,15 +2656,54 @@
       "ru": "",
       "en": "",
       "ua": ""
-     }
+     },
+     "optionsI18n": [
+      {
+       "name": {
+        "pl": "WÓDKA"
+       },
+       "required": true,
+       "list": [
+        {
+         "name": {
+          "pl": "40ml"
+         },
+         "price": 18.0
+        },
+        {
+         "name": {
+          "pl": "0.7L"
+         },
+         "price": 220.0
+        }
+       ],
+       "portion": true
+      }
+     ]
     },
     {
      "name": "Grey Goose",
      "description": "",
-     "price": 0.0,
+     "price": 36.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_RuTDE-yiKMQ-cDqgH.webp",
      "available": true,
      "labels": [],
+     "options": [
+      {
+       "name": "WÓDKA",
+       "required": true,
+       "list": [
+        {
+         "name": "40ml",
+         "price": 36.0
+        },
+        {
+         "name": "0.7L",
+         "price": 450.0
+        }
+       ]
+      }
+     ],
      "nameI18n": {
       "pl": "Grey Goose",
       "ru": "Grey Goose",
@@ -1680,15 +2715,54 @@
       "ru": "",
       "en": "",
       "ua": ""
-     }
+     },
+     "optionsI18n": [
+      {
+       "name": {
+        "pl": "WÓDKA"
+       },
+       "required": true,
+       "list": [
+        {
+         "name": {
+          "pl": "40ml"
+         },
+         "price": 36.0
+        },
+        {
+         "name": {
+          "pl": "0.7L"
+         },
+         "price": 450.0
+        }
+       ],
+       "portion": true
+      }
+     ]
     },
     {
      "name": "Belvedere",
      "description": "",
-     "price": 0.0,
+     "price": 36.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_RPcrk-yGbqV-CHVeE.webp",
      "available": true,
      "labels": [],
+     "options": [
+      {
+       "name": "WÓDKA",
+       "required": true,
+       "list": [
+        {
+         "name": "40ml",
+         "price": 36.0
+        },
+        {
+         "name": "0.7L",
+         "price": 450.0
+        }
+       ]
+      }
+     ],
      "nameI18n": {
       "pl": "Belvedere",
       "ru": "Belvedere",
@@ -1700,7 +2774,30 @@
       "ru": "",
       "en": "",
       "ua": ""
-     }
+     },
+     "optionsI18n": [
+      {
+       "name": {
+        "pl": "WÓDKA"
+       },
+       "required": true,
+       "list": [
+        {
+         "name": {
+          "pl": "40ml"
+         },
+         "price": 36.0
+        },
+        {
+         "name": {
+          "pl": "0.7L"
+         },
+         "price": 450.0
+        }
+       ],
+       "portion": true
+      }
+     ]
     }
    ],
    "nameI18n": {
@@ -1713,16 +2810,30 @@
   {
    "hurl": "gin",
    "name": "GIN",
-   "desc": "",
-   "section": "alkohol",
    "items": [
     {
      "name": "Bombay Sapphire",
      "description": "",
-     "price": 0.0,
+     "price": 26.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_MrfjJ-lecbc-BPbbx.webp",
      "available": true,
      "labels": [],
+     "options": [
+      {
+       "name": "GIN",
+       "required": true,
+       "list": [
+        {
+         "name": "40ml",
+         "price": 26.0
+        },
+        {
+         "name": "0.7L",
+         "price": 330.0
+        }
+       ]
+      }
+     ],
      "nameI18n": {
       "pl": "Bombay Sapphire",
       "ru": "Bombay Sapphire",
@@ -1734,15 +2845,54 @@
       "ru": "",
       "en": "",
       "ua": ""
-     }
+     },
+     "optionsI18n": [
+      {
+       "name": {
+        "pl": "GIN"
+       },
+       "required": true,
+       "list": [
+        {
+         "name": {
+          "pl": "40ml"
+         },
+         "price": 26.0
+        },
+        {
+         "name": {
+          "pl": "0.7L"
+         },
+         "price": 330.0
+        }
+       ],
+       "portion": true
+      }
+     ]
     },
     {
      "name": "Beefeater",
      "description": "",
-     "price": 0.0,
+     "price": 19.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_FBCOl-DSkus-bEQRF.webp",
      "available": true,
      "labels": [],
+     "options": [
+      {
+       "name": "GIN",
+       "required": true,
+       "list": [
+        {
+         "name": "40ml",
+         "price": 19.0
+        },
+        {
+         "name": "0.7L",
+         "price": 240.0
+        }
+       ]
+      }
+     ],
      "nameI18n": {
       "pl": "Beefeater",
       "ru": "Beefeater",
@@ -1754,15 +2904,54 @@
       "ru": "",
       "en": "",
       "ua": ""
-     }
+     },
+     "optionsI18n": [
+      {
+       "name": {
+        "pl": "GIN"
+       },
+       "required": true,
+       "list": [
+        {
+         "name": {
+          "pl": "40ml"
+         },
+         "price": 19.0
+        },
+        {
+         "name": {
+          "pl": "0.7L"
+         },
+         "price": 240.0
+        }
+       ],
+       "portion": true
+      }
+     ]
     },
     {
      "name": "Hendrick’s",
      "description": "",
-     "price": 0.0,
+     "price": 32.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_FBOCh-GPOTV-RwQGJ.webp",
      "available": true,
      "labels": [],
+     "options": [
+      {
+       "name": "GIN",
+       "required": true,
+       "list": [
+        {
+         "name": "40ml",
+         "price": 32.0
+        },
+        {
+         "name": "0.7L",
+         "price": 410.0
+        }
+       ]
+      }
+     ],
      "nameI18n": {
       "pl": "Hendrick’s",
       "ru": "Hendrick’s",
@@ -1774,7 +2963,30 @@
       "ru": "",
       "en": "",
       "ua": ""
-     }
+     },
+     "optionsI18n": [
+      {
+       "name": {
+        "pl": "GIN"
+       },
+       "required": true,
+       "list": [
+        {
+         "name": {
+          "pl": "40ml"
+         },
+         "price": 32.0
+        },
+        {
+         "name": {
+          "pl": "0.7L"
+         },
+         "price": 410.0
+        }
+       ],
+       "portion": true
+      }
+     ]
     }
    ],
    "nameI18n": {
@@ -1787,16 +2999,30 @@
   {
    "hurl": "tequila",
    "name": "TEQUILA",
-   "desc": "",
-   "section": "alkohol",
    "items": [
     {
      "name": "Olmeca Silver",
      "description": "",
-     "price": 0.0,
+     "price": 25.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_meHXx-CwbkW-uIjQR.webp",
      "available": true,
      "labels": [],
+     "options": [
+      {
+       "name": "TEQUILA",
+       "required": true,
+       "list": [
+        {
+         "name": "40ml",
+         "price": 25.0
+        },
+        {
+         "name": "0.7L",
+         "price": 330.0
+        }
+       ]
+      }
+     ],
      "nameI18n": {
       "pl": "Olmeca Silver",
       "ru": "Olmeca Silver",
@@ -1808,15 +3034,54 @@
       "ru": "",
       "en": "",
       "ua": ""
-     }
+     },
+     "optionsI18n": [
+      {
+       "name": {
+        "pl": "TEQUILA"
+       },
+       "required": true,
+       "list": [
+        {
+         "name": {
+          "pl": "40ml"
+         },
+         "price": 25.0
+        },
+        {
+         "name": {
+          "pl": "0.7L"
+         },
+         "price": 330.0
+        }
+       ],
+       "portion": true
+      }
+     ]
     },
     {
      "name": "Olmeca Gold",
      "description": "",
-     "price": 0.0,
+     "price": 25.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_GvVkp-FrXTH-GGmAQ.webp",
      "available": true,
      "labels": [],
+     "options": [
+      {
+       "name": "TEQUILA",
+       "required": true,
+       "list": [
+        {
+         "name": "40ml",
+         "price": 25.0
+        },
+        {
+         "name": "0.7L",
+         "price": 330.0
+        }
+       ]
+      }
+     ],
      "nameI18n": {
       "pl": "Olmeca Gold",
       "ru": "Olmeca Gold",
@@ -1828,15 +3093,54 @@
       "ru": "",
       "en": "",
       "ua": ""
-     }
+     },
+     "optionsI18n": [
+      {
+       "name": {
+        "pl": "TEQUILA"
+       },
+       "required": true,
+       "list": [
+        {
+         "name": {
+          "pl": "40ml"
+         },
+         "price": 25.0
+        },
+        {
+         "name": {
+          "pl": "0.7L"
+         },
+         "price": 330.0
+        }
+       ],
+       "portion": true
+      }
+     ]
     },
     {
      "name": "Sierra Blanco",
      "description": "",
-     "price": 0.0,
+     "price": 22.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_GBIlH-OSzkv-vZlJP.webp",
      "available": true,
      "labels": [],
+     "options": [
+      {
+       "name": "TEQUILA",
+       "required": true,
+       "list": [
+        {
+         "name": "40ml",
+         "price": 22.0
+        },
+        {
+         "name": "0.7L",
+         "price": 280.0
+        }
+       ]
+      }
+     ],
      "nameI18n": {
       "pl": "Sierra Blanco",
       "ru": "Sierra Blanco",
@@ -1848,15 +3152,54 @@
       "ru": "",
       "en": "",
       "ua": ""
-     }
+     },
+     "optionsI18n": [
+      {
+       "name": {
+        "pl": "TEQUILA"
+       },
+       "required": true,
+       "list": [
+        {
+         "name": {
+          "pl": "40ml"
+         },
+         "price": 22.0
+        },
+        {
+         "name": {
+          "pl": "0.7L"
+         },
+         "price": 280.0
+        }
+       ],
+       "portion": true
+      }
+     ]
     },
     {
      "name": "Sierra Gold",
      "description": "",
-     "price": 0.0,
+     "price": 22.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_LeAGl-czabr-wWvRI.webp",
      "available": true,
      "labels": [],
+     "options": [
+      {
+       "name": "TEQUILA",
+       "required": true,
+       "list": [
+        {
+         "name": "40ml",
+         "price": 22.0
+        },
+        {
+         "name": "0.7L",
+         "price": 280.0
+        }
+       ]
+      }
+     ],
      "nameI18n": {
       "pl": "Sierra Gold",
       "ru": "Sierra Gold",
@@ -1868,15 +3211,54 @@
       "ru": "",
       "en": "",
       "ua": ""
-     }
+     },
+     "optionsI18n": [
+      {
+       "name": {
+        "pl": "TEQUILA"
+       },
+       "required": true,
+       "list": [
+        {
+         "name": {
+          "pl": "40ml"
+         },
+         "price": 22.0
+        },
+        {
+         "name": {
+          "pl": "0.7L"
+         },
+         "price": 280.0
+        }
+       ],
+       "portion": true
+      }
+     ]
     },
     {
      "name": "Patron",
      "description": "",
-     "price": 0.0,
+     "price": 36.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_ufAZG-XuCjA-ljByr.webp",
      "available": true,
      "labels": [],
+     "options": [
+      {
+       "name": "TEQUILA",
+       "required": true,
+       "list": [
+        {
+         "name": "40ml",
+         "price": 36.0
+        },
+        {
+         "name": "0.7L",
+         "price": 510.0
+        }
+       ]
+      }
+     ],
      "nameI18n": {
       "pl": "Patron",
       "ru": "Patron",
@@ -1888,7 +3270,30 @@
       "ru": "",
       "en": "",
       "ua": ""
-     }
+     },
+     "optionsI18n": [
+      {
+       "name": {
+        "pl": "TEQUILA"
+       },
+       "required": true,
+       "list": [
+        {
+         "name": {
+          "pl": "40ml"
+         },
+         "price": 36.0
+        },
+        {
+         "name": {
+          "pl": "0.7L"
+         },
+         "price": 510.0
+        }
+       ],
+       "portion": true
+      }
+     ]
     }
    ],
    "nameI18n": {
@@ -1901,16 +3306,30 @@
   {
    "hurl": "piwo-z-beczki",
    "name": "PIWO Z BECZKI",
-   "desc": "",
-   "section": "alkohol",
    "items": [
     {
      "name": "Żywiec Białe",
      "description": "",
-     "price": 0.0,
+     "price": 14.0,
      "image": "",
      "available": true,
      "labels": [],
+     "options": [
+      {
+       "name": "PIWO Z BECZKI",
+       "required": false,
+       "list": [
+        {
+         "name": "0,3L",
+         "price": 14.0
+        },
+        {
+         "name": "0,5L",
+         "price": 19.0
+        }
+       ]
+      }
+     ],
      "nameI18n": {
       "pl": "Żywiec Białe",
       "ru": "Żywiec Białe",
@@ -1922,15 +3341,54 @@
       "ru": "",
       "en": "",
       "ua": ""
-     }
+     },
+     "optionsI18n": [
+      {
+       "name": {
+        "pl": "PIWO Z BECZKI"
+       },
+       "required": false,
+       "list": [
+        {
+         "name": {
+          "pl": "0,3L"
+         },
+         "price": 14.0
+        },
+        {
+         "name": {
+          "pl": "0,5L"
+         },
+         "price": 19.0
+        }
+       ],
+       "portion": true
+      }
+     ]
     },
     {
      "name": "Birra Moretti",
      "description": "",
-     "price": 0.0,
+     "price": 17.0,
      "image": "",
      "available": true,
      "labels": [],
+     "options": [
+      {
+       "name": "Piwo z beczki",
+       "required": true,
+       "list": [
+        {
+         "name": "0.25L",
+         "price": 17.0
+        },
+        {
+         "name": "0.5L",
+         "price": 22.0
+        }
+       ]
+      }
+     ],
      "nameI18n": {
       "pl": "Birra Moretti",
       "ru": "Birra Moretti",
@@ -1942,15 +3400,54 @@
       "ru": "",
       "en": "",
       "ua": ""
-     }
+     },
+     "optionsI18n": [
+      {
+       "name": {
+        "pl": "Piwo z beczki"
+       },
+       "required": true,
+       "list": [
+        {
+         "name": {
+          "pl": "0.25L"
+         },
+         "price": 17.0
+        },
+        {
+         "name": {
+          "pl": "0.5L"
+         },
+         "price": 22.0
+        }
+       ],
+       "portion": true
+      }
+     ]
     },
     {
      "name": "Heineken",
      "description": "",
-     "price": 0.0,
+     "price": 17.0,
      "image": "",
      "available": true,
      "labels": [],
+     "options": [
+      {
+       "name": "Piwo z beczki",
+       "required": true,
+       "list": [
+        {
+         "name": "0.25L",
+         "price": 17.0
+        },
+        {
+         "name": "0.5L",
+         "price": 22.0
+        }
+       ]
+      }
+     ],
      "nameI18n": {
       "pl": "Heineken",
       "ru": "Heineken",
@@ -1962,7 +3459,30 @@
       "ru": "",
       "en": "",
       "ua": ""
-     }
+     },
+     "optionsI18n": [
+      {
+       "name": {
+        "pl": "Piwo z beczki"
+       },
+       "required": true,
+       "list": [
+        {
+         "name": {
+          "pl": "0.25L"
+         },
+         "price": 17.0
+        },
+        {
+         "name": {
+          "pl": "0.5L"
+         },
+         "price": 22.0
+        }
+       ],
+       "portion": true
+      }
+     ]
     }
    ],
    "nameI18n": {
@@ -1975,8 +3495,6 @@
   {
    "hurl": "piwo-butelkowe",
    "name": "PIWO BUTELKOWE",
-   "desc": "",
-   "section": "alkohol",
    "items": [
     {
      "name": "Paulaner",
@@ -1985,6 +3503,7 @@
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_dlrRv-JULQA-UVoYT.webp",
      "available": true,
      "labels": [],
+     "options": [],
      "nameI18n": {
       "pl": "Paulaner",
       "ru": "Paulaner",
@@ -1996,7 +3515,8 @@
       "ru": "",
       "en": "",
       "ua": ""
-     }
+     },
+     "optionsI18n": []
     },
     {
      "name": "Książęce złote przeniczne",
@@ -2005,6 +3525,7 @@
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_TKjHI-eGenm-ekiuQ.webp",
      "available": true,
      "labels": [],
+     "options": [],
      "nameI18n": {
       "pl": "Książęce złote przeniczne",
       "ru": "Książęce złote przeniczne",
@@ -2016,7 +3537,8 @@
       "ru": "",
       "en": "",
       "ua": ""
-     }
+     },
+     "optionsI18n": []
     },
     {
      "name": "Książęce ciemne",
@@ -2025,6 +3547,7 @@
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_sQyZm-MgoWU-bdNuX.webp",
      "available": true,
      "labels": [],
+     "options": [],
      "nameI18n": {
       "pl": "Książęce ciemne",
       "ru": "Książęce ciemne",
@@ -2036,7 +3559,8 @@
       "ru": "",
       "en": "",
       "ua": ""
-     }
+     },
+     "optionsI18n": []
     },
     {
      "name": "Corona",
@@ -2045,6 +3569,7 @@
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_wOIJG-vliRx-xXgsM.webp",
      "available": true,
      "labels": [],
+     "options": [],
      "nameI18n": {
       "pl": "Corona",
       "ru": "Corona",
@@ -2056,7 +3581,8 @@
       "ru": "",
       "en": "",
       "ua": ""
-     }
+     },
+     "optionsI18n": []
     },
     {
      "name": "Żywiec malinaż 0,0%",
@@ -2065,6 +3591,7 @@
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_gcbkG-clmJG-FHxlX.webp",
      "available": true,
      "labels": [],
+     "options": [],
      "nameI18n": {
       "pl": "Żywiec malinaż 0,0%",
       "ru": "Żywiec malinaż 0,0%",
@@ -2076,7 +3603,8 @@
       "ru": "",
       "en": "",
       "ua": ""
-     }
+     },
+     "optionsI18n": []
     },
     {
      "name": "Żywiec białe 0,0%",
@@ -2085,6 +3613,7 @@
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_kCpYm-OCemH-MbCqF.webp",
      "available": true,
      "labels": [],
+     "options": [],
      "nameI18n": {
       "pl": "Żywiec białe 0,0%",
       "ru": "Żywiec białe 0,0%",
@@ -2096,7 +3625,8 @@
       "ru": "",
       "en": "",
       "ua": ""
-     }
+     },
+     "optionsI18n": []
     },
     {
      "name": "Heineken 0,0%",
@@ -2105,6 +3635,7 @@
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_KSYlx-DEbkC-BENXU.webp",
      "available": true,
      "labels": [],
+     "options": [],
      "nameI18n": {
       "pl": "Heineken 0,0%",
       "ru": "Heineken 0,0%",
@@ -2116,7 +3647,8 @@
       "ru": "",
       "en": "",
       "ua": ""
-     }
+     },
+     "optionsI18n": []
     },
     {
      "name": "Żywiec Arbużada 0,0%",
@@ -2125,6 +3657,7 @@
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_IQlgs-dJTPN-UMsYH.webp",
      "available": true,
      "labels": [],
+     "options": [],
      "nameI18n": {
       "pl": "Żywiec Arbużada 0,0%",
       "ru": "Żywiec Arbużada 0,0%",
@@ -2136,7 +3669,8 @@
       "ru": "",
       "en": "",
       "ua": ""
-     }
+     },
+     "optionsI18n": []
     },
     {
      "name": "Piwo Żywiec Lipa & Pigwa 0,0%",
@@ -2145,6 +3679,7 @@
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_zxTBC-NKBFV-lWZaJ.webp",
      "available": true,
      "labels": [],
+     "options": [],
      "nameI18n": {
       "pl": "Piwo Żywiec Lipa & Pigwa 0,0%",
       "ru": "Piwo Żywiec Lipa & Pigwa 0,0%",
@@ -2156,7 +3691,8 @@
       "ru": "",
       "en": "",
       "ua": ""
-     }
+     },
+     "optionsI18n": []
     }
    ],
    "nameI18n": {
@@ -2169,16 +3705,30 @@
   {
    "hurl": "wino-bezalkoholowe",
    "name": "WINO BEZALKOHOLOWE",
-   "desc": "",
-   "section": "alkohol",
    "items": [
     {
      "name": "Ohne Kater Riesling weiss",
      "description": "Nuty rześkiego jabłka i gruszki, delikatna struktura i\ngładka kwasowość. Ten Riesling to prawdziwa\nalternatywa dla wszystkich, którzy unikają alkoholu i\nchcą cieszyć się wegańskim winem.\n\nKraj - Niemcy\nRegion - Palatynat",
-     "price": 0.0,
+     "price": 29.0,
      "image": "",
      "available": true,
      "labels": [],
+     "options": [
+      {
+       "name": "WINO BEZALKOHOLOWE",
+       "required": true,
+       "list": [
+        {
+         "name": "150ml",
+         "price": 29.0
+        },
+        {
+         "name": "0.75L",
+         "price": 129.0
+        }
+       ]
+      }
+     ],
      "nameI18n": {
       "pl": "Ohne Kater Riesling weiss",
       "ru": "Ohne Kater Riesling weiss",
@@ -2190,7 +3740,30 @@
       "ru": "Ноты свежего яблока и груши, деликатная структура и гладкая кислотность. Этот Riesling — настоящая альтернатива для всех, кто избегает алкоголя и хочет наслаждаться веганским вином.\nСтрана — Германия\nРегион — Пфальц",
       "en": "Notes of crisp apple and pear, a delicate structure and smooth acidity. This Riesling is a true alternative for everyone who avoids alcohol and wants to enjoy a vegan wine.\nCountry — Germany\nRegion — Palatinate",
       "ua": "Ноти свіжого яблука й груші, делікатна структура та гладка кислотність. Цей Riesling — справжня альтернатива для всіх, хто уникає алкоголю й хоче насолоджуватися веганським вином.\nКраїна — Німеччина\nРегіон — Пфальц"
-     }
+     },
+     "optionsI18n": [
+      {
+       "name": {
+        "pl": "WINO BEZALKOHOLOWE"
+       },
+       "required": true,
+       "list": [
+        {
+         "name": {
+          "pl": "150ml"
+         },
+         "price": 29.0
+        },
+        {
+         "name": {
+          "pl": "0.75L"
+         },
+         "price": 129.0
+        }
+       ],
+       "portion": true
+      }
+     ]
     }
    ],
    "nameI18n": {
@@ -2203,8 +3776,6 @@
   {
    "hurl": "herbaty-autorskie",
    "name": "HERBATY AUTORSKIE",
-   "desc": "",
-   "section": "herbata-i-kawa",
    "items": [
     {
      "name": "Crimson Smoke Granatowy",
@@ -2213,6 +3784,7 @@
      "image": "",
      "available": true,
      "labels": [],
+     "options": [],
      "nameI18n": {
       "pl": "Crimson Smoke Granatowy",
       "ru": "Crimson Smoke Granatowy",
@@ -2224,15 +3796,17 @@
       "ru": "Изысканный чёрный чай с гранатовым соком, сиропом гренадин и деликатной нотой трав. Глубокий, интенсивный вкус с выраженной нотой сладости и кислинки.",
       "en": "A refined black tea with pomegranate juice, grenadine syrup and a delicate herbal note. Deep, intense taste with a distinct note of sweetness and acidity.",
       "ua": "Вишуканий чорний чай із гранатовим соком, сиропом гренадин і делікатною нотою трав. Глибокий, інтенсивний смак із виразною нотою солодкості й кислинки."
-     }
+     },
+     "optionsI18n": []
     },
     {
      "name": "Tropic Cloud  Mango – marakuja",
      "description": "Delikatna zielona herbata z soczystym mango i marakują, świeżą pomarańczą oraz miętą. Lekka, egzotyczna i orzeźwiająca kompozycja",
      "price": 35.0,
-     "image": "",
+     "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_kXgjn-JIxmx-TGodc.webp",
      "available": true,
      "labels": [],
+     "options": [],
      "nameI18n": {
       "pl": "Tropic Cloud  Mango – marakuja",
       "ru": "Tropic Cloud  Mango – marakuja",
@@ -2244,7 +3818,8 @@
       "ru": "Деликатный зелёный чай с сочным манго и маракуйей, свежим апельсином и мятой. Лёгкая, экзотическая и освежающая композиция.",
       "en": "A delicate green tea with juicy mango and passion fruit, fresh orange and mint. A light, exotic and refreshing composition.",
       "ua": "Делікатний зелений чай із соковитим манго й маракуєю, свіжим апельсином і м'ятою. Легка, екзотична й освіжаюча композиція."
-     }
+     },
+     "optionsI18n": []
     },
     {
      "name": "Dark Berry  Czarna porzeczka – borówka",
@@ -2253,6 +3828,7 @@
      "image": "",
      "available": true,
      "labels": [],
+     "options": [],
      "nameI18n": {
       "pl": "Dark Berry  Czarna porzeczka – borówka",
       "ru": "Dark Berry  Czarna porzeczka – borówka",
@@ -2264,7 +3840,8 @@
       "ru": "Богатый чёрный чай с чёрной смородиной, черникой и нотой лимона. Выразительный, фруктовый вкус с лёгкой кислинкой.",
       "en": "A rich black tea with blackcurrant, blueberry and a note of lemon. An expressive, fruity taste with a light acidity.",
       "ua": "Багатий чорний чай із чорною смородиною, чорницею й нотою лимона. Виразний, фруктовий смак із легкою кислинкою."
-     }
+     },
+     "optionsI18n": []
     },
     {
      "name": "Golden Spice  Gruszka – karmel – przyprawy",
@@ -2273,6 +3850,7 @@
      "image": "",
      "available": true,
      "labels": [],
+     "options": [],
      "nameI18n": {
       "pl": "Golden Spice  Gruszka – karmel – przyprawy",
       "ru": "Golden Spice  Gruszka – karmel – przyprawy",
@@ -2284,7 +3862,8 @@
       "ru": "Зелёный чай со спелой грушей, карамелью и ароматными корицей и гвоздикой. Тёплая, десертная композиция мягкого характера.",
       "en": "A green tea with ripe pear, caramel and aromatic cinnamon and cloves. A warm, dessert composition with a soft character.",
       "ua": "Зелений чай зі стиглою грушею, карамеллю та ароматними корицею й гвоздикою. Тепла, десертна композиція м'якого характеру."
-     }
+     },
+     "optionsI18n": []
     },
     {
      "name": "Mango Heat  Mango – imbir – limonka",
@@ -2293,6 +3872,7 @@
      "image": "",
      "available": true,
      "labels": [],
+     "options": [],
      "nameI18n": {
       "pl": "Mango Heat  Mango – imbir – limonka",
       "ru": "Mango Heat  Mango – imbir – limonka",
@@ -2304,7 +3884,8 @@
       "ru": "Чёрный чай с манго, свежим лаймом и пикантным имбирём. Выразительный, энергичный, десертный и ароматный.",
       "en": "A black tea with mango, fresh lime and spicy ginger. Expressive, energetic, dessert-like and aromatic.",
       "ua": "Чорний чай із манго, свіжим лаймом і пікантним імбиром. Виразний, енергійний, десертний і ароматний."
-     }
+     },
+     "optionsI18n": []
     }
    ],
    "nameI18n": {
@@ -2317,8 +3898,6 @@
   {
    "hurl": "ceremonia-herbaty",
    "name": "CEREMONIA HERBATY",
-   "desc": "Herbata parzona metodą wielokrotnych przelewów (6–8)\nSmak zmienia się z każdą filiżanką – idealny rytuał do długiej shishy",
-   "section": "herbata-i-kawa",
    "items": [
     {
      "name": "Milk Oolong",
@@ -2327,6 +3906,7 @@
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_srkss-laGaG-vSMSk.webp",
      "available": true,
      "labels": [],
+     "options": [],
      "nameI18n": {
       "pl": "Milk Oolong",
       "ru": "Milk Oolong",
@@ -2338,7 +3918,8 @@
       "ru": "Деликатный, десертный вкус: сливки, карамель, ваниль.\nЛучший выбор к фруктовым и сладким миксам.\nХарактер: мягкий, кремовый, расслабляющий.",
       "en": "A delicate, dessert taste: cream, caramel, vanilla.\nThe best choice for fruity and sweet blends.\nCharacter: soft, creamy, relaxing.",
       "ua": "Делікатний, десертний смак: вершки, карамель, ваніль.\nНайкращий вибір до фруктових і солодких міксів.\nХарактер: м'який, кремовий, розслаблюючий."
-     }
+     },
+     "optionsI18n": []
     },
     {
      "name": "Tie Guan Yin",
@@ -2347,6 +3928,7 @@
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_RvEuV-MhPRZ-eeKaB.webp",
      "available": true,
      "labels": [],
+     "options": [],
      "nameI18n": {
       "pl": "Tie Guan Yin",
       "ru": "Tie Guan Yin",
@@ -2358,7 +3940,8 @@
       "ru": "Аромат сирени и орхидеи, естественная лёгкая сладость.\nОтлично сочетается с цитрусами и тропическими вкусами.\nХарактер: свежесть и лёгкость.",
       "en": "Aroma of lilac and orchid, natural light sweetness.\nPairs wonderfully with citrus and tropical flavours.\nCharacter: freshness and lightness.",
       "ua": "Аромат бузку й орхідеї, природна легка солодкість.\nЧудово поєднується з цитрусами й тропічними смаками.\nХарактер: свіжість і легкість."
-     }
+     },
+     "optionsI18n": []
     },
     {
      "name": "Dian Hong",
@@ -2367,6 +3950,7 @@
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_MfuSe-FwnDP-eGALz.webp",
      "available": true,
      "labels": [],
+     "options": [],
      "nameI18n": {
       "pl": "Dian Hong",
       "ru": "Dian Hong",
@@ -2378,7 +3962,8 @@
       "ru": "Классический китайский чай: мёд, хлебная корка, бархат.\nУниверсальный — подходит к любой шише.\nХарактер: тёплый, сбалансированный.",
       "en": "A classic Chinese tea: honey, bread crust, velvet.\nVersatile — pairs with any shisha.\nCharacter: warm, balanced.",
       "ua": "Класичний китайський чай: мед, хлібна скоринка, оксамит.\nУніверсальний — підходить до будь-якої шиши.\nХарактер: теплий, збалансований."
-     }
+     },
+     "optionsI18n": []
     },
     {
      "name": "Shu Pu Erh",
@@ -2387,6 +3972,7 @@
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_ihvJC-nPGBw-TmVho.webp",
      "available": true,
      "labels": [],
+     "options": [],
      "nameI18n": {
       "pl": "Shu Pu Erh",
       "ru": "Shu Pu Erh",
@@ -2398,7 +3984,8 @@
       "ru": "Глубокий и густой: дерево, орех, тёмный шоколад, землистые ноты.\nЛучший спутник табачных и вечерних миксов.\nЭффект: мягко бодрит и согревает.",
       "en": "Deep and dense: wood, nut, dark chocolate, earthy notes.\nThe best companion for tobacco and evening blends.\nEffect: gently invigorates and warms.",
       "ua": "Глибокий і густий: дерево, горіх, темний шоколад, землисті ноти.\nНайкращий супутник тютюнових і вечірніх міксів.\nЕфект: м'яко бадьорить і зігріває."
-     }
+     },
+     "optionsI18n": []
     },
     {
      "name": "Bai Hao",
@@ -2407,6 +3994,7 @@
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_SCJwr-knbzW-Gjhck.webp",
      "available": true,
      "labels": [],
+     "options": [],
      "nameI18n": {
       "pl": "Bai Hao",
       "ru": "Bai Hao",
@@ -2418,7 +4006,8 @@
       "ru": "Самый деликатный чай в карте.\nДля тех, кто не любит крепкие настои.\nХарактер: чистый, тонкий.",
       "en": "The most delicate tea on the menu.\nFor those who don't like strong infusions.\nCharacter: clean, subtle.",
       "ua": "Найделікатніший чай у карті.\nДля тих, хто не любить міцні настої.\nХарактер: чистий, тонкий."
-     }
+     },
+     "optionsI18n": []
     },
     {
      "name": "GABA Oolong",
@@ -2427,6 +4016,7 @@
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_AFCGI-OIsqF-aeysZ.webp",
      "available": true,
      "labels": [],
+     "options": [],
      "nameI18n": {
       "pl": "GABA Oolong",
       "ru": "GABA Oolong",
@@ -2438,7 +4028,8 @@
       "ru": "Вулканический улун с повышенным содержанием GABA.\nМягко расслабляет, не усыпляет, не доминирует над шишей.\nХарактер: спокойствие и релакс.",
       "en": "A volcanic oolong with elevated GABA content.\nGently relaxes, doesn't cause drowsiness, doesn't overpower the shisha.\nCharacter: calm and relaxation.",
       "ua": "Вулканічний улун із підвищеним вмістом GABA.\nМ'яко розслабляє, не присипляє, не домінує над шишею.\nХарактер: спокій і релакс."
-     }
+     },
+     "optionsI18n": []
     },
     {
      "name": "Jin Jun Mei",
@@ -2447,6 +4038,7 @@
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_PxAIH-pxmTW-LFGBU.webp",
      "available": true,
      "labels": [],
+     "options": [],
      "nameI18n": {
       "pl": "Jin Jun Mei",
       "ru": "Jin Jun Mei",
@@ -2458,7 +4050,8 @@
       "ru": "Премиальный красный чай живой динамики:\nмёд → абрикос → карамель → хлебная корка.\nОтлично подходит к фруктовым и десертным вкусам.\nЭффект: элегантность и лёгкость.",
       "en": "A premium red tea with lively dynamics:\nhoney → apricot → caramel → bread crust.\nGreat for fruity and dessert flavours.\nEffect: elegance and lightness.",
       "ua": "Преміальний червоний чай живої динаміки:\nмед → абрикос → карамель → хлібна скоринка.\nЧудово підходить до фруктових і десертних смаків.\nЕфект: елегантність і легкість."
-     }
+     },
+     "optionsI18n": []
     },
     {
      "name": "Da Hong Pao",
@@ -2467,6 +4060,7 @@
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_BJSbv-JPQbs-HjeCd.webp",
      "available": true,
      "labels": [],
+     "options": [],
      "nameI18n": {
       "pl": "Da Hong Pao",
       "ru": "Da Hong Pao",
@@ -2478,7 +4072,8 @@
       "ru": "Ноты ореха, карамели и тонкого дыма.\nИдеален к табачным, кофейным и тёмным миксам.\nХарактер: глубокий, выразительный.",
       "en": "Notes of nut, caramel and subtle smoke.\nIdeal for tobacco, coffee and dark blends.\nCharacter: deep, expressive.",
       "ua": "Ноти горіха, карамелі й тонкого диму.\nІдеальний до тютюнових, кавових і темних міксів.\nХарактер: глибокий, виразний."
-     }
+     },
+     "optionsI18n": []
     }
    ],
    "nameI18n": {
@@ -2491,16 +4086,30 @@
   {
    "hurl": "herbata-klasyczna",
    "name": "HERBATA KLASYCZNA",
-   "desc": "",
-   "section": "herbata-i-kawa",
    "items": [
     {
      "name": "Czarna",
      "description": "Klasyczna czarna herbata z nutą bergamotki.",
-     "price": 0.0,
+     "price": 15.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_CuIDj-XCemR-rIjSO.webp",
      "available": true,
      "labels": [],
+     "options": [
+      {
+       "name": "Do wyboru",
+       "required": true,
+       "list": [
+        {
+         "name": "500 ml",
+         "price": 15.0
+        },
+        {
+         "name": "950 ml",
+         "price": 20.0
+        }
+       ]
+      }
+     ],
      "nameI18n": {
       "pl": "Czarna",
       "ru": "Czarna",
@@ -2512,15 +4121,54 @@
       "ru": "Классический чёрный чай с нотой бергамота.",
       "en": "A classic black tea with a note of bergamot.",
       "ua": "Класичний чорний чай із нотою бергамота."
-     }
+     },
+     "optionsI18n": [
+      {
+       "name": {
+        "pl": "Do wyboru"
+       },
+       "required": true,
+       "list": [
+        {
+         "name": {
+          "pl": "500 ml"
+         },
+         "price": 15.0
+        },
+        {
+         "name": {
+          "pl": "950 ml"
+         },
+         "price": 20.0
+        }
+       ],
+       "portion": true
+      }
+     ]
     },
     {
      "name": "Zielona",
      "description": "Lekka, świeża, delikatna w smaku",
-     "price": 0.0,
+     "price": 15.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_uIsQQ-NmKcp-DwkkH.webp",
      "available": true,
      "labels": [],
+     "options": [
+      {
+       "name": "Do wyboru",
+       "required": true,
+       "list": [
+        {
+         "name": "500 ml",
+         "price": 15.0
+        },
+        {
+         "name": "950 ml",
+         "price": 20.0
+        }
+       ]
+      }
+     ],
      "nameI18n": {
       "pl": "Zielona",
       "ru": "Zielona",
@@ -2532,15 +4180,54 @@
       "ru": "Лёгкий, свежий, деликатный во вкусе.",
       "en": "Light, fresh, delicate in taste.",
       "ua": "Легкий, свіжий, делікатний у смаку."
-     }
+     },
+     "optionsI18n": [
+      {
+       "name": {
+        "pl": "Do wyboru"
+       },
+       "required": true,
+       "list": [
+        {
+         "name": {
+          "pl": "500 ml"
+         },
+         "price": 15.0
+        },
+        {
+         "name": {
+          "pl": "950 ml"
+         },
+         "price": 20.0
+        }
+       ],
+       "portion": true
+      }
+     ]
     },
     {
      "name": "Herbata owocowa",
      "description": "Aromatyczna kompozycja owoców i hibiskusa",
-     "price": 0.0,
+     "price": 16.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_pGyiC-gWBdI-ekmJG.webp",
      "available": true,
      "labels": [],
+     "options": [
+      {
+       "name": "Do wyboru",
+       "required": true,
+       "list": [
+        {
+         "name": "500 ml",
+         "price": 16.0
+        },
+        {
+         "name": "950 ml",
+         "price": 21.0
+        }
+       ]
+      }
+     ],
      "nameI18n": {
       "pl": "Herbata owocowa",
       "ru": "Herbata owocowa",
@@ -2552,7 +4239,30 @@
       "ru": "Ароматная композиция фруктов и гибискуса.",
       "en": "An aromatic composition of fruit and hibiscus.",
       "ua": "Ароматна композиція фруктів і гібіскуса."
-     }
+     },
+     "optionsI18n": [
+      {
+       "name": {
+        "pl": "Do wyboru"
+       },
+       "required": true,
+       "list": [
+        {
+         "name": {
+          "pl": "500 ml"
+         },
+         "price": 16.0
+        },
+        {
+         "name": {
+          "pl": "950 ml"
+         },
+         "price": 21.0
+        }
+       ],
+       "portion": true
+      }
+     ]
     }
    ],
    "nameI18n": {
@@ -2565,8 +4275,6 @@
   {
    "hurl": "kawa",
    "name": "KAWA",
-   "desc": "",
-   "section": "herbata-i-kawa",
    "items": [
     {
      "name": "Espresso",
@@ -2575,6 +4283,18 @@
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_TQvMi-oWKDl-lMMhL.webp",
      "available": true,
      "labels": [],
+     "options": [
+      {
+       "name": "Syrop do kawy",
+       "required": false,
+       "list": [
+        {
+         "name": "Syrop",
+         "price": 2.0
+        }
+       ]
+      }
+     ],
      "nameI18n": {
       "pl": "Espresso",
       "ru": "Espresso",
@@ -2586,7 +4306,23 @@
       "ru": "",
       "en": "",
       "ua": ""
-     }
+     },
+     "optionsI18n": [
+      {
+       "name": {
+        "pl": "Syrop do kawy"
+       },
+       "required": false,
+       "list": [
+        {
+         "name": {
+          "pl": "Syrop"
+         },
+         "price": 2.0
+        }
+       ]
+      }
+     ]
     },
     {
      "name": "Americano",
@@ -2595,6 +4331,18 @@
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_YIGkJ-rFHtF-XFyry.webp",
      "available": true,
      "labels": [],
+     "options": [
+      {
+       "name": "Syrop do kawy",
+       "required": false,
+       "list": [
+        {
+         "name": "Syrop",
+         "price": 2.0
+        }
+       ]
+      }
+     ],
      "nameI18n": {
       "pl": "Americano",
       "ru": "Americano",
@@ -2606,7 +4354,23 @@
       "ru": "",
       "en": "",
       "ua": ""
-     }
+     },
+     "optionsI18n": [
+      {
+       "name": {
+        "pl": "Syrop do kawy"
+       },
+       "required": false,
+       "list": [
+        {
+         "name": {
+          "pl": "Syrop"
+         },
+         "price": 2.0
+        }
+       ]
+      }
+     ]
     },
     {
      "name": "Cappuccino",
@@ -2615,6 +4379,18 @@
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_iqwXC-elZbN-oPMIF.webp",
      "available": true,
      "labels": [],
+     "options": [
+      {
+       "name": "Syrop do kawy",
+       "required": false,
+       "list": [
+        {
+         "name": "Syrop",
+         "price": 2.0
+        }
+       ]
+      }
+     ],
      "nameI18n": {
       "pl": "Cappuccino",
       "ru": "Cappuccino",
@@ -2626,7 +4402,23 @@
       "ru": "",
       "en": "",
       "ua": ""
-     }
+     },
+     "optionsI18n": [
+      {
+       "name": {
+        "pl": "Syrop do kawy"
+       },
+       "required": false,
+       "list": [
+        {
+         "name": {
+          "pl": "Syrop"
+         },
+         "price": 2.0
+        }
+       ]
+      }
+     ]
     },
     {
      "name": "Latte",
@@ -2635,6 +4427,18 @@
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_KXlwt-DIwRt-PJmCt.webp",
      "available": true,
      "labels": [],
+     "options": [
+      {
+       "name": "Syrop do kawy",
+       "required": false,
+       "list": [
+        {
+         "name": "Syrop",
+         "price": 2.0
+        }
+       ]
+      }
+     ],
      "nameI18n": {
       "pl": "Latte",
       "ru": "Latte",
@@ -2646,7 +4450,23 @@
       "ru": "",
       "en": "",
       "ua": ""
-     }
+     },
+     "optionsI18n": [
+      {
+       "name": {
+        "pl": "Syrop do kawy"
+       },
+       "required": false,
+       "list": [
+        {
+         "name": {
+          "pl": "Syrop"
+         },
+         "price": 2.0
+        }
+       ]
+      }
+     ]
     },
     {
      "name": "Flat White",
@@ -2655,6 +4475,18 @@
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_MGZZo-gEPhl-GLGmq.webp",
      "available": true,
      "labels": [],
+     "options": [
+      {
+       "name": "Syrop do kawy",
+       "required": false,
+       "list": [
+        {
+         "name": "Syrop",
+         "price": 2.0
+        }
+       ]
+      }
+     ],
      "nameI18n": {
       "pl": "Flat White",
       "ru": "Flat White",
@@ -2666,7 +4498,23 @@
       "ru": "",
       "en": "",
       "ua": ""
-     }
+     },
+     "optionsI18n": [
+      {
+       "name": {
+        "pl": "Syrop do kawy"
+       },
+       "required": false,
+       "list": [
+        {
+         "name": {
+          "pl": "Syrop"
+         },
+         "price": 2.0
+        }
+       ]
+      }
+     ]
     }
    ],
    "nameI18n": {
@@ -2679,8 +4527,6 @@
   {
    "hurl": "napoje-zimne",
    "name": "NAPOJE ZIMNE",
-   "desc": "",
-   "section": "napoje-zimne",
    "items": [
     {
      "name": "Pepsi",
@@ -2689,6 +4535,7 @@
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_OOeiI-zrNmn-FWrbw.webp",
      "available": true,
      "labels": [],
+     "options": [],
      "nameI18n": {
       "pl": "Pepsi",
       "ru": "Pepsi",
@@ -2700,7 +4547,8 @@
       "ru": "",
       "en": "",
       "ua": ""
-     }
+     },
+     "optionsI18n": []
     },
     {
      "name": "Pepsi zero",
@@ -2709,6 +4557,7 @@
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_rkJce-LSmRl-TQtZG.webp",
      "available": true,
      "labels": [],
+     "options": [],
      "nameI18n": {
       "pl": "Pepsi zero",
       "ru": "Pepsi zero",
@@ -2720,7 +4569,8 @@
       "ru": "",
       "en": "",
       "ua": ""
-     }
+     },
+     "optionsI18n": []
     },
     {
      "name": "Coca-Cola",
@@ -2729,6 +4579,7 @@
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_GCzil-sDTkJ-JfanK.webp",
      "available": true,
      "labels": [],
+     "options": [],
      "nameI18n": {
       "pl": "Coca-Cola",
       "ru": "Coca-Cola",
@@ -2740,7 +4591,8 @@
       "ru": "",
       "en": "",
       "ua": ""
-     }
+     },
+     "optionsI18n": []
     },
     {
      "name": "Coca-Cola Zero Sugar",
@@ -2749,6 +4601,7 @@
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_CZdAj-QZcSh-OPGHU.webp",
      "available": true,
      "labels": [],
+     "options": [],
      "nameI18n": {
       "pl": "Coca-Cola Zero Sugar",
       "ru": "Coca-Cola Zero Sugar",
@@ -2760,7 +4613,8 @@
       "ru": "",
       "en": "",
       "ua": ""
-     }
+     },
+     "optionsI18n": []
     },
     {
      "name": "7-UP",
@@ -2769,6 +4623,7 @@
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_CDcas-yFOZC-oxomY.webp",
      "available": true,
      "labels": [],
+     "options": [],
      "nameI18n": {
       "pl": "7-UP",
       "ru": "7-UP",
@@ -2780,7 +4635,8 @@
       "ru": "",
       "en": "",
       "ua": ""
-     }
+     },
+     "optionsI18n": []
     },
     {
      "name": "Mirinda",
@@ -2789,6 +4645,7 @@
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_bkHGM-ypKDC-fZBsi.webp",
      "available": true,
      "labels": [],
+     "options": [],
      "nameI18n": {
       "pl": "Mirinda",
       "ru": "Mirinda",
@@ -2800,7 +4657,8 @@
       "ru": "",
       "en": "",
       "ua": ""
-     }
+     },
+     "optionsI18n": []
     },
     {
      "name": "Red Bull",
@@ -2809,6 +4667,7 @@
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/vDDmfnd-tBzASiS-OXBoJfr.webp",
      "available": true,
      "labels": [],
+     "options": [],
      "nameI18n": {
       "pl": "Red Bull",
       "ru": "Red Bull",
@@ -2820,7 +4679,8 @@
       "ru": "",
       "en": "",
       "ua": ""
-     }
+     },
+     "optionsI18n": []
     },
     {
      "name": "Sok",
@@ -2829,6 +4689,7 @@
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_WHeAl-IlJbZ-Svgsh.webp",
      "available": true,
      "labels": [],
+     "options": [],
      "nameI18n": {
       "pl": "Sok",
       "ru": "Sok",
@@ -2840,15 +4701,32 @@
       "ru": "",
       "en": "",
       "ua": ""
-     }
+     },
+     "optionsI18n": []
     },
     {
      "name": "Woda gazowana/niegazowana",
      "description": "",
-     "price": 0.0,
+     "price": 10.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_OmGAa-szkso-BSTAu.webp",
      "available": true,
      "labels": [],
+     "options": [
+      {
+       "name": "WODA GAZOWANA/NIEGAZOWANA",
+       "required": true,
+       "list": [
+        {
+         "name": "0.3",
+         "price": 10.0
+        },
+        {
+         "name": "0.7",
+         "price": 17.0
+        }
+       ]
+      }
+     ],
      "nameI18n": {
       "pl": "Woda gazowana/niegazowana",
       "ru": "Woda gazowana/niegazowana",
@@ -2860,7 +4738,30 @@
       "ru": "",
       "en": "",
       "ua": ""
-     }
+     },
+     "optionsI18n": [
+      {
+       "name": {
+        "pl": "WODA GAZOWANA/NIEGAZOWANA"
+       },
+       "required": true,
+       "list": [
+        {
+         "name": {
+          "pl": "0.3"
+         },
+         "price": 10.0
+        },
+        {
+         "name": {
+          "pl": "0.7"
+         },
+         "price": 17.0
+        }
+       ],
+       "portion": true
+      }
+     ]
     },
     {
      "name": "Borjomi",
@@ -2869,6 +4770,7 @@
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_KJDuG-tiWhb-eoBhz.webp",
      "available": true,
      "labels": [],
+     "options": [],
      "nameI18n": {
       "pl": "Borjomi",
       "ru": "Borjomi",
@@ -2880,7 +4782,8 @@
       "ru": "",
       "en": "",
       "ua": ""
-     }
+     },
+     "optionsI18n": []
     },
     {
      "name": "Fanta",
@@ -2889,6 +4792,7 @@
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_vAHvn-ybXUk-lozjM.webp",
      "available": true,
      "labels": [],
+     "options": [],
      "nameI18n": {
       "pl": "Fanta",
       "ru": "Fanta",
@@ -2900,7 +4804,8 @@
       "ru": "",
       "en": "",
       "ua": ""
-     }
+     },
+     "optionsI18n": []
     },
     {
      "name": "Sprite",
@@ -2909,6 +4814,7 @@
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_kySnr-NYleF-sWLyG.webp",
      "available": true,
      "labels": [],
+     "options": [],
      "nameI18n": {
       "pl": "Sprite",
       "ru": "Sprite",
@@ -2920,7 +4826,8 @@
       "ru": "",
       "en": "",
       "ua": ""
-     }
+     },
+     "optionsI18n": []
     },
     {
      "name": "Tonic Water",
@@ -2929,6 +4836,7 @@
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_ebmnI-ePMwY-Mktla.webp",
      "available": true,
      "labels": [],
+     "options": [],
      "nameI18n": {
       "pl": "Tonic Water",
       "ru": "Tonic Water",
@@ -2940,7 +4848,8 @@
       "ru": "",
       "en": "",
       "ua": ""
-     }
+     },
+     "optionsI18n": []
     }
    ],
    "nameI18n": {
@@ -2953,8 +4862,6 @@
   {
    "hurl": "rolls",
    "name": "Rolls",
-   "desc": "",
-   "section": "sushi-by-balance",
    "items": [
     {
      "name": "Philadelphia z łososiem",
@@ -2963,6 +4870,7 @@
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_WYqzk-hmEuy-dWGGX.webp",
      "available": true,
      "labels": [],
+     "options": [],
      "nameI18n": {
       "pl": "Philadelphia z łososiem",
       "ru": "Philadelphia z łososiem",
@@ -2974,7 +4882,8 @@
       "ru": "Лосось, сыр Philadelphia, авокадо, огурец, рис, нори.",
       "en": "Salmon, Philadelphia cheese, avocado, cucumber, rice, nori.",
       "ua": "Лосось, сир Philadelphia, авокадо, огірок, рис, норі."
-     }
+     },
+     "optionsI18n": []
     },
     {
      "name": "Philadelphia z krewetkami",
@@ -2983,6 +4892,7 @@
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_kKcGH-hyJBu-qRliD.webp",
      "available": true,
      "labels": [],
+     "options": [],
      "nameI18n": {
       "pl": "Philadelphia z krewetkami",
       "ru": "Philadelphia z krewetkami",
@@ -2994,7 +4904,8 @@
       "ru": "Креветки, сыр Philadelphia, авокадо, огурец, тобико, рис, нори.",
       "en": "Shrimp, Philadelphia cheese, avocado, cucumber, tobiko, rice, nori.",
       "ua": "Креветки, сир Philadelphia, авокадо, огірок, тобіко, рис, норі."
-     }
+     },
+     "optionsI18n": []
     },
     {
      "name": "Philadelphia z węgorzem",
@@ -3003,6 +4914,7 @@
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_IHMTe-ZaIkg-ERlFa.webp",
      "available": true,
      "labels": [],
+     "options": [],
      "nameI18n": {
       "pl": "Philadelphia z węgorzem",
       "ru": "Philadelphia z węgorzem",
@@ -3014,7 +4926,8 @@
       "ru": "Угорь, сыр Philadelphia, авокадо, огурец, соус унаги, кунжут, рис, нори.",
       "en": "Eel, Philadelphia cheese, avocado, cucumber, unagi sauce, sesame, rice, nori.",
       "ua": "Вугор, сир Philadelphia, авокадо, огірок, соус унагі, кунжут, рис, норі."
-     }
+     },
+     "optionsI18n": []
     },
     {
      "name": "California z łososiem",
@@ -3023,6 +4936,7 @@
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_kDbOA-JrhCz-DfyYy.webp",
      "available": true,
      "labels": [],
+     "options": [],
      "nameI18n": {
       "pl": "California z łososiem",
       "ru": "California z łososiem",
@@ -3034,7 +4948,8 @@
       "ru": "Лосось, сыр, авокадо, огурец, кунжут, рис, нори.",
       "en": "Salmon, cheese, avocado, cucumber, sesame, rice, nori.",
       "ua": "Лосось, сир, авокадо, огірок, кунжут, рис, норі."
-     }
+     },
+     "optionsI18n": []
     },
     {
      "name": "California z krewetkami",
@@ -3043,6 +4958,7 @@
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_ZHZJs-QDPpR-mpDeH.webp",
      "available": true,
      "labels": [],
+     "options": [],
      "nameI18n": {
       "pl": "California z krewetkami",
       "ru": "California z krewetkami",
@@ -3054,7 +4970,8 @@
       "ru": "Креветки, сыр, авокадо, огурец, тобико, рис, нори.",
       "en": "Shrimp, cheese, avocado, cucumber, tobiko, rice, nori.",
       "ua": "Креветки, сир, авокадо, огірок, тобіко, рис, норі."
-     }
+     },
+     "optionsI18n": []
     },
     {
      "name": "Roll pieczony z łososiem",
@@ -3063,6 +4980,7 @@
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_nDIOv-YaHiR-GrDCG.webp",
      "available": true,
      "labels": [],
+     "options": [],
      "nameI18n": {
       "pl": "Roll pieczony z łososiem",
       "ru": "Roll pieczony z łososiem",
@@ -3074,7 +4992,8 @@
       "ru": "Лосось, сыр, майонез, соус унаги, кунжут, рис, нори.",
       "en": "Salmon, cheese, mayo, unagi sauce, sesame, rice, nori.",
       "ua": "Лосось, сир, майонез, соус унагі, кунжут, рис, норі."
-     }
+     },
+     "optionsI18n": []
     },
     {
      "name": "Roll pieczony z krewetkami",
@@ -3083,6 +5002,7 @@
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_EqEXw-nDcYM-bcCeF.webp",
      "available": true,
      "labels": [],
+     "options": [],
      "nameI18n": {
       "pl": "Roll pieczony z krewetkami",
       "ru": "Roll pieczony z krewetkami",
@@ -3094,7 +5014,8 @@
       "ru": "Креветки, сыр, майонез, кунжут, соус унаги, рис, нори.",
       "en": "Shrimp, cheese, mayo, sesame, unagi sauce, rice, nori.",
       "ua": "Креветки, сир, майонез, кунжут, соус унагі, рис, норі."
-     }
+     },
+     "optionsI18n": []
     },
     {
      "name": "W tempurze z łososiem",
@@ -3103,6 +5024,7 @@
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_bVFrI-EjzSF-ukIMa.webp",
      "available": true,
      "labels": [],
+     "options": [],
      "nameI18n": {
       "pl": "W tempurze z łososiem",
       "ru": "W tempurze z łososiem",
@@ -3114,7 +5036,8 @@
       "ru": "Лосось, сыр, огурец, кунжут, соус унаги, рис, нори.",
       "en": "Salmon, cheese, cucumber, sesame, unagi sauce, rice, nori.",
       "ua": "Лосось, сир, огірок, кунжут, соус унагі, рис, норі."
-     }
+     },
+     "optionsI18n": []
     },
     {
      "name": "W tempurze z krewetkami",
@@ -3123,6 +5046,7 @@
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_cXeOy-ytiZz-DtRFP.webp",
      "available": true,
      "labels": [],
+     "options": [],
      "nameI18n": {
       "pl": "W tempurze z krewetkami",
       "ru": "W tempurze z krewetkami",
@@ -3134,7 +5058,8 @@
       "ru": "Креветка в темпуре, сыр, огурец, редис, соус шрирача-майо, рис, нори.",
       "en": "Tempura shrimp, cheese, cucumber, radish, sriracha mayo, rice, nori.",
       "ua": "Креветка в темпурі, сир, огірок, редис, соус шрірача-майо, рис, норі."
-     }
+     },
+     "optionsI18n": []
     }
    ],
    "nameI18n": {
@@ -3147,8 +5072,6 @@
   {
    "hurl": "burgery",
    "name": "Burgery",
-   "desc": "",
-   "section": "sushi-by-balance",
    "items": [
     {
      "name": "Burger z łososiem",
@@ -3157,6 +5080,7 @@
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_HpZbT-kraUX-UXaFG.webp",
      "available": true,
      "labels": [],
+     "options": [],
      "nameI18n": {
       "pl": "Burger z łososiem",
       "ru": "Burger z łososiem",
@@ -3168,7 +5092,8 @@
       "ru": "Лосось, сыр Philadelphia, чеддер, огурец, маринованная тыква, соус унаги.",
       "en": "Salmon, Philadelphia cheese, cheddar, cucumber, pickled gourd, unagi sauce.",
       "ua": "Лосось, сир Philadelphia, чеддер, огірок, маринований гарбуз, соус унагі."
-     }
+     },
+     "optionsI18n": []
     },
     {
      "name": "Burger z krewetkami",
@@ -3177,6 +5102,7 @@
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_DbQsv-Qluhu-VeGMD.webp",
      "available": true,
      "labels": [],
+     "options": [],
      "nameI18n": {
       "pl": "Burger z krewetkami",
       "ru": "Burger z krewetkami",
@@ -3188,7 +5114,8 @@
       "ru": "Philadelphia, чеддер, огурец, редиска, тобико, соус шрирача-майо.",
       "en": "Philadelphia, cheddar, cucumber, radish, tobiko, sriracha mayo.",
       "ua": "Philadelphia, чеддер, огірок, редиска, тобіко, соус шрірача-майо."
-     }
+     },
+     "optionsI18n": []
     }
    ],
    "nameI18n": {
@@ -3201,8 +5128,6 @@
   {
    "hurl": "sety",
    "name": "Sety",
-   "desc": "",
-   "section": "sushi-by-balance",
    "items": [
     {
      "name": "VIBE SET",
@@ -3211,6 +5136,7 @@
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_FIkib-KpAet-FXCuT.webp",
      "available": true,
      "labels": [],
+     "options": [],
      "nameI18n": {
       "pl": "VIBE SET",
       "ru": "VIBE SET",
@@ -3222,7 +5148,8 @@
       "ru": "Philadelphia с лососем.\n\nВ комплекте: соевый соус, васаби, имбирь.",
       "en": "Philadelphia with salmon.\n\nIncluded: soy sauce, wasabi, ginger.",
       "ua": "Philadelphia з лососем.\n\nУ комплекті: соєвий соус, васабі, імбир."
-     }
+     },
+     "optionsI18n": []
     },
     {
      "name": "AFTER DARK",
@@ -3231,6 +5158,7 @@
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_CPebG-SXWld-ekEhU.webp",
      "available": true,
      "labels": [],
+     "options": [],
      "nameI18n": {
       "pl": "AFTER DARK",
       "ru": "AFTER DARK",
@@ -3242,7 +5170,8 @@
       "ru": "Philadelphia с лососем, Philadelphia с угрём, California с креветками, Маки с креветками.\n\nВ комплекте: соевый соус, васаби, имбирь.",
       "en": "Philadelphia with salmon, Philadelphia with eel, California with shrimp, Maki with shrimp.\n\nIncluded: soy sauce, wasabi, ginger.",
       "ua": "Philadelphia з лососем, Philadelphia з вугром, California з креветками, Макі з креветками.\n\nУ комплекті: соєвий соус, васабі, імбир."
-     }
+     },
+     "optionsI18n": []
     },
     {
      "name": "SMOKE BOX",
@@ -3251,6 +5180,7 @@
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_kbQNJ-labNX-UnbeM.webp",
      "available": true,
      "labels": [],
+     "options": [],
      "nameI18n": {
       "pl": "SMOKE BOX",
       "ru": "SMOKE BOX",
@@ -3262,7 +5192,8 @@
       "ru": "Лосось, краб, креветки в темпуре.\n\nВ комплекте: соевый соус, васаби, имбирь.",
       "en": "Salmon, crab, tempura shrimp.\n\nIncluded: soy sauce, wasabi, ginger.",
       "ua": "Лосось, краб, креветки в темпурі.\n\nУ комплекті: соєвий соус, васабі, імбир."
-     }
+     },
+     "optionsI18n": []
     },
     {
      "name": "MIDNIGHT",
@@ -3271,6 +5202,7 @@
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_GGIik-VDUkr-zwklm.webp",
      "available": true,
      "labels": [],
+     "options": [],
      "nameI18n": {
       "pl": "MIDNIGHT",
       "ru": "MIDNIGHT",
@@ -3282,7 +5214,8 @@
       "ru": "Печёный ролл с лососем, печёный ролл с креветками, печёный с мидиями.\n\nВ комплекте: соевый соус, васаби, имбирь.",
       "en": "Baked roll with salmon, baked roll with shrimp, baked with mussels.\n\nIncluded: soy sauce, wasabi, ginger.",
       "ua": "Печений рол із лососем, печений рол із креветками, печений із мідіями.\n\nУ комплекті: соєвий соус, васабі, імбир."
-     }
+     },
+     "optionsI18n": []
     }
    ],
    "nameI18n": {
@@ -3290,6 +5223,172 @@
     "ru": "Сеты",
     "en": "Sets",
     "ua": "Сети"
+   }
+  },
+  {
+   "hurl": "desery-premium",
+   "name": "DESERY PREMIUM",
+   "items": [
+    {
+     "name": "Trifle Snickers",
+     "description": "Czekolada, karmel, orzeszki. Słodki klasyk z charakterem.",
+     "price": 24.0,
+     "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_oVfxz-lwAaw-fSWik.webp",
+     "available": true,
+     "labels": [],
+     "options": [],
+     "nameI18n": {
+      "pl": "Trifle Snickers",
+      "ru": "Trifle Snickers",
+      "en": "Trifle Snickers",
+      "ua": "Trifle Snickers"
+     },
+     "descI18n": {
+      "pl": "Czekolada, karmel, orzeszki. Słodki klasyk z charakterem.",
+      "ru": "Шоколад, карамель, орешки. Сладкая классика с характером.",
+      "en": "Chocolate, caramel, nuts. A sweet classic with character.",
+      "ua": "Шоколад, карамель, горішки. Солодка класика з характером."
+     },
+     "optionsI18n": []
+    },
+    {
+     "name": "Trifle Red Velvet z truskąwką",
+     "description": "Lekki, elegancki i idealnie łączy słodycz z owocową nutą",
+     "price": 24.0,
+     "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_VnkIk-zJvdl-gJpjl.webp",
+     "available": true,
+     "labels": [],
+     "options": [],
+     "nameI18n": {
+      "pl": "Trifle Red Velvet z truskąwką",
+      "ru": "Trifle Red Velvet z truskąwką",
+      "en": "Trifle Red Velvet z truskąwką",
+      "ua": "Trifle Red Velvet z truskąwką"
+     },
+     "descI18n": {
+      "pl": "Lekki, elegancki i idealnie łączy słodycz z owocową nutą",
+      "ru": "Лёгкий, элегантный, идеально сочетает сладость с фруктовой нотой.",
+      "en": "Light, elegant, perfectly balancing sweetness with a fruity note.",
+      "ua": "Легкий, елегантний, ідеально поєднує солодкість із фруктовою нотою."
+     },
+     "optionsI18n": []
+    },
+    {
+     "name": "Trifle Wiśnia-Czekolada",
+     "description": "Czekolada i soczysta wiśnia w jednym kubeczku.",
+     "price": 24.0,
+     "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_lgNla-HeJJt-ykGYX.webp",
+     "available": true,
+     "labels": [],
+     "options": [],
+     "nameI18n": {
+      "pl": "Trifle Wiśnia-Czekolada",
+      "ru": "Trifle Wiśnia-Czekolada",
+      "en": "Trifle Wiśnia-Czekolada",
+      "ua": "Trifle Wiśnia-Czekolada"
+     },
+     "descI18n": {
+      "pl": "Czekolada i soczysta wiśnia w jednym kubeczku.",
+      "ru": "Шоколад и сочная вишня в одном стаканчике.",
+      "en": "Chocolate and juicy cherry in one cup.",
+      "ua": "Шоколад і соковита вишня в одному стаканчику."
+     },
+     "optionsI18n": []
+    },
+    {
+     "name": "Trifle Wanilia z owocami leśnimy",
+     "description": "Waniliowy krem i owoce leśne  - lekki, świeży i bardzo przyjemny deser na wieczór.",
+     "price": 24.0,
+     "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_fNrFt-WNbvY-StYZH.webp",
+     "available": true,
+     "labels": [],
+     "options": [],
+     "nameI18n": {
+      "pl": "Trifle Wanilia z owocami leśnimy",
+      "ru": "Trifle Wanilia z owocami leśnimy",
+      "en": "Trifle Wanilia z owocami leśnimy",
+      "ua": "Trifle Wanilia z owocami leśnimy"
+     },
+     "descI18n": {
+      "pl": "Waniliowy krem i owoce leśne  - lekki, świeży i bardzo przyjemny deser na wieczór.",
+      "ru": "Ванильный крем и лесные ягоды — лёгкий, свежий и очень приятный десерт на вечер.",
+      "en": "Vanilla cream and forest berries — a light, fresh and very pleasant evening dessert.",
+      "ua": "Ванільний крем і лісові ягоди — легкий, свіжий і дуже приємний десерт на вечір."
+     },
+     "optionsI18n": []
+    },
+    {
+     "name": "Napoleon w kubeczkach",
+     "description": "Chrupiące warstwy ciasta francuskiego i aksamitny krem waniliowy. Klasyka w nowoczesnym wydaniu.",
+     "price": 29.0,
+     "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_CuluW-wGrOs-SwPGK.webp",
+     "available": true,
+     "labels": [],
+     "options": [],
+     "nameI18n": {
+      "pl": "Napoleon w kubeczkach",
+      "ru": "Napoleon w kubeczkach",
+      "en": "Napoleon w kubeczkach",
+      "ua": "Napoleon w kubeczkach"
+     },
+     "descI18n": {
+      "pl": "Chrupiące warstwy ciasta francuskiego i aksamitny krem waniliowy. Klasyka w nowoczesnym wydaniu.",
+      "ru": "Хрустящие слои слоёного теста и бархатный ванильный крем. Классика в современной подаче.",
+      "en": "Crisp layers of puff pastry and velvety vanilla cream. A classic in a modern take.",
+      "ua": "Хрусткі шари листкового тіста й оксамитовий ванільний крем. Класика в сучасній подачі."
+     },
+     "optionsI18n": []
+    },
+    {
+     "name": "Tiramisu  truskawkowe",
+     "description": "Owocowa wersja włoskiego klasyka - kremowa, lekka i z wyraźną nutą truskawki",
+     "price": 27.0,
+     "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_ICssX-FkBQc-DvTQX.webp",
+     "available": true,
+     "labels": [],
+     "options": [],
+     "nameI18n": {
+      "pl": "Tiramisu  truskawkowe",
+      "ru": "Tiramisu  truskawkowe",
+      "en": "Tiramisu  truskawkowe",
+      "ua": "Tiramisu  truskawkowe"
+     },
+     "descI18n": {
+      "pl": "Owocowa wersja włoskiego klasyka - kremowa, lekka i z wyraźną nutą truskawki",
+      "ru": "Фруктовая версия итальянской классики — кремовая, лёгкая и с выраженной ноткой клубники.",
+      "en": "A fruity version of the Italian classic — creamy, light and with a distinct strawberry note.",
+      "ua": "Фруктова версія італійської класики — кремова, легка й з виразною ноткою полуниці."
+     },
+     "optionsI18n": []
+    },
+    {
+     "name": "Trzy Czekolady",
+     "description": "Trzy warstwy czekolady. Głęboki smak, kremowa tekstura i maksimum przyjemności.",
+     "price": 27.0,
+     "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_ytyBF-YHpoR-lBDba.webp",
+     "available": true,
+     "labels": [],
+     "options": [],
+     "nameI18n": {
+      "pl": "Trzy Czekolady",
+      "ru": "Trzy Czekolady",
+      "en": "Trzy Czekolady",
+      "ua": "Trzy Czekolady"
+     },
+     "descI18n": {
+      "pl": "Trzy warstwy czekolady. Głęboki smak, kremowa tekstura i maksimum przyjemności.",
+      "ru": "Три слоя шоколада. Глубокий вкус, кремовая текстура и максимум удовольствия.",
+      "en": "Three layers of chocolate. Deep flavour, creamy texture and maximum pleasure.",
+      "ua": "Три шари шоколаду. Глибокий смак, кремова текстура і максимум задоволення."
+     },
+     "optionsI18n": []
+    }
+   ],
+   "nameI18n": {
+    "pl": "DESERY PREMIUM",
+    "ru": "ПРЕМИУМ ДЕСЕРТЫ",
+    "en": "PREMIUM DESSERTS",
+    "ua": "ПРЕМІУМ ДЕСЕРТИ"
    }
   }
  ],

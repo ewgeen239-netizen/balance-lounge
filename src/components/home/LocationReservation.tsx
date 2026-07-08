@@ -3,14 +3,16 @@
 import { motion } from "framer-motion";
 import { useLang } from "@/components/LangProvider";
 import { useReservation } from "@/components/booking/ReservationModal";
-import { WEEKDAYS } from "@/lib/i18n";
+import { weekdays } from "@/lib/i18n";
 import { parseJSON, type HoursRow } from "@/lib/utils";
+import { SocialLinks } from "@/components/SocialLinks";
 
 type BarData = {
   address: string;
   phone: string;
   hours: string;
   instagram: string;
+  facebook: string;
   whatsapp: string;
   telegram: string;
   lat: number;
@@ -24,8 +26,9 @@ export function LocationReservation({ bar }: { bar: BarData }) {
   const order = [1, 2, 3, 4, 5, 6, 0]; // Mon..Sun
   const todayDow = new Date().getDay();
 
-  const mapsEmbed = `https://maps.google.com/maps?q=${encodeURIComponent(bar.address)}&z=16&output=embed`;
-  const routeUrl = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(bar.address)}`;
+  // Pin the exact coordinates (marker) but keep the address as the visible text.
+  const mapsEmbed = `https://maps.google.com/maps?q=${bar.lat},${bar.lng}&z=17&output=embed`;
+  const routeUrl = `https://www.google.com/maps/dir/?api=1&destination=${bar.lat},${bar.lng}`;
 
   return (
     <section className="container-x py-16">
@@ -51,11 +54,7 @@ export function LocationReservation({ bar }: { bar: BarData }) {
               </a>
 
               <p className="label mt-6">{t("home.socials")}</p>
-              <div className="flex gap-3">
-                {bar.instagram && <a href={bar.instagram} target="_blank" rel="noreferrer" className="rounded-full border border-white/15 px-4 py-1.5 text-sm hover:border-neon hover:text-neon">Instagram</a>}
-                {bar.whatsapp && <a href={bar.whatsapp} target="_blank" rel="noreferrer" className="rounded-full border border-white/15 px-4 py-1.5 text-sm hover:border-neon hover:text-neon">WhatsApp</a>}
-                {bar.telegram && <a href={bar.telegram} target="_blank" rel="noreferrer" className="rounded-full border border-white/15 px-4 py-1.5 text-sm hover:border-neon hover:text-neon">Telegram</a>}
-              </div>
+              <SocialLinks instagram={bar.instagram} facebook={bar.facebook} whatsapp={bar.whatsapp} telegram={bar.telegram} />
             </div>
 
             <div>
@@ -69,7 +68,7 @@ export function LocationReservation({ bar }: { bar: BarData }) {
                       key={d}
                       className={`flex justify-between gap-4 ${isToday ? "text-neon" : "text-neutral-300"}`}
                     >
-                      <span>{WEEKDAYS[lang][d]}</span>
+                      <span>{weekdays(lang)[d]}</span>
                       <span className="tabular-nums">
                         {!row || row.closed ? "—" : `${row.open}–${row.close}`}
                       </span>

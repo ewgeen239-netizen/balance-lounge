@@ -35,6 +35,7 @@ export default async function AboutPage() {
             phone: bar.phone,
             hours: bar.hours,
             instagram: bar.instagram,
+            facebook: bar.facebook,
             whatsapp: bar.whatsapp,
             telegram: bar.telegram,
             lat: bar.lat,

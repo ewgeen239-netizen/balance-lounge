@@ -3,8 +3,6 @@
   {
    "hurl": "shisha",
    "name": "SHISHA",
-   "desc": "Shisha w Balance to chwila relaksu przygotowana przez doświadczonych Shisha Masterów, którzy dbają o idealny balans smaku i temperatury. \nOptymalny czas sesji to około 60–75 minut. Aby każda sesja zachowała swój najlepszy charakter, obowiązuje u nas mała zasada: 1 shisha maksymalnie dla 3 osób.\nW kwestii regulacji ciepła prosimy o kontakt z obsługą. Niech ten wieczór stanie się chwilą prawdziwego relaksu.\n — Zespół Balance.",
-   "section": "shisha-balance",
    "items": [
     {
      "name": "Light",
@@ -12,7 +10,39 @@
      "price": 100.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_BqKue-UwXTC-VianC.webp",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": [
+      {
+       "name": "Dodatki",
+       "required": false,
+       "list": [
+        {
+         "name": "Baza na soku – głębszy, bardziej nasycony aromat",
+         "price": 0.0
+        },
+        {
+         "name": "Baza na mleku – aksamitna, kremowa struktura dymu",
+         "price": 20.0
+        },
+        {
+         "name": "Alkohol w asortymencie – indywidualny akcent charakteru",
+         "price": 0.0
+        },
+        {
+         "name": "Ice bazooka - chłodzący dodatek do shisha, zapewniający lodowy efekt",
+         "price": 10.0
+        },
+        {
+         "name": "Owocowy cybuch – maksymalna intensywność i trwałość",
+         "price": 50.0
+        },
+        {
+         "name": "Nie wiesz co wybrać? Dopasujemy shishę do Twojego nastroju, herbaty lub drinka.",
+         "price": 0.0
+        }
+       ]
+      }
+     ]
     },
     {
      "name": "Medium",
@@ -20,7 +50,39 @@
      "price": 110.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_QFHRQ-YewOV-ZdZCe.webp",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": [
+      {
+       "name": "Dodatki",
+       "required": false,
+       "list": [
+        {
+         "name": "Baza na soku – głębszy, bardziej nasycony aromat",
+         "price": 0.0
+        },
+        {
+         "name": "Baza na mleku – aksamitna, kremowa struktura dymu",
+         "price": 20.0
+        },
+        {
+         "name": "Alkohol w asortymencie – indywidualny akcent charakteru",
+         "price": 0.0
+        },
+        {
+         "name": "Ice bazooka - chłodzący dodatek do shisha, zapewniający lodowy efekt",
+         "price": 10.0
+        },
+        {
+         "name": "Owocowy cybuch – maksymalna intensywność i trwałość",
+         "price": 50.0
+        },
+        {
+         "name": "Nie wiesz co wybrać? Dopasujemy shishę do Twojego nastroju, herbaty lub drinka.",
+         "price": 0.0
+        }
+       ]
+      }
+     ]
     },
     {
      "name": "Strong",
@@ -28,7 +90,39 @@
      "price": 120.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_hxHHe-duVmD-WxCHr.webp",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": [
+      {
+       "name": "Dodatki",
+       "required": false,
+       "list": [
+        {
+         "name": "Baza na soku – głębszy, bardziej nasycony aromat",
+         "price": 0.0
+        },
+        {
+         "name": "Baza na mleku – aksamitna, kremowa struktura dymu",
+         "price": 20.0
+        },
+        {
+         "name": "Alkohol w asortymencie – indywidualny akcent charakteru",
+         "price": 0.0
+        },
+        {
+         "name": "Ice bazooka - chłodzący dodatek do shisha, zapewniający lodowy efekt",
+         "price": 10.0
+        },
+        {
+         "name": "Owocowy cybuch – maksymalna intensywność i trwałość",
+         "price": 50.0
+        },
+        {
+         "name": "Nie wiesz co wybrać? Dopasujemy shishę do Twojego nastroju, herbaty lub drinka.",
+         "price": 0.0
+        }
+       ]
+      }
+     ]
     },
     {
      "name": "Electroniczny cybuch",
@@ -36,7 +130,8 @@
      "price": 0.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_DmbVL-EbDsk-KIGCt.webp",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": []
     },
     {
      "name": "Perfume",
@@ -44,15 +139,14 @@
      "price": 160.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_jIBkh-YJRln-twIZL.webp",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": []
     }
    ]
   },
   {
    "hurl": "signature-cocktails",
    "name": "SIGNATURE COCKTAILS",
-   "desc": "",
-   "section": "menu-barowe",
    "items": [
     {
      "name": "Valentine Sour",
@@ -60,7 +154,8 @@
      "price": 42.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_EiYDl-ylJRM-JXEwo.webp",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": []
     },
     {
      "name": "Bee’s Knees",
@@ -68,7 +163,8 @@
      "price": 38.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_jtlcH-MUafB-DZJCN.webp",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": []
     },
     {
      "name": "Hot Passion",
@@ -76,7 +172,8 @@
      "price": 38.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_blitH-uEofj-xNRBF.webp",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": []
     },
     {
      "name": "Rose Balance",
@@ -84,7 +181,8 @@
      "price": 42.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_eKVOs-EdISG-DyLVM.webp",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": []
     },
     {
      "name": "Cherry Manhattan",
@@ -92,7 +190,8 @@
      "price": 46.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_CCFDl-fEVHH-FtnEN.webp",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": []
     },
     {
      "name": "Punta Cana",
@@ -100,7 +199,8 @@
      "price": 42.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_KlCTg-VDhJd-wNpTD.webp",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": []
     },
     {
      "name": "Lavender Paloma",
@@ -108,7 +208,8 @@
      "price": 44.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_thKzE-LWYCd-LrIRl.webp",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": []
     },
     {
      "name": "Grateful Dead",
@@ -116,7 +217,8 @@
      "price": 48.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_QvwLl-JCIXn-JZMPK.webp",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": []
     },
     {
      "name": "Apple Cinnamon Whiskey Smash",
@@ -124,7 +226,8 @@
      "price": 39.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_rDEbu-klzIg-JsUSH.webp",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": []
     },
     {
      "name": "A Perfect Day",
@@ -132,7 +235,8 @@
      "price": 45.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_HPIYQ-JloYU-cSbCS.webp",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": []
     },
     {
      "name": "Spicy Mango Margarita",
@@ -140,7 +244,8 @@
      "price": 44.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_DCxzE-tFGkk-ZCiBU.webp",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": []
     },
     {
      "name": "Niespodzianka od barmana",
@@ -148,15 +253,14 @@
      "price": 50.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_tjrzb-gtgYL-tmDJe.webp",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": []
     }
    ]
   },
   {
    "hurl": "classic-cocktails",
    "name": "CLASSIC COCKTAILS",
-   "desc": "",
-   "section": "menu-barowe",
    "items": [
     {
      "name": "Old Fashioned",
@@ -164,7 +268,8 @@
      "price": 44.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_PVLrk-IDeHi-KNbAP.webp",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": []
     },
     {
      "name": "Negroni",
@@ -172,7 +277,8 @@
      "price": 40.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_goJGB-WoIqJ-hfJJX.webp",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": []
     },
     {
      "name": "Whiskey Sour",
@@ -180,7 +286,8 @@
      "price": 40.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_VuJEx-IlrCD-IlkNi.webp",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": []
     },
     {
      "name": "Aperol Spritz",
@@ -188,15 +295,17 @@
      "price": 32.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_JCGmQ-vCDbb-vRWoZ.webp",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": []
     },
     {
      "name": "Mojito",
      "description": "Limonka, cukier trzcinowy, mięta, biały rum.\nOrzeźwiający klasyk z nutą mięty i cytrusowej świeżości.\n• fresh • citrus",
      "price": 34.0,
-     "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_TTEaf-bvDHT-KbbDX.webp",
+     "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_ejpxH-bweJr-pMaVP.webp",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": []
     },
     {
      "name": "Cuba Libre",
@@ -204,7 +313,8 @@
      "price": 32.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_ZIcGI-bkKDE-aLcZe.webp",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": []
     },
     {
      "name": "Pornstar Martini",
@@ -212,7 +322,8 @@
      "price": 42.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_OFRUJ-HEpDB-eaMDx.webp",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": []
     },
     {
      "name": "Piña Colada",
@@ -220,7 +331,8 @@
      "price": 42.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_AVaKC-RGDkK-kntVU.webp",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": []
     },
     {
      "name": "Zombie",
@@ -228,7 +340,8 @@
      "price": 48.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_tfbCe-oVxQX-NdJbb.webp",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": []
     },
     {
      "name": "Long Island Iced Tea",
@@ -236,15 +349,14 @@
      "price": 49.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_FQMCU-Lanpu-GJvGn.webp",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": []
     }
    ]
   },
   {
    "hurl": "shot-menu",
    "name": "SHOT MENU",
-   "desc": "",
-   "section": "menu-barowe",
    "items": [
     {
      "name": "B-52",
@@ -252,7 +364,8 @@
      "price": 22.0,
      "image": "",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": []
     },
     {
      "name": "B-53",
@@ -260,7 +373,8 @@
      "price": 24.0,
      "image": "",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": []
     },
     {
      "name": "Medusa",
@@ -268,7 +382,8 @@
      "price": 22.0,
      "image": "",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": []
     },
     {
      "name": "Hiroshima",
@@ -276,7 +391,8 @@
      "price": 24.0,
      "image": "",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": []
     },
     {
      "name": "Berry Drop",
@@ -284,7 +400,8 @@
      "price": 20.0,
      "image": "",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": []
     },
     {
      "name": "Honey Lemon",
@@ -292,15 +409,14 @@
      "price": 18.0,
      "image": "",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": []
     }
    ]
   },
   {
    "hurl": "shot-sets",
    "name": "SHOT SETS",
-   "desc": "",
-   "section": "menu-barowe",
    "items": [
     {
      "name": "Balance Shot Set (6)",
@@ -308,7 +424,8 @@
      "price": 59.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_etXQE-vWNGH-QnbvU.webp",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": []
     },
     {
      "name": "Sweet Shot Set (4)",
@@ -316,7 +433,8 @@
      "price": 49.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_RhQhf-KGhzk-KJPEb.webp",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": []
     },
     {
      "name": "Mega Kamikaze Set (24)",
@@ -324,15 +442,33 @@
      "price": 219.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_ltbJc-qdIlM-nCLNX.webp",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": [
+      {
+       "name": "Wybierz sok",
+       "required": true,
+       "list": [
+        {
+         "name": "pomarańcza",
+         "price": 0.0
+        },
+        {
+         "name": "ananas",
+         "price": 0.0
+        },
+        {
+         "name": "jabłko",
+         "price": 0.0
+        }
+       ]
+      }
+     ]
     }
    ]
   },
   {
    "hurl": "balance-zero----bezalkoholowe",
    "name": "BALANCE ZERO — BEZALKOHOLOWE",
-   "desc": "",
-   "section": "menu-barowe",
    "items": [
     {
      "name": "Piña Colada Zero",
@@ -340,7 +476,8 @@
      "price": 26.0,
      "image": "",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": []
     },
     {
      "name": "Berry Fizz",
@@ -348,7 +485,8 @@
      "price": 25.0,
      "image": "",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": []
     },
     {
      "name": "Apple Ginger",
@@ -356,7 +494,8 @@
      "price": 27.0,
      "image": "",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": []
     },
     {
      "name": "Green Fizz",
@@ -364,7 +503,8 @@
      "price": 26.0,
      "image": "",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": []
     },
     {
      "name": "Raspberry Passion",
@@ -372,7 +512,8 @@
      "price": 28.0,
      "image": "",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": []
     },
     {
      "name": "Bumble Balance",
@@ -380,15 +521,14 @@
      "price": 24.0,
      "image": "",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": []
     }
    ]
   },
   {
    "hurl": "wino-musujace",
    "name": "WINO MUSUJĄCE",
-   "desc": "",
-   "section": "alkohol",
    "items": [
     {
      "name": "Bacio della Luna",
@@ -396,7 +536,8 @@
      "price": 34.0,
      "image": "",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": []
     },
     {
      "name": "Rivani extra dry",
@@ -404,15 +545,14 @@
      "price": 119.0,
      "image": "",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": []
     }
    ]
   },
   {
    "hurl": "biale-wino",
    "name": "BIAŁE WINO",
-   "desc": "",
-   "section": "alkohol",
    "items": [
     {
      "name": "Marquis des Bois",
@@ -420,7 +560,8 @@
      "price": 109.0,
      "image": "",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": []
     },
     {
      "name": "Pinot Grigio Straccali",
@@ -428,7 +569,8 @@
      "price": 119.0,
      "image": "",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": []
     },
     {
      "name": "Portillo Chardonnay",
@@ -436,15 +578,29 @@
      "price": 0.0,
      "image": "",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": [
+      {
+       "name": "WINO BIAŁE",
+       "required": true,
+       "list": [
+        {
+         "name": "150ml",
+         "price": 27.0
+        },
+        {
+         "name": "0.75L",
+         "price": 119.0
+        }
+       ]
+      }
+     ]
     }
    ]
   },
   {
    "hurl": "czerwone-wino",
    "name": "CZERWONE WINO",
-   "desc": "",
-   "section": "alkohol",
    "items": [
     {
      "name": "Primitivo Straccali",
@@ -452,7 +608,23 @@
      "price": 0.0,
      "image": "",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": [
+      {
+       "name": "WINO CZERWONE",
+       "required": true,
+       "list": [
+        {
+         "name": "150ML",
+         "price": 25.0
+        },
+        {
+         "name": "0.75l",
+         "price": 109.0
+        }
+       ]
+      }
+     ]
     },
     {
      "name": "Rota de Cabral tinto",
@@ -460,7 +632,8 @@
      "price": 119.0,
      "image": "",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": []
     },
     {
      "name": "Syrah rosso",
@@ -468,15 +641,14 @@
      "price": 109.0,
      "image": "",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": []
     }
    ]
   },
   {
    "hurl": "whisky-bourbon",
    "name": "WHISKY / BOURBON",
-   "desc": "",
-   "section": "alkohol",
    "items": [
     {
      "name": "Glenfiddich 12",
@@ -484,7 +656,23 @@
      "price": 0.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_ZHlfh-FOVxG-CELWZ.webp",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": [
+      {
+       "name": "Whisky / Bourbon",
+       "required": true,
+       "list": [
+        {
+         "name": "40ml",
+         "price": 32.0
+        },
+        {
+         "name": "0.7L",
+         "price": 470.0
+        }
+       ]
+      }
+     ]
     },
     {
      "name": "Jameson",
@@ -492,7 +680,23 @@
      "price": 0.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_uDEHb-zbwmk-BLaha.webp",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": [
+      {
+       "name": "Whisky / Bourbon",
+       "required": true,
+       "list": [
+        {
+         "name": "40ml",
+         "price": 22.0
+        },
+        {
+         "name": "0.7L",
+         "price": 289.0
+        }
+       ]
+      }
+     ]
     },
     {
      "name": "Bulleit Bourbon",
@@ -500,7 +704,23 @@
      "price": 0.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_pGFLH-HzKJI-CFIpB.webp",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": [
+      {
+       "name": "Whisky / Bourbon",
+       "required": true,
+       "list": [
+        {
+         "name": "40ml",
+         "price": 25.0
+        },
+        {
+         "name": "0.7L",
+         "price": 329.0
+        }
+       ]
+      }
+     ]
     },
     {
      "name": "Jack Daniel’s",
@@ -508,7 +728,23 @@
      "price": 0.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_CatZW-OpjWf-ylZah.webp",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": [
+      {
+       "name": "Whisky / Bourbon",
+       "required": true,
+       "list": [
+        {
+         "name": "40ml",
+         "price": 23.0
+        },
+        {
+         "name": "0.7L",
+         "price": 299.0
+        }
+       ]
+      }
+     ]
     },
     {
      "name": "Ardbeg",
@@ -516,7 +752,23 @@
      "price": 0.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_mEBJV-QAPLk-FxpIH.webp",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": [
+      {
+       "name": "Whisky / Bourbon",
+       "required": true,
+       "list": [
+        {
+         "name": "40ml",
+         "price": 34.0
+        },
+        {
+         "name": "0.7L",
+         "price": 490.0
+        }
+       ]
+      }
+     ]
     },
     {
      "name": "Monkey Shoulder",
@@ -524,7 +776,23 @@
      "price": 0.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_JRBFl-cblbN-JqCJC.webp",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": [
+      {
+       "name": "Whisky / Bourbon",
+       "required": true,
+       "list": [
+        {
+         "name": "40ml",
+         "price": 28.0
+        },
+        {
+         "name": "0.7L",
+         "price": 369.0
+        }
+       ]
+      }
+     ]
     },
     {
      "name": "Maker’s Mark",
@@ -532,15 +800,29 @@
      "price": 0.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_HCdtd-OMkfV-xOFDk.webp",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": [
+      {
+       "name": "Whisky / Bourbon",
+       "required": true,
+       "list": [
+        {
+         "name": "40ml",
+         "price": 27.0
+        },
+        {
+         "name": "0.7L",
+         "price": 359.0
+        }
+       ]
+      }
+     ]
     }
    ]
   },
   {
    "hurl": "likiery",
    "name": "LIKIERY",
-   "desc": "",
-   "section": "alkohol",
    "items": [
     {
      "name": "Jägermeister",
@@ -548,7 +830,8 @@
      "price": 23.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_uxIHz-LGlcv-LoiHY.webp",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": []
     },
     {
      "name": "Baileys",
@@ -556,7 +839,8 @@
      "price": 22.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_IxBwZ-zIGLn-iOGFN.webp",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": []
     },
     {
      "name": "Sambuca Fire",
@@ -564,7 +848,8 @@
      "price": 33.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_dLrsk-prhWG-ZUfoS.webp",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": []
     },
     {
      "name": "Amaretto",
@@ -572,7 +857,8 @@
      "price": 20.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_nlHJe-LKGHk-szJQw.webp",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": []
     },
     {
      "name": "Absinth",
@@ -580,15 +866,14 @@
      "price": 30.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_yXBUM-bvZCY-uFPPp.webp",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": []
     }
    ]
   },
   {
    "hurl": "wermuty",
    "name": "WERMUTY",
-   "desc": "",
-   "section": "alkohol",
    "items": [
     {
      "name": "Martini Rosso",
@@ -596,7 +881,8 @@
      "price": 20.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_NTXSb-hGjTe-vxleL.webp",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": []
     },
     {
      "name": "Martini Extra Dry",
@@ -604,7 +890,8 @@
      "price": 20.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_LeRUj-pNTEW-zNbcc.webp",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": []
     },
     {
      "name": "Martini Bianco",
@@ -612,15 +899,14 @@
      "price": 20.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_wbHda-dDDeG-oWsxX.webp",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": []
     }
    ]
   },
   {
    "hurl": "koniak-brandy",
    "name": "KONIAK / BRANDY",
-   "desc": "",
-   "section": "alkohol",
    "items": [
     {
      "name": "Rémy Martin VSOP",
@@ -628,7 +914,23 @@
      "price": 0.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_cRmWD-fnzCj-NmiMk.webp",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": [
+      {
+       "name": "KONIAK/BRANDY",
+       "required": true,
+       "list": [
+        {
+         "name": "40ml",
+         "price": 36.0
+        },
+        {
+         "name": "0.7L",
+         "price": 560.0
+        }
+       ]
+      }
+     ]
     },
     {
      "name": "Martell VS",
@@ -636,7 +938,23 @@
      "price": 0.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_glFeF-kmpIH-ijBbj.webp",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": [
+      {
+       "name": "KONIAK/BRANDY",
+       "required": true,
+       "list": [
+        {
+         "name": "40ml",
+         "price": 26.0
+        },
+        {
+         "name": "0.7L",
+         "price": 390.0
+        }
+       ]
+      }
+     ]
     },
     {
      "name": "Metaxa 5★",
@@ -644,15 +962,29 @@
      "price": 0.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_NlFNt-CHuhx-CReTo.webp",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": [
+      {
+       "name": "KONIAK/BRANDY",
+       "required": true,
+       "list": [
+        {
+         "name": "40ml",
+         "price": 20.0
+        },
+        {
+         "name": "0.7L",
+         "price": 300.0
+        }
+       ]
+      }
+     ]
     }
    ]
   },
   {
    "hurl": "rum",
    "name": "RUM",
-   "desc": "",
-   "section": "alkohol",
    "items": [
     {
      "name": "Kraken",
@@ -660,7 +992,23 @@
      "price": 0.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_UIYka-cRZtm-epkDl.webp",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": [
+      {
+       "name": "RUM",
+       "required": true,
+       "list": [
+        {
+         "name": "40ml",
+         "price": 30.0
+        },
+        {
+         "name": "0.7L",
+         "price": 380.0
+        }
+       ]
+      }
+     ]
     },
     {
      "name": "Havana Club 3",
@@ -668,7 +1016,23 @@
      "price": 0.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_AHyLy-DXirO-RChlK.webp",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": [
+      {
+       "name": "RUM",
+       "required": true,
+       "list": [
+        {
+         "name": "40ml",
+         "price": 20.0
+        },
+        {
+         "name": "0.7L",
+         "price": 249.0
+        }
+       ]
+      }
+     ]
     },
     {
      "name": "Havana Club 7",
@@ -676,7 +1040,23 @@
      "price": 0.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_LDADi-OMZEx-FFBBc.webp",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": [
+      {
+       "name": "RUM",
+       "required": true,
+       "list": [
+        {
+         "name": "40ml",
+         "price": 26.0
+        },
+        {
+         "name": "0.7L",
+         "price": 349.0
+        }
+       ]
+      }
+     ]
     },
     {
      "name": "Havana Club especial",
@@ -684,15 +1064,29 @@
      "price": 0.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_UOPVg-ZiWIk-cliUR.webp",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": [
+      {
+       "name": "RUM",
+       "required": true,
+       "list": [
+        {
+         "name": "40ml",
+         "price": 22.0
+        },
+        {
+         "name": "0.7L",
+         "price": 289.0
+        }
+       ]
+      }
+     ]
     }
    ]
   },
   {
    "hurl": "wodka",
    "name": "WÓDKA",
-   "desc": "",
-   "section": "alkohol",
    "items": [
     {
      "name": "Absolut Blue",
@@ -700,7 +1094,23 @@
      "price": 0.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_eeocZ-mbHAt-Fbfbs.webp",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": [
+      {
+       "name": "WÓDKA",
+       "required": true,
+       "list": [
+        {
+         "name": "40ml",
+         "price": 18.0
+        },
+        {
+         "name": "0.7L",
+         "price": 220.0
+        }
+       ]
+      }
+     ]
     },
     {
      "name": "Grey Goose",
@@ -708,7 +1118,23 @@
      "price": 0.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_RuTDE-yiKMQ-cDqgH.webp",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": [
+      {
+       "name": "WÓDKA",
+       "required": true,
+       "list": [
+        {
+         "name": "40ml",
+         "price": 36.0
+        },
+        {
+         "name": "0.7L",
+         "price": 450.0
+        }
+       ]
+      }
+     ]
     },
     {
      "name": "Belvedere",
@@ -716,15 +1142,29 @@
      "price": 0.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_RPcrk-yGbqV-CHVeE.webp",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": [
+      {
+       "name": "WÓDKA",
+       "required": true,
+       "list": [
+        {
+         "name": "40ml",
+         "price": 36.0
+        },
+        {
+         "name": "0.7L",
+         "price": 450.0
+        }
+       ]
+      }
+     ]
     }
    ]
   },
   {
    "hurl": "gin",
    "name": "GIN",
-   "desc": "",
-   "section": "alkohol",
    "items": [
     {
      "name": "Bombay Sapphire",
@@ -732,7 +1172,23 @@
      "price": 0.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_MrfjJ-lecbc-BPbbx.webp",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": [
+      {
+       "name": "GIN",
+       "required": true,
+       "list": [
+        {
+         "name": "40ml",
+         "price": 26.0
+        },
+        {
+         "name": "0.7L",
+         "price": 330.0
+        }
+       ]
+      }
+     ]
     },
     {
      "name": "Beefeater",
@@ -740,7 +1196,23 @@
      "price": 0.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_FBCOl-DSkus-bEQRF.webp",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": [
+      {
+       "name": "GIN",
+       "required": true,
+       "list": [
+        {
+         "name": "40ml",
+         "price": 19.0
+        },
+        {
+         "name": "0.7L",
+         "price": 240.0
+        }
+       ]
+      }
+     ]
     },
     {
      "name": "Hendrick’s",
@@ -748,15 +1220,29 @@
      "price": 0.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_FBOCh-GPOTV-RwQGJ.webp",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": [
+      {
+       "name": "GIN",
+       "required": true,
+       "list": [
+        {
+         "name": "40ml",
+         "price": 32.0
+        },
+        {
+         "name": "0.7L",
+         "price": 410.0
+        }
+       ]
+      }
+     ]
     }
    ]
   },
   {
    "hurl": "tequila",
    "name": "TEQUILA",
-   "desc": "",
-   "section": "alkohol",
    "items": [
     {
      "name": "Olmeca Silver",
@@ -764,7 +1250,23 @@
      "price": 0.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_meHXx-CwbkW-uIjQR.webp",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": [
+      {
+       "name": "TEQUILA",
+       "required": true,
+       "list": [
+        {
+         "name": "40ml",
+         "price": 25.0
+        },
+        {
+         "name": "0.7L",
+         "price": 330.0
+        }
+       ]
+      }
+     ]
     },
     {
      "name": "Olmeca Gold",
@@ -772,7 +1274,23 @@
      "price": 0.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_GvVkp-FrXTH-GGmAQ.webp",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": [
+      {
+       "name": "TEQUILA",
+       "required": true,
+       "list": [
+        {
+         "name": "40ml",
+         "price": 25.0
+        },
+        {
+         "name": "0.7L",
+         "price": 330.0
+        }
+       ]
+      }
+     ]
     },
     {
      "name": "Sierra Blanco",
@@ -780,7 +1298,23 @@
      "price": 0.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_GBIlH-OSzkv-vZlJP.webp",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": [
+      {
+       "name": "TEQUILA",
+       "required": true,
+       "list": [
+        {
+         "name": "40ml",
+         "price": 22.0
+        },
+        {
+         "name": "0.7L",
+         "price": 280.0
+        }
+       ]
+      }
+     ]
     },
     {
      "name": "Sierra Gold",
@@ -788,7 +1322,23 @@
      "price": 0.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_LeAGl-czabr-wWvRI.webp",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": [
+      {
+       "name": "TEQUILA",
+       "required": true,
+       "list": [
+        {
+         "name": "40ml",
+         "price": 22.0
+        },
+        {
+         "name": "0.7L",
+         "price": 280.0
+        }
+       ]
+      }
+     ]
     },
     {
      "name": "Patron",
@@ -796,15 +1346,29 @@
      "price": 0.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_ufAZG-XuCjA-ljByr.webp",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": [
+      {
+       "name": "TEQUILA",
+       "required": true,
+       "list": [
+        {
+         "name": "40ml",
+         "price": 36.0
+        },
+        {
+         "name": "0.7L",
+         "price": 510.0
+        }
+       ]
+      }
+     ]
     }
    ]
   },
   {
    "hurl": "piwo-z-beczki",
    "name": "PIWO Z BECZKI",
-   "desc": "",
-   "section": "alkohol",
    "items": [
     {
      "name": "Żywiec Białe",
@@ -812,7 +1376,23 @@
      "price": 0.0,
      "image": "",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": [
+      {
+       "name": "PIWO Z BECZKI",
+       "required": false,
+       "list": [
+        {
+         "name": "0,3L",
+         "price": 14.0
+        },
+        {
+         "name": "0,5L",
+         "price": 19.0
+        }
+       ]
+      }
+     ]
     },
     {
      "name": "Birra Moretti",
@@ -820,7 +1400,23 @@
      "price": 0.0,
      "image": "",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": [
+      {
+       "name": "Piwo z beczki",
+       "required": true,
+       "list": [
+        {
+         "name": "0.25L",
+         "price": 17.0
+        },
+        {
+         "name": "0.5L",
+         "price": 22.0
+        }
+       ]
+      }
+     ]
     },
     {
      "name": "Heineken",
@@ -828,15 +1424,29 @@
      "price": 0.0,
      "image": "",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": [
+      {
+       "name": "Piwo z beczki",
+       "required": true,
+       "list": [
+        {
+         "name": "0.25L",
+         "price": 17.0
+        },
+        {
+         "name": "0.5L",
+         "price": 22.0
+        }
+       ]
+      }
+     ]
     }
    ]
   },
   {
    "hurl": "piwo-butelkowe",
    "name": "PIWO BUTELKOWE",
-   "desc": "",
-   "section": "alkohol",
    "items": [
     {
      "name": "Paulaner",
@@ -844,7 +1454,8 @@
      "price": 21.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_dlrRv-JULQA-UVoYT.webp",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": []
     },
     {
      "name": "Książęce złote przeniczne",
@@ -852,7 +1463,8 @@
      "price": 19.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_TKjHI-eGenm-ekiuQ.webp",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": []
     },
     {
      "name": "Książęce ciemne",
@@ -860,7 +1472,8 @@
      "price": 19.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_sQyZm-MgoWU-bdNuX.webp",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": []
     },
     {
      "name": "Corona",
@@ -868,7 +1481,8 @@
      "price": 18.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_wOIJG-vliRx-xXgsM.webp",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": []
     },
     {
      "name": "Żywiec malinaż 0,0%",
@@ -876,7 +1490,8 @@
      "price": 15.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_gcbkG-clmJG-FHxlX.webp",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": []
     },
     {
      "name": "Żywiec białe 0,0%",
@@ -884,7 +1499,8 @@
      "price": 15.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_kCpYm-OCemH-MbCqF.webp",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": []
     },
     {
      "name": "Heineken 0,0%",
@@ -892,7 +1508,8 @@
      "price": 16.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_KSYlx-DEbkC-BENXU.webp",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": []
     },
     {
      "name": "Żywiec Arbużada 0,0%",
@@ -900,7 +1517,8 @@
      "price": 15.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_IQlgs-dJTPN-UMsYH.webp",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": []
     },
     {
      "name": "Piwo Żywiec Lipa & Pigwa 0,0%",
@@ -908,15 +1526,14 @@
      "price": 15.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_zxTBC-NKBFV-lWZaJ.webp",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": []
     }
    ]
   },
   {
    "hurl": "wino-bezalkoholowe",
    "name": "WINO BEZALKOHOLOWE",
-   "desc": "",
-   "section": "alkohol",
    "items": [
     {
      "name": "Ohne Kater Riesling weiss",
@@ -924,15 +1541,29 @@
      "price": 0.0,
      "image": "",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": [
+      {
+       "name": "WINO BEZALKOHOLOWE",
+       "required": true,
+       "list": [
+        {
+         "name": "150ml",
+         "price": 29.0
+        },
+        {
+         "name": "0.75L",
+         "price": 129.0
+        }
+       ]
+      }
+     ]
     }
    ]
   },
   {
    "hurl": "herbaty-autorskie",
    "name": "HERBATY AUTORSKIE",
-   "desc": "",
-   "section": "herbata-i-kawa",
    "items": [
     {
      "name": "Crimson Smoke Granatowy",
@@ -940,15 +1571,17 @@
      "price": 32.0,
      "image": "",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": []
     },
     {
      "name": "Tropic Cloud  Mango – marakuja",
      "description": "Delikatna zielona herbata z soczystym mango i marakują, świeżą pomarańczą oraz miętą. Lekka, egzotyczna i orzeźwiająca kompozycja",
      "price": 35.0,
-     "image": "",
+     "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_kXgjn-JIxmx-TGodc.webp",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": []
     },
     {
      "name": "Dark Berry  Czarna porzeczka – borówka",
@@ -956,7 +1589,8 @@
      "price": 32.0,
      "image": "",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": []
     },
     {
      "name": "Golden Spice  Gruszka – karmel – przyprawy",
@@ -964,7 +1598,8 @@
      "price": 32.0,
      "image": "",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": []
     },
     {
      "name": "Mango Heat  Mango – imbir – limonka",
@@ -972,15 +1607,14 @@
      "price": 35.0,
      "image": "",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": []
     }
    ]
   },
   {
    "hurl": "ceremonia-herbaty",
    "name": "CEREMONIA HERBATY",
-   "desc": "Herbata parzona metodą wielokrotnych przelewów (6–8)\nSmak zmienia się z każdą filiżanką – idealny rytuał do długiej shishy",
-   "section": "herbata-i-kawa",
    "items": [
     {
      "name": "Milk Oolong",
@@ -988,7 +1622,8 @@
      "price": 42.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_srkss-laGaG-vSMSk.webp",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": []
     },
     {
      "name": "Tie Guan Yin",
@@ -996,7 +1631,8 @@
      "price": 42.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_RvEuV-MhPRZ-eeKaB.webp",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": []
     },
     {
      "name": "Dian Hong",
@@ -1004,7 +1640,8 @@
      "price": 45.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_MfuSe-FwnDP-eGALz.webp",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": []
     },
     {
      "name": "Shu Pu Erh",
@@ -1012,7 +1649,8 @@
      "price": 45.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_ihvJC-nPGBw-TmVho.webp",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": []
     },
     {
      "name": "Bai Hao",
@@ -1020,7 +1658,8 @@
      "price": 48.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_SCJwr-knbzW-Gjhck.webp",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": []
     },
     {
      "name": "GABA Oolong",
@@ -1028,7 +1667,8 @@
      "price": 48.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_AFCGI-OIsqF-aeysZ.webp",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": []
     },
     {
      "name": "Jin Jun Mei",
@@ -1036,7 +1676,8 @@
      "price": 48.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_PxAIH-pxmTW-LFGBU.webp",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": []
     },
     {
      "name": "Da Hong Pao",
@@ -1044,15 +1685,14 @@
      "price": 49.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_BJSbv-JPQbs-HjeCd.webp",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": []
     }
    ]
   },
   {
    "hurl": "herbata-klasyczna",
    "name": "HERBATA KLASYCZNA",
-   "desc": "",
-   "section": "herbata-i-kawa",
    "items": [
     {
      "name": "Czarna",
@@ -1060,7 +1700,23 @@
      "price": 0.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_CuIDj-XCemR-rIjSO.webp",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": [
+      {
+       "name": "Do wyboru",
+       "required": true,
+       "list": [
+        {
+         "name": "500 ml",
+         "price": 15.0
+        },
+        {
+         "name": "950 ml",
+         "price": 20.0
+        }
+       ]
+      }
+     ]
     },
     {
      "name": "Zielona",
@@ -1068,7 +1724,23 @@
      "price": 0.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_uIsQQ-NmKcp-DwkkH.webp",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": [
+      {
+       "name": "Do wyboru",
+       "required": true,
+       "list": [
+        {
+         "name": "500 ml",
+         "price": 15.0
+        },
+        {
+         "name": "950 ml",
+         "price": 20.0
+        }
+       ]
+      }
+     ]
     },
     {
      "name": "Herbata owocowa",
@@ -1076,15 +1748,29 @@
      "price": 0.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_pGyiC-gWBdI-ekmJG.webp",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": [
+      {
+       "name": "Do wyboru",
+       "required": true,
+       "list": [
+        {
+         "name": "500 ml",
+         "price": 16.0
+        },
+        {
+         "name": "950 ml",
+         "price": 21.0
+        }
+       ]
+      }
+     ]
     }
    ]
   },
   {
    "hurl": "kawa",
    "name": "KAWA",
-   "desc": "",
-   "section": "herbata-i-kawa",
    "items": [
     {
      "name": "Espresso",
@@ -1092,7 +1778,19 @@
      "price": 12.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_TQvMi-oWKDl-lMMhL.webp",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": [
+      {
+       "name": "Syrop do kawy",
+       "required": false,
+       "list": [
+        {
+         "name": "Syrop",
+         "price": 2.0
+        }
+       ]
+      }
+     ]
     },
     {
      "name": "Americano",
@@ -1100,7 +1798,19 @@
      "price": 14.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_YIGkJ-rFHtF-XFyry.webp",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": [
+      {
+       "name": "Syrop do kawy",
+       "required": false,
+       "list": [
+        {
+         "name": "Syrop",
+         "price": 2.0
+        }
+       ]
+      }
+     ]
     },
     {
      "name": "Cappuccino",
@@ -1108,7 +1818,19 @@
      "price": 16.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_iqwXC-elZbN-oPMIF.webp",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": [
+      {
+       "name": "Syrop do kawy",
+       "required": false,
+       "list": [
+        {
+         "name": "Syrop",
+         "price": 2.0
+        }
+       ]
+      }
+     ]
     },
     {
      "name": "Latte",
@@ -1116,7 +1838,19 @@
      "price": 17.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_KXlwt-DIwRt-PJmCt.webp",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": [
+      {
+       "name": "Syrop do kawy",
+       "required": false,
+       "list": [
+        {
+         "name": "Syrop",
+         "price": 2.0
+        }
+       ]
+      }
+     ]
     },
     {
      "name": "Flat White",
@@ -1124,15 +1858,25 @@
      "price": 18.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_MGZZo-gEPhl-GLGmq.webp",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": [
+      {
+       "name": "Syrop do kawy",
+       "required": false,
+       "list": [
+        {
+         "name": "Syrop",
+         "price": 2.0
+        }
+       ]
+      }
+     ]
     }
    ]
   },
   {
    "hurl": "napoje-zimne",
    "name": "NAPOJE ZIMNE",
-   "desc": "",
-   "section": "napoje-zimne",
    "items": [
     {
      "name": "Pepsi",
@@ -1140,7 +1884,8 @@
      "price": 12.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_OOeiI-zrNmn-FWrbw.webp",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": []
     },
     {
      "name": "Pepsi zero",
@@ -1148,7 +1893,8 @@
      "price": 12.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_rkJce-LSmRl-TQtZG.webp",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": []
     },
     {
      "name": "Coca-Cola",
@@ -1156,7 +1902,8 @@
      "price": 15.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_GCzil-sDTkJ-JfanK.webp",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": []
     },
     {
      "name": "Coca-Cola Zero Sugar",
@@ -1164,7 +1911,8 @@
      "price": 15.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_CZdAj-QZcSh-OPGHU.webp",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": []
     },
     {
      "name": "7-UP",
@@ -1172,7 +1920,8 @@
      "price": 12.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_CDcas-yFOZC-oxomY.webp",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": []
     },
     {
      "name": "Mirinda",
@@ -1180,7 +1929,8 @@
      "price": 12.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_bkHGM-ypKDC-fZBsi.webp",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": []
     },
     {
      "name": "Red Bull",
@@ -1188,7 +1938,8 @@
      "price": 18.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/vDDmfnd-tBzASiS-OXBoJfr.webp",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": []
     },
     {
      "name": "Sok",
@@ -1196,7 +1947,8 @@
      "price": 12.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_WHeAl-IlJbZ-Svgsh.webp",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": []
     },
     {
      "name": "Woda gazowana/niegazowana",
@@ -1204,7 +1956,23 @@
      "price": 0.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_OmGAa-szkso-BSTAu.webp",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": [
+      {
+       "name": "WODA GAZOWANA/NIEGAZOWANA",
+       "required": true,
+       "list": [
+        {
+         "name": "0.3",
+         "price": 10.0
+        },
+        {
+         "name": "0.7",
+         "price": 17.0
+        }
+       ]
+      }
+     ]
     },
     {
      "name": "Borjomi",
@@ -1212,7 +1980,8 @@
      "price": 16.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_KJDuG-tiWhb-eoBhz.webp",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": []
     },
     {
      "name": "Fanta",
@@ -1220,7 +1989,8 @@
      "price": 15.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_vAHvn-ybXUk-lozjM.webp",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": []
     },
     {
      "name": "Sprite",
@@ -1228,7 +1998,8 @@
      "price": 15.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_kySnr-NYleF-sWLyG.webp",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": []
     },
     {
      "name": "Tonic Water",
@@ -1236,15 +2007,14 @@
      "price": 15.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_ebmnI-ePMwY-Mktla.webp",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": []
     }
    ]
   },
   {
    "hurl": "rolls",
    "name": "Rolls",
-   "desc": "",
-   "section": "sushi-by-balance",
    "items": [
     {
      "name": "Philadelphia z łososiem",
@@ -1252,7 +2022,8 @@
      "price": 53.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_WYqzk-hmEuy-dWGGX.webp",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": []
     },
     {
      "name": "Philadelphia z krewetkami",
@@ -1260,7 +2031,8 @@
      "price": 56.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_kKcGH-hyJBu-qRliD.webp",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": []
     },
     {
      "name": "Philadelphia z węgorzem",
@@ -1268,7 +2040,8 @@
      "price": 60.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_IHMTe-ZaIkg-ERlFa.webp",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": []
     },
     {
      "name": "California z łososiem",
@@ -1276,7 +2049,8 @@
      "price": 52.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_kDbOA-JrhCz-DfyYy.webp",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": []
     },
     {
      "name": "California z krewetkami",
@@ -1284,7 +2058,8 @@
      "price": 56.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_ZHZJs-QDPpR-mpDeH.webp",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": []
     },
     {
      "name": "Roll pieczony z łososiem",
@@ -1292,7 +2067,8 @@
      "price": 55.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_nDIOv-YaHiR-GrDCG.webp",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": []
     },
     {
      "name": "Roll pieczony z krewetkami",
@@ -1300,7 +2076,8 @@
      "price": 53.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_EqEXw-nDcYM-bcCeF.webp",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": []
     },
     {
      "name": "W tempurze z łososiem",
@@ -1308,7 +2085,8 @@
      "price": 54.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_bVFrI-EjzSF-ukIMa.webp",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": []
     },
     {
      "name": "W tempurze z krewetkami",
@@ -1316,15 +2094,14 @@
      "price": 56.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_cXeOy-ytiZz-DtRFP.webp",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": []
     }
    ]
   },
   {
    "hurl": "burgery",
    "name": "Burgery",
-   "desc": "",
-   "section": "sushi-by-balance",
    "items": [
     {
      "name": "Burger z łososiem",
@@ -1332,7 +2109,8 @@
      "price": 58.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_HpZbT-kraUX-UXaFG.webp",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": []
     },
     {
      "name": "Burger z krewetkami",
@@ -1340,15 +2118,14 @@
      "price": 60.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_DbQsv-Qluhu-VeGMD.webp",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": []
     }
    ]
   },
   {
    "hurl": "sety",
    "name": "Sety",
-   "desc": "",
-   "section": "sushi-by-balance",
    "items": [
     {
      "name": "VIBE SET",
@@ -1356,7 +2133,8 @@
      "price": 138.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_FIkib-KpAet-FXCuT.webp",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": []
     },
     {
      "name": "AFTER DARK",
@@ -1364,7 +2142,8 @@
      "price": 175.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_CPebG-SXWld-ekEhU.webp",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": []
     },
     {
      "name": "SMOKE BOX",
@@ -1372,7 +2151,8 @@
      "price": 148.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_kbQNJ-labNX-UnbeM.webp",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": []
     },
     {
      "name": "MIDNIGHT",
@@ -1380,7 +2160,77 @@
      "price": 142.0,
      "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_GGIik-VDUkr-zwklm.webp",
      "available": true,
-     "labels": []
+     "labels": [],
+     "options": []
+    }
+   ]
+  },
+  {
+   "hurl": "desery-premium",
+   "name": "DESERY PREMIUM",
+   "items": [
+    {
+     "name": "Trifle Snickers",
+     "description": "Czekolada, karmel, orzeszki. Słodki klasyk z charakterem.",
+     "price": 24.0,
+     "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_oVfxz-lwAaw-fSWik.webp",
+     "available": true,
+     "labels": [],
+     "options": []
+    },
+    {
+     "name": "Trifle Red Velvet z truskąwką",
+     "description": "Lekki, elegancki i idealnie łączy słodycz z owocową nutą",
+     "price": 24.0,
+     "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_VnkIk-zJvdl-gJpjl.webp",
+     "available": true,
+     "labels": [],
+     "options": []
+    },
+    {
+     "name": "Trifle Wiśnia-Czekolada",
+     "description": "Czekolada i soczysta wiśnia w jednym kubeczku.",
+     "price": 24.0,
+     "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_lgNla-HeJJt-ykGYX.webp",
+     "available": true,
+     "labels": [],
+     "options": []
+    },
+    {
+     "name": "Trifle Wanilia z owocami leśnimy",
+     "description": "Waniliowy krem i owoce leśne  - lekki, świeży i bardzo przyjemny deser na wieczór.",
+     "price": 24.0,
+     "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_fNrFt-WNbvY-StYZH.webp",
+     "available": true,
+     "labels": [],
+     "options": []
+    },
+    {
+     "name": "Napoleon w kubeczkach",
+     "description": "Chrupiące warstwy ciasta francuskiego i aksamitny krem waniliowy. Klasyka w nowoczesnym wydaniu.",
+     "price": 29.0,
+     "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_CuluW-wGrOs-SwPGK.webp",
+     "available": true,
+     "labels": [],
+     "options": []
+    },
+    {
+     "name": "Tiramisu  truskawkowe",
+     "description": "Owocowa wersja włoskiego klasyka - kremowa, lekka i z wyraźną nutą truskawki",
+     "price": 27.0,
+     "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_ICssX-FkBQc-DvTQX.webp",
+     "available": true,
+     "labels": [],
+     "options": []
+    },
+    {
+     "name": "Trzy Czekolady",
+     "description": "Trzy warstwy czekolady. Głęboki smak, kremowa tekstura i maksimum przyjemności.",
+     "price": 27.0,
+     "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_ytyBF-YHpoR-lBDba.webp",
+     "available": true,
+     "labels": [],
+     "options": []
     }
    ]
   }

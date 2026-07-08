@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/db";
-import { requireAdmin } from "@/lib/adminGuard";
+import { requireAdmin, requireOwner } from "@/lib/adminGuard";
 
 export async function GET() {
   const denied = await requireAdmin();
@@ -13,7 +13,7 @@ export async function GET() {
 }
 
 export async function POST(req: Request) {
-  const denied = await requireAdmin();
+  const denied = await requireOwner();
   if (denied) return denied;
   const body = await req.json().catch(() => ({}));
   const { slug, name } = body as { slug?: string; name?: unknown };

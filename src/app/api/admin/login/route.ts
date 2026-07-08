@@ -15,6 +15,6 @@ export async function POST(req: Request) {
   if (!admin || !(await verifyPassword(password, admin.passwordHash))) {
     return NextResponse.json({ error: "invalid_credentials" }, { status: 401 });
   }
-  await createAdminSession(admin.id, admin.username);
-  return NextResponse.json({ ok: true });
+  await createAdminSession(admin.id, admin.username, admin.role === "staff" ? "staff" : "owner");
+  return NextResponse.json({ ok: true, role: admin.role });
 }

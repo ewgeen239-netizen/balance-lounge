@@ -10,6 +10,7 @@ export default async function MenuPage() {
     id: c.id,
     slug: c.slug,
     name: c.name,
+    scheduled: c.scheduled,
     items: c.items.map((i) => ({
       id: i.id,
       name: i.name,
@@ -18,6 +19,7 @@ export default async function MenuPage() {
       photo: i.photo,
       available: i.available,
       badges: i.badges,
+      options: i.options,
     })),
   }));
 

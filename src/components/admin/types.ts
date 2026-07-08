@@ -15,6 +15,7 @@ export type AdminCategory = {
   slug: string;
   name: string; // JSON
   order: number;
+  scheduled: boolean;
   items: AdminItem[];
 };
 
@@ -40,6 +41,7 @@ export type AdminBar = {
   email: string;
   hours: string;
   instagram: string;
+  facebook: string;
   whatsapp: string;
   telegram: string;
   lat: number;

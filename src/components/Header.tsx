@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { useLang } from "./LangProvider";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import { useReservation } from "./booking/ReservationModal";
+import { Wordmark } from "./Wordmark";
 import { cn } from "@/lib/utils";
 
 const NAV = [
@@ -40,8 +41,8 @@ export function Header() {
       <div className="container-x py-3">
         {/* Top row */}
         <div className="flex items-center justify-between gap-2">
-          <Link href="/" className="shrink-0 leading-none">
-            <span className="wordmark text-base sm:text-lg text-neutral-50">BALANCE</span>
+          <Link href="/" className="shrink-0 leading-none" aria-label="BALANCE">
+            <Wordmark className="text-base sm:text-lg text-neutral-50" />
           </Link>
 
           {/* Desktop centered nav */}

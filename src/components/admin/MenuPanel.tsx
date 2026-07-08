@@ -5,7 +5,7 @@ import type { AdminCategory, AdminItem } from "./types";
 import { ItemEditor } from "./ItemEditor";
 import { TranslatableInput } from "./TranslatableInput";
 import { tr, DEFAULT_LANG } from "@/lib/i18n";
-import { parseJSON } from "@/lib/utils";
+import { parseJSON, cn, categoryClosedNow } from "@/lib/utils";
 
 export function MenuPanel({ initial }: { initial: AdminCategory[] }) {
   const [cats, setCats] = useState<AdminCategory[]>(initial);
@@ -84,6 +84,16 @@ export function MenuPanel({ initial }: { initial: AdminCategory[] }) {
     if (res.ok) setCats((cs) => cs.filter((c) => c.id !== id));
   }
 
+  async function toggleSchedule(id: number, scheduled: boolean) {
+    setCats((cs) => cs.map((c) => (c.id === id ? { ...c, scheduled } : c))); // optimistic
+    const res = await fetch(`/api/admin/categories/${id}`, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ scheduled }),
+    });
+    if (!res.ok) setCats((cs) => cs.map((c) => (c.id === id ? { ...c, scheduled: !scheduled } : c))); // revert
+  }
+
   const dirtyPrices = Object.values(priceDrafts).some((v) => v !== "");
 
   return (
@@ -116,9 +126,21 @@ export function MenuPanel({ initial }: { initial: AdminCategory[] }) {
       <div className="space-y-10">
         {cats.map((cat) => (
           <section key={cat.id}>
-            <div className="mb-3 flex items-center justify-between">
+            <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
               <h3 className="text-lg font-medium text-ember">{tr(cat.name, DEFAULT_LANG)} <span className="text-xs text-neutral-600">/{cat.slug}</span></h3>
-              <div className="flex gap-2">
+              <div className="flex flex-wrap items-center gap-3">
+                <button
+                  onClick={() => toggleSchedule(cat.id, !cat.scheduled)}
+                  className={cn(
+                    "flex items-center gap-2 rounded-full border px-3 py-1 text-xs transition",
+                    cat.scheduled ? "border-neon/40 bg-neon/10 text-neon" : "border-white/15 text-neutral-400 hover:text-neutral-200"
+                  )}
+                  title="Auto-off Tue–Thu, on Fri–Mon. Off days blur this category on the site."
+                >
+                  <span className={cn("h-2 w-2 rounded-full", cat.scheduled ? "bg-neon" : "bg-neutral-600")} />
+                  Auto-schedule: {cat.scheduled ? "ON" : "OFF"}
+                  {cat.scheduled && <span className="text-neutral-400">({categoryClosedNow(true) ? "closed now" : "open now"})</span>}
+                </button>
                 <button onClick={() => addItem(cat.id)} className="text-xs text-neutral-400 hover:text-neon">+ item</button>
                 <button onClick={() => deleteCategory(cat.id)} className="text-xs text-neutral-500 hover:text-neon">delete category</button>
               </div>

@@ -1,10 +1,10 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/db";
-import { requireAdmin } from "@/lib/adminGuard";
+import { requireOwner } from "@/lib/adminGuard";
 
 // Bulk price edit: [{ id, price }]
 export async function PATCH(req: Request) {
-  const denied = await requireAdmin();
+  const denied = await requireOwner();
   if (denied) return denied;
   const body = await req.json().catch(() => ({}));
   const updates = Array.isArray(body.prices) ? body.prices : [];

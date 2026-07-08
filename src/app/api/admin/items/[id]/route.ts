@@ -1,11 +1,11 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/db";
-import { requireAdmin } from "@/lib/adminGuard";
+import { requireOwner } from "@/lib/adminGuard";
 
 const asJSON = (v: unknown) => (typeof v === "string" ? v : JSON.stringify(v));
 
 export async function PATCH(req: Request, { params }: { params: { id: string } }) {
-  const denied = await requireAdmin();
+  const denied = await requireOwner();
   if (denied) return denied;
   const id = Number(params.id);
   const body = await req.json().catch(() => ({}));
@@ -25,7 +25,7 @@ export async function PATCH(req: Request, { params }: { params: { id: string } }
 }
 
 export async function DELETE(_req: Request, { params }: { params: { id: string } }) {
-  const denied = await requireAdmin();
+  const denied = await requireOwner();
   if (denied) return denied;
   await prisma.menuItem.delete({ where: { id: Number(params.id) } });
   return NextResponse.json({ ok: true });

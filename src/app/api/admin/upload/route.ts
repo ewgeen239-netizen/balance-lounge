@@ -2,10 +2,10 @@ import { NextResponse } from "next/server";
 import { writeFile, mkdir } from "fs/promises";
 import path from "path";
 import { put } from "@vercel/blob";
-import { requireAdmin } from "@/lib/adminGuard";
+import { requireOwner } from "@/lib/adminGuard";
 
 export async function POST(req: Request) {
-  const denied = await requireAdmin();
+  const denied = await requireOwner();
   if (denied) return denied;
 
   const form = await req.formData();

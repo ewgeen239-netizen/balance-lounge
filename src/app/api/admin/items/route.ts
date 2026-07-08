@@ -1,12 +1,12 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/db";
-import { requireAdmin } from "@/lib/adminGuard";
+import { requireOwner } from "@/lib/adminGuard";
 
 const asJSON = (v: unknown, fb: string) =>
   v === undefined ? fb : typeof v === "string" ? v : JSON.stringify(v);
 
 export async function POST(req: Request) {
-  const denied = await requireAdmin();
+  const denied = await requireOwner();
   if (denied) return denied;
   const body = await req.json().catch(() => ({}));
   const categoryId = Number(body.categoryId);

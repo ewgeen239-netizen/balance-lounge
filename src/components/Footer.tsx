@@ -3,11 +3,14 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useLang } from "./LangProvider";
+import { Wordmark } from "./Wordmark";
+import { SocialLinks } from "./SocialLinks";
 
 type FooterProps = {
   address: string;
   phone: string;
   instagram: string;
+  facebook: string;
   whatsapp: string;
   telegram: string;
 };
@@ -21,7 +24,7 @@ export function Footer(props: FooterProps) {
     <footer className="mt-24 border-t border-white/10 bg-ink-950/60">
       <div className="container-x grid gap-10 py-14 md:grid-cols-3">
         <div>
-          <span className="wordmark text-xl text-neutral-50">BALANCE</span>
+          <Wordmark className="text-xl text-neutral-50" />
           <p className="wordmark-sub mt-2 text-[10px] text-ember/70">COCTAILS &amp; SHISHA</p>
           <p className="mt-4 max-w-xs text-sm text-neutral-400">
             {props.address}
@@ -33,11 +36,7 @@ export function Footer(props: FooterProps) {
           <a href={`tel:${props.phone.replace(/\s/g, "")}`} className="block text-neutral-200 hover:text-neon">
             {props.phone}
           </a>
-          <div className="flex gap-4 pt-2 text-neutral-400">
-            {props.instagram && <a href={props.instagram} className="hover:text-neon" target="_blank" rel="noreferrer">Instagram</a>}
-            {props.whatsapp && <a href={props.whatsapp} className="hover:text-neon" target="_blank" rel="noreferrer">WhatsApp</a>}
-            {props.telegram && <a href={props.telegram} className="hover:text-neon" target="_blank" rel="noreferrer">Telegram</a>}
-          </div>
+          <SocialLinks instagram={props.instagram} facebook={props.facebook} whatsapp={props.whatsapp} telegram={props.telegram} size="sm" className="pt-3" />
         </div>
 
         <div className="space-y-2 text-sm md:text-right">

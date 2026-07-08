@@ -4,6 +4,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { useLang } from "@/components/LangProvider";
 import { useReservation } from "@/components/booking/ReservationModal";
+import { Wordmark } from "@/components/Wordmark";
 
 export function Hero({ image, neon }: { image: string; neon: string }) {
   const { t } = useLang();
@@ -38,7 +39,7 @@ export function Hero({ image, neon }: { image: string; neon: string }) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.5 }}
         >
-          <h1 className="wordmark text-[2.75rem] leading-none text-neutral-50 text-glow-ember sm:text-8xl">BALANCE</h1>
+          <Wordmark className="logo-glow text-5xl sm:text-7xl text-neutral-50" />
           <p className="wordmark-sub mt-4 text-[10px] text-ember/90 sm:text-base">COCTAILS &amp; SHISHA</p>
         </motion.div>
 
