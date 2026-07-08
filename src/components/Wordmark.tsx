@@ -27,9 +27,9 @@ export function Wordmark({ className }: { className?: string }) {
       <path transform="translate(317)" d="M1110 31 C1090 12 1065 2 1034 2 C981 2 941 41 941 87 C941 134 981 173 1035 173 C1064 173 1091 163 1111 144 L1094 124 C1078 139 1058 147 1036 147 C998 147 970 121 970 87 C970 53 998 28 1036 28 C1058 28 1077 36 1094 51 L1110 31 Z" />
       {/* E — three bars */}
       <g transform="translate(1538 0)">
-        <rect x="0" y="0" width="95" height="26" />
-        <rect x="0" y="74" width="95" height="26" />
-        <rect x="0" y="148" width="95" height="26" />
+        <rect x="0" y="0" width="125" height="26" />
+        <rect x="0" y="74" width="125" height="26" />
+        <rect x="0" y="148" width="125" height="26" />
       </g>
     </svg>
   );
