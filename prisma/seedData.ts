@@ -60,10 +60,7 @@ export async function seedDatabase(prisma: PrismaClient) {
       lng: 14.544568385793067,
       heroImage: "/head.jpg",
       heroNeon: "YOU'RE IN THE RIGHT PLACE",
-      gallery: JSON.stringify([
-        "/gallery/g1.jpg", "/gallery/g2.jpg", "/gallery/g3.jpg", "/gallery/g4.jpg", "/gallery/g5.jpg",
-        "/gallery/g6.jpg", "/gallery/g7.jpg", "/gallery/g8.jpg", "/gallery/g9.jpg", "/gallery/g10.jpg",
-      ]),
+      gallery: JSON.stringify(Array.from({ length: 24 }, (_, i) => `/gallery/g${i + 1}.jpg`)),
       hours: JSON.stringify([
         { day: 1, open: "16:00", close: "00:00" },
         { day: 2, open: "16:00", close: "00:00" },
@@ -85,7 +82,7 @@ export async function seedDatabase(prisma: PrismaClient) {
         en: "BALANCE • COCKTAILS & SHISHA",
         ua: "BALANCE • COCKTAILS & SHISHA",
       }),
-      images: JSON.stringify(["/gallery/g2.jpg", "/gallery/g1.jpg"]),
+      images: JSON.stringify(["/interior-3.webp"]),
       body: J({
         pl:
           "Balance to nowoczesna przestrzeń lounge w Szczecinie z dopracowaną kartą koktajli, szerokim wyborem shishy premium i klimatycznym wnętrzem.\n\n" +
