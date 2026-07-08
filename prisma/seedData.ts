@@ -1,8 +1,12 @@
 import type { PrismaClient } from "@prisma/client";
 import bcrypt from "bcryptjs";
 import choiceData from "./choiceDataI18n.json";
+import findYourBalance from "./findYourBalance.json";
 
 const J = (o: Record<string, string>) => JSON.stringify(o);
+
+type FybItem = { name: string; desc: string; price: number; image: string; badges: string[] };
+const FYB = findYourBalance as FybItem[];
 
 type Translatable = { pl: string; ru: string; en: string; ua: string };
 type ChoiceItem = {
@@ -129,6 +133,32 @@ export async function seedDatabase(prisma: PrismaClient) {
         },
       });
     }
+  }
+
+  // ---- FIND YOUR BALANCE — featured section, pinned above everything (order -1) ----
+  const fyb = await prisma.category.create({
+    data: {
+      slug: "find-your-balance",
+      name: J({ pl: "FIND YOUR BALANCE", ru: "FIND YOUR BALANCE", en: "FIND YOUR BALANCE", ua: "FIND YOUR BALANCE" }),
+      order: -1,
+      scheduled: false,
+    },
+  });
+  let fi = 0;
+  for (const it of FYB) {
+    await prisma.menuItem.create({
+      data: {
+        categoryId: fyb.id,
+        name: J({ pl: it.name, ru: it.name, en: it.name, ua: it.name }),
+        description: J({ pl: it.desc }),
+        price: it.price,
+        photo: it.image || "",
+        badges: JSON.stringify(it.badges),
+        options: "[]",
+        available: true,
+        order: fi++,
+      },
+    });
   }
 
   const adminUser = process.env.ADMIN_USERNAME || "admin";

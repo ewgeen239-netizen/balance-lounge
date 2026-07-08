@@ -1,0 +1,109 @@
+[
+ {
+  "name": "BLOOM",
+  "desc": "Gin, Martini Bianco, likier pomarańczowy, syrop liczi, Orange Angostura.\nDelikatny koktajl z nutami kwiatów, liczi i cytrusów.\n\n• SWEET • FRUITY",
+  "price": 42.0,
+  "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_pMVQK-meXrB-JLrOP.webp",
+  "badges": [
+   "nowosc",
+   "18+"
+  ]
+ },
+ {
+  "name": "PARADISE",
+  "desc": "Puree z marakui, grenadina, sok żurawinowy, sok pomarańczowy.\nTropikalny i soczysty koktajl pełen owoców.\n\n• FRUITY • SWEET",
+  "price": 27.0,
+  "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_fqMQG-iiFTi-wDTSW.webp",
+  "badges": [
+   "nowosc"
+  ]
+ },
+ {
+  "name": "SUN KISS",
+  "desc": "Malibu, rum kokosowy, likier melonowy, sok ananasowy, sok limonkowy.\n\n• TROPICAL • SWEET • FRESH",
+  "price": 60.0,
+  "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_BejCB-bhocR-omfuW.webp",
+  "badges": [
+   "nowosc",
+   "18+"
+  ]
+ },
+ {
+  "name": "ALMOND VELVET",
+  "desc": "Biały rum, Aperol, syrop migdałowy, sok z cytryny, białko.\nAksamitny koktajl z migdałową słodyczą i cytrusową świeżością.\n• SWEET • SOUR •",
+  "price": 44.0,
+  "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_ObMbD-AKONk-CmjtV.webp",
+  "badges": [
+   "nowosc",
+   "18+"
+  ]
+ },
+ {
+  "name": "DEEP HARMONY",
+  "desc": "Sok żurawinowy, sok pomarańczowy, świeżo wyciskany sok z cytryny oraz syrop miodowy \n\n• SWEET • CITRUS • REFRESHING",
+  "price": 27.0,
+  "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_CleDG-VipGR-kIVTL.webp",
+  "badges": [
+   "nowosc"
+  ]
+ },
+ {
+  "name": "GREEN FLASH",
+  "desc": "Wyjątkowe połączenie soczystego kiwi, naturalnej słodyczy jabłka i orzeźwiającej limonki.\n\n• FRUITY • FRESH • SOUR",
+  "price": 60.0,
+  "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_mYZtr-GCiWu-TbeeH.webp",
+  "badges": [
+   "nowosc",
+   "18+"
+  ]
+ },
+ {
+  "name": "WARM SHORE",
+  "desc": "Różowy gin, Triple Sec, Vermouth Rosso, sok pomarańczowy.\nOwocowo-cytrusowy koktajl o harmonijnym smaku.\n\n• FRUITY • SWEET",
+  "price": 40.0,
+  "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_OEOMQ-DTRyt-btirx.webp",
+  "badges": [
+   "nowosc",
+   "18+"
+  ]
+ },
+ {
+  "name": "MOJITO",
+  "desc": "Mięta, limonka, syrop cukrowy, woda gazowana.\nKlasyczne, orzeźwiające połączenie mięty i limonki.\n• FRESH • CITRUS",
+  "price": 27.0,
+  "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_xocWw-WUllI-xVyod.webp",
+  "badges": [
+   "nowosc"
+  ]
+ },
+ {
+  "name": "WITCH FLOWER",
+  "desc": "Absynt, Amaretto, syrop lawendowy, syrop z czarnego bzu, limonka, białko.\nKwiatowy koktajl z nutą migdałów i limonki.\n\n• FLORAL • SWEET • SOUR",
+  "price": 48.0,
+  "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_FAhIJ-aZKMy-GIizc.webp",
+  "badges": [
+   "nowosc",
+   "18+"
+  ]
+ },
+ {
+  "name": "ECLIPSE",
+  "desc": "Wódka, Blue Curaçao, syrop z czarnej porzeczki, sok z cytryny.\nOwocowy koktajl z czarną porzeczką i cytrusowym finiszem.\n\n• FRUITY • SWEET • SOUR",
+  "price": 41.0,
+  "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_kOkDD-AuuKD-hmeEC.webp",
+  "badges": [
+   "nowosc",
+   "18+"
+  ]
+ },
+ {
+  "name": "BREEZE",
+  "desc": "Whisky, mięta, syrop z czarnego bzu, sok z cytryny, grenadina.\nOrzeźwiający koktajl z miętą, czarnym bzem i cytrusami.\n\n• FRESH • SWEET • SOUR",
+  "price": 42.0,
+  "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_zGDGg-SyGya-XSApg.webp",
+  "badges": [
+   "nowosc",
+   "18+"
+  ]
+ }
+]
