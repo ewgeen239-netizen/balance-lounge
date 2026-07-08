@@ -13,7 +13,7 @@ export default async function AdminLoginPage() {
     <div className="flex min-h-screen items-center justify-center bg-ink-950 px-5">
       <div className="w-full max-w-sm">
         <div className="mb-8 text-center">
-          <Wordmark className="text-3xl text-neutral-50" />
+          <Wordmark className="h-7 w-auto text-neutral-50" />
           <p className="mt-2 text-xs uppercase tracking-widest text-ember/70">Admin Panel</p>
         </div>
         <AdminLoginForm />

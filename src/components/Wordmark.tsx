@@ -1,39 +1,35 @@
 import { cn } from "@/lib/utils";
 
-// BALANCE brand mark: Montserrat ExtraBold, wide tracking, uppercase, with a
-// custom crossbar-less "A" (inverted V) and a three-bar "E". Size it with a
-// font-size class (e.g. text-2xl); the custom glyphs scale in em.
-
-function AGlyph() {
-  return (
-    <svg viewBox="0 0 78 100" style={{ height: "0.72em" }} className="inline-block shrink-0" fill="none" aria-hidden>
-      <path d="M11 96 L39 6 L67 96" stroke="currentColor" strokeWidth="22" strokeLinejoin="miter" strokeLinecap="butt" />
-    </svg>
-  );
-}
-
-function EGlyph() {
-  return (
-    <svg viewBox="0 0 66 100" style={{ height: "0.72em" }} className="inline-block shrink-0" fill="none" aria-hidden>
-      <path d="M9 11 H58 M9 50 H58 M9 89 H58" stroke="currentColor" strokeWidth="21" strokeLinecap="butt" />
-    </svg>
-  );
-}
+// BALANCE brand mark — filled geometric letters, crossbar-less "A" and a
+// three-bar "E". Colour follows currentColor; size with a height class (h-*).
 
 export function Wordmark({ className }: { className?: string }) {
   return (
-    <span
+    <svg
+      viewBox="-10 -10 1250 194"
+      className={className}
+      role="img"
       aria-label="BALANCE"
-      className={cn("inline-flex items-baseline leading-none", className)}
-      style={{ fontFamily: "var(--font-mont), sans-serif", fontWeight: 800, columnGap: "0.24em" }}
+      fill="currentColor"
     >
-      <span>B</span>
-      <AGlyph />
-      <span>L</span>
-      <AGlyph />
-      <span>N</span>
-      <span>C</span>
-      <EGlyph />
-    </span>
+      {/* B */}
+      <path d="M0 0 H38 C70 0 90 17 90 43 C90 60 81 73 65 80 C85 87 98 103 98 125 C98 155 75 174 40 174 H0 V0 Z M24 23 V69 H37 C55 69 65 60 65 46 C65 32 55 23 37 23 H24 Z M24 94 V151 H40 C61 151 73 140 73 123 C73 105 61 94 40 94 H24 Z" />
+      {/* A */}
+      <path transform="translate(-3)" d="M170 174 H143 L217 0 H244 L318 174 H290 L273 132 H187 L170 174 Z M196 109 H264 L230 27 Z" />
+      {/* L */}
+      <path transform="translate(-28)" d="M385 0 H412 V148 H493 V174 H385 V0 Z" />
+      {/* A */}
+      <path transform="translate(364)" d="M170 174 H143 L217 0 H244 L318 174 H290 L273 132 H187 L170 174 Z M196 109 H264 L230 27 Z" />
+      {/* N */}
+      <path transform="translate(-71)" d="M795 174 V0 H823 L920 128 V0 H947 V174 H920 L822 46 V174 H795 Z" />
+      {/* C */}
+      <path transform="translate(-23)" d="M1110 31 C1090 12 1065 2 1034 2 C981 2 941 41 941 87 C941 134 981 173 1035 173 C1064 173 1091 163 1111 144 L1094 124 C1078 139 1058 147 1036 147 C998 147 970 121 970 87 C970 53 998 28 1036 28 C1058 28 1077 36 1094 51 L1110 31 Z" />
+      {/* E — three bars */}
+      <g transform="translate(1130 0)">
+        <rect x="0" y="0" width="95" height="26" />
+        <rect x="0" y="74" width="78" height="26" />
+        <rect x="0" y="148" width="95" height="26" />
+      </g>
+    </svg>
   );
 }

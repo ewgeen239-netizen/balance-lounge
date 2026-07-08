@@ -39,7 +39,7 @@ export function Hero({ image, neon }: { image: string; neon: string }) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.5 }}
         >
-          <Wordmark className="logo-glow text-5xl sm:text-7xl text-neutral-50" />
+          <Wordmark className="logo-glow h-9 w-auto sm:h-14 text-neutral-50" />
           <p className="wordmark-sub mt-4 text-[10px] text-ember/90 sm:text-base">COCTAILS &amp; SHISHA</p>
         </motion.div>
 

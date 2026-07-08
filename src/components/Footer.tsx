@@ -24,7 +24,7 @@ export function Footer(props: FooterProps) {
     <footer className="mt-24 border-t border-white/10 bg-ink-950/60">
       <div className="container-x grid gap-10 py-14 md:grid-cols-3">
         <div>
-          <Wordmark className="text-xl text-neutral-50" />
+          <Wordmark className="h-5 w-auto text-neutral-50" />
           <p className="wordmark-sub mt-2 text-[10px] text-ember/70">COCTAILS &amp; SHISHA</p>
           <p className="mt-4 max-w-xs text-sm text-neutral-400">
             {props.address}

@@ -42,7 +42,7 @@ export function Header() {
         {/* Top row */}
         <div className="flex items-center justify-between gap-2">
           <Link href="/" className="shrink-0 leading-none" aria-label="BALANCE">
-            <Wordmark className="text-base sm:text-lg text-neutral-50" />
+            <Wordmark className="h-4 w-auto sm:h-5 text-neutral-50" />
           </Link>
 
           {/* Desktop centered nav */}

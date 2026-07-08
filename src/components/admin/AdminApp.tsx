@@ -55,7 +55,7 @@ export function AdminApp({
       <header className="sticky top-0 z-40 border-b border-white/10 bg-ink-950/90 backdrop-blur-xl">
         <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-x-3 gap-y-2 px-5 py-4">
           <div className="flex items-center gap-3">
-            <Wordmark className="text-base sm:text-lg text-neutral-50" />
+            <Wordmark className="h-4 w-auto sm:h-5 text-neutral-50" />
             <span className="rounded-full border border-ember/30 px-2 py-0.5 text-[10px] uppercase tracking-widest text-ember">
               {isOwner ? "Admin" : "Staff"}
             </span>
