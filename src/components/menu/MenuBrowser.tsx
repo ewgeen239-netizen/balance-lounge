@@ -78,16 +78,16 @@ export function MenuBrowser({ categories }: { categories: CategoryDTO[] }) {
               </TabBtn>
             ))}
           </div>
-          <div className="relative lg:w-72">
+          <div className="input flex items-center gap-2.5 lg:w-72">
+            <svg className="shrink-0 text-neutral-500" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <circle cx="11" cy="11" r="7" /><path d="M21 21l-4.3-4.3" />
+            </svg>
             <input
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               placeholder={t("menu.search")}
-              className="input pl-10"
+              className="w-full min-w-0 border-0 bg-transparent p-0 text-neutral-100 outline-none placeholder:text-neutral-500"
             />
-            <svg className="absolute left-3 top-1/2 -translate-y-1/2 text-neutral-500" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <circle cx="11" cy="11" r="7" /><path d="M21 21l-4.3-4.3" />
-            </svg>
           </div>
         </div>
       </div>
@@ -190,7 +190,7 @@ function TabBtn({ active, onClick, children }: { active: boolean; onClick: () =>
     <button
       onClick={onClick}
       className={cn(
-        "whitespace-nowrap rounded-full border px-4 py-2 text-sm transition",
+        "shrink-0 whitespace-nowrap rounded-full border px-4 py-2 text-sm transition",
         active ? "border-neon bg-neon/15 text-neon" : "border-white/10 text-neutral-300 hover:border-white/25"
       )}
     >
