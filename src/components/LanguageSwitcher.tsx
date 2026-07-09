@@ -23,7 +23,7 @@ export function LanguageSwitcher({ className }: { className?: string }) {
       key={l}
       onClick={() => { setLang(l); setOpen(false); }}
       className={cn(
-        "rounded-full px-2 py-1 text-xs font-medium tracking-wider transition sm:px-2.5",
+        "inline-flex h-7 min-w-[28px] items-center justify-center rounded-full px-1.5 text-xs font-semibold leading-none transition sm:min-w-[30px] sm:px-2",
         lang === l ? "bg-neon text-white shadow-glow" : "text-neutral-400 hover:text-neutral-100"
       )}
       aria-pressed={lang === l}
