@@ -26,7 +26,7 @@ const MAP: Record<string, string> = {
 const prisma = new PrismaClient();
 
 async function main() {
-  const items = await prisma.menuItem.findMany({ where: { OR: [{ photo: "" }, { photo: null as unknown as string }] } });
+  const items = await prisma.menuItem.findMany({ where: { photo: "" } });
   let n = 0;
   for (const it of items) {
     let pl = "";
@@ -39,7 +39,7 @@ async function main() {
       }
     }
   }
-  const left = await prisma.menuItem.count({ where: { OR: [{ photo: "" }, { photo: null as unknown as string }] } });
+  const left = await prisma.menuItem.count({ where: { photo: "" } });
   console.log(`✅ Applied ${n} photos. Remaining without photo: ${left}`);
 }
 
