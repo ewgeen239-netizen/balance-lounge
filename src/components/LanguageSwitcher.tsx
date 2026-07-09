@@ -23,7 +23,7 @@ export function LanguageSwitcher({ className }: { className?: string }) {
       key={l}
       onClick={() => { setLang(l); setOpen(false); }}
       className={cn(
-        "inline-flex h-7 min-w-[28px] items-center justify-center rounded-full px-1.5 text-xs font-semibold leading-none transition sm:min-w-[30px] sm:px-2",
+        "inline-flex h-7 min-w-[24px] items-center justify-center rounded-full px-1 text-xs font-semibold leading-none transition sm:min-w-[30px] sm:px-2",
         lang === l ? "bg-neon text-white shadow-glow" : "text-neutral-400 hover:text-neutral-100"
       )}
       aria-pressed={lang === l}
@@ -36,15 +36,16 @@ export function LanguageSwitcher({ className }: { className?: string }) {
     <div ref={ref} className={cn("relative", className)}>
       <div className="flex items-center gap-0.5 rounded-full border border-white/10 bg-ink-800/60 p-1">
         {MAIN_LANGS.map(pill)}
+        <span className="mx-0.5 h-4 w-px shrink-0 bg-white/15" aria-hidden />
         <button
           onClick={() => setOpen((o) => !o)}
           aria-label="More languages"
           className={cn(
-            "flex items-center rounded-full px-1.5 py-1 text-neutral-400 transition hover:text-neon",
-            EXTRA_LANGS.includes(lang as (typeof EXTRA_LANGS)[number]) && "text-neon"
+            "flex h-7 w-6 shrink-0 items-center justify-center rounded-full transition hover:bg-white/10 hover:text-neon",
+            EXTRA_LANGS.includes(lang as (typeof EXTRA_LANGS)[number]) ? "text-neon" : "text-neutral-200"
           )}
         >
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"
             className={cn("transition-transform", open && "rotate-180")}>
             <path d="M6 9l6 6 6-6" />
           </svg>
