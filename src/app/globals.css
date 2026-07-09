@@ -9,6 +9,9 @@
 
 html {
   scroll-behavior: smooth;
+  /* No sideways drift on mobile swipes (clip keeps position:sticky working) */
+  overflow-x: clip;
+  overscroll-behavior-x: none;
 }
 
 body {
@@ -18,6 +21,15 @@ body {
     radial-gradient(900px 500px at 90% 20%, rgba(255, 45, 58, 0.08), transparent 65%),
     radial-gradient(700px 500px at 5% 80%, rgba(255, 45, 58, 0.05), transparent 70%);
   background-attachment: fixed;
+  /* Lock horizontal panning so the page stays put on phones */
+  overflow-x: clip;
+  overscroll-behavior-x: none;
+  width: 100%;
+  max-width: 100vw;
+}
+
+* {
+  min-width: 0;
 }
 
 /* Section headings */

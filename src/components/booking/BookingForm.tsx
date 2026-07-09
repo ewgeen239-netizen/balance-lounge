@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLang } from "@/components/LangProvider";
@@ -23,7 +23,7 @@ export function BookingForm({ hours, loggedIn }: { hours: HoursRow[]; loggedIn: 
   const slots = useMemo(() => slotsForDate(hours, form.date), [hours, form.date]);
   const closed = form.date && slots.length === 0;
 
-  const set = (k: string, v: string | number) => setForm((f) => ({ ...f, [k]: v }));
+  const set = useCallback((k: string, v: string | number) => setForm((f) => ({ ...f, [k]: v })), []);
 
   async function submit(e: React.FormEvent) {
     e.preventDefault();
@@ -49,7 +49,7 @@ export function BookingForm({ hours, loggedIn }: { hours: HoursRow[]; loggedIn: 
       <motion.div
         initial={{ opacity: 0, scale: 0.96 }}
         animate={{ opacity: 1, scale: 1 }}
-        className="glass mx-auto max-w-xl rounded-3xl p-10 text-center shadow-glow"
+        className="mx-auto max-w-xl rounded-3xl border border-white/10 bg-ink-900 p-8 text-center shadow-glow sm:p-10"
       >
         <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-neon/15 text-neon">
           <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -92,8 +92,8 @@ export function BookingForm({ hours, loggedIn }: { hours: HoursRow[]; loggedIn: 
   }
 
   return (
-    <form onSubmit={submit} className="glass mx-auto max-w-2xl rounded-3xl p-8 sm:p-10">
-      <div className="grid gap-6 sm:grid-cols-2">
+    <form onSubmit={submit} className="mx-auto max-w-2xl rounded-3xl border border-white/10 bg-ink-900 p-5 shadow-card sm:p-10">
+      <div className="grid gap-4 sm:grid-cols-2 sm:gap-6">
         <div>
           <label className="label">{t("book.date")}</label>
           <input
@@ -114,7 +114,7 @@ export function BookingForm({ hours, loggedIn }: { hours: HoursRow[]; loggedIn: 
         </div>
         <div>
           <label className="label">{t("book.guests")}</label>
-          <input type="number" min={1} max={30} value={form.guests} onChange={(e) => set("guests", Number(e.target.value))} className="input" required />
+          <input type="number" inputMode="numeric" min={1} max={30} value={form.guests} onChange={(e) => set("guests", e.target.value === "" ? 1 : Number(e.target.value))} className="input" required />
         </div>
         <div>
           <label className="label">{t("book.name")}</label>
