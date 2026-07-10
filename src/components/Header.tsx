@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { useLang } from "./LangProvider";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import { useReservation } from "./booking/ReservationModal";
+import { Wordmark } from "./Wordmark";
 import { cn } from "@/lib/utils";
 
 const NAV = [
@@ -41,11 +42,9 @@ export function Header() {
         {/* Top row */}
         <div className="flex items-center justify-between gap-3">
           {/* Brand lockup — premium serif logotype */}
-          <Link href="/" aria-label="Balance — Coctails & Shisha" className="group flex shrink-0 flex-col items-center justify-center leading-none">
-            <span className="brand-serif block text-center text-[26px] leading-[0.9] tracking-[0.1em] transition sm:text-[34px]">
-              Balance<span className="accentdot">.</span>
-            </span>
-            <span className="mt-1.5 flex items-center gap-2 text-[7px] uppercase tracking-[0.4em] text-ember/70 transition-colors group-hover:text-ember sm:text-[8px]">
+          <Link href="/" aria-label="BALANCE — Coctails & Shisha" className="group flex shrink-0 flex-col items-center justify-center leading-none">
+            <Wordmark className="h-[18px] w-auto transition sm:h-[22px]" />
+            <span className="mt-2 flex items-center gap-2 text-[7px] uppercase tracking-[0.4em] text-ember/70 transition-colors group-hover:text-ember sm:text-[8px]">
               <span className="h-px w-3 bg-gradient-to-r from-transparent to-ember/60 sm:w-4" />
               Coctails &amp; Shisha
               <span className="h-px w-3 bg-gradient-to-l from-transparent to-ember/60 sm:w-4" />
