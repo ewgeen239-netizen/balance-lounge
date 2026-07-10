@@ -41,13 +41,14 @@ export function Header() {
         {/* Top row */}
         <div className="flex items-center justify-between gap-3">
           {/* Brand lockup — premium serif logotype */}
-          <Link href="/" aria-label="Balance — Coctails & Shisha" className="group shrink-0 leading-none">
-            <span className="brand-serif block text-[26px] leading-[0.9] tracking-[0.1em] transition sm:text-[34px]">
+          <Link href="/" aria-label="Balance — Coctails & Shisha" className="group flex shrink-0 flex-col items-center justify-center leading-none">
+            <span className="brand-serif block text-center text-[26px] leading-[0.9] tracking-[0.1em] transition sm:text-[34px]">
               Balance<span className="accentdot">.</span>
             </span>
-            <span className="mt-1.5 flex items-center gap-2 pl-0.5 text-[7px] uppercase tracking-[0.42em] text-ember/70 transition-colors group-hover:text-ember sm:text-[8px]">
+            <span className="mt-1.5 flex items-center gap-2 text-[7px] uppercase tracking-[0.4em] text-ember/70 transition-colors group-hover:text-ember sm:text-[8px]">
               <span className="h-px w-3 bg-gradient-to-r from-transparent to-ember/60 sm:w-4" />
               Coctails &amp; Shisha
+              <span className="h-px w-3 bg-gradient-to-l from-transparent to-ember/60 sm:w-4" />
             </span>
           </Link>
 

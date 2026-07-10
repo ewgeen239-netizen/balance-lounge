@@ -1,5 +1,6 @@
 // BALANCE brand mark — custom geometric letters, crossbar-less "A" and a
-// three-bar "E". Colour follows currentColor; size with a height class (h-*).
+// three-bar "E". Filled with a premium warm gradient (ivory → amber ember →
+// neon spark) matching the site. Size with a height class (h-*).
 
 export function Wordmark({ className }: { className?: string }) {
   return (
@@ -8,8 +9,16 @@ export function Wordmark({ className }: { className?: string }) {
       className={className}
       role="img"
       aria-label="BALANCE"
-      fill="currentColor"
+      fill="url(#balanceGrad)"
     >
+      <defs>
+        <linearGradient id="balanceGrad" x1="0" y1="0" x2="0.85" y2="1" gradientUnits="objectBoundingBox">
+          <stop offset="0%" stopColor="#ffffff" />
+          <stop offset="42%" stopColor="#f4e7d3" />
+          <stop offset="74%" stopColor="#e6a15a" />
+          <stop offset="100%" stopColor="#ff5a3c" />
+        </linearGradient>
+      </defs>
       {/* B */}
       <path d="M0 0H17.5C28 0 34.5 5.2 34.5 13.3C34.5 18.2 32 22 27.8 24C33.1 25.8 36.5 30.4 36.5 36.5C36.5 45.9 29.1 52 17.5 52H0V0ZM8 7V21H16.1C22.7 21 26.3 18.4 26.3 14C26.3 9.5 22.7 7 16.1 7H8ZM8 28V45H17.2C24.5 45 28.4 41.9 28.4 36.4C28.4 31 24.5 28 17.2 28H8Z" />
       {/* A */}
