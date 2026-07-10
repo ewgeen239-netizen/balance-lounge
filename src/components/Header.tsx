@@ -34,47 +34,55 @@ export function Header() {
   return (
     <header
       className={cn(
-        "sticky top-0 z-50 transition-all duration-300",
-        scrolled ? "bg-ink-950/90 backdrop-blur-xl border-b border-white/10" : "bg-gradient-to-b from-ink-950/70 to-transparent"
+        "sticky top-0 z-50 transition-all duration-500",
+        scrolled ? "bg-ink-950/80 backdrop-blur-xl" : "bg-gradient-to-b from-ink-950/80 via-ink-950/30 to-transparent"
       )}
     >
-      <div className="container-x py-3">
+      <div className="container-x py-3.5 sm:py-4">
         {/* Top row */}
-        <div className="flex items-center justify-between gap-2">
-          <Link href="/" className="shrink-0 leading-none" aria-label="BALANCE">
-            <Wordmark className="h-4 w-auto text-neutral-50 sm:h-5" />
+        <div className="flex items-center justify-between gap-3">
+          {/* Brand lockup */}
+          <Link href="/" aria-label="BALANCE — Coctails & Shisha" className="group shrink-0 leading-none">
+            <Wordmark className="h-[18px] w-auto text-neutral-50 transition-colors group-hover:text-white sm:h-[22px]" />
+            <span className="mt-2 flex items-center gap-2 text-[7px] uppercase tracking-[0.42em] text-ember/70 transition-colors group-hover:text-ember sm:text-[8px]">
+              <span className="h-px w-3 bg-gradient-to-r from-transparent to-ember/60 sm:w-4" />
+              Coctails &amp; Shisha
+            </span>
           </Link>
 
-          {/* Desktop centered nav */}
-          <nav className="hidden md:flex items-center gap-8">
+          {/* Desktop nav */}
+          <nav className="hidden items-center gap-7 lg:flex">
             {NAV.map((n) => (
               <NavLink key={n.href} href={n.href} active={pathname === n.href} label={t(n.key)} />
             ))}
           </nav>
 
-          <div className="flex items-center gap-2 sm:gap-3">
+          {/* Right controls */}
+          <div className="flex items-center gap-2 sm:gap-3.5">
             <LanguageSwitcher />
             <button
               onClick={openReservation}
               aria-label={t("cta.reserve")}
-              className="btn-primary px-3 py-2 sm:px-6 sm:py-3 sm:text-sm"
+              className="group relative inline-flex items-center justify-center overflow-hidden rounded-full px-3 py-2 text-[11px] font-semibold uppercase tracking-[0.15em] text-white transition sm:px-6 sm:py-2.5 sm:text-xs"
+              style={{ background: "linear-gradient(135deg, #ff2d3a, #c47a2f)" }}
             >
-              <svg className="sm:hidden" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <span className="absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100" style={{ background: "linear-gradient(135deg, #ff5a63, #e6a15a)" }} />
+              <svg className="relative sm:hidden" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <rect x="3" y="4" width="18" height="18" rx="2" /><path d="M16 2v4M8 2v4M3 10h18" />
               </svg>
-              <span className="hidden sm:inline">{t("cta.reserve")}</span>
+              <span className="relative hidden sm:inline">{t("cta.reserve")}</span>
             </button>
           </div>
         </div>
 
-        {/* Mobile nav row (top panel, no hamburger) */}
-        <nav className="mt-2.5 flex items-center justify-between gap-1 md:hidden">
+        {/* Mobile / tablet nav row (top panel, no hamburger) */}
+        <nav className="mt-3 flex items-center justify-between gap-1 border-t border-white/5 pt-2.5 lg:hidden">
           {NAV.map((n) => (
             <Link
               key={n.href}
               href={n.href}
               className={cn(
-                "rounded-full px-3 py-1.5 text-sm transition",
+                "rounded-full px-3 py-1.5 text-[13px] tracking-wide transition",
                 pathname === n.href ? "bg-neon/15 text-neon" : "text-neutral-300 hover:text-neutral-50"
               )}
             >
@@ -83,6 +91,15 @@ export function Header() {
           ))}
         </nav>
       </div>
+
+      {/* Refined hairline that fades in on scroll */}
+      <div
+        className={cn(
+          "pointer-events-none absolute inset-x-0 bottom-0 h-px transition-opacity duration-500",
+          scrolled ? "opacity-100" : "opacity-0"
+        )}
+        style={{ background: "linear-gradient(90deg, transparent, rgba(230,161,90,0.4), rgba(255,45,58,0.35), transparent)" }}
+      />
     </header>
   );
 }
@@ -92,12 +109,17 @@ function NavLink({ href, active, label }: { href: string; active: boolean; label
     <Link
       href={href}
       className={cn(
-        "relative py-1 text-sm tracking-wide transition",
+        "group relative whitespace-nowrap py-1 text-[13px] uppercase tracking-[0.12em] transition-colors",
         active ? "text-neon" : "text-neutral-300 hover:text-neutral-50"
       )}
     >
       {label}
-      {active && <span className="absolute -bottom-0.5 left-0 right-0 h-px bg-neon shadow-glow" />}
+      <span
+        className={cn(
+          "absolute -bottom-0.5 left-0 h-px bg-gradient-to-r from-neon to-ember transition-all duration-300",
+          active ? "w-full shadow-glow" : "w-0 group-hover:w-full"
+        )}
+      />
     </Link>
   );
 }
