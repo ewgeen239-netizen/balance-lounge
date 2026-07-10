@@ -2,34 +2,109 @@
 // crossbar-less "A" (inverted V) and a three-bar "E".
 // Colour follows currentColor; size with a height class (h-*).
 
-const A_PATH = "M220 0 L240 0 L292 174 L252 174 L230 95 L208 174 L168 174 Z";
+const A_PATH =
+  "M0 174 L55 0 H75 L130 174 H98 L65 58 L32 174 Z";
 
 export function Wordmark({ className }: { className?: string }) {
   return (
     <svg
-      viewBox="-10 -10 1653 194"
+      viewBox="0 0 1260 174"
       className={className}
       role="img"
       aria-label="BALANCE"
       fill="currentColor"
     >
       {/* B */}
-      <path d="M0 0 H38 C70 0 90 17 90 43 C90 60 81 73 65 80 C85 87 98 103 98 125 C98 155 75 174 40 174 H0 V0 Z M24 23 V69 H37 C55 69 65 60 65 46 C65 32 55 23 37 23 H24 Z M24 94 V151 H40 C61 151 73 140 73 123 C73 105 61 94 40 94 H24 Z" />
-      {/* A (crossbar-less) */}
-      <path transform="translate(65)" d={A_PATH} />
+      <path d="
+        M0 0
+        H46
+        C84 0 106 18 106 46
+        C106 66 95 80 77 88
+        C99 96 113 114 113 138
+        C113 160 95 174 58 174
+        H0
+        Z
+
+        M26 22
+        V74
+        H44
+        C63 74 79 64 79 47
+        C79 30 64 22 44 22
+        Z
+
+        M26 96
+        V151
+        H54
+        C77 151 87 140 87 123
+        C87 106 76 96 54 96
+        Z
+      " />
+
+      {/* A */}
+      <g transform="translate(180)">
+        <path d={A_PATH} />
+      </g>
+
       {/* L */}
-      <path transform="translate(108)" d="M385 0 H418 V140 H493 V174 H385 V0 Z" />
-      {/* A (crossbar-less) */}
-      <path transform="translate(568)" d={A_PATH} />
+      <path
+        transform="translate(390)"
+        d="
+          M0 0
+          H28
+          V148
+          H102
+          V174
+          H0
+          Z
+        "
+      />
+
+      {/* A */}
+      <g transform="translate(565)">
+        <path d={A_PATH} />
+      </g>
+
       {/* N */}
-      <path transform="translate(201)" d="M795 174 V0 H823 L920 128 V0 H947 V174 H920 L822 46 V174 H795 Z" />
+      <path
+        transform="translate(760)"
+        d="
+          M0 174
+          V0
+          H28
+          L118 132
+          V0
+          H146
+          V174
+          H118
+          L28 42
+          V174
+          Z
+        "
+      />
+
       {/* C */}
-      <path transform="translate(317)" d="M1110 31 C1090 12 1065 2 1034 2 C981 2 941 41 941 87 C941 134 981 173 1035 173 C1064 173 1091 163 1111 144 L1094 124 C1078 139 1058 147 1036 147 C998 147 970 121 970 87 C970 53 998 28 1036 28 C1058 28 1077 36 1094 51 L1110 31 Z" />
-      {/* E — three bars */}
-      <g transform="translate(1538 0)">
-        <rect x="0" y="0" width="125" height="26" />
-        <rect x="0" y="74" width="125" height="26" />
-        <rect x="0" y="148" width="125" height="26" />
+      <path
+        transform="translate(980)"
+        d="
+          M120 24
+          C103 9 80 0 53 0
+          C22 0 0 18 0 87
+          C0 156 22 174 53 174
+          C80 174 103 165 120 150
+          L103 128
+          C90 140 74 147 56 147
+          C24 147 15 120 15 87
+          C15 54 24 27 56 27
+          C74 27 90 34 103 46
+          Z
+        "
+      />
+
+      {/* E */}
+      <g transform="translate(1160)">
+        <rect width="78" height="18" rx="2" />
+        <rect y="78" width="78" height="18" rx="2" />
+        <rect y="156" width="78" height="18" rx="2" />
       </g>
     </svg>
   );
