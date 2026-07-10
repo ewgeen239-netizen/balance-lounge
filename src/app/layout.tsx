@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Montserrat } from "next/font/google";
+import { Montserrat, Cormorant_Garamond } from "next/font/google";
 import "./globals.css";
 import { LangProvider } from "@/components/LangProvider";
 
@@ -7,6 +7,14 @@ const montserrat = Montserrat({
   subsets: ["latin"],
   weight: ["300", "400", "700", "800"],
   variable: "--font-mont",
+  display: "swap",
+});
+
+// Premium serif used only for the header brand logotype.
+const cormorant = Cormorant_Garamond({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-serif",
   display: "swap",
 });
 import { Header } from "@/components/Header";
@@ -32,7 +40,7 @@ export default async function RootLayout({
   const hours = parseJSON<HoursRow[]>(bar?.hours, []);
 
   return (
-    <html lang="pl" className={montserrat.variable}>
+    <html lang="pl" className={`${montserrat.variable} ${cormorant.variable}`}>
       <body>
         <LangProvider>
           <ReservationProvider hours={hours} loggedIn={!!guest}>

@@ -65,6 +65,22 @@ body {
   filter: drop-shadow(0 0 22px rgba(230, 161, 90, 0.45));
 }
 
+/* Premium serif brand logotype — header only */
+.brand-serif {
+  font-family: var(--font-serif), "Cormorant Garamond", Georgia, serif;
+  font-weight: 600;
+  font-style: normal;
+  background: linear-gradient(178deg, #ffffff 0%, #f4e7d6 55%, #e6a15a 125%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 0 26px rgba(230, 161, 90, 0.18);
+}
+.brand-serif .accentdot {
+  color: #ff2d3a;
+  -webkit-text-fill-color: #ff2d3a;
+}
+
 /* Section underline accent */
 .accent-underline::after {
   content: "";
