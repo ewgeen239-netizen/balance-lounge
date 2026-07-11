@@ -19,10 +19,12 @@ export async function notifyNewReservation(r: ReservationLike): Promise<void> {
     .map((id) => id.trim())
     .filter(Boolean);
   const text =
-    `🆕 Nowa rezerwacja — BALANCE\n\n` +
-    `👤 ${r.name}\n📞 ${r.phone}\n📅 ${r.date} ${r.time}\n👥 ${r.guests}\n` +
-    (r.zone ? `📍 ${r.zone}\n` : "") +
-    (r.comment ? `💬 ${r.comment}\n` : "");
+  `<b>🆕 Nowa rezerwacja — BALANCE</b>
+
+` +
+  `👤 Liczba gości: ${r.guests}
+` +
+  `📅 Termin: ${r.date}, godz. ${r.time}`;
 
   if (!token || chatIds.length === 0) {
     console.info("[notify] Telegram not configured, skipping. Reservation:\n" + text);
