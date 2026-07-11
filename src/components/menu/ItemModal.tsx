@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLang } from "@/components/LangProvider";
-import { parseJSON, formatPrice, cn } from "@/lib/utils";
+import { parseJSON, formatPrice } from "@/lib/utils";
 import type { MenuItemDTO } from "./MenuBrowser";
 
 type OptionItem = { name: unknown; price: number };
@@ -101,9 +101,11 @@ export function ItemModal({ item, onClose }: { item: MenuItemDTO | null; onClose
                         {g.list.map((o, oi) => (
                           <li key={oi} className="flex items-center justify-between gap-3 px-4 py-3 text-sm">
                             <span className="text-neutral-200">{tr(o.name)}</span>
-                            <span className={cn("whitespace-nowrap font-semibold tabular-nums", g.portion ? "text-ember" : o.price > 0 ? "text-ember" : "text-neutral-500")}>
-                              {g.portion ? formatPrice(o.price) : o.price > 0 ? `+${formatPrice(o.price)}` : t("menu.free")}
-                            </span>
+                            {(g.portion || o.price > 0) && (
+                              <span className="whitespace-nowrap font-semibold tabular-nums text-ember">
+                                {g.portion ? formatPrice(o.price) : `+${formatPrice(o.price)}`}
+                              </span>
+                            )}
                           </li>
                         ))}
                       </ul>
