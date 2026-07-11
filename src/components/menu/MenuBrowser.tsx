@@ -35,6 +35,24 @@ const BADGE_STYLE: Record<string, string> = {
 // menu cards. Any legacy DB categories with these slugs are hidden from the grid.
 const INFO_SLUGS = new Set(["informacje", "odpowiedzialnosc"]);
 
+// Intro paragraph shown under a category heading (Polish source, auto-translated).
+const CATEGORY_INTRO: Record<string, { pl: string }> = {
+  shisha: {
+    pl: "Shisha w Balance to chwila relaksu przygotowana przez doświadczonych Shisha Masterów, którzy dbają o idealny balans smaku i temperatury. Optymalny czas sesji to około 50–70 minut. Aby każda sesja zachowała swój najlepszy charakter, obowiązuje u nas mała zasada: 1 shisha maksymalnie dla 3 osób. W kwestii regulacji ciepła prosimy o kontakt z obsługą. Niech ten wieczór stanie się chwilą prawdziwego relaksu. — Zespół Balance.",
+  },
+};
+
+// A big divider rendered ABOVE the category whose slug is the key — separates
+// sections of the menu (e.g. drinks → sushi).
+const SUPER_SECTIONS: Record<string, { title: { pl: string }; desc: { pl: string } }> = {
+  rolls: {
+    title: { pl: "SUSHI BY BALANCE" },
+    desc: {
+      pl: "Idealne dopełnienie wieczoru w Balance. Świeżość. Balans. Estetyka.\nGodziny dostępności:\n• Poniedziałek – niedostępne\n• Wtorek–Czwartek – do 20:00\n• Piątek–Sobota – do 21:00\n• Niedziela – do 20:00",
+    },
+  },
+};
+
 // Polish source; rendered via tr() so it auto-translates into the active language.
 const DAMAGES = {
   title: { pl: "ODPOWIEDZIALNOŚĆ ZA USZKODZENIA" },
@@ -161,16 +179,28 @@ export function MenuBrowser({ categories }: { categories: CategoryDTO[] }) {
         ) : (
           visible.map((c) => {
             const closed = categoryClosedNow(c.scheduled);
+            const superSection = SUPER_SECTIONS[c.slug];
+            const intro = CATEGORY_INTRO[c.slug];
             return (
-              <section key={c.id} id={c.slug} className="relative scroll-mt-[170px] md:scroll-mt-[130px]">
-                <div className="mb-6 flex flex-wrap items-center gap-3 sm:mb-8">
-                  <h2 className="wordmark accent-underline text-2xl text-neutral-50 sm:text-3xl">{tr(c.name)}</h2>
-                  {closed && (
-                    <span className="rounded-full border border-neon/40 bg-neon/10 px-3 py-1 text-xs text-neon">
-                      {t("menu.closedToday")}
-                    </span>
+              <div key={c.id}>
+                {superSection && (
+                  <div className="mb-12 border-t border-white/10 pt-10">
+                    <h2 className="wordmark text-3xl text-neutral-50 sm:text-4xl">{tr(superSection.title)}</h2>
+                    <p className="mt-3 max-w-2xl whitespace-pre-line text-sm leading-relaxed text-neutral-400">{tr(superSection.desc)}</p>
+                  </div>
+                )}
+                <section id={c.slug} className="relative scroll-mt-[170px] md:scroll-mt-[130px]">
+                  <div className="mb-6 flex flex-wrap items-center gap-3 sm:mb-8">
+                    <h2 className="wordmark accent-underline text-2xl text-neutral-50 sm:text-3xl">{tr(c.name)}</h2>
+                    {closed && (
+                      <span className="rounded-full border border-neon/40 bg-neon/10 px-3 py-1 text-xs text-neon">
+                        {t("menu.closedToday")}
+                      </span>
+                    )}
+                  </div>
+                  {intro && (
+                    <p className="-mt-2 mb-7 max-w-3xl whitespace-pre-line text-sm leading-relaxed text-neutral-400">{tr(intro)}</p>
                   )}
-                </div>
 
                 <div className={cn("relative", closed && "pointer-events-none select-none")}>
                   <div className={cn("grid grid-cols-2 gap-3 sm:gap-5 xl:grid-cols-3", closed && "blur-[6px] saturate-50 opacity-70")}>
@@ -234,8 +264,9 @@ export function MenuBrowser({ categories }: { categories: CategoryDTO[] }) {
                       </span>
                     </div>
                   )}
-                </div>
-              </section>
+                  </div>
+                </section>
+              </div>
             );
           })
         )}
