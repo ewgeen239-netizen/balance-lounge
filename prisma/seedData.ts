@@ -163,19 +163,9 @@ export async function seedDatabase(prisma: PrismaClient) {
     });
   }
 
-  // ---- Info blocks pinned to the very bottom (like the official menu) ----
-  const info = [
-    { slug: "informacje", order: 90, cat: "INFORMACJE", item: "Opłata serwisowa", desc: "Do rachunków dla grup od 6 osób doliczamy opłatę serwisową w wysokości 5%." },
-    { slug: "odpowiedzialnosc", order: 91, cat: "ODPOWIEDZIALNOŚĆ ZA USZKODZENIA", item: "Odpowiedzialność za uszkodzenia", desc: "Gość ponosi odpowiedzialność finansową za powyższe uszkodzenia zgodnie z wyceną lokalu" },
-  ];
-  for (const x of info) {
-    const c = await prisma.category.create({
-      data: { slug: x.slug, name: J({ pl: x.cat, ru: x.cat, en: x.cat, ua: x.cat }), order: x.order, scheduled: false },
-    });
-    await prisma.menuItem.create({
-      data: { categoryId: c.id, name: J({ pl: x.item }), description: J({ pl: x.desc }), price: 0, photo: "", badges: "[]", options: "[]", available: true, order: 0 },
-    });
-  }
+  // NOTE: "Opłata serwisowa" and "ODPOWIEDZIALNOŚĆ ZA USZKODZENIA" are fixed
+  // official notices rendered directly by the menu UI (see MenuBrowser), not as
+  // editable categories — so they are intentionally not seeded here.
 
   const adminUser = process.env.ADMIN_USERNAME || "admin";
   const adminPass = process.env.ADMIN_PASSWORD || "balance123";
@@ -204,9 +194,9 @@ export async function seedDatabase(prisma: PrismaClient) {
   };
   await prisma.reservation.createMany({
     data: [
-      { date: day(0), time: "19:00", guests: 4, name: "Jan Kowalski", phone: "500100200", zone: "Strefa lounge", status: "confirmed", guestId: guest.id, comment: "Urodziny" },
+      { date: day(0), time: "19:00", guests: 4, name: "Jan Kowalski", phone: "500100200", zone: "Strefa lounge", status: "confirmed", tableNo: 5, guestId: guest.id, comment: "Urodziny" },
       { date: day(0), time: "21:00", guests: 2, name: "Anna Nowak", phone: "600200300", zone: "Przy barze", status: "pending" },
-      { date: day(1), time: "20:00", guests: 6, name: "Piotr Wiśniewski", phone: "700300400", zone: "Sala główna", status: "confirmed" },
+      { date: day(1), time: "20:00", guests: 6, name: "Piotr Wiśniewski", phone: "700300400", zone: "Sala główna", status: "confirmed", tableNo: 11 },
       { date: day(2), time: "22:00", guests: 3, name: "Olena Shevchenko", phone: "512345678", zone: "Strefa lounge", status: "pending", comment: "Shisha premium" },
       { date: day(-1), time: "20:30", guests: 2, name: "Marek Zieliński", phone: "888777666", zone: "Przy barze", status: "seated" },
     ],

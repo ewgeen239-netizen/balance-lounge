@@ -11,6 +11,9 @@ export async function PATCH(req: Request, { params }: { params: { id: string } }
   const data: Record<string, unknown> = {};
   if (typeof body.status === "string" && STATUSES.includes(body.status)) data.status = body.status;
   if (body.comment !== undefined) data.comment = String(body.comment);
+  // tableNo: null clears the assignment, an integer 1–20 assigns a table.
+  if (body.tableNo === null) data.tableNo = null;
+  else if (Number.isInteger(body.tableNo) && body.tableNo >= 1 && body.tableNo <= 20) data.tableNo = body.tableNo;
   if (Object.keys(data).length === 0) return NextResponse.json({ error: "nothing_to_update" }, { status: 400 });
 
   const r = await prisma.reservation.update({ where: { id: Number(params.id) }, data });

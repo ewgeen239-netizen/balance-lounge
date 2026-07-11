@@ -31,6 +31,20 @@ const BADGE_STYLE: Record<string, string> = {
   "18+": "bg-neon/15 text-neon border-neon/30",
 };
 
+// Info sections are fixed official/legal notices — rendered separately, not as
+// menu cards. Any legacy DB categories with these slugs are hidden from the grid.
+const INFO_SLUGS = new Set(["informacje", "odpowiedzialnosc"]);
+
+const DAMAGES = {
+  title: "ODPOWIEDZIALNOŚĆ ZA USZKODZENIA",
+  note: "Gość ponosi odpowiedzialność finansową za powyższe uszkodzenia zgodnie z wyceną lokalu.",
+  groups: [
+    { area: "BAR", items: ["Uszkodzenia szkła (kieliszki, szklanki)", "Uszkodzenia sprzętu barowego", "Uszkodzenia mebli barowych"] },
+    { area: "SHISHA", items: ["Uszkodzenia fajki wodnej (kolba, cybuch, wąż)", "Przewrócenie shishy"] },
+    { area: "WYPOSAŻENIE LOKALU", items: ["Uszkodzenie stołów, krzeseł i sof", "Uszkodzenie elementów oświetlenia", "Zabrudzenie wymagające specjalistycznego czyszczenia"] },
+  ],
+};
+
 function Badge({ code }: { code: string }) {
   const { t } = useLang();
   const key = code === "18+" ? "badge.18" : `badge.${code}`;
@@ -43,9 +57,12 @@ function Badge({ code }: { code: string }) {
 
 export function MenuBrowser({ categories }: { categories: CategoryDTO[] }) {
   const { t, tr } = useLang();
+  // Drop the fixed info notices from the browsable menu; they render as their own
+  // plaque (top) and damages section (bottom).
+  const menuCategories = useMemo(() => categories.filter((c) => !INFO_SLUGS.has(c.slug)), [categories]);
   const [query, setQuery] = useState("");
   const [selected, setSelected] = useState<MenuItemDTO | null>(null);
-  const [activeSlug, setActiveSlug] = useState<string>(categories[0]?.slug ?? "");
+  const [activeSlug, setActiveSlug] = useState<string>(menuCategories[0]?.slug ?? "");
 
   const tabBarRef = useRef<HTMLDivElement>(null);
   const tabRefs = useRef<Record<string, HTMLButtonElement | null>>({});
@@ -55,8 +72,8 @@ export function MenuBrowser({ categories }: { categories: CategoryDTO[] }) {
 
   // Filter only when searching; otherwise keep every category so scroll-spy works.
   const visible = useMemo(() => {
-    if (!q) return categories;
-    return categories
+    if (!q) return menuCategories;
+    return menuCategories
       .map((c) => ({
         ...c,
         items: c.items.filter(
@@ -64,7 +81,7 @@ export function MenuBrowser({ categories }: { categories: CategoryDTO[] }) {
         ),
       }))
       .filter((c) => c.items.length > 0);
-  }, [categories, q, tr]);
+  }, [menuCategories, q, tr]);
 
   // Scroll-spy: highlight the category currently under the sticky bar.
   useEffect(() => {
@@ -75,8 +92,8 @@ export function MenuBrowser({ categories }: { categories: CategoryDTO[] }) {
       cancelAnimationFrame(raf);
       raf = requestAnimationFrame(() => {
         const offset = 190; // header + sticky controls
-        let current = categories[0]?.slug ?? "";
-        for (const c of categories) {
+        let current = menuCategories[0]?.slug ?? "";
+        for (const c of menuCategories) {
           const el = document.getElementById(c.slug);
           if (el && el.getBoundingClientRect().top - offset <= 0) current = c.slug;
         }
@@ -89,7 +106,7 @@ export function MenuBrowser({ categories }: { categories: CategoryDTO[] }) {
       window.removeEventListener("scroll", onScroll);
       cancelAnimationFrame(raf);
     };
-  }, [categories, q]);
+  }, [menuCategories, q]);
 
   // Keep the active tab visible in the horizontal tab bar.
   useEffect(() => {
@@ -112,7 +129,7 @@ export function MenuBrowser({ categories }: { categories: CategoryDTO[] }) {
       <div className="sticky top-[92px] z-30 -mx-5 mb-8 bg-ink-950/85 px-5 py-4 backdrop-blur-xl sm:-mx-8 sm:px-8 md:top-[60px]">
         <div className="container-x flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
           <div ref={tabBarRef} className="flex gap-2 overflow-x-auto pb-1">
-            {categories.map((c) => (
+            {menuCategories.map((c) => (
               <TabBtn
                 key={c.slug}
                 btnRef={(el) => { tabRefs.current[c.slug] = el; }}
@@ -222,6 +239,29 @@ export function MenuBrowser({ categories }: { categories: CategoryDTO[] }) {
           })
         )}
       </div>
+
+      {/* Damages liability — fixed notice, grouped by area, no prices (wg wyceny lokalu). */}
+      <section className="container-x border-t border-white/10 pb-14 pt-12">
+        <h2 className="wordmark accent-underline text-2xl text-neutral-50 sm:text-3xl">{DAMAGES.title}</h2>
+        <p className="mt-3 max-w-2xl text-sm text-neutral-400">{DAMAGES.note}</p>
+        <div className="mt-8 space-y-8">
+          {DAMAGES.groups.map((g) => (
+            <div key={g.area}>
+              <h3 className="mb-3 text-sm font-semibold uppercase tracking-widest text-ember">{g.area}</h3>
+              <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 xl:grid-cols-3">
+                {g.items.map((it) => (
+                  <div key={it} className="glass flex items-center gap-3 rounded-2xl px-4 py-3.5">
+                    <svg className="shrink-0 text-ember/70" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <path d="M12 3l9 16H3z" /><path d="M12 10v4M12 17h.01" />
+                    </svg>
+                    <span className="text-sm text-neutral-200">{it}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
 
       <ItemModal item={selected} onClose={() => setSelected(null)} />
     </div>

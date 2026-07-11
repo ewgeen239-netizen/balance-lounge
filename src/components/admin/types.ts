@@ -28,6 +28,7 @@ export type AdminReservation = {
   phone: string;
   comment: string;
   zone: string;
+  tableNo: number | null;
   status: string;
   createdAt: string;
 };

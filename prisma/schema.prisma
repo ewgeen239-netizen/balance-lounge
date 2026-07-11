@@ -78,6 +78,7 @@ model Reservation {
   phone     String
   comment   String   @default("")
   zone      String   @default("")
+  tableNo   Int? // assigned table 1–20 (set by staff on confirm); null = unassigned
   status    String   @default("pending") // pending | confirmed | seated | cancelled
   guestId   Int?
   guest     GuestUser? @relation(fields: [guestId], references: [id], onDelete: SetNull)
