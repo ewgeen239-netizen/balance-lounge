@@ -35,13 +35,14 @@ const BADGE_STYLE: Record<string, string> = {
 // menu cards. Any legacy DB categories with these slugs are hidden from the grid.
 const INFO_SLUGS = new Set(["informacje", "odpowiedzialnosc"]);
 
+// Polish source; rendered via tr() so it auto-translates into the active language.
 const DAMAGES = {
-  title: "ODPOWIEDZIALNOŚĆ ZA USZKODZENIA",
-  note: "Gość ponosi odpowiedzialność finansową za powyższe uszkodzenia zgodnie z wyceną lokalu.",
+  title: { pl: "ODPOWIEDZIALNOŚĆ ZA USZKODZENIA" },
+  note: { pl: "Gość ponosi odpowiedzialność finansową za powyższe uszkodzenia zgodnie z wyceną lokalu." },
   groups: [
-    { area: "BAR", items: ["Uszkodzenia szkła (kieliszki, szklanki)", "Uszkodzenia sprzętu barowego", "Uszkodzenia mebli barowych"] },
-    { area: "SHISHA", items: ["Uszkodzenia fajki wodnej (kolba, cybuch, wąż)", "Przewrócenie shishy"] },
-    { area: "WYPOSAŻENIE LOKALU", items: ["Uszkodzenie stołów, krzeseł i sof", "Uszkodzenie elementów oświetlenia", "Zabrudzenie wymagające specjalistycznego czyszczenia"] },
+    { area: { pl: "BAR" }, items: [{ pl: "Uszkodzenia szkła (kieliszki, szklanki)" }, { pl: "Uszkodzenia sprzętu barowego" }, { pl: "Uszkodzenia mebli barowych" }] },
+    { area: { pl: "SHISHA" }, items: [{ pl: "Uszkodzenia fajki wodnej (kolba, cybuch, wąż)" }, { pl: "Przewrócenie shishy" }] },
+    { area: { pl: "WYPOSAŻENIE LOKALU" }, items: [{ pl: "Uszkodzenie stołów, krzeseł i sof" }, { pl: "Uszkodzenie elementów oświetlenia" }, { pl: "Zabrudzenie wymagające specjalistycznego czyszczenia" }] },
   ],
 };
 
@@ -242,19 +243,19 @@ export function MenuBrowser({ categories }: { categories: CategoryDTO[] }) {
 
       {/* Damages liability — fixed notice, grouped by area, no prices (wg wyceny lokalu). */}
       <section className="container-x border-t border-white/10 pb-14 pt-12">
-        <h2 className="wordmark accent-underline text-2xl text-neutral-50 sm:text-3xl">{DAMAGES.title}</h2>
-        <p className="mt-3 max-w-2xl text-sm text-neutral-400">{DAMAGES.note}</p>
+        <h2 className="wordmark accent-underline text-2xl text-neutral-50 sm:text-3xl">{tr(DAMAGES.title)}</h2>
+        <p className="mt-3 max-w-2xl text-sm text-neutral-400">{tr(DAMAGES.note)}</p>
         <div className="mt-8 space-y-8">
           {DAMAGES.groups.map((g) => (
-            <div key={g.area}>
-              <h3 className="mb-3 text-sm font-semibold uppercase tracking-widest text-ember">{g.area}</h3>
+            <div key={g.area.pl}>
+              <h3 className="mb-3 text-sm font-semibold uppercase tracking-widest text-ember">{tr(g.area)}</h3>
               <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 xl:grid-cols-3">
                 {g.items.map((it) => (
-                  <div key={it} className="glass flex items-center gap-3 rounded-2xl px-4 py-3.5">
+                  <div key={it.pl} className="glass flex items-center gap-3 rounded-2xl px-4 py-3.5">
                     <svg className="shrink-0 text-ember/70" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                       <path d="M12 3l9 16H3z" /><path d="M12 10v4M12 17h.01" />
                     </svg>
-                    <span className="text-sm text-neutral-200">{it}</span>
+                    <span className="text-sm text-neutral-200">{tr(it)}</span>
                   </div>
                 ))}
               </div>
