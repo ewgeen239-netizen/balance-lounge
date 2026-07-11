@@ -135,12 +135,14 @@ export function MenuBrowser({ categories }: { categories: CategoryDTO[] }) {
                           <div className="flex flex-1 flex-col p-3.5 sm:p-5">
                             <div className="flex items-start justify-between gap-2">
                               <h3 className="text-sm font-medium text-neutral-50 sm:text-base">{tr(it.name)}</h3>
-                              <span className="whitespace-nowrap text-sm font-semibold text-ember">
-                                {parseJSON<{ portion?: boolean }[]>(it.options, []).some((g) => g.portion) && (
-                                  <span className="mr-1 text-[10px] font-normal uppercase tracking-wider text-neutral-500">{t("menu.from")}</span>
-                                )}
-                                {formatPrice(it.price)}
-                              </span>
+                              {it.price > 0 && (
+                                <span className="whitespace-nowrap text-sm font-semibold text-ember">
+                                  {parseJSON<{ portion?: boolean }[]>(it.options, []).some((g) => g.portion) && (
+                                    <span className="mr-1 text-[10px] font-normal uppercase tracking-wider text-neutral-500">{t("menu.from")}</span>
+                                  )}
+                                  {formatPrice(it.price)}
+                                </span>
+                              )}
                             </div>
                             <p className="mt-1.5 line-clamp-3 text-xs text-neutral-400 sm:text-sm sm:line-clamp-none">{tr(it.description)}</p>
                             <div className="mt-2.5 flex flex-wrap items-center gap-1.5 sm:gap-2">

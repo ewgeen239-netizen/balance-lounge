@@ -66,7 +66,7 @@ export function ItemModal({ item, onClose }: { item: MenuItemDTO | null; onClose
             <div className="p-5 sm:p-6">
               <div className="flex items-start justify-between gap-3">
                 <h3 className="text-xl font-medium text-neutral-50">{tr(item.name)}</h3>
-                <span className="whitespace-nowrap text-lg font-semibold text-ember">{formatPrice(item.price)}</span>
+                {item.price > 0 && <span className="whitespace-nowrap text-lg font-semibold text-ember">{formatPrice(item.price)}</span>}
               </div>
 
               {badges.length > 0 && (

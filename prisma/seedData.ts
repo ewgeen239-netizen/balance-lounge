@@ -163,6 +163,20 @@ export async function seedDatabase(prisma: PrismaClient) {
     });
   }
 
+  // ---- Info blocks pinned to the very bottom (like the official menu) ----
+  const info = [
+    { slug: "informacje", order: 90, cat: "INFORMACJE", item: "Opłata serwisowa", desc: "Do rachunków dla grup od 6 osób doliczamy opłatę serwisową w wysokości 5%." },
+    { slug: "odpowiedzialnosc", order: 91, cat: "ODPOWIEDZIALNOŚĆ ZA USZKODZENIA", item: "Odpowiedzialność za uszkodzenia", desc: "Gość ponosi odpowiedzialność finansową za powyższe uszkodzenia zgodnie z wyceną lokalu" },
+  ];
+  for (const x of info) {
+    const c = await prisma.category.create({
+      data: { slug: x.slug, name: J({ pl: x.cat, ru: x.cat, en: x.cat, ua: x.cat }), order: x.order, scheduled: false },
+    });
+    await prisma.menuItem.create({
+      data: { categoryId: c.id, name: J({ pl: x.item }), description: J({ pl: x.desc }), price: 0, photo: "", badges: "[]", options: "[]", available: true, order: 0 },
+    });
+  }
+
   const adminUser = process.env.ADMIN_USERNAME || "admin";
   const adminPass = process.env.ADMIN_PASSWORD || "balance123";
   await prisma.adminUser.create({
