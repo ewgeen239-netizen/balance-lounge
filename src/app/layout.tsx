@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Montserrat, Cormorant_Garamond } from "next/font/google";
 import "./globals.css";
+import { Analytics } from "@vercel/analytics/next";
 import { LangProvider } from "@/components/LangProvider";
 
 const montserrat = Montserrat({
@@ -57,6 +58,7 @@ export default async function RootLayout({
             />
           </ReservationProvider>
         </LangProvider>
+        <Analytics />
       </body>
     </html>
   );
