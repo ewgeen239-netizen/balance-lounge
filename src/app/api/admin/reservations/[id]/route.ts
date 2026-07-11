@@ -1,8 +1,10 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/db";
 import { requireAdmin } from "@/lib/adminGuard";
+import { TABLES } from "@/lib/tables";
 
 const STATUSES = ["pending", "confirmed", "seated", "cancelled"];
+const VALID_TABLES = new Set(TABLES.map((t) => t.no));
 
 export async function PATCH(req: Request, { params }: { params: { id: string } }) {
   const denied = await requireAdmin();
@@ -13,7 +15,7 @@ export async function PATCH(req: Request, { params }: { params: { id: string } }
   if (body.comment !== undefined) data.comment = String(body.comment);
   // tableNo: null clears the assignment, an integer 1–20 assigns a table.
   if (body.tableNo === null) data.tableNo = null;
-  else if (Number.isInteger(body.tableNo) && body.tableNo >= 1 && body.tableNo <= 20) data.tableNo = body.tableNo;
+  else if (Number.isInteger(body.tableNo) && VALID_TABLES.has(body.tableNo)) data.tableNo = body.tableNo;
   if (Object.keys(data).length === 0) return NextResponse.json({ error: "nothing_to_update" }, { status: 400 });
 
   const r = await prisma.reservation.update({ where: { id: Number(params.id) }, data });
