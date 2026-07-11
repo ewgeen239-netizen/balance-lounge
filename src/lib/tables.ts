@@ -26,6 +26,11 @@ export const TABLES: TableDef[] = [
   { no: 18, seats: 8 },
   { no: 19, seats: 10 },
   { no: 20, seats: 10 },
+  { no: 21, seats: 2 },
+  { no: 22, seats: 6 },
+  { no: 23, seats: 6 },
+  { no: 24, seats: 6 },
+
 ];
 
 export const TABLE_MIN = 1;
