@@ -6,7 +6,7 @@
 export type TableDef = { no: number; seats: number; outdoor?: boolean };
 
 // Label for the outdoor/terrace section (Polish).
-export const TERRACE_LABEL = "Ulica";
+export const TERRACE_LABEL = "Ogródek letni";
 
 // Groups of this size or larger may be seated on the terrace even if the table's
 // seat count is smaller — chairs get rearranged there for big companies.
