@@ -65,8 +65,10 @@ export async function notifyReservationConfirmed(r: ConfirmedReservationLike): P
   const token = process.env.SMSAPI_TOKEN;
   const from = process.env.SMSAPI_SENDER; // approved sender name; optional
   const to = normalizePhonePL(r.phone || "");
+  const firstName = (r.name || "").trim().split(/\s+/)[0];
+  const hi = firstName ? `Cześć ${firstName}! ` : "";
   const table = r.tableNo ? `, stolik nr ${r.tableNo}` : "";
-  const message = `BALANCE: Twoja rezerwacja na ${r.date} o godz. ${r.time}${table} zostala potwierdzona. Do zobaczenia!`;
+  const message = `${hi}Twoja rezerwacja w BALANCE na ${r.date} o godz. ${r.time}${table} została potwierdzona. Do zobaczenia!`;
 
   if (!token || !to) {
     console.info("[notify] SMSAPI not configured or no phone, skipping SMS:\n" + message);
