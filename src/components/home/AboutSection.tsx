@@ -57,17 +57,15 @@ export function AboutSection({ about }: { about: AboutData }) {
         </motion.div>
       </div>
 
-      {/* Progressive blur bridging photo → text: strong near the photo (right),
-          fading to nothing over the text (left). Desktop only. */}
+      {/* Soft blur emanating from the photo's left edge (~55%) leftward onto the
+          text ends; the photo itself stays sharp. Desktop only. */}
       <div aria-hidden className="pointer-events-none absolute inset-0 z-10 hidden lg:block">
         {[
-          { blur: 2, from: 34 },
-          { blur: 6, from: 50 },
-          { blur: 13, from: 64 },
-          { blur: 24, from: 78 },
-          { blur: 40, from: 90 },
+          { blur: 3, left: 30, peak: 55, right: 60 },
+          { blur: 6, left: 44, peak: 55, right: 59 },
+          { blur: 10, left: 50, peak: 55, right: 58 },
         ].map((l, i) => {
-          const mask = `linear-gradient(to right, transparent ${l.from}%, black ${Math.min(l.from + 16, 100)}%)`;
+          const mask = `linear-gradient(to right, transparent ${l.left}%, black ${l.peak}%, transparent ${l.right}%)`;
           return (
             <div
               key={i}
