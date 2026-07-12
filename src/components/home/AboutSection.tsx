@@ -59,27 +59,26 @@ export function AboutSection({ about }: { about: AboutData }) {
 
       {/* Soft blur emanating from the photo's left edge (~55%) leftward onto the
           text ends; the photo itself stays sharp. Desktop only. */}
-      <div aria-hidden className="pointer-events-none absolute inset-0 z-10 hidden lg:block">
-        {[
-         { blur: 3, left: 12, start: 34, end: 62, right: 82 },
-         { blur: 7, left: 20, start: 40, end: 66, right: 86 },
-         { blur: 12, left: 28, start: 46, end: 70, right: 90 },
-        ].map((l, i) => {
-          const mask = `linear-gradient(to right, transparent ${l.left}%, black ${l.peak}%, transparent ${l.right}%)`;
-          return (
-            <div
-              key={i}
-              className="absolute inset-0"
-              style={{
-                backdropFilter: `blur(${l.blur}px)`,
-                WebkitBackdropFilter: `blur(${l.blur}px)`,
-                maskImage: mask,
-                WebkitMaskImage: mask,
-              }}
-            />
-          );
-        })}
-      </div>
-    </section>
-  );
-}
+          <div aria-hidden className="pointer-events-none absolute inset-0 z-10 hidden lg:block">
+      {[
+        { blur: 3, left: 12, start: 34, end: 62, right: 82 },
+        { blur: 7, left: 20, start: 40, end: 66, right: 86 },
+        { blur: 12, left: 28, start: 46, end: 70, right: 90 },
+      ].map((l, i) => {
+        const mask = `linear-gradient(to right, transparent ${l.left}%, black ${l.start}%, black ${l.end}%, transparent ${l.right}%)`;
+    
+        return (
+          <div
+            key={i}
+            className="absolute inset-0"
+            style={{
+              backdropFilter: `blur(${l.blur}px)`,
+              WebkitBackdropFilter: `blur(${l.blur}px)`,
+              maskImage: mask,
+              WebkitMaskImage: mask,
+            }}
+          />
+        );
+      })}
+    </div>
+    }
