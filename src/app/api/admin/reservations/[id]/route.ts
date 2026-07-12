@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/db";
 import { requireAdmin } from "@/lib/adminGuard";
+import { notifyReservationConfirmed } from "@/lib/notify";
 import { TABLES } from "@/lib/tables";
 
 const STATUSES = ["pending", "confirmed", "seated", "cancelled"];
@@ -18,7 +19,17 @@ export async function PATCH(req: Request, { params }: { params: { id: string } }
   else if (Number.isInteger(body.tableNo) && VALID_TABLES.has(body.tableNo)) data.tableNo = body.tableNo;
   if (Object.keys(data).length === 0) return NextResponse.json({ error: "nothing_to_update" }, { status: 400 });
 
+  // Detect a fresh confirmation so we only text the guest once.
+  const before =
+    data.status === "confirmed"
+      ? await prisma.reservation.findUnique({ where: { id: Number(params.id) }, select: { status: true } })
+      : null;
+
   const r = await prisma.reservation.update({ where: { id: Number(params.id) }, data });
+
+  if (data.status === "confirmed" && before?.status !== "confirmed") {
+    await notifyReservationConfirmed(r);
+  }
   return NextResponse.json(r);
 }
 
