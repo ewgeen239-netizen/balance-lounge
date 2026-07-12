@@ -3,7 +3,7 @@
 import { useMemo, useState } from "react";
 import type { AdminReservation } from "./types";
 import { cn } from "@/lib/utils";
-import { TABLES, ACTIVE_STATUSES } from "@/lib/tables";
+import { TABLES, INDOOR_TABLES, TERRACE_TABLES, TERRACE_LABEL, LARGE_GROUP, ACTIVE_STATUSES, type TableDef } from "@/lib/tables";
 
 const STATUSES = ["all", "pending", "confirmed", "seated", "cancelled"] as const;
 const STATUS_STYLE: Record<string, string> = {
@@ -100,26 +100,13 @@ export function ReservationsPanel({ initial }: { initial: AdminReservation[] }) 
                   <span className="text-xs text-neutral-500">{occ.size}/{TABLES.length} stołów zajętych</span>
                 </div>
 
-                {/* Occupancy grid: all 20 tables, occupied ones highlighted. */}
+                {/* Occupancy grid: all tables, occupied ones highlighted; terrace split off. */}
                 <div className="mb-4 flex flex-wrap gap-1.5">
-                  {TABLES.map((t) => {
-                    const taken = occ.get(t.no);
-                    return (
-                      <span
-                        key={t.no}
-                        title={taken ? `Stół ${t.no} · ${t.seats} miejsc · ${taken.time} ${taken.name}` : `Stół ${t.no} · ${t.seats} miejsc · wolny`}
-                        className={cn(
-                          "flex h-9 w-9 flex-col items-center justify-center rounded-lg border text-[11px] font-semibold leading-none",
-                          taken
-                            ? "border-neon/50 bg-neon/15 text-neon"
-                            : "border-white/10 bg-ink-800/40 text-neutral-400"
-                        )}
-                      >
-                        {t.no}
-                        <span className="mt-0.5 text-[8px] font-normal text-neutral-500">{t.seats}p</span>
-                      </span>
-                    );
-                  })}
+                  {INDOOR_TABLES.map((t) => <OccChip key={t.no} t={t} taken={occ.get(t.no)} />)}
+                  <span className="mt-1 w-full text-[10px] font-semibold uppercase tracking-widest text-ember/80">
+                    {TERRACE_LABEL}
+                  </span>
+                  {TERRACE_TABLES.map((t) => <OccChip key={t.no} t={t} taken={occ.get(t.no)} />)}
                 </div>
 
                 <div className="overflow-x-auto rounded-2xl border border-white/10">
@@ -201,6 +188,21 @@ export function ReservationsPanel({ initial }: { initial: AdminReservation[] }) 
   );
 }
 
+function OccChip({ t, taken }: { t: TableDef; taken?: AdminReservation }) {
+  return (
+    <span
+      title={taken ? `Stół ${t.no} · ${t.seats} miejsc · ${taken.time} ${taken.name}` : `Stół ${t.no} · ${t.seats} miejsc · wolny`}
+      className={cn(
+        "flex h-9 w-9 flex-col items-center justify-center rounded-lg border text-[11px] font-semibold leading-none",
+        taken ? "border-neon/50 bg-neon/15 text-neon" : "border-white/10 bg-ink-800/40 text-neutral-400"
+      )}
+    >
+      {t.no}
+      <span className="mt-0.5 text-[8px] font-normal text-neutral-500">{t.seats}p</span>
+    </span>
+  );
+}
+
 function TablePicker({
   reservation,
   occupied,
@@ -214,6 +216,36 @@ function TablePicker({
   onAssign: (tableNo: number) => void;
   onConfirmNoTable: () => void;
 }) {
+  const bigGroup = reservation.guests >= LARGE_GROUP;
+
+  const renderTile = (t: TableDef) => {
+    const taken = occupied.get(t.no);
+    const isCurrent = reservation.tableNo === t.no;
+    const fits = t.seats >= reservation.guests;
+    const disabled = !!taken && !isCurrent;
+    // Big companies may take an (otherwise too-small) terrace table.
+    const terraceOption = !!t.outdoor && bigGroup && !fits;
+    return (
+      <button
+        key={t.no}
+        disabled={disabled}
+        onClick={() => onAssign(t.no)}
+        title={taken ? `Zajęty: ${taken.time} ${taken.name}` : `${t.seats} miejsc`}
+        className={cn(
+          "flex flex-col items-center justify-center gap-0.5 rounded-xl border py-2.5 transition",
+          disabled && "cursor-not-allowed border-neon/30 bg-neon/5 text-neutral-600",
+          !disabled && isCurrent && "border-neon bg-neon/20 text-neon",
+          !disabled && !isCurrent && fits && "border-emerald-400/30 bg-emerald-500/10 text-emerald-200 hover:border-emerald-400/60",
+          !disabled && !isCurrent && !fits && terraceOption && "border-amber-400/30 bg-amber-500/10 text-amber-200 hover:border-amber-400/60",
+          !disabled && !isCurrent && !fits && !terraceOption && "border-white/10 text-neutral-300 hover:border-white/30"
+        )}
+      >
+        <span className="text-sm font-semibold">{t.no}</span>
+        <span className="text-[10px] text-neutral-500">{t.seats} miejsc</span>
+      </button>
+    );
+  };
+
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4" onClick={onClose}>
       <div
@@ -231,34 +263,19 @@ function TablePicker({
         </div>
 
         <div className="mt-4 grid grid-cols-4 gap-2 sm:grid-cols-5">
-          {TABLES.map((t) => {
-            const taken = occupied.get(t.no);
-            const isCurrent = reservation.tableNo === t.no;
-            const fits = t.seats >= reservation.guests;
-            const disabled = !!taken && !isCurrent;
-            return (
-              <button
-                key={t.no}
-                disabled={disabled}
-                onClick={() => onAssign(t.no)}
-                title={taken ? `Zajęty: ${taken.time} ${taken.name}` : `${t.seats} miejsc`}
-                className={cn(
-                  "flex flex-col items-center justify-center gap-0.5 rounded-xl border py-2.5 transition",
-                  disabled && "cursor-not-allowed border-neon/30 bg-neon/5 text-neutral-600",
-                  !disabled && isCurrent && "border-neon bg-neon/20 text-neon",
-                  !disabled && !isCurrent && fits && "border-emerald-400/30 bg-emerald-500/10 text-emerald-200 hover:border-emerald-400/60",
-                  !disabled && !isCurrent && !fits && "border-white/10 text-neutral-300 hover:border-white/30"
-                )}
-              >
-                <span className="text-sm font-semibold">{t.no}</span>
-                <span className="text-[10px] text-neutral-500">{t.seats} miejsc</span>
-              </button>
-            );
-          })}
+          {INDOOR_TABLES.map(renderTile)}
+          <div className="col-span-full mt-1 flex flex-wrap items-center gap-x-2 text-[10px] font-semibold uppercase tracking-widest text-ember/80">
+            {TERRACE_LABEL}
+            {bigGroup && (
+              <span className="font-normal normal-case tracking-normal text-neutral-500">— grupa {LARGE_GROUP}+, można sadzać niezależnie od rozmiaru</span>
+            )}
+          </div>
+          {TERRACE_TABLES.map(renderTile)}
         </div>
 
         <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-1 text-[11px] text-neutral-500">
           <span className="flex items-center gap-1"><i className="inline-block h-2.5 w-2.5 rounded border border-emerald-400/40 bg-emerald-500/20" /> mieści grupę</span>
+          <span className="flex items-center gap-1"><i className="inline-block h-2.5 w-2.5 rounded border border-amber-400/40 bg-amber-500/20" /> ogródek (duża grupa)</span>
           <span className="flex items-center gap-1"><i className="inline-block h-2.5 w-2.5 rounded border border-neon/40 bg-neon/20" /> zajęty</span>
         </div>
 
