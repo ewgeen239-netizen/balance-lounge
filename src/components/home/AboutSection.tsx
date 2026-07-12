@@ -38,20 +38,21 @@ export function AboutSection({ about }: { about: AboutData }) {
           </div>
         </motion.div>
 
-        {/* RIGHT — two interior photos, shown in full (no crop) */}
+        {/* RIGHT — photo collage: smaller base photo, second overlapping it */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.8, delay: 0.15 }}
-          className="space-y-6 lg:pl-6"
+          className="relative lg:mt-14 lg:pl-8"
         >
-          <div className="relative overflow-hidden rounded-3xl border border-white/10 shadow-card shadow-ember">
-            <Image src="/interior-3.webp" alt="Balance wnętrze" width={1920} height={1080} className="h-auto w-full" sizes="(max-width:1024px) 100vw, 45vw" priority />
+          <div className="relative aspect-[4/5] w-4/5 overflow-hidden rounded-3xl border border-white/10 shadow-card shadow-ember">
+            <Image src="/interior-3.webp" alt="Balance wnętrze" fill className="object-cover object-[center_60%]" sizes="(max-width:1024px) 80vw, 32vw" priority />
             <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-neon/10 to-transparent" />
           </div>
-          <div className="relative overflow-hidden rounded-3xl border border-white/10 shadow-card">
-            <Image src="/gallery/g30.JPG" alt="Balance lounge" width={900} height={1600} className="h-auto w-full" sizes="(max-width:1024px) 100vw, 45vw" />
+          <div className="relative -mt-20 ml-auto aspect-[4/5] w-3/5 overflow-hidden rounded-3xl border border-neon/30 shadow-card shadow-glow lg:-mt-24">
+            <Image src="/gallery/g30.JPG" alt="Balance lounge" fill className="object-cover object-[center_35%]" sizes="(max-width:1024px) 60vw, 24vw" />
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-neon/10 to-transparent" />
           </div>
         </motion.div>
       </div>
