@@ -61,9 +61,9 @@ export function AboutSection({ about }: { about: AboutData }) {
           text ends; the photo itself stays sharp. Desktop only. */}
       <div aria-hidden className="pointer-events-none absolute inset-0 z-10 hidden lg:block">
         {[
-          { blur: 3, left: 30, peak: 55, right: 60 },
-          { blur: 6, left: 44, peak: 55, right: 59 },
-          { blur: 10, left: 50, peak: 55, right: 58 },
+         { blur: 4, left: 34, peak: 58, right: 82 },
+         { blur: 8, left: 42, peak: 62, right: 86 },
+         { blur: 14, left: 50, peak: 66, right: 90 },
         ].map((l, i) => {
           const mask = `linear-gradient(to right, transparent ${l.left}%, black ${l.peak}%, transparent ${l.right}%)`;
           return (
