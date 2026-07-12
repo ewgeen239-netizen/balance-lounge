@@ -17,7 +17,7 @@ export function AboutSection({ about }: { about: AboutData }) {
 
   return (
     <section id="about" className="container-x py-24">
-      <div className="grid items-stretch gap-12 lg:grid-cols-2 lg:gap-16">
+      <div className="grid items-start gap-12 lg:grid-cols-2 lg:gap-16">
         {/* LEFT — text */}
         <motion.div
           initial={{ opacity: 0, x: -30 }}
@@ -38,16 +38,21 @@ export function AboutSection({ about }: { about: AboutData }) {
           </div>
         </motion.div>
 
-        {/* RIGHT — full-height interior photo */}
+        {/* RIGHT — two interior photos, shown in full (no crop) */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.8, delay: 0.15 }}
-          className="relative min-h-[480px] w-full overflow-hidden rounded-3xl border border-white/10 shadow-card shadow-ember lg:min-h-0"
+          className="space-y-6 lg:pl-6"
         >
-          <Image src="/interior-3.webp" alt="Balance wnętrze" fill className="object-cover" sizes="(max-width:1024px) 100vw, 45vw" priority />
-          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-neon/10 to-transparent" />
+          <div className="relative overflow-hidden rounded-3xl border border-white/10 shadow-card shadow-ember">
+            <Image src="/interior-3.webp" alt="Balance wnętrze" width={1920} height={1080} className="h-auto w-full" sizes="(max-width:1024px) 100vw, 45vw" priority />
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-neon/10 to-transparent" />
+          </div>
+          <div className="relative overflow-hidden rounded-3xl border border-white/10 shadow-card">
+            <Image src="/gallery/g30.JPG" alt="Balance lounge" width={900} height={1600} className="h-auto w-full" sizes="(max-width:1024px) 100vw, 45vw" />
+          </div>
         </motion.div>
       </div>
     </section>
