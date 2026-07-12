@@ -19,7 +19,7 @@ export async function notifyNewReservation(r: ReservationLike): Promise<void> {
     .map((id) => id.trim())
     .filter(Boolean);
   const text =
-  `<b> 🆕 Nowa rezerwacja — BALANCE </b>
+  ` 🆕 Nowa rezerwacja — BALANCE 
 
 ` +
   `👤 Liczba gości: ${r.guests}
