@@ -16,7 +16,7 @@ export function AboutSection({ about }: { about: AboutData }) {
   const paragraphs = tr(about.body).split("\n\n").filter(Boolean);
 
   return (
-    <section id="about" className="container-x py-24">
+    <section id="about" className="container-x relative py-24">
       <div className="grid items-start gap-12 lg:grid-cols-2 lg:gap-16">
         {/* LEFT — text */}
         <motion.div
@@ -55,6 +55,32 @@ export function AboutSection({ about }: { about: AboutData }) {
             <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-neon/10 to-transparent" />
           </div>
         </motion.div>
+      </div>
+
+      {/* Progressive blur bridging photo → text: strong near the photo (right),
+          fading to nothing over the text (left). Desktop only. */}
+      <div aria-hidden className="pointer-events-none absolute inset-0 z-10 hidden lg:block">
+        {[
+          { blur: 2, from: 34 },
+          { blur: 6, from: 50 },
+          { blur: 13, from: 64 },
+          { blur: 24, from: 78 },
+          { blur: 40, from: 90 },
+        ].map((l, i) => {
+          const mask = `linear-gradient(to right, transparent ${l.from}%, black ${Math.min(l.from + 16, 100)}%)`;
+          return (
+            <div
+              key={i}
+              className="absolute inset-0"
+              style={{
+                backdropFilter: `blur(${l.blur}px)`,
+                WebkitBackdropFilter: `blur(${l.blur}px)`,
+                maskImage: mask,
+                WebkitMaskImage: mask,
+              }}
+            />
+          );
+        })}
       </div>
     </section>
   );
