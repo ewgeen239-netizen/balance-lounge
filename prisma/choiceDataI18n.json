@@ -299,6 +299,101 @@
      ]
     },
     {
+     "name": "Cigar",
+     "description": "Kompozycje tytoni na liściu cygarowym – szlachetny aromat, głęboki smak i najwyższa jakość.",
+     "price": 130,
+     "image": "",
+     "available": true,
+     "labels": [],
+     "options": [
+      {
+       "name": "Dodatki",
+       "required": false,
+       "list": [
+        {
+         "name": "Baza na soku – głębszy, bardziej nasycony aromat",
+         "price": 0
+        },
+        {
+         "name": "Baza na mleku – aksamitna, kremowa struktura dymu",
+         "price": 20
+        },
+        {
+         "name": "Alkohol w asortymencie – indywidualny akcent charakteru",
+         "price": 0
+        },
+        {
+         "name": "Ice bazooka - chłodzący dodatek do shisha, zapewniający lodowy efekt",
+         "price": 10
+        },
+        {
+         "name": "Owocowy cybuch – maksymalna intensywność i trwałość",
+         "price": 50
+        },
+        {
+         "name": "Nie wiesz co wybrać? Dopasujemy shishę do Twojego nastroju, herbaty lub drinka.",
+         "price": 0
+        }
+       ]
+      }
+     ],
+     "nameI18n": {
+      "pl": "Cigar",
+      "ru": "Cigar",
+      "en": "Cigar",
+      "ua": "Cigar"
+     },
+     "descI18n": {
+      "pl": "Kompozycje tytoni na liściu cygarowym – szlachetny aromat, głęboki smak i najwyższa jakość."
+     },
+     "optionsI18n": [
+      {
+       "name": {
+        "pl": "Dodatki"
+       },
+       "required": false,
+       "list": [
+        {
+         "name": {
+          "pl": "Baza na soku – głębszy, bardziej nasycony aromat"
+         },
+         "price": 0
+        },
+        {
+         "name": {
+          "pl": "Baza na mleku – aksamitna, kremowa struktura dymu"
+         },
+         "price": 20
+        },
+        {
+         "name": {
+          "pl": "Alkohol w asortymencie – indywidualny akcent charakteru"
+         },
+         "price": 0
+        },
+        {
+         "name": {
+          "pl": "Ice bazooka - chłodzący dodatek do shisha, zapewniający lodowy efekt"
+         },
+         "price": 10
+        },
+        {
+         "name": {
+          "pl": "Owocowy cybuch – maksymalna intensywność i trwałość"
+         },
+         "price": 50
+        },
+        {
+         "name": {
+          "pl": "Nie wiesz co wybrać? Dopasujemy shishę do Twojego nastroju, herbaty lub drinka."
+         },
+         "price": 0
+        }
+       ]
+      }
+     ]
+    },
+    {
      "name": "Electroniczny cybuch",
      "description": "",
      "price": 0,
