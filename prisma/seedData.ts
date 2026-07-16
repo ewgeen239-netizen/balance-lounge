@@ -233,7 +233,7 @@ export async function syncMenu(prisma: PrismaClient): Promise<void> {
     }
     const existing = await prisma.menuItem.findMany({
       where: { categoryId: cat.id },
-      select: { id: true, name: true, photo: true, description: true },
+      select: { id: true, name: true, photo: true, description: true, options: true },
     });
     const byName = new Map(existing.map((it) => [namePl(it.name), it]));
     let i = 0;
@@ -257,10 +257,14 @@ export async function syncMenu(prisma: PrismaClient): Promise<void> {
         added++;
         console.log(`  + item ${c.hurl}/${key}`);
       } else {
-        // Backfill only genuinely-empty fields so admin edits stay intact.
-        const patch: { photo?: string; description?: string } = {};
+        // Backfill empty photo/description (never overwrites admin text/prices).
+        // Options are source-managed: kept in sync with the JSON so add-ons can be
+        // added or removed from the source and go live on deploy.
+        const patch: { photo?: string; description?: string; options?: string } = {};
         if (!cur.photo && item.image) patch.photo = item.image;
         if (!namePl(cur.description) && item.descI18n?.pl) patch.description = J(item.descI18n);
+        const srcOptions = JSON.stringify(item.optionsI18n ?? []);
+        if (cur.options !== srcOptions) patch.options = srcOptions;
         if (Object.keys(patch).length) {
           await prisma.menuItem.update({ where: { id: cur.id }, data: patch });
           filled++;
