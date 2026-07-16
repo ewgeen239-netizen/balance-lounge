@@ -1,5 +1,5 @@
 import { PrismaClient } from "@prisma/client";
-import { seedDatabase } from "./seedData";
+import { seedDatabase, syncMenu } from "./seedData";
 
 // Runs during the Vercel build (see vercel.json). Seeds ONLY when the database
 // is empty, so redeploys never wipe live reservations / admin password changes.
@@ -10,7 +10,8 @@ async function main() {
   try {
     const bars = await prisma.bar.count();
     if (bars > 0) {
-      console.log("↳ Database already seeded — skipping.");
+      console.log("↳ Database already seeded — syncing new menu items…");
+      await syncMenu(prisma);
       return;
     }
     console.log("↳ Empty database detected — seeding demo data…");

@@ -204,3 +204,57 @@ export async function seedDatabase(prisma: PrismaClient) {
 
   console.log(`✅ Seed complete. Admin: ${adminUser} / ${adminPass}  |  Guest: guest@example.com / guest123`);
 }
+
+function namePl(nameJson: string): string {
+  try {
+    const o = JSON.parse(nameJson) as Record<string, string>;
+    return o.pl ?? o.en ?? Object.values(o)[0] ?? nameJson;
+  } catch {
+    return nameJson;
+  }
+}
+
+/** Idempotent, non-destructive: adds any menu categories/items present in the
+ *  source data but missing from the DB. Never updates or deletes existing rows,
+ *  so admin edits (prices, descriptions, availability) are preserved. Runs on
+ *  every deploy so new items (e.g. added to choiceDataI18n.json) go live. */
+export async function syncMenu(prisma: PrismaClient): Promise<void> {
+  let added = 0;
+  let order = 0;
+  for (const c of CHOICE.categories) {
+    const catOrder = order++;
+    let cat = await prisma.category.findUnique({ where: { slug: c.hurl } });
+    if (!cat) {
+      cat = await prisma.category.create({
+        data: { slug: c.hurl, name: J(c.nameI18n), order: catOrder, scheduled: c.hurl === "desery-premium" },
+      });
+      console.log(`  + category ${c.hurl}`);
+    }
+    const existing = await prisma.menuItem.findMany({ where: { categoryId: cat.id }, select: { name: true } });
+    const have = new Set(existing.map((it) => namePl(it.name)));
+    let i = 0;
+    for (const item of c.items) {
+      const key = item.nameI18n?.pl ?? item.name;
+      if (!have.has(key)) {
+        await prisma.menuItem.create({
+          data: {
+            categoryId: cat.id,
+            name: J(item.nameI18n),
+            description: J(item.descI18n),
+            price: item.price,
+            photo: item.image || "",
+            badges: JSON.stringify(badgesFor(c, item)),
+            options: JSON.stringify(item.optionsI18n ?? []),
+            available: item.available,
+            order: i,
+          },
+        });
+        have.add(key);
+        added++;
+        console.log(`  + item ${c.hurl}/${key}`);
+      }
+      i++;
+    }
+  }
+  console.log(added ? `↳ syncMenu: added ${added} new item(s).` : "↳ syncMenu: nothing to add.");
+}
