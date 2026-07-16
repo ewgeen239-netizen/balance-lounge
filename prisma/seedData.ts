@@ -220,6 +220,7 @@ function namePl(nameJson: string): string {
  *  every deploy so new items (e.g. added to choiceDataI18n.json) go live. */
 export async function syncMenu(prisma: PrismaClient): Promise<void> {
   let added = 0;
+  let filled = 0;
   let order = 0;
   for (const c of CHOICE.categories) {
     const catOrder = order++;
@@ -230,12 +231,16 @@ export async function syncMenu(prisma: PrismaClient): Promise<void> {
       });
       console.log(`  + category ${c.hurl}`);
     }
-    const existing = await prisma.menuItem.findMany({ where: { categoryId: cat.id }, select: { name: true } });
-    const have = new Set(existing.map((it) => namePl(it.name)));
+    const existing = await prisma.menuItem.findMany({
+      where: { categoryId: cat.id },
+      select: { id: true, name: true, photo: true, description: true },
+    });
+    const byName = new Map(existing.map((it) => [namePl(it.name), it]));
     let i = 0;
     for (const item of c.items) {
       const key = item.nameI18n?.pl ?? item.name;
-      if (!have.has(key)) {
+      const cur = byName.get(key);
+      if (!cur) {
         await prisma.menuItem.create({
           data: {
             categoryId: cat.id,
@@ -249,12 +254,21 @@ export async function syncMenu(prisma: PrismaClient): Promise<void> {
             order: i,
           },
         });
-        have.add(key);
         added++;
         console.log(`  + item ${c.hurl}/${key}`);
+      } else {
+        // Backfill only genuinely-empty fields so admin edits stay intact.
+        const patch: { photo?: string; description?: string } = {};
+        if (!cur.photo && item.image) patch.photo = item.image;
+        if (!namePl(cur.description) && item.descI18n?.pl) patch.description = J(item.descI18n);
+        if (Object.keys(patch).length) {
+          await prisma.menuItem.update({ where: { id: cur.id }, data: patch });
+          filled++;
+          console.log(`  ~ backfill ${c.hurl}/${key}: ${Object.keys(patch).join(", ")}`);
+        }
       }
       i++;
     }
   }
-  console.log(added ? `↳ syncMenu: added ${added} new item(s).` : "↳ syncMenu: nothing to add.");
+  console.log(`↳ syncMenu: added ${added}, backfilled ${filled}.`);
 }

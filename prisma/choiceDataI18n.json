@@ -300,9 +300,9 @@
     },
     {
      "name": "Cigar",
-     "description": "Kompozycje tytoni na liściu cygarowym – szlachetny aromat, głęboki smak i najwyższa jakość.",
+     "description": "Kompozycje tytoni na liściu cygarowym - szlachetny aromat, głęboki smak i najwyższa jakość.",
      "price": 130,
-     "image": "",
+     "image": "https://cdn-media.choiceqr.com/prod-eat-balancecoctails/menu/img_FbfgV-CSSua-QDObj.jpeg",
      "available": true,
      "labels": [],
      "options": [
@@ -344,7 +344,7 @@
       "ua": "Cigar"
      },
      "descI18n": {
-      "pl": "Kompozycje tytoni na liściu cygarowym – szlachetny aromat, głęboki smak i najwyższa jakość."
+      "pl": "Kompozycje tytoni na liściu cygarowym - szlachetny aromat, głęboki smak i najwyższa jakość."
      },
      "optionsI18n": [
       {
