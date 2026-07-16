@@ -16,7 +16,7 @@ export function AboutSection({ about }: { about: AboutData }) {
   const paragraphs = tr(about.body).split("\n\n").filter(Boolean);
 
   return (
-    <section id="about" className="container-x py-24">
+      <section id="about" className="container-x py-24">
       <div className="grid items-start gap-12 lg:grid-cols-2 lg:gap-16">
         {/* LEFT — text */}
         <motion.div
