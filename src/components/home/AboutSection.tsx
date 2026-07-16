@@ -38,7 +38,7 @@ export function AboutSection({ about }: { about: AboutData }) {
           </div>
         </motion.div>
 
-        {/* RIGHT — photo collage: smaller base photo, second overlapping it */}
+        {/* RIGHT — photo collage: smaller base photo, overlapping it */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
