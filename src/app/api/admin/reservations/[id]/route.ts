@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { prisma } from "@/lib/db";
 import { requireAdmin } from "@/lib/adminGuard";
 import { notifyReservationConfirmed } from "@/lib/notify";
+import { sendReservationConfirmedEmail } from "@/lib/email";
 import { TABLES } from "@/lib/tables";
 
 const STATUSES = ["pending", "confirmed", "seated", "cancelled"];
@@ -28,7 +29,33 @@ export async function PATCH(req: Request, { params }: { params: { id: string } }
   const r = await prisma.reservation.update({ where: { id: Number(params.id) }, data });
 
   if (data.status === "confirmed" && before?.status !== "confirmed") {
-    await notifyReservationConfirmed(r);
+    await notifyReservationConfirmed(r); // SMS
+
+    // Email the guest too, when we have an address (account bookings).
+    const [bar, guest] = await Promise.all([
+      prisma.bar.findFirst(),
+      r.guestId ? prisma.guestUser.findUnique({ where: { id: r.guestId } }) : Promise.resolve(null),
+    ]);
+    const email = guest?.email ?? "";
+    if (email) {
+      await sendReservationConfirmedEmail({
+        reservationId: r.id,
+        name: r.name,
+        date: r.date,
+        time: r.time,
+        guests: r.guests,
+        tableNo: r.tableNo,
+        phone: r.phone,
+        email,
+        restaurant: {
+          name: bar?.name ?? "Balance",
+          address: bar?.address ?? "",
+          phone: bar?.phone ?? "",
+          instagram: bar?.instagram || undefined,
+          facebook: bar?.facebook || undefined,
+        },
+      });
+    }
   }
   return NextResponse.json(r);
 }
