@@ -132,6 +132,7 @@ export const UI: Dict = {
   "book.guests": { pl: "Liczba gości", ru: "Количество гостей", en: "Guests", ua: "Кількість гостей" },
   "book.name": { pl: "Imię", ru: "Имя", en: "Name", ua: "Ім'я" },
   "book.phone": { pl: "Telefon", ru: "Телефон", en: "Phone", ua: "Телефон" },
+  "book.email": { pl: "E-mail", ru: "E-mail", en: "Email", ua: "E-mail" },
   "book.zone": { pl: "Strefa (opcjonalnie)", ru: "Зона (необязательно)", en: "Zone (optional)", ua: "Зона (необов'язково)" },
   "book.comment": { pl: "Komentarz (opcjonalnie)", ru: "Комментарий (необязательно)", en: "Comment (optional)", ua: "Коментар (необов'язково)" },
   "book.submit": { pl: "Zarezerwuj", ru: "Забронировать", en: "Reserve", ua: "Забронювати" },

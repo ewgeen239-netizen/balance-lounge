@@ -11,6 +11,7 @@ const schema = z.object({
   guests: z.coerce.number().int().min(1).max(30),
   name: z.string().min(2).max(80),
   phone: z.string().min(6).max(30),
+  email: z.string().email().max(120).optional().or(z.literal("")).default(""),
   comment: z.string().max(500).optional().default(""),
   zone: z.string().max(60).optional().default(""),
 });
@@ -53,6 +54,7 @@ export async function POST(req: Request) {
       guests: data.guests,
       name: data.name,
       phone: data.phone,
+      email: data.email ?? "",
       comment: data.comment ?? "",
       zone: data.zone ?? "",
       status: "pending",

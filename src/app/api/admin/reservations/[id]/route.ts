@@ -36,7 +36,7 @@ export async function PATCH(req: Request, { params }: { params: { id: string } }
       prisma.bar.findFirst(),
       r.guestId ? prisma.guestUser.findUnique({ where: { id: r.guestId } }) : Promise.resolve(null),
     ]);
-    const email = guest?.email ?? "";
+    const email = r.email || guest?.email || "";
     if (email) {
       await sendReservationConfirmedEmail({
         reservationId: r.id,

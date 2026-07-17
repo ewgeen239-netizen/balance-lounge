@@ -76,6 +76,7 @@ model Reservation {
   guests    Int
   name      String
   phone     String
+  email     String   @default("")
   comment   String   @default("")
   zone      String   @default("")
   tableNo   Int? // assigned table 1–20 (set by staff on confirm); null = unassigned

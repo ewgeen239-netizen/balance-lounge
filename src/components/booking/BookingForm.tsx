@@ -14,6 +14,7 @@ export function BookingForm({ hours, loggedIn }: { hours: HoursRow[]; loggedIn: 
     guests: 2,
     name: "",
     phone: "",
+    email: "",
     comment: "",
   });
   const [status, setStatus] = useState<"idle" | "loading" | "done" | "error">("idle");
@@ -64,6 +65,7 @@ export function BookingForm({ hours, loggedIn }: { hours: HoursRow[]; loggedIn: 
           <Row label={t("book.guests")} value={String(form.guests)} />
           <Row label={t("book.name")} value={form.name} />
           <Row label={t("book.phone")} value={form.phone} />
+          {form.email && <Row label={t("book.email")} value={form.email} />}
           {form.comment && <Row label={t("book.comment")} value={form.comment} />}
         </div>
 
@@ -123,6 +125,10 @@ export function BookingForm({ hours, loggedIn }: { hours: HoursRow[]; loggedIn: 
         <div>
           <label className="label">{t("book.phone")}</label>
           <input type="tel" value={form.phone} onChange={(e) => set("phone", e.target.value)} className="input" required minLength={6} />
+        </div>
+        <div className="sm:col-span-2">
+          <label className="label">{t("book.email")}</label>
+          <input type="email" value={form.email} onChange={(e) => set("email", e.target.value)} className="input" placeholder="you@example.com" required />
         </div>
         <div className="sm:col-span-2">
           <label className="label">{t("book.comment")}</label>
