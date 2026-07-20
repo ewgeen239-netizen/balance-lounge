@@ -27,6 +27,7 @@ import { getGuestSession } from "@/lib/auth";
 import { parseJSON, type HoursRow } from "@/lib/utils";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://balancecocktails.pl"),
   title: "BALANCE — Coctails & Shisha | Szczecin",
   description:
     "Balance to nowoczesna przestrzeń lounge w Szczecinie z dopracowaną kartą koktajli i szerokim wyborem shishy premium.",
