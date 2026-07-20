@@ -3,7 +3,7 @@
   "name": "BLOOM",
   "desc": "Gin, Martini Bianco, likier pomarańczowy, syrop liczi, Orange Angostura.\nDelikatny koktajl z nutami kwiatów, liczi i cytrusów.\n\n• SWEET • FRUITY",
   "price": 42,
-  "image": "/menu/img_pMVQK-meXrB-JLrOP.webp",
+  "image": "/menu/bloom.jpg",
   "badges": [
    "nowosc",
    "18+"
@@ -13,7 +13,7 @@
   "name": "PARADISE",
   "desc": "Puree z marakui, grenadina, sok żurawinowy, sok pomarańczowy.\nTropikalny i soczysty koktajl pełen owoców.\n\n• FRUITY • SWEET",
   "price": 27,
-  "image": "/menu/img_fqMQG-iiFTi-wDTSW.webp",
+  "image": "/menu/paradise.jpg",
   "badges": [
    "nowosc"
   ]
@@ -22,7 +22,7 @@
   "name": "SUN KISS",
   "desc": "Malibu, rum kokosowy, likier melonowy, sok ananasowy, sok limonkowy.\n\n• TROPICAL • SWEET • FRESH",
   "price": 60,
-  "image": "/menu/img_BejCB-bhocR-omfuW.webp",
+  "image": "/menu/sun-kiss.jpg",
   "badges": [
    "nowosc",
    "18+"
@@ -32,7 +32,7 @@
   "name": "ALMOND VELVET",
   "desc": "Biały rum, Aperol, syrop migdałowy, sok z cytryny, białko.\nAksamitny koktajl z migdałową słodyczą i cytrusową świeżością.\n• SWEET • SOUR •",
   "price": 44,
-  "image": "/menu/img_ObMbD-AKONk-CmjtV.webp",
+  "image": "/menu/almond-velvet.jpg",
   "badges": [
    "nowosc",
    "18+"
@@ -42,7 +42,7 @@
   "name": "DEEP HARMONY",
   "desc": "Sok żurawinowy, sok pomarańczowy, świeżo wyciskany sok z cytryny oraz syrop miodowy \n\n• SWEET • CITRUS • REFRESHING",
   "price": 27,
-  "image": "/menu/img_CleDG-VipGR-kIVTL.webp",
+  "image": "/menu/deep-harmony.jpg",
   "badges": [
    "nowosc"
   ]
@@ -51,7 +51,7 @@
   "name": "GREEN FLASH",
   "desc": "Wyjątkowe połączenie soczystego kiwi, naturalnej słodyczy jabłka i orzeźwiającej limonki.\n\n• FRUITY • FRESH • SOUR",
   "price": 60,
-  "image": "/menu/img_mYZtr-GCiWu-TbeeH.webp",
+  "image": "/menu/green-flash.jpg",
   "badges": [
    "nowosc",
    "18+"
@@ -61,7 +61,7 @@
   "name": "WARM SHORE",
   "desc": "Różowy gin, Triple Sec, Vermouth Rosso, sok pomarańczowy.\nOwocowo-cytrusowy koktajl o harmonijnym smaku.\n\n• FRUITY • SWEET",
   "price": 40,
-  "image": "/menu/img_OEOMQ-DTRyt-btirx.webp",
+  "image": "/menu/warm-shore.jpg",
   "badges": [
    "nowosc",
    "18+"
@@ -71,7 +71,7 @@
   "name": "MOJITO",
   "desc": "Mięta, limonka, syrop cukrowy, woda gazowana.\nKlasyczne, orzeźwiające połączenie mięty i limonki.\n• FRESH • CITRUS",
   "price": 27,
-  "image": "/menu/img_xocWw-WUllI-xVyod.webp",
+  "image": "/menu/mojito.jpg",
   "badges": [
    "nowosc"
   ]
@@ -80,7 +80,7 @@
   "name": "WITCH FLOWER",
   "desc": "Absynt, Amaretto, syrop lawendowy, syrop z czarnego bzu, limonka, białko.\nKwiatowy koktajl z nutą migdałów i limonki.\n\n• FLORAL • SWEET • SOUR",
   "price": 48,
-  "image": "/menu/img_FAhIJ-aZKMy-GIizc.webp",
+  "image": "/menu/witch-flower.jpg",
   "badges": [
    "nowosc",
    "18+"
@@ -90,7 +90,7 @@
   "name": "ECLIPSE",
   "desc": "Wódka, Blue Curaçao, syrop z czarnej porzeczki, sok z cytryny.\nOwocowy koktajl z czarną porzeczką i cytrusowym finiszem.\n\n• FRUITY • SWEET • SOUR",
   "price": 41,
-  "image": "/menu/img_kOkDD-AuuKD-hmeEC.webp",
+  "image": "/menu/eclipse.jpg",
   "badges": [
    "nowosc",
    "18+"
@@ -100,7 +100,7 @@
   "name": "BREEZE",
   "desc": "Whisky, mięta, syrop z czarnego bzu, sok z cytryny, grenadina.\nOrzeźwiający koktajl z miętą, czarnym bzem i cytrusami.\n\n• FRESH • SWEET • SOUR",
   "price": 42,
-  "image": "/menu/img_zGDGg-SyGya-XSApg.webp",
+  "image": "/menu/breeze.jpg",
   "badges": [
    "nowosc",
    "18+"
