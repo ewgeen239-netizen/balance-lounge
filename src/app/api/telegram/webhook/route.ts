@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { telegramCall, reservationSummary } from "@/lib/notify";
 import { confirmReservation, cancelReservation, freeTablesForDate } from "@/lib/reservationActions";
+import { LARGE_GROUP } from "@/lib/tables";
 import { prisma } from "@/lib/db";
 
 // Telegram delivers button presses here. Secured by a secret token set on the
@@ -47,9 +48,17 @@ export async function POST(req: Request) {
     if (!r) { await ack("Nie znaleziono rezerwacji."); return NextResponse.json({ ok: true }); }
 
     const free = await freeTablesForDate(r.date, r.id);
+    const big = r.guests >= LARGE_GROUP;
+    // Tie the choice to party size: tables that seat the group (+ terrace for big
+    // groups). If nothing fits, fall back to every free table for the day.
+    const fitting = free
+      .filter((t) => t.seats >= r.guests || (t.outdoor && big))
+      .sort((a, b) => a.seats - b.seats);
+    const list = fitting.length ? fitting : free;
+
     const rows: { text: string; callback_data: string }[][] = [];
-    for (let i = 0; i < free.length; i += 4) {
-      rows.push(free.slice(i, i + 4).map((t) => ({
+    for (let i = 0; i < list.length; i += 4) {
+      rows.push(list.slice(i, i + 4).map((t) => ({
         text: `${t.outdoor ? "🌿" : ""}${t.no}·${t.seats}os`,
         callback_data: `table:${r.id}:${t.no}`,
       })));
@@ -59,7 +68,10 @@ export async function POST(req: Request) {
       { text: "❌ Odrzuć", callback_data: `cancel:${r.id}` },
     ]);
     await ack();
-    await editMessage(`${reservationSummary(r)}\n\n🪑 <b>Wybierz stół</b> (👥 ${r.guests} os.):`, { inline_keyboard: rows });
+    const note = fitting.length
+      ? `🪑 <b>Wolne stoły na ${r.date}</b> pod 👥 ${r.guests} os.:`
+      : `🪑 <b>Brak stołu na tylu osób.</b> Wszystkie wolne na ${r.date}:`;
+    await editMessage(`${reservationSummary(r)}\n\n${note}`, { inline_keyboard: rows });
     return NextResponse.json({ ok: true });
   }
 

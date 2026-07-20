@@ -116,7 +116,7 @@ export function BookingForm({ hours, loggedIn }: { hours: HoursRow[]; loggedIn: 
         </div>
         <div>
           <label className="label">{t("book.guests")}</label>
-          <input type="number" inputMode="numeric" min={1} max={30} value={form.guests} onChange={(e) => set("guests", e.target.value === "" ? 1 : Number(e.target.value))} className="input" required />
+          <input type="number" inputMode="numeric" min={1} max={30} value={form.guests} onChange={(e) => set("guests", e.target.value === "" ? 1 : Number(e.target.value))} className="input [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none" required />
         </div>
         <div>
           <label className="label">{t("book.name")}</label>
