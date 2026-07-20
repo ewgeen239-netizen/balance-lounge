@@ -36,6 +36,7 @@ export async function PATCH(req: Request, { params }: { params: { id: string } }
 export async function DELETE(_req: Request, { params }: { params: { id: string } }) {
   const denied = await requireAdmin();
   if (denied) return denied;
-  await prisma.reservation.delete({ where: { id: Number(params.id) } });
-  return NextResponse.json({ ok: true });
+  // Idempotent: deleteMany won't throw if the row is already gone (double-click, stale UI).
+  const { count } = await prisma.reservation.deleteMany({ where: { id: Number(params.id) } });
+  return NextResponse.json({ ok: true, deleted: count });
 }
