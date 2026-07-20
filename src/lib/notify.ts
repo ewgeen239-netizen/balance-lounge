@@ -53,9 +53,13 @@ export const reservationKeyboard = (id: number) => ({
   ]],
 });
 
-/** Sends a Telegram message about a new reservation with accept/reject buttons.
+export type TgMessageRef = { chatId: string; messageId: number };
+
+/** Sends a Telegram alert about a new reservation with accept/reject buttons to
+ *  every configured chat. Returns the {chatId, messageId} of each sent message so
+ *  the caller can persist them and later sync edits across all chats.
  *  Fails silently (logs only) so booking never breaks because of notification issues. */
-export async function notifyNewReservation(r: ReservationLike): Promise<void> {
+export async function notifyNewReservation(r: ReservationLike): Promise<TgMessageRef[]> {
   const token = process.env.TELEGRAM_BOT_TOKEN;
   const chatIds = (process.env.TELEGRAM_CHAT_ID ?? "")
     .split(",")
@@ -65,15 +69,33 @@ export async function notifyNewReservation(r: ReservationLike): Promise<void> {
 
   if (!token || chatIds.length === 0) {
     console.info("[notify] Telegram not configured, skipping. Reservation:\n" + text);
-    return;
+    return [];
   }
-  await Promise.allSettled(
-    chatIds.map((chatId) =>
-      telegramCall("sendMessage", {
+  const results = await Promise.all(
+    chatIds.map(async (chatId) => {
+      const res = await telegramCall("sendMessage", {
         chat_id: chatId,
         text,
         parse_mode: "HTML",
         reply_markup: reservationKeyboard(r.id),
+      });
+      const messageId = res?.result?.message_id;
+      return messageId ? { chatId, messageId } : null;
+    }),
+  );
+  return results.filter((x): x is TgMessageRef => x !== null);
+}
+
+/** Rewrites the reservation's alert in every chat it was sent to (and drops the
+ *  buttons) — so a confirm/reject from one account shows up on all the others. */
+export async function editAllReservationMessages(refs: TgMessageRef[], text: string): Promise<void> {
+  await Promise.allSettled(
+    refs.map((m) =>
+      telegramCall("editMessageText", {
+        chat_id: m.chatId,
+        message_id: m.messageId,
+        text,
+        parse_mode: "HTML",
       }),
     ),
   );

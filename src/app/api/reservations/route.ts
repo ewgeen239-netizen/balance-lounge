@@ -62,7 +62,10 @@ export async function POST(req: Request) {
     },
   });
 
-  await notifyNewReservation(reservation);
+  const tgRefs = await notifyNewReservation(reservation);
+  if (tgRefs.length) {
+    await prisma.reservation.update({ where: { id: reservation.id }, data: { tgMessages: JSON.stringify(tgRefs) } });
+  }
 
   return NextResponse.json({ ok: true, reservation }, { status: 201 });
 }

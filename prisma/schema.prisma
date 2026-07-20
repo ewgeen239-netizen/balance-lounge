@@ -80,6 +80,7 @@ model Reservation {
   comment   String   @default("")
   zone      String   @default("")
   tableNo   Int? // assigned table 1–20 (set by staff on confirm); null = unassigned
+  tgMessages String  @default("[]") // JSON [{chatId, messageId}] of the Telegram alerts, for cross-chat sync
   status    String   @default("pending") // pending | confirmed | seated | cancelled
   guestId   Int?
   guest     GuestUser? @relation(fields: [guestId], references: [id], onDelete: SetNull)

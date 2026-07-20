@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { telegramCall, reservationSummary } from "@/lib/notify";
+import { telegramCall, reservationSummary, editAllReservationMessages, type TgMessageRef } from "@/lib/notify";
 import { confirmReservation, cancelReservation, freeTablesForDate } from "@/lib/reservationActions";
 import { LARGE_GROUP } from "@/lib/tables";
 import { prisma } from "@/lib/db";
@@ -42,6 +42,15 @@ export async function POST(req: Request) {
       ...(replyMarkup ? { reply_markup: replyMarkup } : {}),
     });
 
+  // Terminal update: rewrite the alert in EVERY chat it was sent to (cross-account
+  // sync), so a confirm/reject from one staff account shows on all the others.
+  const syncAll = async (reservation: { tgMessages?: string } | null, text: string) => {
+    let refs: TgMessageRef[] = [];
+    try { refs = JSON.parse(reservation?.tgMessages || "[]"); } catch { /* ignore */ }
+    if (refs.length) await editAllReservationMessages(refs, text);
+    else await editMessage(text); // fallback: only the acting message
+  };
+
   // ── Step 1: "Przyjmij" → show the table picker (does not confirm yet) ──
   if (action === "confirm") {
     const r = await prisma.reservation.findUnique({ where: { id } });
@@ -81,7 +90,7 @@ export async function POST(req: Request) {
     const res = await confirmReservation(id, Number.isInteger(tableNo) ? tableNo : undefined);
     if (!res.ok || !res.reservation) { await ack("Nie znaleziono rezerwacji."); return NextResponse.json({ ok: true }); }
     await ack(res.alreadyConfirmed ? `Stół ${tableNo} przypisany.` : `Przyjęta ✅ Stół ${tableNo} — powiadomienie wysłane.`);
-    await editMessage(`${reservationSummary(res.reservation)}\n\n✅ <b>PRZYJĘTA</b> · Stół ${tableNo}`);
+    await syncAll(res.reservation, `${reservationSummary(res.reservation)}\n\n✅ <b>PRZYJĘTA</b> · Stół ${tableNo}`);
     return NextResponse.json({ ok: true });
   }
 
@@ -90,7 +99,7 @@ export async function POST(req: Request) {
     const res = await confirmReservation(id);
     if (!res.ok || !res.reservation) { await ack("Nie znaleziono rezerwacji."); return NextResponse.json({ ok: true }); }
     await ack(res.alreadyConfirmed ? "Już przyjęta." : "Przyjęta ✅ — powiadomienie wysłane.");
-    await editMessage(`${reservationSummary(res.reservation)}\n\n✅ <b>PRZYJĘTA</b>`);
+    await syncAll(res.reservation, `${reservationSummary(res.reservation)}\n\n✅ <b>PRZYJĘTA</b>`);
     return NextResponse.json({ ok: true });
   }
 
@@ -99,7 +108,7 @@ export async function POST(req: Request) {
     const res = await cancelReservation(id);
     if (!res.ok || !res.reservation) { await ack("Nie znaleziono rezerwacji."); return NextResponse.json({ ok: true }); }
     await ack("Odrzucona ❌");
-    await editMessage(`${reservationSummary(res.reservation)}\n\n❌ <b>ODRZUCONA</b>`);
+    await syncAll(res.reservation, `${reservationSummary(res.reservation)}\n\n❌ <b>ODRZUCONA</b>`);
     return NextResponse.json({ ok: true });
   }
 
