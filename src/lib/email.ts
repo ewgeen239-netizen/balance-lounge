@@ -18,7 +18,7 @@ export type ConfirmEmailData = {
   };
 };
 
-const BRAND = { ember: "#e07a3f", ink: "#0f0f11", card: "#17171b", line: "#2a2a30", text: "#e7e7ea", muted: "#9a9aa2" };
+const BRAND = { ember: "#e07a3f", ink: "#000000", card: "#101012", line: "#26262c", text: "#ededf0", muted: "#9a9aa2" };
 
 function esc(s: string): string {
   return String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c] as string));
@@ -62,12 +62,13 @@ export function reservationConfirmedEmail(d: ConfirmEmailData): { subject: strin
 
   const html = `<!doctype html>
 <html lang="pl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="dark"><meta name="supported-color-schemes" content="dark">
 <title>${esc(subject)}</title></head>
-<body style="margin:0;padding:0;background:${BRAND.ink};">
+<body style="margin:0;padding:0;background:${BRAND.ink};background-color:${BRAND.ink};">
 <span style="display:none;max-height:0;overflow:hidden;opacity:0;">Do zobaczenia w ${esc(d.restaurant.name)}! Twoja rezerwacja jest potwierdzona.</span>
-<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:${BRAND.ink};padding:28px 12px;">
-<tr><td align="center">
-  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:560px;background:${BRAND.card};border:1px solid ${BRAND.line};border-radius:18px;overflow:hidden;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" bgcolor="${BRAND.ink}" style="background:${BRAND.ink};background-color:${BRAND.ink};padding:28px 12px;">
+<tr><td align="center" bgcolor="${BRAND.ink}" style="background-color:${BRAND.ink};">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" bgcolor="${BRAND.card}" style="max-width:560px;background:${BRAND.card};background-color:${BRAND.card};border:1px solid ${BRAND.line};border-radius:18px;overflow:hidden;">
     <!-- header -->
     <tr><td style="padding:26px 28px 6px;">
       <div style="letter-spacing:6px;font-size:20px;font-weight:800;color:${BRAND.text};">BALANCE</div>
