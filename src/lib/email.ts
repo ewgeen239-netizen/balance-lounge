@@ -19,7 +19,6 @@ export type ConfirmEmailData = {
 };
 
 const BRAND = { ember: "#e07a3f", ink: "#000000", card: "#101012", line: "#26262c", text: "#ededf0", muted: "#9a9aa2" };
-const SITE_URL = "https://balancecocktails.pl";
 
 function esc(s: string): string {
   return String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c] as string));
@@ -71,17 +70,17 @@ export function reservationConfirmedEmail(d: ConfirmEmailData): { subject: strin
 <tr><td align="center" bgcolor="${BRAND.ink}" style="background-color:${BRAND.ink};">
   <table role="presentation" width="100%" cellpadding="0" cellspacing="0" bgcolor="${BRAND.card}" style="max-width:560px;background:${BRAND.card};background-color:${BRAND.card};border:1px solid ${BRAND.line};border-radius:18px;overflow:hidden;">
     <!-- header -->
-    <tr><td style="padding:26px 28px 8px;">
-      <img src="${SITE_URL}/email/balance-logo.png" alt="BALANCE" width="190" height="30" style="display:block;width:190px;max-width:62%;height:auto;border:0;outline:none;" />
-      <div style="letter-spacing:4px;font-size:11px;color:${BRAND.ember};text-transform:uppercase;margin-top:9px;">Coctails &amp; Shisha</div>
+    <tr><td bgcolor="${BRAND.card}" style="background-color:${BRAND.card};padding:26px 28px 8px;">
+      <div style="letter-spacing:6px;font-size:22px;font-weight:800;color:${BRAND.text};">BALANCE</div>
+      <div style="letter-spacing:3px;font-size:11px;color:${BRAND.ember};text-transform:uppercase;margin-top:4px;">Coctails &amp; Shisha</div>
     </td></tr>
     <!-- greeting -->
-    <tr><td style="padding:14px 28px 0;">
+    <tr><td bgcolor="${BRAND.card}" style="background-color:${BRAND.card};padding:14px 28px 0;">
       <p style="margin:0 0 6px;color:${BRAND.text};font-size:16px;">Dzień dobry, <strong>${esc(d.name)}</strong>!</p>
       <p style="margin:0;color:${BRAND.muted};font-size:14px;line-height:1.5;">Twoja rezerwacja została <strong style="color:${BRAND.ember};">potwierdzona</strong>. Rezerwujemy dla Ciebie miejsce i już nie możemy się doczekać — do zobaczenia w Balance!</p>
     </td></tr>
     <!-- hero -->
-    <tr><td style="padding:18px 28px 0;">
+    <tr><td bgcolor="${BRAND.card}" style="background-color:${BRAND.card};padding:18px 28px 0;">
       <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:linear-gradient(135deg,rgba(224,122,63,0.14),rgba(224,122,63,0.02));border:1px solid rgba(224,122,63,0.3);border-radius:14px;">
         <tr><td style="padding:18px 20px;">
           <div style="color:${BRAND.ember};font-size:22px;font-weight:800;">${esc(d.date)}, ${esc(d.time)}</div>
@@ -90,16 +89,16 @@ export function reservationConfirmedEmail(d: ConfirmEmailData): { subject: strin
       </table>
     </td></tr>
     <!-- ctas -->
-    <tr><td style="padding:14px 24px 0;">
+    <tr><td bgcolor="${BRAND.card}" style="background-color:${BRAND.card};padding:14px 24px 0;">
       ${btn(mapsUrl(d.restaurant.address), "Pokaż na mapie")}
       ${btn(calendarUrl(d), "Dodaj do kalendarza")}
     </td></tr>
     <!-- change / cancel -->
-    <tr><td style="padding:14px 28px 0;">
+    <tr><td bgcolor="${BRAND.card}" style="background-color:${BRAND.card};padding:14px 28px 0;">
       <p style="margin:0;color:${BRAND.muted};font-size:13px;line-height:1.5;">Chcesz zmienić szczegóły lub odwołać wizytę? Zadzwoń do nas: <a href="tel:${esc(d.restaurant.phone.replace(/\s/g, ""))}" style="color:${BRAND.ember};text-decoration:none;font-weight:600;">${esc(d.restaurant.phone)}</a>.</p>
     </td></tr>
     <!-- details -->
-    <tr><td style="padding:18px 28px 0;">
+    <tr><td bgcolor="${BRAND.card}" style="background-color:${BRAND.card};padding:18px 28px 0;">
       <div style="border-top:1px solid ${BRAND.line};padding-top:14px;">
         <div style="color:${BRAND.muted};font-size:11px;text-transform:uppercase;letter-spacing:2px;margin-bottom:6px;">Szczegóły rezerwacji</div>
         <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
@@ -114,7 +113,7 @@ export function reservationConfirmedEmail(d: ConfirmEmailData): { subject: strin
       </div>
     </td></tr>
     <!-- footer -->
-    <tr><td style="padding:22px 28px 26px;">
+    <tr><td bgcolor="${BRAND.card}" style="background-color:${BRAND.card};padding:22px 28px 26px;">
       <div style="border-top:1px solid ${BRAND.line};padding-top:16px;">
         <div style="color:${BRAND.text};font-size:14px;font-weight:600;">${esc(d.restaurant.name)}</div>
         <div style="color:${BRAND.muted};font-size:13px;margin-top:2px;">${esc(d.restaurant.address)}</div>
