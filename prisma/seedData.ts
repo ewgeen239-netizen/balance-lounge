@@ -257,11 +257,11 @@ export async function syncMenu(prisma: PrismaClient): Promise<void> {
         added++;
         console.log(`  + item ${c.hurl}/${key}`);
       } else {
-        // Backfill empty photo/description (never overwrites admin text/prices).
-        // Options are source-managed: kept in sync with the JSON so add-ons can be
-        // added or removed from the source and go live on deploy.
+        // Photos and options are source-managed: kept in sync with the JSON so a
+        // new/changed image or add-on in choiceDataI18n.json goes live on deploy.
+        // Description is only backfilled when empty (never overwrites admin text/prices).
         const patch: { photo?: string; description?: string; options?: string } = {};
-        if (!cur.photo && item.image) patch.photo = item.image;
+        if (item.image && cur.photo !== item.image) patch.photo = item.image;
         if (!namePl(cur.description) && item.descI18n?.pl) patch.description = J(item.descI18n);
         const srcOptions = JSON.stringify(item.optionsI18n ?? []);
         if (cur.options !== srcOptions) patch.options = srcOptions;
