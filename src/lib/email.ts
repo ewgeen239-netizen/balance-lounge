@@ -146,23 +146,30 @@ export function reservationConfirmedEmail(d: ConfirmEmailData): { subject: strin
   return { subject, html, text };
 }
 
-/** Sends the confirmation email via Resend. Silent if unconfigured or no address. */
+/** Sends the confirmation email via Brevo (transactional). Silent if unconfigured or no address. */
 export async function sendReservationConfirmedEmail(d: ConfirmEmailData): Promise<void> {
-  const key = process.env.RESEND_API_KEY;
-  const from = process.env.RESEND_FROM; // e.g. "Balance <rezerwacje@twojadomena.pl>"
-  if (!key || !from || !d.email) {
-    console.info("[email] Resend not configured or no recipient — skipping confirmation email.");
+  const key = process.env.BREVO_API_KEY;
+  const senderEmail = process.env.BREVO_SENDER_EMAIL; // must be a verified sender in Brevo
+  const senderName = process.env.BREVO_SENDER_NAME || d.restaurant.name || "Balance";
+  if (!key || !senderEmail || !d.email) {
+    console.info("[email] Brevo not configured or no recipient — skipping confirmation email.");
     return;
   }
   const { subject, html, text } = reservationConfirmedEmail(d);
   try {
-    const res = await fetch("https://api.resend.com/emails", {
+    const res = await fetch("https://api.brevo.com/v3/smtp/email", {
       method: "POST",
-      headers: { Authorization: `Bearer ${key}`, "Content-Type": "application/json" },
-      body: JSON.stringify({ from, to: [d.email], subject, html, text }),
+      headers: { "api-key": key, "Content-Type": "application/json", Accept: "application/json" },
+      body: JSON.stringify({
+        sender: { name: senderName, email: senderEmail },
+        to: [{ email: d.email, name: d.name }],
+        subject,
+        htmlContent: html,
+        textContent: text,
+      }),
     });
-    if (!res.ok) console.error("[email] Resend send failed:", await res.text());
+    if (!res.ok) console.error("[email] Brevo send failed:", await res.text());
   } catch (err) {
-    console.error("[email] Resend send failed:", err);
+    console.error("[email] Brevo send failed:", err);
   }
 }
