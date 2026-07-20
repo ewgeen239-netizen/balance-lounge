@@ -2,7 +2,18 @@ import { NextResponse } from "next/server";
 import { prisma } from "@/lib/db";
 import { requireAdmin } from "@/lib/adminGuard";
 import { notifyGuestConfirmed } from "@/lib/reservationActions";
+import { reservationSummary, editAllReservationMessages, type TgMessageRef } from "@/lib/notify";
 import { TABLES } from "@/lib/tables";
+
+/** Mirror an admin-panel confirm/reject onto the Telegram alerts in every chat. */
+async function syncTelegram(
+  r: Parameters<typeof reservationSummary>[0] & { tgMessages: string },
+  footer: string,
+) {
+  let refs: TgMessageRef[] = [];
+  try { refs = JSON.parse(r.tgMessages || "[]"); } catch { /* ignore */ }
+  if (refs.length) await editAllReservationMessages(refs, `${reservationSummary(r)}\n\n${footer}`);
+}
 
 const STATUSES = ["pending", "confirmed", "seated", "cancelled"];
 const VALID_TABLES = new Set(TABLES.map((t) => t.no));
@@ -19,9 +30,9 @@ export async function PATCH(req: Request, { params }: { params: { id: string } }
   else if (Number.isInteger(body.tableNo) && VALID_TABLES.has(body.tableNo)) data.tableNo = body.tableNo;
   if (Object.keys(data).length === 0) return NextResponse.json({ error: "nothing_to_update" }, { status: 400 });
 
-  // Detect a fresh confirmation so we only text the guest once.
+  // Detect a fresh status change so we only notify once.
   const before =
-    data.status === "confirmed"
+    typeof data.status === "string"
       ? await prisma.reservation.findUnique({ where: { id: Number(params.id) }, select: { status: true } })
       : null;
 
@@ -29,6 +40,9 @@ export async function PATCH(req: Request, { params }: { params: { id: string } }
 
   if (data.status === "confirmed" && before?.status !== "confirmed") {
     await notifyGuestConfirmed(r); // SMS + e-mail to the guest
+    await syncTelegram(r, `✅ <b>PRZYJĘTA</b>${r.tableNo ? ` · Stół ${r.tableNo}` : ""}`);
+  } else if (data.status === "cancelled" && before?.status !== "cancelled") {
+    await syncTelegram(r, "❌ <b>ODRZUCONA</b>");
   }
   return NextResponse.json(r);
 }
