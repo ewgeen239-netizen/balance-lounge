@@ -1,6 +1,7 @@
 import "server-only";
 
 type ReservationLike = {
+  id: number;
   name: string;
   phone: string;
   date: string;
@@ -10,7 +11,49 @@ type ReservationLike = {
   comment?: string;
 };
 
-/** Sends a Telegram message about a new reservation if bot env vars are configured.
+const TG_API = (method: string) => `https://api.telegram.org/bot${process.env.TELEGRAM_BOT_TOKEN}/${method}`;
+
+const esc = (s: string) => String(s).replace(/[&<>]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;" }[c] as string));
+
+/** Low-level Telegram Bot API call. Returns the parsed JSON (or null on error). */
+export async function telegramCall(method: string, payload: Record<string, unknown>): Promise<any> {
+  if (!process.env.TELEGRAM_BOT_TOKEN) return null;
+  try {
+    const res = await fetch(TG_API(method), {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    });
+    const json = await res.json().catch(() => null);
+    if (!res.ok || (json && json.ok === false)) console.error(`[notify] Telegram ${method} failed:`, JSON.stringify(json));
+    return json;
+  } catch (err) {
+    console.error(`[notify] Telegram ${method} failed:`, err);
+    return null;
+  }
+}
+
+export function reservationSummary(r: ReservationLike): string {
+  return (
+    `🆕 <b>Nowa rezerwacja — BALANCE</b>\n\n` +
+    `👤 ${esc(r.name)}\n` +
+    `📞 ${esc(r.phone)}\n` +
+    `📅 ${esc(r.date)}, godz. ${esc(r.time)}\n` +
+    `👥 Liczba gości: ${r.guests}` +
+    (r.comment ? `\n📝 ${esc(r.comment)}` : ``) +
+    `\n\n🆔 Rezerwacja #${r.id}`
+  );
+}
+
+/** Inline "confirm / reject" keyboard tied to a reservation. */
+export const reservationKeyboard = (id: number) => ({
+  inline_keyboard: [[
+    { text: "✅ Przyjmij", callback_data: `confirm:${id}` },
+    { text: "❌ Odrzuć", callback_data: `cancel:${id}` },
+  ]],
+});
+
+/** Sends a Telegram message about a new reservation with accept/reject buttons.
  *  Fails silently (logs only) so booking never breaks because of notification issues. */
 export async function notifyNewReservation(r: ReservationLike): Promise<void> {
   const token = process.env.TELEGRAM_BOT_TOKEN;
@@ -18,33 +61,21 @@ export async function notifyNewReservation(r: ReservationLike): Promise<void> {
     .split(",")
     .map((id) => id.trim())
     .filter(Boolean);
-  const text =
-  ` 🆕 Nowa rezerwacja — BALANCE 
-
-` +
-  `👤 Liczba gości: ${r.guests}
-` +
-  `📅 Termin: ${r.date}, godz. ${r.time}`;
+  const text = reservationSummary(r);
 
   if (!token || chatIds.length === 0) {
     console.info("[notify] Telegram not configured, skipping. Reservation:\n" + text);
     return;
   }
   await Promise.allSettled(
-    chatIds.map(async (chatId) => {
-      try {
-        const res = await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ chat_id: chatId, text }),
-        });
-        if (!res.ok) {
-          console.error(`[notify] Telegram send failed for ${chatId}:`, await res.text());
-        }
-      } catch (err) {
-        console.error(`[notify] Telegram send failed for ${chatId}:`, err);
-      }
-    }),
+    chatIds.map((chatId) =>
+      telegramCall("sendMessage", {
+        chat_id: chatId,
+        text,
+        parse_mode: "HTML",
+        reply_markup: reservationKeyboard(r.id),
+      }),
+    ),
   );
 }
 
