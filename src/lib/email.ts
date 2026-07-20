@@ -19,6 +19,7 @@ export type ConfirmEmailData = {
 };
 
 const BRAND = { ember: "#e07a3f", ink: "#000000", card: "#101012", line: "#26262c", text: "#ededf0", muted: "#9a9aa2" };
+const SITE_URL = "https://balancecocktails.pl";
 
 function esc(s: string): string {
   return String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c] as string));
@@ -70,9 +71,9 @@ export function reservationConfirmedEmail(d: ConfirmEmailData): { subject: strin
 <tr><td align="center" bgcolor="${BRAND.ink}" style="background-color:${BRAND.ink};">
   <table role="presentation" width="100%" cellpadding="0" cellspacing="0" bgcolor="${BRAND.card}" style="max-width:560px;background:${BRAND.card};background-color:${BRAND.card};border:1px solid ${BRAND.line};border-radius:18px;overflow:hidden;">
     <!-- header -->
-    <tr><td style="padding:26px 28px 6px;">
-      <div style="letter-spacing:6px;font-size:20px;font-weight:800;color:${BRAND.text};">BALANCE</div>
-      <div style="letter-spacing:3px;font-size:11px;color:${BRAND.muted};text-transform:uppercase;">Coctails &amp; Shisha</div>
+    <tr><td style="padding:26px 28px 8px;">
+      <img src="${SITE_URL}/email/balance-logo.png" alt="BALANCE" width="190" height="30" style="display:block;width:190px;max-width:62%;height:auto;border:0;outline:none;" />
+      <div style="letter-spacing:4px;font-size:11px;color:${BRAND.ember};text-transform:uppercase;margin-top:9px;">Coctails &amp; Shisha</div>
     </td></tr>
     <!-- greeting -->
     <tr><td style="padding:14px 28px 0;">
