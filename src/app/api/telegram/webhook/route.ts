@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { telegramCall, reservationSummary } from "@/lib/notify";
-import { confirmReservation, cancelReservation } from "@/lib/reservationActions";
+import { confirmReservation, cancelReservation, freeTablesForDate } from "@/lib/reservationActions";
+import { prisma } from "@/lib/db";
 
 // Telegram delivers button presses here. Secured by a secret token set on the
 // webhook (Telegram echoes it in this header) plus a chat-id allowlist.
@@ -21,41 +22,75 @@ export async function POST(req: Request) {
     return NextResponse.json({ ok: true });
   }
 
-  const [action, idStr] = String(cb.data ?? "").split(":");
-  const id = Number(idStr);
-  if (!Number.isInteger(id) || (action !== "confirm" && action !== "cancel")) {
-    await telegramCall("answerCallbackQuery", { callback_query_id: cb.id });
+  const parts = String(cb.data ?? "").split(":");
+  const action = parts[0];
+  const id = Number(parts[1]);
+  const ack = (text?: string) => telegramCall("answerCallbackQuery", { callback_query_id: cb.id, ...(text ? { text } : {}) });
+
+  if (!Number.isInteger(id)) {
+    await ack();
     return NextResponse.json({ ok: true });
   }
 
-  let toast = "";
-  let footer = "";
-  let reservation;
-
-  if (action === "confirm") {
-    const res = await confirmReservation(id);
-    reservation = res.reservation;
-    if (!res.ok) toast = "Nie znaleziono rezerwacji.";
-    else if (res.alreadyConfirmed) { toast = "Już przyjęta."; footer = "✅ <b>PRZYJĘTA</b>"; }
-    else { toast = "Rezerwacja przyjęta ✅ — powiadomienie wysłane."; footer = "✅ <b>PRZYJĘTA</b>"; }
-  } else {
-    const res = await cancelReservation(id);
-    reservation = res.reservation;
-    toast = res.ok ? "Rezerwacja odrzucona ❌" : "Nie znaleziono rezerwacji.";
-    footer = res.ok ? "❌ <b>ODRZUCONA</b>" : "";
-  }
-
-  await telegramCall("answerCallbackQuery", { callback_query_id: cb.id, text: toast });
-
-  if (reservation && footer) {
-    // Rewrite the message with the outcome and drop the buttons.
-    await telegramCall("editMessageText", {
+  const editMessage = (text: string, replyMarkup?: unknown) =>
+    telegramCall("editMessageText", {
       chat_id: cb.message.chat.id,
       message_id: cb.message.message_id,
-      text: `${reservationSummary(reservation)}\n\n${footer}`,
+      text,
       parse_mode: "HTML",
+      ...(replyMarkup ? { reply_markup: replyMarkup } : {}),
     });
+
+  // ── Step 1: "Przyjmij" → show the table picker (does not confirm yet) ──
+  if (action === "confirm") {
+    const r = await prisma.reservation.findUnique({ where: { id } });
+    if (!r) { await ack("Nie znaleziono rezerwacji."); return NextResponse.json({ ok: true }); }
+
+    const free = await freeTablesForDate(r.date, r.id);
+    const rows: { text: string; callback_data: string }[][] = [];
+    for (let i = 0; i < free.length; i += 4) {
+      rows.push(free.slice(i, i + 4).map((t) => ({
+        text: `${t.outdoor ? "🌿" : ""}${t.no}·${t.seats}os`,
+        callback_data: `table:${r.id}:${t.no}`,
+      })));
+    }
+    rows.push([
+      { text: "✅ Bez stołu", callback_data: `notable:${r.id}` },
+      { text: "❌ Odrzuć", callback_data: `cancel:${r.id}` },
+    ]);
+    await ack();
+    await editMessage(`${reservationSummary(r)}\n\n🪑 <b>Wybierz stół</b> (👥 ${r.guests} os.):`, { inline_keyboard: rows });
+    return NextResponse.json({ ok: true });
   }
 
+  // ── Step 2: a table was chosen → confirm + assign + notify ──
+  if (action === "table") {
+    const tableNo = Number(parts[2]);
+    const res = await confirmReservation(id, Number.isInteger(tableNo) ? tableNo : undefined);
+    if (!res.ok || !res.reservation) { await ack("Nie znaleziono rezerwacji."); return NextResponse.json({ ok: true }); }
+    await ack(res.alreadyConfirmed ? `Stół ${tableNo} przypisany.` : `Przyjęta ✅ Stół ${tableNo} — powiadomienie wysłane.`);
+    await editMessage(`${reservationSummary(res.reservation)}\n\n✅ <b>PRZYJĘTA</b> · Stół ${tableNo}`);
+    return NextResponse.json({ ok: true });
+  }
+
+  // Confirm without a table.
+  if (action === "notable") {
+    const res = await confirmReservation(id);
+    if (!res.ok || !res.reservation) { await ack("Nie znaleziono rezerwacji."); return NextResponse.json({ ok: true }); }
+    await ack(res.alreadyConfirmed ? "Już przyjęta." : "Przyjęta ✅ — powiadomienie wysłane.");
+    await editMessage(`${reservationSummary(res.reservation)}\n\n✅ <b>PRZYJĘTA</b>`);
+    return NextResponse.json({ ok: true });
+  }
+
+  // Reject.
+  if (action === "cancel") {
+    const res = await cancelReservation(id);
+    if (!res.ok || !res.reservation) { await ack("Nie znaleziono rezerwacji."); return NextResponse.json({ ok: true }); }
+    await ack("Odrzucona ❌");
+    await editMessage(`${reservationSummary(res.reservation)}\n\n❌ <b>ODRZUCONA</b>`);
+    return NextResponse.json({ ok: true });
+  }
+
+  await ack();
   return NextResponse.json({ ok: true });
 }
