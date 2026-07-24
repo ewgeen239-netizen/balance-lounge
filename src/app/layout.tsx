@@ -31,6 +31,11 @@ export const metadata: Metadata = {
   title: "BALANCE — Coctails & Shisha | Szczecin",
   description:
     "Balance to nowoczesna przestrzeń lounge w Szczecinie z dopracowaną kartą koktajli i szerokim wyborem shishy premium.",
+  icons: {
+    icon: [{ url: "/icon.png", type: "image/png", sizes: "256x256" }],
+    shortcut: ["/icon.png"],
+    apple: [{ url: "/apple-icon.png", sizes: "256x256" }],
+  },
 };
 
 export default async function RootLayout({

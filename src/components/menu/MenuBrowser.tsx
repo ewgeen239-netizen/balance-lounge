@@ -35,6 +35,10 @@ const BADGE_STYLE: Record<string, string> = {
 // menu cards. Any legacy DB categories with these slugs are hidden from the grid.
 const INFO_SLUGS = new Set(["informacje", "odpowiedzialnosc"]);
 
+// Items (by Polish name) that stay available even when their category is closed
+// on schedule — e.g. a few desserts sold every day.
+const ALWAYS_OPEN = new Set(["Napoleon w kubeczkach", "Trifle Snickers", "Trifle Wanilia z owocami leśnimy"]);
+
 // Intro paragraph shown under a category heading (Polish source, auto-translated).
 const CATEGORY_INTRO: Record<string, { pl: string }> = {
   shisha: {
@@ -142,6 +146,61 @@ export function MenuBrowser({ categories }: { categories: CategoryDTO[] }) {
     window.setTimeout(() => { isClickScrolling.current = false; }, 700);
   }
 
+  const isAlwaysOpen = (it: MenuItemDTO) => ALWAYS_OPEN.has(parseJSON<{ pl?: string }>(it.name, {}).pl ?? "");
+
+  const renderCard = (it: MenuItemDTO, idx: number) => (
+    <motion.article
+      key={it.id}
+      initial={{ opacity: 0, y: 16 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.4, delay: (idx % 6) * 0.04 }}
+      onClick={() => setSelected(it)}
+      role="button"
+      tabIndex={0}
+      onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && setSelected(it)}
+      className={cn("glass card-hover flex cursor-pointer flex-col overflow-hidden rounded-2xl", !it.available && "opacity-60")}
+    >
+      {it.photo && (
+        <div className="relative aspect-[4/3] w-full shrink-0">
+          <Image src={it.photo} alt={tr(it.name)} fill className="object-cover" sizes="(max-width:640px) 50vw, 300px" />
+        </div>
+      )}
+      <div className="flex flex-1 flex-col p-3.5 sm:p-5">
+        <div className="flex items-start justify-between gap-2">
+          <h3 className="text-sm font-medium text-neutral-50 sm:text-base">{tr(it.name)}</h3>
+          {it.price > 0 && (
+            <span className="whitespace-nowrap text-sm font-semibold text-ember">
+              {parseJSON<{ portion?: boolean }[]>(it.options, []).some((g) => g.portion) && (
+                <span className="mr-1 text-[10px] font-normal uppercase tracking-wider text-neutral-500">{t("menu.from")}</span>
+              )}
+              {formatPrice(it.price)}
+            </span>
+          )}
+        </div>
+        <p className="mt-1.5 line-clamp-3 text-xs text-neutral-400 sm:text-sm sm:line-clamp-none">{tr(it.description)}</p>
+        <div className="mt-2.5 flex flex-wrap items-center gap-1.5 sm:gap-2">
+          {parseJSON<string[]>(it.badges, []).map((b) => <Badge key={b} code={b} />)}
+          {!it.available && (
+            <span className="rounded-full border border-neutral-600 px-2 py-0.5 text-[10px] uppercase tracking-wider text-neutral-400">
+              {t("menu.soldout")}
+            </span>
+          )}
+        </div>
+        {tr(it.name).toLowerCase().includes("cybuch") && (
+          <div className="mt-auto pt-3">
+            <div className="flex items-center gap-2 rounded-xl border border-ember/30 bg-gradient-to-r from-ember/10 to-transparent px-3 py-2">
+              <span className="text-ember">✦</span>
+              <span className="text-[11px] font-medium italic leading-snug text-ember/90 sm:text-xs">
+                {t("menu.eshishaNote")}
+              </span>
+            </div>
+          </div>
+        )}
+      </div>
+    </motion.article>
+  );
+
   return (
     <div>
       {/* Sticky controls */}
@@ -202,69 +261,30 @@ export function MenuBrowser({ categories }: { categories: CategoryDTO[] }) {
                     <p className="-mt-2 mb-7 max-w-3xl whitespace-pre-line text-sm leading-relaxed text-neutral-400">{tr(intro)}</p>
                   )}
 
-                <div className={cn("relative", closed && "pointer-events-none select-none")}>
-                  <div className={cn("grid grid-cols-2 gap-3 sm:gap-5 xl:grid-cols-3", closed && "blur-[6px] saturate-50 opacity-70")}>
-                    {c.items.map((it, idx) => (
-                      <motion.article
-                        key={it.id}
-                        initial={{ opacity: 0, y: 16 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.4, delay: (idx % 6) * 0.04 }}
-                        onClick={() => setSelected(it)}
-                        role="button"
-                        tabIndex={0}
-                        onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && setSelected(it)}
-                        className={cn("glass card-hover flex cursor-pointer flex-col overflow-hidden rounded-2xl", !it.available && "opacity-60")}
-                      >
-                        {it.photo && (
-                          <div className="relative aspect-[4/3] w-full shrink-0">
-                            <Image src={it.photo} alt={tr(it.name)} fill className="object-cover" sizes="(max-width:640px) 50vw, 300px" />
-                          </div>
-                        )}
-                        <div className="flex flex-1 flex-col p-3.5 sm:p-5">
-                          <div className="flex items-start justify-between gap-2">
-                            <h3 className="text-sm font-medium text-neutral-50 sm:text-base">{tr(it.name)}</h3>
-                            {it.price > 0 && (
-                              <span className="whitespace-nowrap text-sm font-semibold text-ember">
-                                {parseJSON<{ portion?: boolean }[]>(it.options, []).some((g) => g.portion) && (
-                                  <span className="mr-1 text-[10px] font-normal uppercase tracking-wider text-neutral-500">{t("menu.from")}</span>
-                                )}
-                                {formatPrice(it.price)}
-                              </span>
-                            )}
-                          </div>
-                          <p className="mt-1.5 line-clamp-3 text-xs text-neutral-400 sm:text-sm sm:line-clamp-none">{tr(it.description)}</p>
-                          <div className="mt-2.5 flex flex-wrap items-center gap-1.5 sm:gap-2">
-                            {parseJSON<string[]>(it.badges, []).map((b) => <Badge key={b} code={b} />)}
-                            {!it.available && (
-                              <span className="rounded-full border border-neutral-600 px-2 py-0.5 text-[10px] uppercase tracking-wider text-neutral-400">
-                                {t("menu.soldout")}
-                              </span>
-                            )}
-                          </div>
-                          {tr(it.name).toLowerCase().includes("cybuch") && (
-                            <div className="mt-auto pt-3">
-                              <div className="flex items-center gap-2 rounded-xl border border-ember/30 bg-gradient-to-r from-ember/10 to-transparent px-3 py-2">
-                                <span className="text-ember">✦</span>
-                                <span className="text-[11px] font-medium italic leading-snug text-ember/90 sm:text-xs">
-                                  {t("menu.eshishaNote")}
-                                </span>
-                              </div>
-                            </div>
-                          )}
-                        </div>
-                      </motion.article>
-                    ))}
-                  </div>
-                  {closed && (
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <span className="rounded-2xl border border-white/15 bg-ink-950/70 px-5 py-3 text-sm text-neutral-200 backdrop-blur-sm">
-                        {t("menu.closedTodayLong")}
-                      </span>
+                {closed ? (
+                  <>
+                    {/* Items sold every day stay open even when the category is closed. */}
+                    {c.items.some(isAlwaysOpen) && (
+                      <div className="mb-6 grid grid-cols-2 gap-3 sm:gap-5 xl:grid-cols-3">
+                        {c.items.filter(isAlwaysOpen).map((it, idx) => renderCard(it, idx))}
+                      </div>
+                    )}
+                    <div className="relative select-none">
+                      <div className="pointer-events-none grid grid-cols-2 gap-3 opacity-70 blur-[6px] saturate-50 sm:gap-5 xl:grid-cols-3">
+                        {c.items.filter((it) => !isAlwaysOpen(it)).map((it, idx) => renderCard(it, idx))}
+                      </div>
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <span className="rounded-2xl border border-white/15 bg-ink-950/70 px-5 py-3 text-sm text-neutral-200 backdrop-blur-sm">
+                          {t("menu.closedTodayLong")}
+                        </span>
+                      </div>
                     </div>
-                  )}
+                  </>
+                ) : (
+                  <div className="grid grid-cols-2 gap-3 sm:gap-5 xl:grid-cols-3">
+                    {c.items.map((it, idx) => renderCard(it, idx))}
                   </div>
+                )}
                 </section>
               </div>
             );
