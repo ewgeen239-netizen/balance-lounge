@@ -47,15 +47,8 @@ const CATEGORY_INTRO: Record<string, { pl: string }> = {
 };
 
 // A big divider rendered ABOVE the category whose slug is the key — separates
-// sections of the menu (e.g. drinks → sushi).
-const SUPER_SECTIONS: Record<string, { title: { pl: string }; desc: { pl: string } }> = {
-  rolls: {
-    title: { pl: "SUSHI BY BALANCE" },
-    desc: {
-      pl: "Idealne dopełnienie wieczoru w Balance. Świeżość. Balans. Estetyka.\nGodziny dostępności:\n• Poniedziałek – niedostępne\n• Wtorek–Czwartek – do 20:00\n• Piątek–Sobota – do 21:00\n• Niedziela – do 20:00",
-    },
-  },
-};
+// sections of the menu (e.g. drinks → food). Empty for now.
+const SUPER_SECTIONS: Record<string, { title: { pl: string }; desc: { pl: string } }> = {};
 
 // Polish source; rendered via tr() so it auto-translates into the active language.
 const DAMAGES = {

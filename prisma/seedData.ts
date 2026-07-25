@@ -218,10 +218,17 @@ function namePl(nameJson: string): string {
  *  source data but missing from the DB. Never updates or deletes existing rows,
  *  so admin edits (prices, descriptions, availability) are preserved. Runs on
  *  every deploy so new items (e.g. added to choiceDataI18n.json) go live. */
+// Categories removed from the menu — deleted on every sync (cascades to items).
+const REMOVED_SLUGS = ["rolls", "burgery", "sety"];
+
 export async function syncMenu(prisma: PrismaClient): Promise<void> {
   let added = 0;
   let filled = 0;
   let order = 0;
+
+  const { count: removed } = await prisma.category.deleteMany({ where: { slug: { in: REMOVED_SLUGS } } });
+  if (removed) console.log(`↳ syncMenu: removed ${removed} retired categor${removed === 1 ? "y" : "ies"}.`);
+
   for (const c of CHOICE.categories) {
     const catOrder = order++;
     let cat = await prisma.category.findUnique({ where: { slug: c.hurl } });
