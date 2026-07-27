@@ -32,10 +32,16 @@ export const metadata: Metadata = {
   description:
     "Balance to nowoczesna przestrzeń lounge w Szczecinie z dopracowaną kartą koktajli i szerokim wyborem shishy premium.",
   icons: {
-    icon: [{ url: "/icon.png", type: "image/png", sizes: "256x256" }],
-    shortcut: ["/icon.png"],
-    apple: [{ url: "/apple-icon.png", sizes: "256x256" }],
+    icon: [
+      { url: "/favicon.ico", sizes: "16x16 32x32 48x48" },
+      { url: "/icon.png", type: "image/png", sizes: "256x256" },
+      { url: "/icon-192.png", type: "image/png", sizes: "192x192" },
+      { url: "/icon-512.png", type: "image/png", sizes: "512x512" },
+    ],
+    shortcut: ["/favicon.ico"],
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
   },
+  manifest: "/manifest.webmanifest",
 };
 
 export default async function RootLayout({
