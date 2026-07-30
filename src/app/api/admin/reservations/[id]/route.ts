@@ -36,6 +36,10 @@ export async function PATCH(req: Request, { params }: { params: { id: string } }
       ? await prisma.reservation.findUnique({ where: { id: Number(params.id) }, select: { status: true } })
       : null;
 
+  if (!(await prisma.reservation.findUnique({ where: { id: Number(params.id) }, select: { id: true } }))) {
+    return NextResponse.json({ error: "not_found" }, { status: 404 });
+  }
+
   const r = await prisma.reservation.update({ where: { id: Number(params.id) }, data });
 
   if (data.status === "confirmed" && before?.status !== "confirmed") {

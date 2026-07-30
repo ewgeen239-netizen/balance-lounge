@@ -22,6 +22,9 @@ export async function PATCH(req: Request, { params }: { params: { id: string } }
   if (body.categoryId !== undefined) data.categoryId = Number(body.categoryId);
   if (body.order !== undefined) data.order = Number(body.order);
 
+  const exists = await prisma.menuItem.findUnique({ where: { id }, select: { id: true } });
+  if (!exists) return NextResponse.json({ error: "not_found" }, { status: 404 });
+
   const item = await prisma.menuItem.update({ where: { id }, data });
   return NextResponse.json(item);
 }
@@ -29,6 +32,7 @@ export async function PATCH(req: Request, { params }: { params: { id: string } }
 export async function DELETE(_req: Request, { params }: { params: { id: string } }) {
   const denied = await requireOwner();
   if (denied) return denied;
-  await prisma.menuItem.delete({ where: { id: Number(params.id) } });
-  return NextResponse.json({ ok: true });
+  // Idempotent: a double click or stale list must not 500.
+  const { count } = await prisma.menuItem.deleteMany({ where: { id: Number(params.id) } });
+  return NextResponse.json({ ok: true, deleted: count });
 }

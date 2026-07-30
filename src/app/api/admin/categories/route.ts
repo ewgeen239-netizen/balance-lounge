@@ -19,6 +19,9 @@ export async function POST(req: Request) {
   const { slug, name } = body as { slug?: string; name?: unknown };
   if (!slug) return NextResponse.json({ error: "slug_required" }, { status: 400 });
 
+  const existing = await prisma.category.findUnique({ where: { slug }, select: { id: true } });
+  if (existing) return NextResponse.json({ error: "slug_taken" }, { status: 409 });
+
   const count = await prisma.category.count();
   const cat = await prisma.category.create({
     data: {

@@ -19,6 +19,7 @@ export async function DELETE(_req: Request, { params }: { params: { id: string }
     if (owners <= 1) return NextResponse.json({ error: "last_owner" }, { status: 400 });
   }
 
-  await prisma.adminUser.delete({ where: { id } });
-  return NextResponse.json({ ok: true });
+  // Idempotent: a double click or stale list must not 500.
+  const { count } = await prisma.adminUser.deleteMany({ where: { id } });
+  return NextResponse.json({ ok: true, deleted: count });
 }

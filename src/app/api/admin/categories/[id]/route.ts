@@ -21,6 +21,7 @@ export async function PATCH(req: Request, { params }: { params: { id: string } }
 export async function DELETE(_req: Request, { params }: { params: { id: string } }) {
   const denied = await requireOwner();
   if (denied) return denied;
-  await prisma.category.delete({ where: { id: Number(params.id) } });
-  return NextResponse.json({ ok: true });
+  // Idempotent: a double click or stale list must not 500.
+  const { count } = await prisma.category.deleteMany({ where: { id: Number(params.id) } });
+  return NextResponse.json({ ok: true, deleted: count });
 }
