@@ -7,6 +7,7 @@ export type AdminItem = {
   photo: string;
   available: boolean;
   badges: string; // JSON
+  options: string; // JSON: [{ name: {pl}, required?, portion?, list: [{ name: {pl}, price }] }]
   order: number;
 };
 

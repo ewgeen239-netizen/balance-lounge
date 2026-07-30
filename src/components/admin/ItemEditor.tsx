@@ -1,8 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import type { AdminItem, AdminCategory } from "./types";
 import { TranslatableInput } from "./TranslatableInput";
+import { OptionsEditor } from "./OptionsEditor";
 import { ImageUpload } from "./ImageUpload";
 import { tr, DEFAULT_LANG } from "@/lib/i18n";
 import { parseJSON } from "@/lib/utils";
@@ -23,9 +24,15 @@ export function ItemEditor({
   const [draft, setDraft] = useState<AdminItem>(item);
   const [saving, setSaving] = useState(false);
   const badges = parseJSON<string[]>(draft.badges, []);
+  const dirty = JSON.stringify(draft) !== JSON.stringify(item);
 
   function set<K extends keyof AdminItem>(key: K, value: AdminItem[K]) {
     setDraft((d) => ({ ...d, [key]: value }));
+  }
+
+  function close() {
+    if (dirty && !confirm("Masz niezapisane zmiany. Zamknąć?")) return;
+    onClose();
   }
 
   function toggleBadge(b: string) {
@@ -45,26 +52,41 @@ export function ItemEditor({
         photo: draft.photo,
         available: draft.available,
         badges: draft.badges,
+        options: draft.options,
         categoryId: draft.categoryId,
+        order: draft.order,
       }),
     });
     setSaving(false);
     if (res.ok) onSaved(await res.json());
   }
 
+  // Esc closes, Ctrl/Cmd+S saves — keeps quick edits on the keyboard.
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") close();
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "s") { e.preventDefault(); void save(); }
+    };
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  });
+
   return (
     <div className="fixed inset-0 z-50 flex items-start justify-center overflow-y-auto bg-black/70 p-4 backdrop-blur-sm">
       <div className="my-8 w-full max-w-2xl rounded-3xl border border-white/10 bg-ink-900 p-6 shadow-card">
         <div className="mb-6 flex items-center justify-between">
-          <h3 className="wordmark text-xl text-neutral-50">Edit item</h3>
-          <button onClick={onClose} className="text-neutral-400 hover:text-neon">✕</button>
+          <div className="flex items-center gap-3">
+            <h3 className="wordmark text-xl text-neutral-50">Edit item</h3>
+            {dirty && <span className="rounded-full bg-ember/15 px-2 py-0.5 text-[10px] uppercase tracking-wider text-ember">niezapisane</span>}
+          </div>
+          <button onClick={close} className="text-neutral-400 hover:text-neon">✕</button>
         </div>
 
         <div className="space-y-5">
           <TranslatableInput label="Name" value={draft.name} onChange={(v) => set("name", v)} />
           <TranslatableInput label="Description" value={draft.description} onChange={(v) => set("description", v)} multiline />
 
-          <div className="grid gap-4 sm:grid-cols-2">
+          <div className="grid gap-4 sm:grid-cols-3">
             <div>
               <label className="label">Price (zł)</label>
               <input type="number" step="0.5" value={draft.price} onChange={(e) => set("price", Number(e.target.value))} className="input" />
@@ -77,9 +99,15 @@ export function ItemEditor({
                 ))}
               </select>
             </div>
+            <div>
+              <label className="label">Kolejność</label>
+              <input type="number" step="1" value={draft.order} onChange={(e) => set("order", Number(e.target.value))} className="input" />
+            </div>
           </div>
 
           <ImageUpload value={draft.photo} onChange={(url) => set("photo", url)} />
+
+          <OptionsEditor value={draft.options} onChange={(v) => set("options", v)} />
 
           <div className="flex flex-wrap items-center gap-6">
             <div>
@@ -105,7 +133,7 @@ export function ItemEditor({
         </div>
 
         <div className="mt-8 flex justify-end gap-3">
-          <button onClick={onClose} className="btn-ghost">Cancel</button>
+          <button onClick={close} className="btn-ghost">Cancel</button>
           <button onClick={save} disabled={saving} className="btn-primary disabled:opacity-50">{saving ? "Saving…" : "Save"}</button>
         </div>
       </div>

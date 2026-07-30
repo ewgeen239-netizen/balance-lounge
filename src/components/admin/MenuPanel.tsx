@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import type { AdminCategory, AdminItem } from "./types";
 import { ItemEditor } from "./ItemEditor";
 import { TranslatableInput } from "./TranslatableInput";
@@ -14,6 +14,21 @@ export function MenuPanel({ initial }: { initial: AdminCategory[] }) {
   const [savingPrices, setSavingPrices] = useState(false);
   const [newCat, setNewCat] = useState({ slug: "", name: "{}" });
   const [showNewCat, setShowNewCat] = useState(false);
+  const [query, setQuery] = useState("");
+
+  // Filter by item or category name — the menu is long, so search keeps edits quick.
+  const q = query.trim().toLowerCase();
+  const visibleCats = useMemo(() => {
+    if (!q) return cats;
+    return cats
+      .map((c) => {
+        const catHit = tr(c.name, DEFAULT_LANG).toLowerCase().includes(q) || c.slug.includes(q);
+        const items = catHit ? c.items : c.items.filter((i) => tr(i.name, DEFAULT_LANG).toLowerCase().includes(q));
+        return { ...c, items };
+      })
+      .filter((c) => c.items.length > 0);
+  }, [cats, q]);
+  const shownCount = visibleCats.reduce((n, c) => n + c.items.length, 0);
 
   function replaceItem(updated: AdminItem) {
     setCats((cs) =>
@@ -98,8 +113,17 @@ export function MenuPanel({ initial }: { initial: AdminCategory[] }) {
 
   return (
     <div>
-      <div className="mb-6 flex items-center justify-between">
-        <h2 className="wordmark text-2xl text-neutral-50">Menu</h2>
+      <div className="mb-6 flex flex-wrap items-center justify-between gap-3">
+        <div className="flex flex-wrap items-center gap-3">
+          <h2 className="wordmark text-2xl text-neutral-50">Menu</h2>
+          <input
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            placeholder="Szukaj pozycji…"
+            className="input w-48 py-1.5 text-sm sm:w-64"
+          />
+          {q && <span className="text-xs text-neutral-500">{shownCount} znaleziono</span>}
+        </div>
         <div className="flex gap-2">
           {dirtyPrices && (
             <button onClick={saveAllPrices} disabled={savingPrices} className="btn-primary text-sm">
@@ -124,7 +148,7 @@ export function MenuPanel({ initial }: { initial: AdminCategory[] }) {
       )}
 
       <div className="space-y-10">
-        {cats.map((cat) => (
+        {visibleCats.map((cat) => (
           <section key={cat.id}>
             <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
               <h3 className="text-lg font-medium text-ember">{tr(cat.name, DEFAULT_LANG)} <span className="text-xs text-neutral-600">/{cat.slug}</span></h3>
