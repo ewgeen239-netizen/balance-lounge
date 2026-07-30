@@ -228,6 +228,11 @@ const REMOVED_ITEMS: { slug: string; name: string }[] = [
   { slug: "herbaty-autorskie", name: "Golden Spice  Gruszka – karmel – przyprawy" },
   { slug: "herbaty-autorskie", name: "Mango Heat  Mango – imbir – limonka" },
   { slug: "napoje-zimne", name: "Borjomi" },
+  { slug: "signature-cocktails", name: "A Perfect Day" },
+  { slug: "signature-cocktails", name: "Bee’s Knees" }, // moved to classic-cocktails
+  { slug: "balance-zero----bezalkoholowe", name: "Berry Fizz" },
+  { slug: "balance-zero----bezalkoholowe", name: "Apple Ginger" },
+  { slug: "balance-zero----bezalkoholowe", name: "Raspberry Passion" },
 ];
 
 export async function syncMenu(prisma: PrismaClient): Promise<void> {
@@ -291,7 +296,8 @@ export async function syncMenu(prisma: PrismaClient): Promise<void> {
         // new/changed image or add-on in choiceDataI18n.json goes live on deploy.
         // Description is only backfilled when empty (never overwrites admin text/prices).
         const patch: { photo?: string; description?: string; options?: string; order?: number } = {};
-        if (item.image && cur.photo !== item.image) patch.photo = item.image;
+        // An explicit "" in the source clears the photo (e.g. single shots).
+        if (item.image !== undefined && cur.photo !== item.image) patch.photo = item.image;
         if (!namePl(cur.description) && item.descI18n?.pl) patch.description = J(item.descI18n);
         const srcOptions = JSON.stringify(item.optionsI18n ?? []);
         if (cur.options !== srcOptions) patch.options = srcOptions;

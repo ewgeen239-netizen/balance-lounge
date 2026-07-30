@@ -115,3 +115,13 @@ model AdminUser {
   role         String   @default("owner") // "owner" = full access, "staff" = reservations only
   createdAt    DateTime @default(now())
 }
+
+// Images uploaded from the admin panel. Serverless filesystems are read-only,
+// so when Vercel Blob isn't configured we keep the bytes here and serve them
+// from /api/uploads/[id].
+model Upload {
+  id        String   @id
+  mime      String
+  data      Bytes
+  createdAt DateTime @default(now())
+}

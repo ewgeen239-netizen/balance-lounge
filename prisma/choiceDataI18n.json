@@ -305,7 +305,38 @@
      "image": "/menu/cigar.jpg",
      "available": true,
      "labels": [],
-     "options": [],
+     "options": [
+      {
+       "name": "Dodatki",
+       "required": false,
+       "list": [
+        {
+         "name": "Baza na soku – głębszy, bardziej nasycony aromat",
+         "price": 0
+        },
+        {
+         "name": "Baza na mleku – aksamitna, kremowa struktura dymu",
+         "price": 20
+        },
+        {
+         "name": "Alkohol w asortymencie – indywidualny akcent charakteru",
+         "price": 0
+        },
+        {
+         "name": "Ice bazooka - chłodzący dodatek do shisha, zapewniający lodowy efekt",
+         "price": 10
+        },
+        {
+         "name": "Owocowy cybuch – maksymalna intensywność i trwałość",
+         "price": 50
+        },
+        {
+         "name": "Nie wiesz co wybrać? Dopasujemy shishę do Twojego nastroju, herbaty lub drinka.",
+         "price": 0
+        }
+       ]
+      }
+     ],
      "nameI18n": {
       "pl": "Cigar",
       "ru": "Cigar",
@@ -315,7 +346,52 @@
      "descI18n": {
       "pl": "Kompozycje tytoni na liściu cygarowym - szlachetny aromat, głęboki smak i najwyższa jakość."
      },
-     "optionsI18n": []
+     "optionsI18n": [
+      {
+       "name": {
+        "pl": "Dodatki"
+       },
+       "required": false,
+       "list": [
+        {
+         "name": {
+          "pl": "Baza na soku – głębszy, bardziej nasycony aromat"
+         },
+         "price": 0
+        },
+        {
+         "name": {
+          "pl": "Baza na mleku – aksamitna, kremowa struktura dymu"
+         },
+         "price": 20
+        },
+        {
+         "name": {
+          "pl": "Alkohol w asortymencie – indywidualny akcent charakteru"
+         },
+         "price": 0
+        },
+        {
+         "name": {
+          "pl": "Ice bazooka - chłodzący dodatek do shisha, zapewniający lodowy efekt"
+         },
+         "price": 10
+        },
+        {
+         "name": {
+          "pl": "Owocowy cybuch – maksymalna intensywność i trwałość"
+         },
+         "price": 50
+        },
+        {
+         "name": {
+          "pl": "Nie wiesz co wybrać? Dopasujemy shishę do Twojego nastroju, herbaty lub drinka."
+         },
+         "price": 0
+        }
+       ]
+      }
+     ]
     },
     {
      "name": "Electroniczny cybuch",
@@ -392,28 +468,6 @@
       "ru": "Розовый джин, лимон, малина, сливки, белок.\nБархатистый коктейль с фруктовой свежестью и мягкой сладостью.\n• sweet • sour",
       "en": "Pink gin, lemon, raspberry, cream, egg white.\nA velvety cocktail with fruity freshness and gentle sweetness.\n• sweet • sour",
       "ua": "Рожевий джин, лимон, малина, вершки, білок.\nОксамитовий коктейль із фруктовою свіжістю та ніжною солодкістю.\n• sweet • sour"
-     },
-     "optionsI18n": []
-    },
-    {
-     "name": "Bee’s Knees",
-     "description": "Gin, cytryna, pomarańcza, miód.\nLekki i orzeźwiający klasyk z cytrusową nutą i miodową słodyczą.\n• sweet • sour",
-     "price": 38,
-     "image": "/menu/bee-s-knees.jpg",
-     "available": true,
-     "labels": [],
-     "options": [],
-     "nameI18n": {
-      "pl": "Bee’s Knees",
-      "ru": "Bee’s Knees",
-      "en": "Bee’s Knees",
-      "ua": "Bee’s Knees"
-     },
-     "descI18n": {
-      "pl": "Gin, cytryna, pomarańcza, miód.\nLekki i orzeźwiający klasyk z cytrusową nutą i miodową słodyczą.\n• sweet • sour",
-      "ru": "Джин, лимон, апельсин, мёд.\nЛёгкая и освежающая классика с цитрусовой нотой и медовой сладостью.\n• sweet • sour",
-      "en": "Gin, lemon, orange, honey.\nA light and refreshing classic with a citrus note and honey sweetness.\n• sweet • sour",
-      "ua": "Джин, лимон, апельсин, мед.\nЛегка й освіжаюча класика з цитрусовою нотою та медовою солодкістю.\n• sweet • sour"
      },
      "optionsI18n": []
     },
@@ -568,28 +622,6 @@
       "ru": "Виски, яблоко, лимон, корица.\nСогревающий коктейль с яблочно-пряным ароматом.\n• fresh • sweet • spicy",
       "en": "Whisky, apple, lemon, cinnamon.\nA warming cocktail with an apple-and-spice aroma.\n• fresh • sweet • spicy",
       "ua": "Віскі, яблуко, лимон, кориця.\nЗігріваючий коктейль із яблучно-пряним ароматом.\n• fresh • sweet • spicy"
-     },
-     "optionsI18n": []
-    },
-    {
-     "name": "A Perfect Day",
-     "description": "Whisky, lawenda, cytryna, limonka.\nHarmonijne połączenie cytrusowej świeżości z nutą lawendy.\n• citrus • floral",
-     "price": 45,
-     "image": "",
-     "available": true,
-     "labels": [],
-     "options": [],
-     "nameI18n": {
-      "pl": "A Perfect Day",
-      "ru": "A Perfect Day",
-      "en": "A Perfect Day",
-      "ua": "A Perfect Day"
-     },
-     "descI18n": {
-      "pl": "Whisky, lawenda, cytryna, limonka.\nHarmonijne połączenie cytrusowej świeżości z nutą lawendy.\n• citrus • floral",
-      "ru": "Виски, лаванда, лимон, лайм.\nГармоничное сочетание цитрусовой свежести с нотой лаванды.\n• citrus • floral",
-      "en": "Whisky, lavender, lemon, lime.\nA harmonious blend of citrus freshness with a lavender note.\n• citrus • floral",
-      "ua": "Віскі, лаванда, лимон, лайм.\nГармонійне поєднання цитрусової свіжості з нотою лаванди.\n• citrus • floral"
      },
      "optionsI18n": []
     },
@@ -868,6 +900,28 @@
       "ua": "Білий ром, текіла, горілка, джин, трипл сек, лимонний сік, цукровий сироп, Pepsi.\nМіцний і напрочуд гладкий коктейль із цитрусовим фінішем.\n• strong • citrus • smooth"
      },
      "optionsI18n": []
+    },
+    {
+     "name": "Bee’s Knees",
+     "description": "Gin, cytryna, pomarańcza, miód.\nLekki i orzeźwiający klasyk z cytrusową nutą i miodową słodyczą.\n• sweet • sour",
+     "price": 38,
+     "image": "/menu/bee-s-knees.jpg",
+     "available": true,
+     "labels": [],
+     "options": [],
+     "nameI18n": {
+      "pl": "Bee’s Knees",
+      "ru": "Bee’s Knees",
+      "en": "Bee’s Knees",
+      "ua": "Bee’s Knees"
+     },
+     "descI18n": {
+      "pl": "Gin, cytryna, pomarańcza, miód.\nLekki i orzeźwiający klasyk z cytrusową nutą i miodową słodyczą.\n• sweet • sour",
+      "ru": "Джин, лимон, апельсин, мёд.\nЛёгкая и освежающая классика с цитрусовой нотой и медовой сладостью.\n• sweet • sour",
+      "en": "Gin, lemon, orange, honey.\nA light and refreshing classic with a citrus note and honey sweetness.\n• sweet • sour",
+      "ua": "Джин, лимон, апельсин, мед.\nЛегка й освіжаюча класика з цитрусовою нотою та медовою солодкістю.\n• sweet • sour"
+     },
+     "optionsI18n": []
     }
    ],
    "nameI18n": {
@@ -885,7 +939,7 @@
      "name": "B-52",
      "description": "Likier kawowy, likier śmietankowy, likier pomarańczowy.\n• sweet • creamy",
      "price": 22,
-     "image": "/menu/m6769.jpg",
+     "image": "",
      "available": true,
      "labels": [],
      "options": [],
@@ -907,7 +961,7 @@
      "name": "B-53",
      "description": "Likier kawowy, likier śmietankowy, absynt.\n• strong • spicy",
      "price": 24,
-     "image": "/menu/m6772.jpg",
+     "image": "",
      "available": true,
      "labels": [],
      "options": [],
@@ -929,7 +983,7 @@
      "name": "Medusa",
      "description": "Likier kokosowy, likier śmietankowy, Blue Curaçao, grenadyna.\n• sweet • creamy",
      "price": 22,
-     "image": "/menu/m6770.jpg",
+     "image": "",
      "available": true,
      "labels": [],
      "options": [],
@@ -951,7 +1005,7 @@
      "name": "Hiroshima",
      "description": "Sambuca, likier śmietankowy, absynt, grenadyna.\n• strong • sweet",
      "price": 24,
-     "image": "/menu/m6768.jpg",
+     "image": "",
      "available": true,
      "labels": [],
      "options": [],
@@ -973,7 +1027,7 @@
      "name": "Berry Drop",
      "description": "Wódka, likier jagodowy, cytryna.\n• sweet • sour",
      "price": 20,
-     "image": "/menu/m6773.jpg",
+     "image": "",
      "available": true,
      "labels": [],
      "options": [],
@@ -995,7 +1049,7 @@
      "name": "Honey Lemon",
      "description": "Wódka, miód, cytryna.\n• sweet • smooth",
      "price": 18,
-     "image": "/menu/m7330.jpg",
+     "image": "",
      "available": true,
      "labels": [],
      "options": [],
@@ -1172,50 +1226,6 @@
      "optionsI18n": []
     },
     {
-     "name": "Berry Fizz",
-     "description": "Purée malinowe, sok cytrynowy, syrop cukrowy, woda gazowana\nLekki, owocowy napój z malinową świeżością i delikatnymi bąbelkami.\n• owocowy • świeży • musujący",
-     "price": 25,
-     "image": "/menu/m5528.jpg",
-     "available": true,
-     "labels": [],
-     "options": [],
-     "nameI18n": {
-      "pl": "Berry Fizz",
-      "ru": "Berry Fizz",
-      "en": "Berry Fizz",
-      "ua": "Berry Fizz"
-     },
-     "descI18n": {
-      "pl": "Purée malinowe, sok cytrynowy, syrop cukrowy, woda gazowana\nLekki, owocowy napój z malinową świeżością i delikatnymi bąbelkami.\n• owocowy • świeży • musujący",
-      "ru": "Малиновое пюре, лимонный сок, сахарный сироп, газированная вода.\nЛёгкий, фруктовый напиток с малиновой свежестью и нежными пузырьками.\n• фруктовый • свежий • игристый",
-      "en": "Raspberry purée, lemon juice, sugar syrup, soda.\nA light, fruity drink with raspberry freshness and gentle bubbles.\n• fruity • fresh • sparkling",
-      "ua": "Малинове пюре, лимонний сік, цукровий сироп, газована вода.\nЛегкий, фруктовий напій із малиновою свіжістю та ніжними бульбашками.\n• фруктовий • свіжий • ігристий"
-     },
-     "optionsI18n": []
-    },
-    {
-     "name": "Apple Ginger",
-     "description": "Sok jabłkowy, syrop imbirowy, sok cytrynowy\nOrzeźwiające połączenie jabłka z lekką pikantnością imbiru.\n• świeży • lekko pikantny • orzeźwiający",
-     "price": 27,
-     "image": "/menu/m6792.jpg",
-     "available": true,
-     "labels": [],
-     "options": [],
-     "nameI18n": {
-      "pl": "Apple Ginger",
-      "ru": "Apple Ginger",
-      "en": "Apple Ginger",
-      "ua": "Apple Ginger"
-     },
-     "descI18n": {
-      "pl": "Sok jabłkowy, syrop imbirowy, sok cytrynowy\nOrzeźwiające połączenie jabłka z lekką pikantnością imbiru.\n• świeży • lekko pikantny • orzeźwiający",
-      "ru": "Яблочный сок, имбирный сироп, лимонный сок.\nОсвежающее сочетание яблока с лёгкой остротой имбиря.\n• свежий • слегка пикантный • освежающий",
-      "en": "Apple juice, ginger syrup, lemon juice.\nA refreshing blend of apple with a light ginger spice.\n• fresh • lightly spicy • refreshing",
-      "ua": "Яблучний сік, імбирний сироп, лимонний сік.\nОсвіжаюче поєднання яблука з легкою гостротою імбиру.\n• свіжий • злегка пікантний • освіжаючий"
-     },
-     "optionsI18n": []
-    },
-    {
      "name": "Green Fizz",
      "description": "Purée kiwi, mięta, ogórek, sok cytrynowy, woda gazowana\nŚwieży zielony mix z nutą mięty i ogórka.\n• świeży • lekki • musujący",
      "price": 26,
@@ -1238,28 +1248,6 @@
      "optionsI18n": []
     },
     {
-     "name": "Raspberry Passion",
-     "description": "Purée malinowe, purée marakuja, syrop cukrowy, woda gazowana, mięta\nOwocowe i egzotyczne połączenie maliny z marakują.\n• owocowy • egzotyczny • musujący",
-     "price": 28,
-     "image": "/menu/m5531.jpg",
-     "available": true,
-     "labels": [],
-     "options": [],
-     "nameI18n": {
-      "pl": "Raspberry Passion",
-      "ru": "Raspberry Passion",
-      "en": "Raspberry Passion",
-      "ua": "Raspberry Passion"
-     },
-     "descI18n": {
-      "pl": "Purée malinowe, purée marakuja, syrop cukrowy, woda gazowana, mięta\nOwocowe i egzotyczne połączenie maliny z marakują.\n• owocowy • egzotyczny • musujący",
-      "ru": "Малиновое пюре, пюре маракуйи, сахарный сироп, газированная вода, мята.\nФруктовое и экзотическое сочетание малины с маракуйей.\n• фруктовый • экзотический • игристый",
-      "en": "Raspberry purée, passion fruit purée, sugar syrup, soda, mint.\nA fruity, exotic pairing of raspberry with passion fruit.\n• fruity • exotic • sparkling",
-      "ua": "Малинове пюре, пюре маракуї, цукровий сироп, газована вода, м'ята.\nФруктове й екзотичне поєднання малини з маракуєю.\n• фруктовий • екзотичний • ігристий"
-     },
-     "optionsI18n": []
-    },
-    {
      "name": "Bumble Balance",
      "description": "Espresso, sok pomarańczowy, syrop słony karmel\nWyraziste połączenie kawy, pomarańczy i słonego karmelu.\n• intensywny • cytrusowy • pobudzający",
      "price": 24,
@@ -1278,6 +1266,72 @@
       "ru": "Эспрессо, апельсиновый сок, сироп солёная карамель.\nВыразительное сочетание кофе, апельсина и солёной карамели.\n• интенсивный • цитрусовый • бодрящий",
       "en": "Espresso, orange juice, salted-caramel syrup.\nA bold combination of coffee, orange and salted caramel.\n• intense • citrus • energising",
       "ua": "Еспресо, апельсиновий сік, сироп солона карамель.\nВиразне поєднання кави, апельсина й солоної карамелі.\n• інтенсивний • цитрусовий • бадьорий"
+     },
+     "optionsI18n": []
+    },
+    {
+     "name": "Paradise",
+     "description": "Tropikalna kompozycja bez alkoholu — soczyste owoce, cytrusowa świeżość i delikatna słodycz.",
+     "price": 26,
+     "image": "/menu/paradise.jpg",
+     "available": true,
+     "labels": [],
+     "options": [],
+     "nameI18n": {
+      "pl": "Paradise",
+      "ru": "Paradise",
+      "en": "Paradise",
+      "ua": "Paradise"
+     },
+     "descI18n": {
+      "pl": "Tropikalna kompozycja bez alkoholu — soczyste owoce, cytrusowa świeżość i delikatna słodycz.",
+      "ru": "Тропическая безалкогольная композиция — сочные фрукты, цитрусовая свежесть и деликатная сладость.",
+      "en": "A tropical alcohol-free blend — juicy fruit, citrus freshness and a delicate sweetness.",
+      "ua": "Тропічна безалкогольна композиція — соковиті фрукти, цитрусова свіжість і делікатна солодкість."
+     },
+     "optionsI18n": []
+    },
+    {
+     "name": "Deep Harmony",
+     "description": "Głęboki, zbalansowany smak bez alkoholu — owocowa baza z ziołową nutą i wyrazistym finiszem.",
+     "price": 26,
+     "image": "/menu/deep-harmony.jpg",
+     "available": true,
+     "labels": [],
+     "options": [],
+     "nameI18n": {
+      "pl": "Deep Harmony",
+      "ru": "Deep Harmony",
+      "en": "Deep Harmony",
+      "ua": "Deep Harmony"
+     },
+     "descI18n": {
+      "pl": "Głęboki, zbalansowany smak bez alkoholu — owocowa baza z ziołową nutą i wyrazistym finiszem.",
+      "ru": "Глубокий сбалансированный вкус без алкоголя — фруктовая основа с травяной нотой и выразительным финишем.",
+      "en": "A deep, balanced alcohol-free taste — a fruity base with a herbal note and an expressive finish.",
+      "ua": "Глибокий збалансований смак без алкоголю — фруктова основа з трав’яною нотою та виразним фінішем."
+     },
+     "optionsI18n": []
+    },
+    {
+     "name": "Mojito Zero",
+     "description": "Klasyczne mojito bez alkoholu — limonka, świeża mięta i orzeźwiające bąbelki.",
+     "price": 26,
+     "image": "/menu/mojito-zero.jpg",
+     "available": true,
+     "labels": [],
+     "options": [],
+     "nameI18n": {
+      "pl": "Mojito Zero",
+      "ru": "Mojito Zero",
+      "en": "Mojito Zero",
+      "ua": "Mojito Zero"
+     },
+     "descI18n": {
+      "pl": "Klasyczne mojito bez alkoholu — limonka, świeża mięta i orzeźwiające bąbelki.",
+      "ru": "Классический мохито без алкоголя — лайм, свежая мята и освежающие пузырьки.",
+      "en": "A classic alcohol-free mojito — lime, fresh mint and refreshing bubbles.",
+      "ua": "Класичне мохіто без алкоголю — лайм, свіжа м’ята та освіжаючі бульбашки."
      },
      "optionsI18n": []
     }
