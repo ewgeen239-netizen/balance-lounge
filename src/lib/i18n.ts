@@ -108,6 +108,7 @@ export const UI: Dict = {
   "menu.available": { pl: "Dostępne", ru: "В наличии", en: "Available", ua: "В наявності" },
   "menu.empty": { pl: "Brak pozycji.", ru: "Ничего не найдено.", en: "Nothing found.", ua: "Нічого не знайдено." },
   "menu.closedToday": { pl: "Dziś niedostępne", ru: "Сегодня недоступно", en: "Unavailable today", ua: "Сьогодні недоступно" },
+  "menu.availableToday": { pl: "Dziś dostępne", ru: "Сегодня доступно", en: "Available today", ua: "Сьогодні доступно" },
   "menu.closedTodayLong": { pl: "Ta kategoria jest dziś niedostępna", ru: "Эта категория сегодня недоступна", en: "This category is unavailable today", ua: "Ця категорія сьогодні недоступна" },
   "lang.more": { pl: "Więcej języków", ru: "Ещё языки", en: "More languages", ua: "Більше мов" },
   "menu.required": { pl: "Wymagane", ru: "Обязательно", en: "Required", ua: "Обов'язково" },

@@ -231,6 +231,9 @@ export function MenuBrowser({ categories }: { categories: CategoryDTO[] }) {
         ) : (
           visible.map((c) => {
             const closed = categoryClosedNow(c.scheduled);
+            // How many items are still sold today while the category is closed —
+            // recomputed from the data, so the badge follows the actual list.
+            const openToday = closed ? c.items.filter((it) => isAlwaysOpen(it) && it.available).length : 0;
             const superSection = SUPER_SECTIONS[c.slug];
             const intro = CATEGORY_INTRO[c.slug];
             return (
@@ -245,9 +248,17 @@ export function MenuBrowser({ categories }: { categories: CategoryDTO[] }) {
                   <div className="mb-6 flex flex-wrap items-center gap-3 sm:mb-8">
                     <h2 className="wordmark accent-underline text-2xl text-neutral-50 sm:text-3xl">{tr(c.name)}</h2>
                     {closed && (
-                      <span className="rounded-full border border-neon/40 bg-neon/10 px-3 py-1 text-xs text-neon">
-                        {t("menu.closedToday")}
-                      </span>
+                      openToday > 0 ? (
+                        // Some items are sold every day — show how many, so guests
+                        // aren't misled by a blanket "unavailable" badge.
+                        <span className="rounded-full border border-emerald-400/40 bg-emerald-500/10 px-3 py-1 text-xs text-emerald-300">
+                          {t("menu.availableToday")}: {openToday}
+                        </span>
+                      ) : (
+                        <span className="rounded-full border border-neon/40 bg-neon/10 px-3 py-1 text-xs text-neon">
+                          {t("menu.closedToday")}
+                        </span>
+                      )
                     )}
                   </div>
                   {intro && (

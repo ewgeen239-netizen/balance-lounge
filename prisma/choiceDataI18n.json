@@ -3797,6 +3797,28 @@
    "name": "HERBATY AUTORSKIE",
    "items": [
     {
+     "name": "Green Oasis Jabłko-Kiwi-Limonka",
+     "description": "Orzeźwiająca zielona herbata z jabłkiem, kiwi i limonką. Lekka, cytrusowa świeżość z delikatną słodyczą owoców.",
+     "price": 34,
+     "image": "/menu/green-oasis-jablko-kiwi-limonka.jpg",
+     "available": true,
+     "labels": [],
+     "options": [],
+     "nameI18n": {
+      "pl": "Green Oasis Jabłko-Kiwi-Limonka",
+      "ru": "Green Oasis Jabłko-Kiwi-Limonka",
+      "en": "Green Oasis Jabłko-Kiwi-Limonka",
+      "ua": "Green Oasis Jabłko-Kiwi-Limonka"
+     },
+     "descI18n": {
+      "pl": "Orzeźwiająca zielona herbata z jabłkiem, kiwi i limonką. Lekka, cytrusowa świeżość z delikatną słodyczą owoców.",
+      "ru": "Освежающий зелёный чай с яблоком, киви и лаймом. Лёгкая цитрусовая свежесть с деликатной сладостью фруктов.",
+      "en": "A refreshing green tea with apple, kiwi and lime. Light citrus freshness with a delicate fruit sweetness.",
+      "ua": "Освіжаючий зелений чай із яблуком, ківі та лаймом. Легка цитрусова свіжість із делікатною солодкістю фруктів."
+     },
+     "optionsI18n": []
+    },
+    {
      "name": "Crimson Smoke Granatowy",
      "description": "Wyrafinowana czarna herbata z sokiem z granatu , syropem grenadyna i delikatną nutą ziół. Głęboki, intensywny smak z wyraźną nutą słodyczy i kwasowości",
      "price": 32,
@@ -3859,50 +3881,6 @@
       "ru": "Богатый чёрный чай с чёрной смородиной, черникой и нотой лимона. Выразительный, фруктовый вкус с лёгкой кислинкой.",
       "en": "A rich black tea with blackcurrant, blueberry and a note of lemon. An expressive, fruity taste with a light acidity.",
       "ua": "Багатий чорний чай із чорною смородиною, чорницею й нотою лимона. Виразний, фруктовий смак із легкою кислинкою."
-     },
-     "optionsI18n": []
-    },
-    {
-     "name": "Golden Spice  Gruszka – karmel – przyprawy",
-     "description": "Zielona herbata z dojrzałą gruszką, karmelem oraz aromatycznym cynamonem i goździkami. Ciepła, deserowa kompozycja o miękkim charakterze",
-     "price": 32,
-     "image": "/menu/m7338.jpg",
-     "available": true,
-     "labels": [],
-     "options": [],
-     "nameI18n": {
-      "pl": "Golden Spice  Gruszka – karmel – przyprawy",
-      "ru": "Golden Spice  Gruszka – karmel – przyprawy",
-      "en": "Golden Spice  Gruszka – karmel – przyprawy",
-      "ua": "Golden Spice  Gruszka – karmel – przyprawy"
-     },
-     "descI18n": {
-      "pl": "Zielona herbata z dojrzałą gruszką, karmelem oraz aromatycznym cynamonem i goździkami. Ciepła, deserowa kompozycja o miękkim charakterze",
-      "ru": "Зелёный чай со спелой грушей, карамелью и ароматными корицей и гвоздикой. Тёплая, десертная композиция мягкого характера.",
-      "en": "A green tea with ripe pear, caramel and aromatic cinnamon and cloves. A warm, dessert composition with a soft character.",
-      "ua": "Зелений чай зі стиглою грушею, карамеллю та ароматними корицею й гвоздикою. Тепла, десертна композиція м'якого характеру."
-     },
-     "optionsI18n": []
-    },
-    {
-     "name": "Mango Heat  Mango – imbir – limonka",
-     "description": "Czarna herbata z mango, świeżą limonką i pikantnym imbirem. Wyrazista, energetyczna, deserowa i aromatyczna",
-     "price": 35,
-     "image": "/menu/m7339.jpg",
-     "available": true,
-     "labels": [],
-     "options": [],
-     "nameI18n": {
-      "pl": "Mango Heat  Mango – imbir – limonka",
-      "ru": "Mango Heat  Mango – imbir – limonka",
-      "en": "Mango Heat  Mango – imbir – limonka",
-      "ua": "Mango Heat  Mango – imbir – limonka"
-     },
-     "descI18n": {
-      "pl": "Czarna herbata z mango, świeżą limonką i pikantnym imbirem. Wyrazista, energetyczna, deserowa i aromatyczna",
-      "ru": "Чёрный чай с манго, свежим лаймом и пикантным имбирём. Выразительный, энергичный, десертный и ароматный.",
-      "en": "A black tea with mango, fresh lime and spicy ginger. Expressive, energetic, dessert-like and aromatic.",
-      "ua": "Чорний чай із манго, свіжим лаймом і пікантним імбиром. Виразний, енергійний, десертний і ароматний."
      },
      "optionsI18n": []
     }

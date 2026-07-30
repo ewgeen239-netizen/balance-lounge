@@ -221,6 +221,14 @@ function namePl(nameJson: string): string {
 // Categories removed from the menu — deleted on every sync (cascades to items).
 const REMOVED_SLUGS = ["rolls", "burgery", "sety"];
 
+// Individual items retired from the menu, by category slug + Polish name.
+// Listed explicitly (rather than diffing against the source) so nothing added
+// through the admin panel is ever deleted by accident.
+const REMOVED_ITEMS: { slug: string; name: string }[] = [
+  { slug: "herbaty-autorskie", name: "Golden Spice  Gruszka – karmel – przyprawy" },
+  { slug: "herbaty-autorskie", name: "Mango Heat  Mango – imbir – limonka" },
+];
+
 export async function syncMenu(prisma: PrismaClient): Promise<void> {
   let added = 0;
   let filled = 0;
@@ -228,6 +236,20 @@ export async function syncMenu(prisma: PrismaClient): Promise<void> {
 
   const { count: removed } = await prisma.category.deleteMany({ where: { slug: { in: REMOVED_SLUGS } } });
   if (removed) console.log(`↳ syncMenu: removed ${removed} retired categor${removed === 1 ? "y" : "ies"}.`);
+
+  let droppedItems = 0;
+  for (const { slug, name } of REMOVED_ITEMS) {
+    const cat = await prisma.category.findUnique({ where: { slug }, select: { id: true } });
+    if (!cat) continue;
+    const rows = await prisma.menuItem.findMany({ where: { categoryId: cat.id }, select: { id: true, name: true } });
+    const ids = rows.filter((r) => namePl(r.name) === name).map((r) => r.id);
+    if (ids.length) {
+      await prisma.menuItem.deleteMany({ where: { id: { in: ids } } });
+      droppedItems += ids.length;
+      console.log(`  - item ${slug}/${name}`);
+    }
+  }
+  if (droppedItems) console.log(`↳ syncMenu: removed ${droppedItems} retired item(s).`);
 
   for (const c of CHOICE.categories) {
     const catOrder = order++;
@@ -240,7 +262,7 @@ export async function syncMenu(prisma: PrismaClient): Promise<void> {
     }
     const existing = await prisma.menuItem.findMany({
       where: { categoryId: cat.id },
-      select: { id: true, name: true, photo: true, description: true, options: true },
+      select: { id: true, name: true, photo: true, description: true, options: true, order: true },
     });
     const byName = new Map(existing.map((it) => [namePl(it.name), it]));
     let i = 0;
@@ -267,11 +289,12 @@ export async function syncMenu(prisma: PrismaClient): Promise<void> {
         // Photos and options are source-managed: kept in sync with the JSON so a
         // new/changed image or add-on in choiceDataI18n.json goes live on deploy.
         // Description is only backfilled when empty (never overwrites admin text/prices).
-        const patch: { photo?: string; description?: string; options?: string } = {};
+        const patch: { photo?: string; description?: string; options?: string; order?: number } = {};
         if (item.image && cur.photo !== item.image) patch.photo = item.image;
         if (!namePl(cur.description) && item.descI18n?.pl) patch.description = J(item.descI18n);
         const srcOptions = JSON.stringify(item.optionsI18n ?? []);
         if (cur.options !== srcOptions) patch.options = srcOptions;
+        if (cur.order !== i) patch.order = i; // keep the source ordering
         if (Object.keys(patch).length) {
           await prisma.menuItem.update({ where: { id: cur.id }, data: patch });
           filled++;
