@@ -6,6 +6,7 @@ export type AdminItem = {
   price: number;
   photo: string;
   available: boolean;
+  alwaysOpen: boolean; // stays open when the category is closed by schedule
   badges: string; // JSON
   options: string; // JSON: [{ name: {pl}, required?, portion?, list: [{ name: {pl}, price }] }]
   order: number;

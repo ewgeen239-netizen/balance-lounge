@@ -14,6 +14,7 @@ export type MenuItemDTO = {
   price: number;
   photo: string;
   available: boolean;
+  alwaysOpen: boolean;
   badges: string;
   options: string; // JSON option groups
 };
@@ -35,9 +36,8 @@ const BADGE_STYLE: Record<string, string> = {
 // menu cards. Any legacy DB categories with these slugs are hidden from the grid.
 const INFO_SLUGS = new Set(["informacje", "odpowiedzialnosc"]);
 
-// Items (by Polish name) that stay available even when their category is closed
-// on schedule — e.g. a few desserts sold every day.
-const ALWAYS_OPEN = new Set(["Napoleon w kubeczkach", "Trifle Snickers", "Trifle Wanilia z owocami leśnimy"]);
+// Which items stay on sale while their category is closed is set per item in
+// the admin panel ("Zawsze dostępne").
 
 // Intro paragraph shown under a category heading (Polish source, auto-translated).
 const CATEGORY_INTRO: Record<string, { pl: string }> = {
@@ -139,7 +139,7 @@ export function MenuBrowser({ categories }: { categories: CategoryDTO[] }) {
     window.setTimeout(() => { isClickScrolling.current = false; }, 700);
   }
 
-  const isAlwaysOpen = (it: MenuItemDTO) => ALWAYS_OPEN.has(parseJSON<{ pl?: string }>(it.name, {}).pl ?? "");
+  const isAlwaysOpen = (it: MenuItemDTO) => it.alwaysOpen;
 
   const renderCard = (it: MenuItemDTO, idx: number) => (
     <motion.article

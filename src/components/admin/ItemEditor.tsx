@@ -51,6 +51,7 @@ export function ItemEditor({
         price: draft.price,
         photo: draft.photo,
         available: draft.available,
+        alwaysOpen: draft.alwaysOpen,
         badges: draft.badges,
         options: draft.options,
         categoryId: draft.categoryId,
@@ -128,6 +129,13 @@ export function ItemEditor({
             <label className="flex cursor-pointer items-center gap-2 text-sm text-neutral-300">
               <input type="checkbox" checked={draft.available} onChange={(e) => set("available", e.target.checked)} className="h-4 w-4 accent-[#ff2d3a]" />
               Available
+            </label>
+            <label
+              className="flex cursor-pointer items-center gap-2 text-sm text-neutral-300"
+              title="Pozycja pozostaje w sprzedaży, nawet gdy kategoria jest zamknięta przez auto-grafik."
+            >
+              <input type="checkbox" checked={draft.alwaysOpen} onChange={(e) => set("alwaysOpen", e.target.checked)} className="h-4 w-4 accent-[#ff2d3a]" />
+              Zawsze dostępne
             </label>
           </div>
         </div>

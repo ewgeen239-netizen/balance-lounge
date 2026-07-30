@@ -99,6 +99,19 @@ export function MenuPanel({ initial }: { initial: AdminCategory[] }) {
     if (res.ok) setCats((cs) => cs.filter((c) => c.id !== id));
   }
 
+  // Per-item override: keep selling it on days the category is auto-closed.
+  async function toggleAlwaysOpen(id: number, alwaysOpen: boolean) {
+    setCats((cs) => cs.map((c) => ({ ...c, items: c.items.map((i) => (i.id === id ? { ...i, alwaysOpen } : i)) }))); // optimistic
+    const res = await fetch(`/api/admin/items/${id}`, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ alwaysOpen }),
+    });
+    if (!res.ok) {
+      setCats((cs) => cs.map((c) => ({ ...c, items: c.items.map((i) => (i.id === id ? { ...i, alwaysOpen: !alwaysOpen } : i)) }))); // revert
+    }
+  }
+
   async function toggleSchedule(id: number, scheduled: boolean) {
     setCats((cs) => cs.map((c) => (c.id === id ? { ...c, scheduled } : c))); // optimistic
     const res = await fetch(`/api/admin/categories/${id}`, {
@@ -201,6 +214,20 @@ export function MenuPanel({ initial }: { initial: AdminCategory[] }) {
                         </div>
                       </td>
                       <td className="px-4 py-3 text-right">
+                        {cat.scheduled && (
+                          <button
+                            onClick={() => toggleAlwaysOpen(it.id, !it.alwaysOpen)}
+                            title="Pozycja w sprzedaży także w dni, gdy kategoria jest zamknięta przez auto-grafik."
+                            className={cn(
+                              "mr-2 rounded-full border px-2 py-0.5 text-[10px] transition",
+                              it.alwaysOpen
+                                ? "border-emerald-400/40 bg-emerald-500/10 text-emerald-300"
+                                : "border-white/15 text-neutral-500 hover:text-neutral-300"
+                            )}
+                          >
+                            {it.alwaysOpen ? "zawsze dostępne" : "wg grafiku"}
+                          </button>
+                        )}
                         <button onClick={() => setEditing(it)} className="mr-2 text-xs text-neutral-400 hover:text-neon">edit</button>
                         <button onClick={() => deleteItem(it.id)} className="text-xs text-neutral-500 hover:text-neon">×</button>
                       </td>

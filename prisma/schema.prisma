@@ -63,6 +63,8 @@ model MenuItem {
   price       Float
   photo       String   @default("")
   available   Boolean  @default(true)
+  // Stays on sale even when its category is closed by the auto-schedule.
+  alwaysOpen  Boolean  @default(false)
   badges      String   @default("[]") // JSON: string[] e.g. ["nowosc","popularne","18+"]
   options     String   @default("[]") // JSON: option groups [{name, required, list:[{name, price}]}]
   order       Int      @default(0)

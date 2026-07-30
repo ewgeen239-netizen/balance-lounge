@@ -19,6 +19,7 @@ export default async function MenuPage() {
       price: i.price,
       photo: i.photo,
       available: i.available,
+      alwaysOpen: i.alwaysOpen,
       badges: i.badges,
       options: i.options,
     })),

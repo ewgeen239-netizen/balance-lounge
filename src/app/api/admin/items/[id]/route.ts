@@ -16,6 +16,7 @@ export async function PATCH(req: Request, { params }: { params: { id: string } }
   if (body.price !== undefined) data.price = Number(body.price);
   if (body.photo !== undefined) data.photo = String(body.photo);
   if (body.available !== undefined) data.available = Boolean(body.available);
+  if (body.alwaysOpen !== undefined) data.alwaysOpen = Boolean(body.alwaysOpen);
   if (body.badges !== undefined) data.badges = asJSON(body.badges);
   if (body.options !== undefined) data.options = asJSON(body.options);
   if (body.categoryId !== undefined) data.categoryId = Number(body.categoryId);
