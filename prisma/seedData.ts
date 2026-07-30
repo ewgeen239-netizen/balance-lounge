@@ -205,6 +205,15 @@ export async function seedDatabase(prisma: PrismaClient) {
   console.log(`✅ Seed complete. Admin: ${adminUser} / ${adminPass}  |  Guest: guest@example.com / guest123`);
 }
 
+function parseOptions(json: string): unknown[] {
+  try {
+    const v = JSON.parse(json);
+    return Array.isArray(v) ? v : [];
+  } catch {
+    return [];
+  }
+}
+
 function namePl(nameJson: string): string {
   try {
     const o = JSON.parse(nameJson) as Record<string, string>;
@@ -330,16 +339,17 @@ export async function syncMenu(prisma: PrismaClient): Promise<void> {
         added++;
         console.log(`  + item ${c.hurl}/${key}`);
       } else {
-        // Photos and options are source-managed: kept in sync with the JSON so a
-        // new/changed image or add-on in choiceDataI18n.json goes live on deploy.
-        // Description is only backfilled when empty (never overwrites admin text/prices).
-        const patch: { photo?: string; description?: string; options?: string; order?: number } = {};
-        // An explicit "" in the source clears the photo (e.g. single shots).
-        if (item.image !== undefined && cur.photo !== item.image) patch.photo = item.image;
+        // The database wins for rows that already exist: once an item is live,
+        // the admin panel is the source of truth. We only fill in fields that are
+        // still empty, so a deploy never reverts a photo, add-on, price, text or
+        // ordering that was edited in the panel.
+        const patch: { photo?: string; description?: string; options?: string } = {};
+        if (!cur.photo && item.image) patch.photo = item.image;
         if (!namePl(cur.description) && item.descI18n?.pl) patch.description = J(item.descI18n);
-        const srcOptions = JSON.stringify(item.optionsI18n ?? []);
-        if (cur.options !== srcOptions) patch.options = srcOptions;
-        if (cur.order !== i) patch.order = i; // keep the source ordering
+        const curOptions = parseOptions(cur.options);
+        if (curOptions.length === 0 && (item.optionsI18n?.length ?? 0) > 0) {
+          patch.options = JSON.stringify(item.optionsI18n);
+        }
         if (Object.keys(patch).length) {
           await prisma.menuItem.update({ where: { id: cur.id }, data: patch });
           filled++;

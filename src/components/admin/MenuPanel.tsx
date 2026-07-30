@@ -99,6 +99,28 @@ export function MenuPanel({ initial }: { initial: AdminCategory[] }) {
     if (res.ok) setCats((cs) => cs.filter((c) => c.id !== id));
   }
 
+  // Reorder within a category: swap with the neighbour and renumber the whole
+  // list, so ordering stays consistent even if the DB had gaps or duplicates.
+  async function moveItem(categoryId: number, itemId: number, dir: -1 | 1) {
+    const cat = cats.find((c) => c.id === categoryId);
+    if (!cat) return;
+    const list = [...cat.items].sort((a, b) => a.order - b.order);
+    const idx = list.findIndex((i) => i.id === itemId);
+    const to = idx + dir;
+    if (idx < 0 || to < 0 || to >= list.length) return;
+
+    [list[idx], list[to]] = [list[to], list[idx]];
+    const renumbered = list.map((it, n) => ({ ...it, order: n }));
+    setCats((cs) => cs.map((c) => (c.id === categoryId ? { ...c, items: renumbered } : c))); // optimistic
+
+    const res = await fetch("/api/admin/items/bulk", {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ orders: renumbered.map((it) => ({ id: it.id, order: it.order })) }),
+    });
+    if (!res.ok) setCats((cs) => cs.map((c) => (c.id === categoryId ? cat : c))); // revert
+  }
+
   // Per-item override: keep selling it on days the category is auto-closed.
   async function toggleAlwaysOpen(id: number, alwaysOpen: boolean) {
     setCats((cs) => cs.map((c) => ({ ...c, items: c.items.map((i) => (i.id === id ? { ...i, alwaysOpen } : i)) }))); // optimistic
@@ -187,10 +209,30 @@ export function MenuPanel({ initial }: { initial: AdminCategory[] }) {
               <table className="w-full min-w-[520px] text-sm">
                 <tbody>
                   {cat.items.length === 0 && (
-                    <tr><td className="px-4 py-6 text-center text-neutral-600">No items yet.</td></tr>
+                    <tr><td colSpan={4} className="px-4 py-6 text-center text-neutral-600">No items yet.</td></tr>
                   )}
-                  {cat.items.map((it) => (
+                  {[...cat.items].sort((a, b) => a.order - b.order).map((it, idx, arr) => (
                     <tr key={it.id} className="border-t border-white/5">
+                      <td className="py-3 pl-3 pr-0 align-middle">
+                        <div className="flex flex-col gap-0.5">
+                          <button
+                            onClick={() => moveItem(cat.id, it.id, -1)}
+                            disabled={idx === 0}
+                            title="W górę"
+                            className="rounded border border-white/10 px-1.5 leading-none text-neutral-400 transition hover:border-neon hover:text-neon disabled:cursor-not-allowed disabled:opacity-25"
+                          >
+                            ↑
+                          </button>
+                          <button
+                            onClick={() => moveItem(cat.id, it.id, 1)}
+                            disabled={idx === arr.length - 1}
+                            title="W dół"
+                            className="rounded border border-white/10 px-1.5 leading-none text-neutral-400 transition hover:border-neon hover:text-neon disabled:cursor-not-allowed disabled:opacity-25"
+                          >
+                            ↓
+                          </button>
+                        </div>
+                      </td>
                       <td className="w-full px-4 py-3">
                         <div className="flex items-center gap-2">
                           <span className="text-neutral-100">{tr(it.name, DEFAULT_LANG)}</span>
