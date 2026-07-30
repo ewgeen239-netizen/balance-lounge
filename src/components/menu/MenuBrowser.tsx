@@ -39,6 +39,28 @@ const INFO_SLUGS = new Set(["informacje", "odpowiedzialnosc"]);
 // Which items stay on sale while their category is closed is set per item in
 // the admin panel ("Zawsze dostępne").
 
+// Top-level menu groups. The tab bar shows these; the second row shows the
+// categories of the active group. Categories missing here become their own
+// group, so anything added in the admin panel still appears.
+const GROUPS: { title: { pl: string }; slugs: string[] }[] = [
+  { title: { pl: "SHISHA BALANCE" }, slugs: ["shisha"] },
+  {
+    title: { pl: "MENU BAROWE" },
+    slugs: ["signature-cocktails", "classic-cocktails", "shot-menu", "shot-sets", "balance-zero----bezalkoholowe"],
+  },
+  {
+    title: { pl: "ALKOHOL" },
+    slugs: [
+      "wino-musujace", "biale-wino", "czerwone-wino", "wino-bezalkoholowe",
+      "whisky-bourbon", "likiery", "wermuty", "koniak-brandy", "rum", "wodka",
+      "gin", "tequila", "piwo-z-beczki", "piwo-butelkowe",
+    ],
+  },
+  { title: { pl: "HERBATA I KAWA" }, slugs: ["herbaty-autorskie", "ceremonia-herbaty", "herbata-klasyczna", "kawa"] },
+  { title: { pl: "NAPOJE ZIMNE" }, slugs: ["napoje-zimne"] },
+  { title: { pl: "DESERY" }, slugs: ["desery-premium"] },
+];
+
 // Intro paragraph shown under a category heading (Polish source, auto-translated).
 const CATEGORY_INTRO: Record<string, { pl: string }> = {
   shisha: {
@@ -124,6 +146,27 @@ export function MenuBrowser({ categories }: { categories: CategoryDTO[] }) {
     };
   }, [menuCategories, q]);
 
+  // Two-level navigation: groups on top, their categories underneath.
+  const groups = useMemo(() => {
+    const bySlug = new Map(menuCategories.map((c) => [c.slug, c]));
+    const grouped: { key: string; title: { pl: string } | string; cats: CategoryDTO[] }[] = [];
+    const taken = new Set<string>();
+
+    for (const g of GROUPS) {
+      const cats = g.slugs.map((s) => bySlug.get(s)).filter(Boolean) as CategoryDTO[];
+      cats.forEach((c) => taken.add(c.slug));
+      if (cats.length) grouped.push({ key: g.title.pl, title: g.title, cats });
+    }
+    // Anything not listed above (e.g. a category added in the admin panel).
+    for (const c of menuCategories) {
+      if (!taken.has(c.slug)) grouped.push({ key: c.slug, title: c.name, cats: [c] });
+    }
+    return grouped;
+  }, [menuCategories]);
+
+  const activeGroupIdx = Math.max(0, groups.findIndex((g) => g.cats.some((c) => c.slug === activeSlug)));
+  const activeGroup = groups[activeGroupIdx];
+
   // Keep the active tab visible in the horizontal tab bar.
   useEffect(() => {
     const el = tabRefs.current[activeSlug];
@@ -198,20 +241,56 @@ export function MenuBrowser({ categories }: { categories: CategoryDTO[] }) {
     <div>
       {/* Sticky controls */}
       <div className="sticky top-[92px] z-30 -mx-5 mb-8 bg-ink-950/85 px-5 py-4 backdrop-blur-xl sm:-mx-8 sm:px-8 md:top-[60px]">
-        <div className="container-x flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
-          <div ref={tabBarRef} className="flex gap-2 overflow-x-auto pb-1">
-            {menuCategories.map((c) => (
-              <TabBtn
-                key={c.slug}
-                btnRef={(el) => { tabRefs.current[c.slug] = el; }}
-                active={!q && activeSlug === c.slug}
-                onClick={() => goTo(c.slug)}
-              >
-                {tr(c.name)}
-              </TabBtn>
-            ))}
+        <div className="container-x flex flex-col gap-3">
+          {/* Row 1 — main groups */}
+          <div className="flex items-center gap-3">
+            <div className="flex flex-1 gap-1 overflow-x-auto">
+              {groups.map((g, i) => (
+                <button
+                  key={g.key}
+                  onClick={() => goTo(g.cats[0].slug)}
+                  className={cn(
+                    "shrink-0 whitespace-nowrap border-b-2 px-3 py-2 text-sm font-semibold uppercase tracking-wide transition",
+                    !q && i === activeGroupIdx
+                      ? "border-ember text-neutral-50"
+                      : "border-transparent text-neutral-500 hover:text-neutral-300"
+                  )}
+                >
+                  {typeof g.title === "string" ? tr(g.title) : tr(g.title)}
+                </button>
+              ))}
+            </div>
+            <div className="input hidden items-center gap-2.5 lg:flex lg:w-64">
+            <svg className="shrink-0 text-neutral-500" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <circle cx="11" cy="11" r="7" /><path d="M21 21l-4.3-4.3" />
+            </svg>
+            <input
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              placeholder={t("menu.search")}
+              className="w-full min-w-0 border-0 bg-transparent p-0 text-neutral-100 outline-none placeholder:text-neutral-500"
+            />
+            </div>
           </div>
-          <div className="input flex items-center gap-2.5 lg:w-72">
+
+          {/* Row 2 — categories of the active group (hidden when it has only one) */}
+          {activeGroup && activeGroup.cats.length > 1 && (
+            <div ref={tabBarRef} className="flex gap-2 overflow-x-auto pb-1">
+              {activeGroup.cats.map((c) => (
+                <TabBtn
+                  key={c.slug}
+                  btnRef={(el) => { tabRefs.current[c.slug] = el; }}
+                  active={!q && activeSlug === c.slug}
+                  onClick={() => goTo(c.slug)}
+                >
+                  {tr(c.name)}
+                </TabBtn>
+              ))}
+            </div>
+          )}
+
+          {/* Search — inline on mobile, where it doesn't fit next to the groups */}
+          <div className="input flex items-center gap-2.5 lg:hidden">
             <svg className="shrink-0 text-neutral-500" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               <circle cx="11" cy="11" r="7" /><path d="M21 21l-4.3-4.3" />
             </svg>
