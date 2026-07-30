@@ -4761,28 +4761,6 @@
      ]
     },
     {
-     "name": "Borjomi",
-     "description": "",
-     "price": 16,
-     "image": "",
-     "available": true,
-     "labels": [],
-     "options": [],
-     "nameI18n": {
-      "pl": "Borjomi",
-      "ru": "Borjomi",
-      "en": "Borjomi",
-      "ua": "Borjomi"
-     },
-     "descI18n": {
-      "pl": "",
-      "ru": "",
-      "en": "",
-      "ua": ""
-     },
-     "optionsI18n": []
-    },
-    {
      "name": "Fanta",
      "description": "",
      "price": 15,

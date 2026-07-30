@@ -227,6 +227,7 @@ const REMOVED_SLUGS = ["rolls", "burgery", "sety"];
 const REMOVED_ITEMS: { slug: string; name: string }[] = [
   { slug: "herbaty-autorskie", name: "Golden Spice  Gruszka – karmel – przyprawy" },
   { slug: "herbaty-autorskie", name: "Mango Heat  Mango – imbir – limonka" },
+  { slug: "napoje-zimne", name: "Borjomi" },
 ];
 
 export async function syncMenu(prisma: PrismaClient): Promise<void> {
