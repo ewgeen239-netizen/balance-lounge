@@ -214,6 +214,40 @@ function namePl(nameJson: string): string {
   }
 }
 
+// Drink names are written Title Case ("Almond Velvet"). Categories whose items
+// get normalised on every sync, so anything typed in the admin panel matches.
+const TITLE_CASE_SLUGS = [
+  "signature-cocktails", "classic-cocktails", "shot-menu", "shot-sets",
+  "balance-zero----bezalkoholowe", "herbaty-autorskie", "ceremonia-herbaty",
+  "herbata-klasyczna", "kawa", "napoje-zimne",
+];
+
+// Polish connectors stay lowercase; ALL-CAPS words are left alone so codes and
+// abbreviations survive (B-52, VSOP, GABA, 7-UP).
+const SMALL_WORDS = new Set(["od", "z", "ze", "i", "w", "na", "do", "po"]);
+
+export function titleCaseName(name: string): string {
+  const words = name.split(/\s+/).filter(Boolean);
+  const isUpper = (w: string) => w === w.toLocaleUpperCase("pl") && /[A-ZĄĆĘŁŃÓŚŹŻ]/.test(w);
+  // A fully upper-case name is styling ("DEEP HARMONY") and gets normalised;
+  // a stray upper-case word among normal ones is an abbreviation (VSOP, GABA).
+  const allUpper = words.length > 0 && words.every((w) => isUpper(w) || /\d/.test(w));
+
+  return name
+    .split(/(\s+)/)
+    .map((tok, i) => {
+      if (/^\s*$/.test(tok)) return tok;
+      if (/\d/.test(tok)) return tok;                       // B-52, 7-UP
+      if (isUpper(tok) && !allUpper) return tok;            // VSOP, GABA
+      const lower = tok.toLocaleLowerCase("pl");
+      if (i > 0 && SMALL_WORDS.has(lower)) return lower;
+      // Capitalise each part so hyphens and slashes keep their case
+      // (Coca-Cola, Jabłko-Kiwi-Limonka, gazowana/niegazowana).
+      return lower.replace(/[^\s\-/]+/g, (p) => p.charAt(0).toLocaleUpperCase("pl") + p.slice(1));
+    })
+    .join("");
+}
+
 /** Idempotent, non-destructive: adds any menu categories/items present in the
  *  source data but missing from the DB. Never updates or deletes existing rows,
  *  so admin edits (prices, descriptions, availability) are preserved. Runs on
@@ -248,7 +282,8 @@ export async function syncMenu(prisma: PrismaClient): Promise<void> {
     const cat = await prisma.category.findUnique({ where: { slug }, select: { id: true } });
     if (!cat) continue;
     const rows = await prisma.menuItem.findMany({ where: { categoryId: cat.id }, select: { id: true, name: true } });
-    const ids = rows.filter((r) => namePl(r.name) === name).map((r) => r.id);
+    const same = (a: string, b: string) => a.toLocaleLowerCase("pl").trim() === b.toLocaleLowerCase("pl").trim();
+    const ids = rows.filter((r) => same(namePl(r.name), name)).map((r) => r.id);
     if (ids.length) {
       await prisma.menuItem.deleteMany({ where: { id: { in: ids } } });
       droppedItems += ids.length;
@@ -270,11 +305,14 @@ export async function syncMenu(prisma: PrismaClient): Promise<void> {
       where: { categoryId: cat.id },
       select: { id: true, name: true, photo: true, description: true, options: true, order: true },
     });
-    const byName = new Map(existing.map((it) => [namePl(it.name), it]));
+    // Match case-insensitively: names get normalised to Title Case below, and a
+    // rename must not make sync think the item is new (which would duplicate it).
+    const keyOf = (n: string) => n.toLocaleLowerCase("pl").replace(/\s+/g, " ").trim();
+    const byName = new Map(existing.map((it) => [keyOf(namePl(it.name)), it]));
     let i = 0;
     for (const item of c.items) {
       const key = item.nameI18n?.pl ?? item.name;
-      const cur = byName.get(key);
+      const cur = byName.get(keyOf(key));
       if (!cur) {
         await prisma.menuItem.create({
           data: {
@@ -312,4 +350,25 @@ export async function syncMenu(prisma: PrismaClient): Promise<void> {
     }
   }
   console.log(`↳ syncMenu: added ${added}, backfilled ${filled}.`);
+
+  // Normalise drink names to Title Case — covers items typed in the admin panel.
+  let renamed = 0;
+  const drinkCats = await prisma.category.findMany({
+    where: { slug: { in: TITLE_CASE_SLUGS } },
+    select: { id: true, items: { select: { id: true, name: true } } },
+  });
+  for (const cat of drinkCats) {
+    for (const it of cat.items) {
+      let obj: Record<string, string>;
+      try { obj = JSON.parse(it.name); } catch { continue; }
+      const fixed = Object.fromEntries(Object.entries(obj).map(([k, v]) => [k, titleCaseName(String(v))]));
+      const next = JSON.stringify(fixed);
+      if (next !== it.name) {
+        await prisma.menuItem.update({ where: { id: it.id }, data: { name: next } });
+        renamed++;
+        console.log(`  ~ name ${namePl(it.name)} → ${namePl(next)}`);
+      }
+    }
+  }
+  if (renamed) console.log(`↳ syncMenu: normalised ${renamed} name(s) to Title Case.`);
 }
