@@ -3,6 +3,7 @@ import { telegramCall, reservationSummary, editAllReservationMessages, type TgMe
 import { confirmReservation, cancelReservation, freeTablesForDate, notifyGuestConfirmed } from "@/lib/reservationActions";
 import { LARGE_GROUP, TABLES } from "@/lib/tables";
 import { prisma } from "@/lib/db";
+import { handleWizard, handleWizardReply, isWizardCallback, startKeyboard } from "@/lib/tgWizard";
 
 const VALID_TABLE_NOS = new Set(TABLES.map((t) => t.no));
 
@@ -22,6 +23,13 @@ export async function POST(req: Request) {
   if (msg?.text) {
     const from = String(msg.chat?.id ?? "");
     if (allow.length && !allow.includes(from)) return NextResponse.json({ ok: true });
+
+    // Reply to the wizard's "name?" prompt → create the booking.
+    const replyTo = msg.reply_to_message?.text as string | undefined;
+    if (replyTo && (await handleWizardReply(from, replyTo, String(msg.text)))) {
+      return NextResponse.json({ ok: true });
+    }
+
     await handleCommand(from, String(msg.text).trim());
     return NextResponse.json({ ok: true });
   }
@@ -34,7 +42,16 @@ export async function POST(req: Request) {
     return NextResponse.json({ ok: true });
   }
 
-  const parts = String(cb.data ?? "").split(":");
+  const cbData = String(cb.data ?? "");
+
+  // Button-driven new-booking wizard.
+  if (isWizardCallback(cbData)) {
+    const toast = await handleWizard(cb.message.chat.id, cb.message.message_id, cbData);
+    await telegramCall("answerCallbackQuery", { callback_query_id: cb.id, ...(toast ? { text: toast } : {}) });
+    return NextResponse.json({ ok: true });
+  }
+
+  const parts = cbData.split(":");
   const action = parts[0];
   const id = Number(parts[1]);
   const ack = (text?: string) => telegramCall("answerCallbackQuery", { callback_query_id: cb.id, ...(text ? { text } : {}) });
@@ -128,18 +145,13 @@ export async function POST(req: Request) {
 }
 
 const HELP = [
-  "🗓 <b>Ręczna rezerwacja</b>",
+  "🗓 <b>Rezerwacje — BALANCE</b>",
   "",
-  "Wyślij:",
-  "<code>/rezerwacja DATA GODZ OSOBY IMIĘ [TELEFON] [stół]</code>",
+  "Naciśnij przycisk poniżej i wybieraj: dzień → godzina → liczba osób → stół.",
+  "Na końcu wpiszesz tylko imię gościa.",
   "",
-  "Przykłady:",
-  "<code>/rezerwacja 2026-08-05 20:00 4 Jan 500100200 5</code>",
-  "<code>/rezerwacja dzis 21:30 2 Anna</code>",
-  "<code>/rezerwacja jutro 19:00 6 Piotr 600200300</code>",
-  "",
-  "Data: <code>RRRR-MM-DD</code>, <code>dzis</code> lub <code>jutro</code>.",
-  "Ostatnia liczba (1–24) to numer stołu — nieobowiązkowa.",
+  "Dla wprawnych — jedną komendą:",
+  "<code>/rezerwacja jutro 20:00 4 Jan 500100200 5</code>",
 ].join("\n");
 
 function dayOffset(days: number): string {
@@ -153,10 +165,15 @@ async function handleCommand(chatId: string, text: string): Promise<void> {
   const send = (t: string) => telegramCall("sendMessage", { chat_id: chatId, text: t, parse_mode: "HTML" });
   const cmd = text.split(/\s+/)[0].toLowerCase().replace(/@.*$/, "");
 
-  if (cmd === "/start" || cmd === "/help" || cmd === "/pomoc") return void (await send(HELP));
+  const menu = () =>
+    telegramCall("sendMessage", { chat_id: chatId, text: HELP, parse_mode: "HTML", reply_markup: startKeyboard() });
+
+  if (cmd === "/start" || cmd === "/help" || cmd === "/pomoc") return void (await menu());
   if (cmd !== "/rezerwacja" && cmd !== "/new" && cmd !== "/nowa") return;
 
   const args = text.split(/\s+/).slice(1);
+  // Bare /rezerwacja → open the button wizard instead of explaining the syntax.
+  if (args.length === 0) return void (await menu());
   if (args.length < 4) return void (await send("⚠️ Za mało danych.\n\n" + HELP));
 
   let [date, time, guestsRaw, ...rest] = args;
