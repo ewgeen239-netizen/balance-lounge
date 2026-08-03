@@ -11,7 +11,9 @@
     "db:push": "prisma db push",
     "db:seed": "tsx prisma/seed.ts",
     "db:reset": "prisma db push --force-reset && tsx prisma/seed.ts",
-    "cache:lang": "tsx prisma/cacheGerman.ts"
+    "cache:lang": "tsx prisma/cacheGerman.ts",
+    "db:backup": "tsx prisma/backup.ts",
+    "db:restore": "tsx prisma/restore.ts"
   },
   "prisma": {
     "seed": "tsx prisma/seed.ts"

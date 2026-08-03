@@ -16,3 +16,6 @@ next-env.d.ts
 .vercel
 screenshots
 /tmp
+
+# database dumps (may contain guest data)
+backups/

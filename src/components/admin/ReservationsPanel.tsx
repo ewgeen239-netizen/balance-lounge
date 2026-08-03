@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react";
 import type { AdminReservation } from "./types";
 import { cn } from "@/lib/utils";
+import { NewReservationModal } from "./NewReservationModal";
 import { TABLES, INDOOR_TABLES, TERRACE_TABLES, TERRACE_LABEL, LARGE_GROUP, ACTIVE_STATUSES, type TableDef } from "@/lib/tables";
 
 const STATUSES = ["all", "pending", "confirmed", "seated", "cancelled"] as const;
@@ -20,6 +21,7 @@ export function ReservationsPanel({ initial }: { initial: AdminReservation[] }) 
   const [status, setStatus] = useState<(typeof STATUSES)[number]>("all");
   const [date, setDate] = useState("");
   const [picker, setPicker] = useState<AdminReservation | null>(null);
+  const [creating, setCreating] = useState(false);
 
   const filtered = useMemo(
     () =>
@@ -82,6 +84,7 @@ export function ReservationsPanel({ initial }: { initial: AdminReservation[] }) 
             </button>
           ))}
         </div>
+        <button onClick={() => setCreating(true)} className="btn-primary text-sm">+ Nowa rezerwacja</button>
         <input type="date" value={date} onChange={(e) => setDate(e.target.value)} className="input w-auto text-sm" />
         {date && <button onClick={() => setDate("")} className="text-xs text-neutral-400 hover:text-neon">clear</button>}
         <span className="ml-auto text-sm text-neutral-500">{filtered.length} shown</span>
@@ -167,6 +170,14 @@ export function ReservationsPanel({ initial }: { initial: AdminReservation[] }) 
             );
           })}
         </div>
+      )}
+
+      {creating && (
+        <NewReservationModal
+          existing={rows}
+          onClose={() => setCreating(false)}
+          onCreated={(r) => { setRows((rs) => [...rs, r]); setCreating(false); }}
+        />
       )}
 
       {picker && (
