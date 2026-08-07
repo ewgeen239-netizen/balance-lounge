@@ -17,7 +17,7 @@ export type AdminCategory = {
   slug: string;
   name: string; // JSON
   order: number;
-  scheduled: boolean;
+  closed: boolean;
   items: AdminItem[];
 };
 

@@ -49,7 +49,10 @@ model Category {
   order     Int        @default(0)
   // Auto-schedule: when true, category is available Fri–Mon and disabled Tue–Thu.
   // Toggled by an on/off button in admin. Disabled categories render blurred on the site.
-  scheduled Boolean    @default(false)
+  // Manual on/off switch from the admin panel. Closed categories render blurred
+  // on the site until staff open them again (no automatic weekday schedule).
+  closed    Boolean    @default(false)
+  scheduled Boolean    @default(false) // legacy weekday auto-schedule, no longer used
   items     MenuItem[]
   updatedAt DateTime   @updatedAt
 }

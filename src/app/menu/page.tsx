@@ -11,7 +11,7 @@ export default async function MenuPage() {
     id: c.id,
     slug: c.slug,
     name: c.name,
-    scheduled: c.scheduled,
+    closed: c.closed,
     items: c.items.map((i) => ({
       id: i.id,
       name: i.name,

@@ -4,7 +4,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { useLang } from "@/components/LangProvider";
-import { parseJSON, formatPrice, cn, categoryClosedNow } from "@/lib/utils";
+import { parseJSON, formatPrice, cn } from "@/lib/utils";
 import { ItemModal } from "./ItemModal";
 
 export type MenuItemDTO = {
@@ -22,7 +22,7 @@ export type CategoryDTO = {
   id: number;
   slug: string;
   name: string;
-  scheduled: boolean;
+  closed: boolean;
   items: MenuItemDTO[];
 };
 
@@ -309,7 +309,7 @@ export function MenuBrowser({ categories }: { categories: CategoryDTO[] }) {
           <p className="py-20 text-center text-neutral-500">{t("menu.empty")}</p>
         ) : (
           visible.map((c) => {
-            const closed = categoryClosedNow(c.scheduled);
+            const closed = c.closed;
             // How many items are still sold today while the category is closed —
             // recomputed from the data, so the badge follows the actual list.
             const openToday = closed ? c.items.filter((it) => isAlwaysOpen(it) && it.available).length : 0;

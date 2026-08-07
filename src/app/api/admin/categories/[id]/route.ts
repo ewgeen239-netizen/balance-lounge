@@ -12,7 +12,7 @@ export async function PATCH(req: Request, { params }: { params: { id: string } }
   if (typeof body.slug === "string") data.slug = body.slug;
   if (body.name !== undefined) data.name = typeof body.name === "string" ? body.name : JSON.stringify(body.name);
   if (typeof body.order === "number") data.order = body.order;
-  if (typeof body.scheduled === "boolean") data.scheduled = body.scheduled;
+  if (typeof body.closed === "boolean") data.closed = body.closed;
 
   const cat = await prisma.category.update({ where: { id }, data });
   return NextResponse.json(cat);

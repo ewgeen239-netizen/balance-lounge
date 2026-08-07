@@ -116,7 +116,7 @@ export async function seedDatabase(prisma: PrismaClient) {
         slug: c.hurl,
         name: JSON.stringify(c.nameI18n),
         order: catOrder++,
-        scheduled: c.hurl === "desery-premium", // desserts on Fri–Mon, off Tue–Thu
+        closed: false, // staff switch categories off manually in the panel
       },
     });
     let i = 0;
@@ -143,7 +143,7 @@ export async function seedDatabase(prisma: PrismaClient) {
       slug: "find-your-balance",
       name: J({ pl: "FIND YOUR BALANCE", ru: "FIND YOUR BALANCE", en: "FIND YOUR BALANCE", ua: "FIND YOUR BALANCE" }),
       order: -1,
-      scheduled: false,
+      closed: false,
     },
   });
   let fi = 0;
@@ -306,7 +306,7 @@ export async function syncMenu(prisma: PrismaClient): Promise<void> {
     let cat = await prisma.category.findUnique({ where: { slug: c.hurl } });
     if (!cat) {
       cat = await prisma.category.create({
-        data: { slug: c.hurl, name: J(c.nameI18n), order: catOrder, scheduled: c.hurl === "desery-premium" },
+        data: { slug: c.hurl, name: J(c.nameI18n), order: catOrder, closed: false },
       });
       console.log(`  + category ${c.hurl}`);
     }

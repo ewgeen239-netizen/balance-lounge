@@ -49,9 +49,8 @@ export function cn(...classes: (string | false | null | undefined)[]): string {
   return classes.filter(Boolean).join(" ");
 }
 
-/** Scheduled categories are OFF Tue–Thu and ON Fri–Mon.
- *  getDay(): 0=Sun 1=Mon 2=Tue 3=Wed 4=Thu 5=Fri 6=Sat. */
-export function categoryClosedNow(scheduled: boolean, date: Date = new Date()): boolean {
-  if (!scheduled) return false;
-  return [2, 3, 4].includes(date.getDay()); // Tue, Wed, Thu → closed
+/** A category is closed only when staff switched it off in the admin panel —
+ *  there is no automatic weekday schedule any more. */
+export function categoryClosedNow(closed: boolean): boolean {
+  return closed;
 }
