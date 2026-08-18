@@ -2,12 +2,17 @@ import { redirect } from "next/navigation";
 import { getAdminSession } from "@/lib/auth";
 import { prisma } from "@/lib/db";
 import { AdminApp } from "@/components/admin/AdminApp";
+import { purgeOldReservations } from "@/lib/reservationCleanup";
 
 export const dynamic = "force-dynamic";
 
 export default async function AdminPage() {
   const session = await getAdminSession();
   if (!session) redirect("/admin/login");
+
+  // Drop bookings whose evening is over (closing + 5h) before rendering, so the
+  // list stays current even if the scheduled job didn't run.
+  await purgeOldReservations().catch(() => {});
 
   const [categories, reservations, bar, about] = await Promise.all([
     prisma.category.findMany({ orderBy: { order: "asc" }, include: { items: { orderBy: { order: "asc" } } } }),
