@@ -11,7 +11,7 @@ export function BookingForm({ hours, loggedIn }: { hours: HoursRow[]; loggedIn: 
   const [form, setForm] = useState({
     date: todayStr(),
     time: "",
-    guests: 2,
+    guests: "2",
     name: "",
     phone: "",
     email: "",
@@ -26,14 +26,19 @@ export function BookingForm({ hours, loggedIn }: { hours: HoursRow[]; loggedIn: 
 
   const set = useCallback((k: string, v: string | number) => setForm((f) => ({ ...f, [k]: v })), []);
 
+  const guestsNum = Number(form.guests);
+  const guestsValid = form.guests.trim() !== "" && Number.isInteger(guestsNum) && guestsNum >= 1 && guestsNum <= 30;
+  const canSubmit = guestsValid && !!form.time && form.name.trim().length >= 2 && !closed;
+
   async function submit(e: React.FormEvent) {
     e.preventDefault();
+    if (!canSubmit) return;
     setStatus("loading");
     setErrorMsg("");
     const res = await fetch("/api/reservations", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(form),
+      body: JSON.stringify({ ...form, guests: guestsNum }),
     });
     if (res.ok) {
       setStatus("done");
@@ -116,7 +121,15 @@ export function BookingForm({ hours, loggedIn }: { hours: HoursRow[]; loggedIn: 
         </div>
         <div>
           <label className="label">{t("book.guests")}</label>
-          <input type="number" inputMode="numeric" min={1} max={30} value={form.guests} onChange={(e) => set("guests", e.target.value === "" ? 1 : Number(e.target.value))} className="input [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none" required />
+          <input
+            type="text"
+            inputMode="numeric"
+            value={form.guests}
+            onChange={(e) => set("guests", e.target.value.replace(/\D/g, "").slice(0, 2))}
+            placeholder="2"
+            className="input"
+            required
+          />
         </div>
         <div>
           <label className="label">{t("book.name")}</label>
@@ -142,7 +155,7 @@ export function BookingForm({ hours, loggedIn }: { hours: HoursRow[]; loggedIn: 
         </p>
       )}
 
-      <button type="submit" disabled={status === "loading" || !!closed} className="btn-primary mt-8 w-full disabled:opacity-50">
+      <button type="submit" disabled={status === "loading" || !canSubmit} className="btn-primary mt-8 w-full disabled:opacity-50">
         {status === "loading" ? t("common.loading") : t("book.submit")}
       </button>
     </form>

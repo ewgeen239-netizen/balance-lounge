@@ -19,7 +19,7 @@ export function NewReservationModal({
   const [form, setForm] = useState({
     date: todayStr(),
     time: "20:00",
-    guests: 2,
+    guests: "2",
     name: "",
     phone: "",
     email: "",
@@ -33,6 +33,10 @@ export function NewReservationModal({
 
   const set = <K extends keyof typeof form>(k: K, v: (typeof form)[K]) => setForm((f) => ({ ...f, [k]: v }));
 
+  const guestsNum = Number(form.guests);
+  const guestsValid = form.guests.trim() !== "" && Number.isInteger(guestsNum) && guestsNum >= 1 && guestsNum <= 60;
+  const canSave = guestsValid && form.name.trim().length >= 2;
+
   // Tables already held that day, so staff don't double-book by accident.
   const taken = useMemo(() => {
     const m = new Map<number, AdminReservation>();
@@ -44,12 +48,13 @@ export function NewReservationModal({
 
   async function save() {
     setError("");
+    if (!guestsValid) { setError("Podaj liczbę gości (1–60)."); return; }
     if (form.name.trim().length < 2) { setError("Podaj imię gościa."); return; }
     setSaving(true);
     const res = await fetch("/api/admin/reservations", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(form),
+      body: JSON.stringify({ ...form, guests: guestsNum }),
     });
     setSaving(false);
     if (res.ok) onCreated(await res.json());
@@ -62,11 +67,11 @@ export function NewReservationModal({
     return () => document.removeEventListener("keydown", onKey);
   }, [onClose]);
 
-  const bigGroup = form.guests >= LARGE_GROUP;
+  const bigGroup = guestsNum >= LARGE_GROUP;
   const tableBtn = (t: { no: number; seats: number; outdoor?: boolean }) => {
     const busy = taken.get(t.no);
     const picked = form.tableNo === t.no;
-    const fits = t.seats >= form.guests || (t.outdoor && bigGroup);
+    const fits = t.seats >= guestsNum || (t.outdoor && bigGroup);
     return (
       <button
         key={t.no}
@@ -108,13 +113,12 @@ export function NewReservationModal({
             <div>
               <label className="label">Goście</label>
               <input
-                type="number"
+                type="text"
                 inputMode="numeric"
-                min={1}
-                max={60}
                 value={form.guests}
-                onChange={(e) => set("guests", Math.max(1, Number(e.target.value) || 1))}
-                className="input text-sm [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none"
+                onChange={(e) => set("guests", e.target.value.replace(/\D/g, "").slice(0, 2))}
+                placeholder="2"
+                className="input text-sm"
               />
             </div>
           </div>
@@ -169,7 +173,7 @@ export function NewReservationModal({
 
         <div className="mt-6 flex justify-end gap-3">
           <button onClick={onClose} className="btn-ghost text-sm">Anuluj</button>
-          <button onClick={save} disabled={saving} className="btn-primary text-sm disabled:opacity-50">
+          <button onClick={save} disabled={saving || !canSave} className="btn-primary text-sm disabled:opacity-50">
             {saving ? "Zapisywanie…" : "Dodaj rezerwację"}
           </button>
         </div>
