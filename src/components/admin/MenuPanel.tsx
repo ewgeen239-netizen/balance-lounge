@@ -3,6 +3,8 @@
 import { useMemo, useState } from "react";
 import type { AdminCategory, AdminItem } from "./types";
 import { ItemEditor } from "./ItemEditor";
+import { CategoryOrderModal } from "./CategoryOrderModal";
+import { buildGroups } from "@/lib/menuGroups";
 import { TranslatableInput } from "./TranslatableInput";
 import { tr, DEFAULT_LANG } from "@/lib/i18n";
 import { parseJSON, cn } from "@/lib/utils";
@@ -15,19 +17,24 @@ export function MenuPanel({ initial }: { initial: AdminCategory[] }) {
   const [newCat, setNewCat] = useState({ slug: "", name: "{}" });
   const [showNewCat, setShowNewCat] = useState(false);
   const [query, setQuery] = useState("");
+  const [showOrder, setShowOrder] = useState(false);
 
   // Filter by item or category name — the menu is long, so search keeps edits quick.
   const q = query.trim().toLowerCase();
+  const ordered = useMemo(
+    () => buildGroups([...cats].sort((a, b) => a.order - b.order)).flatMap((g) => g.cats),
+    [cats]
+  );
   const visibleCats = useMemo(() => {
-    if (!q) return cats;
-    return cats
+    if (!q) return ordered;
+    return ordered
       .map((c) => {
         const catHit = tr(c.name, DEFAULT_LANG).toLowerCase().includes(q) || c.slug.includes(q);
         const items = catHit ? c.items : c.items.filter((i) => tr(i.name, DEFAULT_LANG).toLowerCase().includes(q));
         return { ...c, items };
       })
       .filter((c) => c.items.length > 0);
-  }, [cats, q]);
+  }, [ordered, q]);
   const shownCount = visibleCats.reduce((n, c) => n + c.items.length, 0);
 
   function replaceItem(updated: AdminItem) {
@@ -166,6 +173,7 @@ export function MenuPanel({ initial }: { initial: AdminCategory[] }) {
               {savingPrices ? "Saving…" : "Save all prices"}
             </button>
           )}
+          <button onClick={() => setShowOrder(true)} className="btn-ghost text-sm" title="Zmień kolejność kategorii i grup">⇅ Kolejność</button>
           <button onClick={() => setShowNewCat((s) => !s)} className="btn-ghost text-sm">+ Category</button>
         </div>
       </div>
@@ -288,6 +296,16 @@ export function MenuPanel({ initial }: { initial: AdminCategory[] }) {
           categories={cats}
           onClose={() => setEditing(null)}
           onSaved={(updated) => { replaceItem(updated); setEditing(null); }}
+        />
+      )}
+      {showOrder && (
+        <CategoryOrderModal
+          categories={cats}
+          onClose={() => setShowOrder(false)}
+          onSaved={(orderById) => {
+            setCats((cs) => cs.map((c) => ({ ...c, order: orderById.get(c.id) ?? c.order })));
+            setShowOrder(false);
+          }}
         />
       )}
     </div>

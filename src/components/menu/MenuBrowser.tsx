@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import { useLang } from "@/components/LangProvider";
 import { parseJSON, formatPrice, cn } from "@/lib/utils";
 import { ItemModal } from "./ItemModal";
+import { buildGroups } from "@/lib/menuGroups";
 
 export type MenuItemDTO = {
   id: number;
@@ -38,28 +39,6 @@ const INFO_SLUGS = new Set(["informacje", "odpowiedzialnosc"]);
 
 // Which items stay on sale while their category is closed is set per item in
 // the admin panel ("Zawsze dostępne").
-
-// Top-level menu groups. The tab bar shows these; the second row shows the
-// categories of the active group. Categories missing here become their own
-// group, so anything added in the admin panel still appears.
-const GROUPS: { title: { pl: string }; slugs: string[] }[] = [
-  { title: { pl: "SHISHA BALANCE" }, slugs: ["shisha"] },
-  {
-    title: { pl: "MENU BAROWE" },
-    slugs: ["signature-cocktails", "classic-cocktails", "shot-menu", "shot-sets", "balance-zero----bezalkoholowe"],
-  },
-  {
-    title: { pl: "ALKOHOL" },
-    slugs: [
-      "wino-musujace", "biale-wino", "czerwone-wino", "wino-bezalkoholowe",
-      "whisky-bourbon", "likiery", "wermuty", "koniak-brandy", "rum", "wodka",
-      "gin", "tequila", "piwo-z-beczki", "piwo-butelkowe",
-    ],
-  },
-  { title: { pl: "HERBATA I KAWA" }, slugs: ["herbaty-autorskie", "ceremonia-herbaty", "herbata-klasyczna", "kawa"] },
-  { title: { pl: "NAPOJE ZIMNE" }, slugs: ["napoje-zimne"] },
-  { title: { pl: "DESERY" }, slugs: ["desery-premium"] },
-];
 
 // Intro paragraph shown under a category heading (Polish source, auto-translated).
 const CATEGORY_INTRO: Record<string, { pl: string }> = {
@@ -97,7 +76,12 @@ export function MenuBrowser({ categories }: { categories: CategoryDTO[] }) {
   const { t, tr } = useLang();
   // Drop the fixed info notices from the browsable menu; they render as their own
   // plaque (top) and damages section (bottom).
-  const menuCategories = useMemo(() => categories.filter((c) => !INFO_SLUGS.has(c.slug)), [categories]);
+  // Sections render group by group, so the page matches the two-level nav; the
+  // order itself comes from the admin panel (Category.order).
+  const menuCategories = useMemo(
+    () => buildGroups(categories.filter((c) => !INFO_SLUGS.has(c.slug))).flatMap((g) => g.cats),
+    [categories]
+  );
   const [query, setQuery] = useState("");
   const [selected, setSelected] = useState<MenuItemDTO | null>(null);
   const [activeSlug, setActiveSlug] = useState<string>(menuCategories[0]?.slug ?? "");
@@ -147,22 +131,7 @@ export function MenuBrowser({ categories }: { categories: CategoryDTO[] }) {
   }, [menuCategories, q]);
 
   // Two-level navigation: groups on top, their categories underneath.
-  const groups = useMemo(() => {
-    const bySlug = new Map(menuCategories.map((c) => [c.slug, c]));
-    const grouped: { key: string; title: { pl: string } | string; cats: CategoryDTO[] }[] = [];
-    const taken = new Set<string>();
-
-    for (const g of GROUPS) {
-      const cats = g.slugs.map((s) => bySlug.get(s)).filter(Boolean) as CategoryDTO[];
-      cats.forEach((c) => taken.add(c.slug));
-      if (cats.length) grouped.push({ key: g.title.pl, title: g.title, cats });
-    }
-    // Anything not listed above (e.g. a category added in the admin panel).
-    for (const c of menuCategories) {
-      if (!taken.has(c.slug)) grouped.push({ key: c.slug, title: c.name, cats: [c] });
-    }
-    return grouped;
-  }, [menuCategories]);
+  const groups = useMemo(() => buildGroups(menuCategories), [menuCategories]);
 
   const activeGroupIdx = Math.max(0, groups.findIndex((g) => g.cats.some((c) => c.slug === activeSlug)));
   const activeGroup = groups[activeGroupIdx];
