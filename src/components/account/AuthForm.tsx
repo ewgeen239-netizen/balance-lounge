@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import { useLang } from "@/components/LangProvider";
@@ -80,6 +81,14 @@ export function AuthForm() {
         <button type="submit" disabled={loading} className="btn-primary w-full disabled:opacity-50">
           {loading ? t("common.loading") : t(mode === "login" ? "acc.login" : "acc.signup")}
         </button>
+        {mode !== "login" && (
+          <p className="text-center text-[11px] leading-relaxed text-neutral-500">
+            {t("rodo.note")}{" "}
+            <Link href="/polityka-prywatnosci" target="_blank" className="text-neutral-400 underline underline-offset-2 hover:text-ember">
+              {t("footer.privacy")}
+            </Link>
+          </p>
+        )}
       </form>
     </motion.div>
   );

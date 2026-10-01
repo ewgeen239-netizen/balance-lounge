@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Montserrat, Cormorant_Garamond } from "next/font/google";
 import "./globals.css";
-import { Analytics } from "@vercel/analytics/next";
 import { LangProvider } from "@/components/LangProvider";
 
 const montserrat = Montserrat({
@@ -22,6 +21,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { ReservationProvider } from "@/components/booking/ReservationModal";
 import { ScrollReset } from "@/components/ScrollReset";
+import { CookieConsent } from "@/components/consent/CookieConsent";
 import { getBar } from "@/lib/data";
 import { getGuestSession } from "@/lib/auth";
 import { parseJSON, type HoursRow } from "@/lib/utils";
@@ -74,8 +74,9 @@ export default async function RootLayout({
               telegram={bar?.telegram ?? ""}
             />
           </ReservationProvider>
+          {/* Cookie banner/settings; also loads Vercel Analytics only after consent. */}
+          <CookieConsent />
         </LangProvider>
-        <Analytics />
       </body>
     </html>
   );

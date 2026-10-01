@@ -158,6 +158,12 @@ export function BookingForm({ hours, loggedIn }: { hours: HoursRow[]; loggedIn: 
       <button type="submit" disabled={status === "loading" || !canSubmit} className="btn-primary mt-8 w-full disabled:opacity-50">
         {status === "loading" ? t("common.loading") : t("book.submit")}
       </button>
+      <p className="mt-3 text-center text-[11px] leading-relaxed text-neutral-500">
+        {t("rodo.note")}{" "}
+        <Link href="/polityka-prywatnosci" target="_blank" className="text-neutral-400 underline underline-offset-2 hover:text-ember">
+          {t("footer.privacy")}
+        </Link>
+      </p>
     </form>
   );
 }

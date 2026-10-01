@@ -1,6 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useConsent, allowed } from "@/components/consent/CookieConsent";
+import { saveConsent, openCookieSettings } from "@/lib/consent";
 import { useLang } from "@/components/LangProvider";
 import { useReservation } from "@/components/booking/ReservationModal";
 import { weekdays } from "@/lib/i18n";
@@ -21,6 +23,7 @@ type BarData = {
 
 export function LocationReservation({ bar }: { bar: BarData }) {
   const { t, lang } = useLang();
+  const consent = useConsent();
   const { open } = useReservation();
   const hours = parseJSON<HoursRow[]>(bar.hours, []);
   const order = [1, 2, 3, 4, 5, 6, 0]; // Mon..Sun
@@ -106,13 +109,29 @@ export function LocationReservation({ bar }: { bar: BarData }) {
         transition={{ duration: 0.7 }}
         className="mt-6 overflow-hidden rounded-3xl border border-white/10"
       >
-        <iframe
-          title="Balance map"
-          src={mapsEmbed}
-          className="h-[340px] w-full grayscale-[0.3] contrast-125"
-          loading="lazy"
-          referrerPolicy="no-referrer-when-downgrade"
-        />
+        {/* Google sets its own cookies, so the map loads only with consent. */}
+        {allowed(consent, "external") ? (
+          <iframe
+            title="Balance map"
+            src={mapsEmbed}
+            className="h-[340px] w-full grayscale-[0.3] contrast-125"
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+          />
+        ) : (
+          <div className="flex h-[340px] w-full flex-col items-center justify-center gap-4 bg-ink-900/60 px-6 text-center">
+            <p className="max-w-sm text-sm text-neutral-400">{t("map.blocked")}</p>
+            <div className="flex flex-wrap justify-center gap-2">
+              <button
+                onClick={() => saveConsent({ analytics: !!consent?.analytics, external: true, marketing: !!consent?.marketing })}
+                className="btn-primary text-sm"
+              >
+                {t("map.show")}
+              </button>
+              <button onClick={openCookieSettings} className="btn-ghost text-sm">{t("footer.cookies")}</button>
+            </div>
+          </div>
+        )}
         <div className="flex items-center justify-between gap-4 bg-ink-900/80 px-6 py-4">
           <span className="text-sm text-neutral-400">{bar.address}</span>
           <a href={routeUrl} target="_blank" rel="noreferrer" className="btn-ghost">

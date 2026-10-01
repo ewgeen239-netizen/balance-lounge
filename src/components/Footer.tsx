@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { useLang } from "./LangProvider";
 import { Wordmark } from "./Wordmark";
 import { SocialLinks } from "./SocialLinks";
+import { openCookieSettings } from "@/lib/consent";
 
 type FooterProps = {
   address: string;
@@ -47,6 +48,10 @@ export function Footer(props: FooterProps) {
         </div>
       </div>
       <div className="border-t border-white/5 py-5 text-center text-xs text-neutral-500">
+        <div className="mb-2 flex flex-wrap items-center justify-center gap-x-5 gap-y-1">
+          <Link href="/polityka-prywatnosci" className="hover:text-neon">{t("footer.privacy")}</Link>
+          <button onClick={openCookieSettings} className="hover:text-neon">{t("footer.cookies")}</button>
+        </div>
         © {new Date().getFullYear()} BALANCE — Szczecin. {t("footer.rights")}
       </div>
     </footer>
