@@ -15,7 +15,7 @@ export const COMPANY = {
   phone: "729 559 179",
 };
 
-export const POLICY_EFFECTIVE_DATE = "[[UZUPEŁNIJ: data wejścia w życie, np. 1 października 2026 r.]]";
+export const POLICY_EFFECTIVE_DATE = "1 października 2026 r.";
 
 export type PolicyBlock =
   | { p: string }
@@ -36,9 +36,6 @@ export const POLICY: PolicySection[] = [
       },
       {
         p: `W sprawach dotyczących danych osobowych możesz się z nami skontaktować: e-mailem — ${C.email}, telefonicznie — ${C.phone} lub listownie na adres siedziby.`,
-      },
-      {
-        p: "Nie wyznaczyliśmy Inspektora Ochrony Danych, ponieważ nie mamy takiego obowiązku. [[UZUPEŁNIJ lub usuń: jeśli wyznaczono IOD — podaj jego dane kontaktowe]]",
       },
     ],
   },
@@ -66,7 +63,7 @@ export const POLICY: PolicySection[] = [
               "Konto gościa (opcjonalne)",
               "imię, e-mail i/lub numer telefonu, hasło (przechowywane wyłącznie w formie zaszyfrowanej), historia rezerwacji",
               "art. 6 ust. 1 lit. b RODO — świadczenie usługi konta",
-              "Do usunięcia konta. [[UZUPEŁNIJ: sposób usunięcia konta, np. prośba e-mail]]",
+              `Do usunięcia konta — usuniemy je na Twoją prośbę przesłaną e-mailem na ${C.email}`,
             ],
             [
               "Kontakt z nami (telefon, e-mail, komunikatory)",
@@ -114,12 +111,12 @@ export const POLICY: PolicySection[] = [
       {
         ul: [
           "Vercel Inc. (USA) — hosting strony internetowej,",
-          "Neon Inc. (USA) — baza danych, w której zapisywane są rezerwacje i konta [[UZUPEŁNIJ: region serwera bazy, np. UE (Frankfurt)]],",
+          "Neon Inc. (USA) — baza danych, w której zapisywane są rezerwacje i konta (serwery w UE — Frankfurt),",
           "Sendinblue SAS / Brevo (Francja) — wysyłka e-maili z potwierdzeniem rezerwacji,",
           "LINK Mobility Poland sp. z o.o. (SMSAPI, Polska) — wysyłka SMS-ów z potwierdzeniem rezerwacji,",
           "Telegram (Telegram FZ-LLC, Zjednoczone Emiraty Arabskie) — powiadomienia dla obsługi lokalu o nowej rezerwacji (imię, telefon, termin),",
           "Google Ireland Limited (Irlandia) — mapa na stronie, wyłącznie po wyrażeniu zgody,",
-          "[[UZUPEŁNIJ lub usuń: biuro rachunkowe, firma IT lub inni dostawcy]].",
+          "biuro rachunkowe — obsługa księgowa.",
         ],
       },
       { p: "Dane możemy też udostępnić organom publicznym, jeżeli wymagają tego przepisy prawa." },
@@ -130,7 +127,7 @@ export const POLICY: PolicySection[] = [
     title: "4. Przekazywanie danych poza Europejski Obszar Gospodarczy",
     blocks: [
       {
-        p: "Część dostawców ma siedzibę lub serwery poza EOG. Dane do USA przekazujemy na podstawie decyzji Komisji Europejskiej stwierdzającej odpowiedni stopień ochrony (EU-US Data Privacy Framework) lub standardowych klauzul umownych zatwierdzonych przez Komisję. [[UZUPEŁNIJ: podstawa przekazania danych do Telegrama (ZEA) — zweryfikuj z prawnikiem]]",
+        p: "Część dostawców ma siedzibę lub serwery poza EOG. Dane do USA przekazujemy na podstawie decyzji Komisji Europejskiej stwierdzającej odpowiedni stopień ochrony (EU-US Data Privacy Framework) lub standardowych klauzul umownych zatwierdzonych przez Komisję.",
       },
       { p: `Kopię stosowanych zabezpieczeń możesz otrzymać, pisząc na ${C.email}.` },
     ],
@@ -186,7 +183,7 @@ export const POLICY: PolicySection[] = [
     title: "7. Zmiany polityki prywatności",
     blocks: [
       {
-        p: `Politykę aktualizujemy, gdy zmieniają się przepisy lub sposób działania strony. Aktualna wersja obowiązuje od ${POLICY_EFFECTIVE_DATE}.`,
+        p: `Politykę aktualizujemy, gdy zmieniają się przepisy lub sposób działania strony. Aktualna wersja obowiązuje od ${POLICY_EFFECTIVE_DATE}`,
       },
     ],
   },
