@@ -5,12 +5,12 @@
 // Dane firmy wpisz raz w COMPANY poniżej — trafią do całego dokumentu.
 
 export const COMPANY = {
-  legalName: "[[UZUPEŁNIJ: pełna nazwa firmy / imię i nazwisko przedsiębiorcy, np. „XYZ sp. z o.o.”]]",
+  legalName: "DZIANIS PAPOU",
   brand: "BALANCE Cocktails & Shisha",
-  address: "ul. Księcia Bogusława X 2/1, 70-440 Szczecin",
-  nip: "[[UZUPEŁNIJ: NIP]]",
-  regon: "[[UZUPEŁNIJ: REGON]]",
-  registry: "[[UZUPEŁNIJ: KRS i sąd rejestrowy albo „wpis do CEIDG”]]",
+  address: "ul. Księcia Bogusława X 1/2, lok. 2/1, 70-440 Szczecin",
+  nip: "5423389947",
+  regon: "543233726",
+  registry: "wpis do CEIDG",
   email: "kontakt@balancecoctails.pl",
   phone: "729 559 179",
 };
