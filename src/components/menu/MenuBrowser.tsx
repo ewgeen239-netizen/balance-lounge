@@ -41,23 +41,37 @@ const INFO_SLUGS = new Set(["informacje", "odpowiedzialnosc"]);
 // the admin panel ("Zawsze dostępne").
 
 // Intro shown under a category heading (Polish source, auto-translated). Each
-// line is translated separately, so the rules keep their list layout in every language.
+// piece is translated separately, so the layout survives in every language.
 type T = { pl: string };
-const CATEGORY_INTRO: Record<string, { text: T; rulesTitle?: T; rules?: T[]; note?: T; sign?: T }> = {
+type Intro = {
+  text: T;
+  rule?: T; // headline rule
+  condition?: T; // when the price tiers apply
+  tiers?: { who: T; price: string }[];
+  notes?: T[];
+  sign?: T;
+};
+const CATEGORY_INTRO: Record<string, Intro> = {
   shisha: {
     text: {
-      pl: "Shisha w Balance to chwila relaksu przygotowana przez doświadczonych Shisha Masterów, którzy dbają o idealny balans smaku i temperatury. Optymalny czas sesji to około 50–70 minut.",
+      pl: "Shisha w Balance to chwila relaksu przygotowana przez doświadczonych Shisha Masterów, którzy dbają o idealny balans smaku i temperatury. Optymalny czas sesji to około 50–70 minut. Aby każda sesja zachowała swój najlepszy charakter, obowiązują u nas następujące zasady:",
     },
-    rulesTitle: { pl: "ZASADY DOTYCZĄCE SZISZY" },
-    rules: [
-      { pl: "1 szisza — maksymalnie 3 osoby" },
-      { pl: "4 osoby — minimalna wartość zamówienia 250 zł" },
-      { pl: "5–6 osób — minimalna wartość zamówienia 300 zł" },
-      { pl: "7–9 osób — minimalna wartość zamówienia 450 zł" },
-      { pl: "10+ osób — minimalna wartość zamówienia 550 zł" },
+    rule: { pl: "1 szisza — maksymalnie 3 osoby." },
+    condition: {
+      pl: "Jeżeli grupa chce korzystać z jednej sziszy w większym składzie niż 3 osoby, obowiązuje minimalna wartość zamówienia:",
+    },
+    tiers: [
+      { who: { pl: "4 osoby" }, price: "250 zł" },
+      { who: { pl: "5–6 osób" }, price: "300 zł" },
+      { who: { pl: "7–9 osób" }, price: "450 zł" },
+      { who: { pl: "10+ osób" }, price: "550 zł" },
     ],
-    note: { pl: "Zasady dotyczą całej grupy i obowiązują wszystkich gości." },
-    sign: { pl: "Zespół Balance." },
+    notes: [
+      { pl: "Minimalna wartość zamówienia dotyczy całej grupy, a nie pojedynczej osoby." },
+      { pl: "Jeżeli wartość zamówienia jest niższa od wymaganego minimum, należy uzupełnić zamówienie do wymaganej kwoty." },
+      { pl: "Zasady obowiązują wszystkich gości." },
+    ],
+    sign: { pl: "Zespół Balance" },
   },
 };
 
@@ -326,23 +340,27 @@ export function MenuBrowser({ categories }: { categories: CategoryDTO[] }) {
                   {intro && (
                     <div className="-mt-2 mb-7 max-w-3xl text-sm leading-relaxed text-neutral-400">
                       <p>{tr(intro.text)}</p>
-                      {intro.rules && (
-                        <div className="mt-4 rounded-2xl border border-white/10 bg-ink-800/40 p-4 sm:p-5">
-                          {intro.rulesTitle && (
-                            <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-ember">{tr(intro.rulesTitle)}</p>
-                          )}
-                          <ul className="space-y-1.5">
-                            {intro.rules.map((r, i) => (
-                              <li key={i} className="flex gap-2.5 text-neutral-200">
-                                <span className="text-ember">•</span>
-                                <span>{tr(r)}</span>
-                              </li>
+                      {intro.tiers && (
+                        <div className="mt-3 rounded-2xl border border-white/10 bg-ink-800/40 p-3.5 sm:p-4">
+                          {intro.rule && <p className="font-medium text-neutral-100">{tr(intro.rule)}</p>}
+                          {intro.condition && <p className="mt-1">{tr(intro.condition)}</p>}
+                          {/* Price tiers: one compact row on every screen size. */}
+                          <div className="mt-2.5 grid grid-cols-4 gap-1.5 sm:gap-2">
+                            {intro.tiers.map((tier) => (
+                              <div key={tier.price} className="rounded-xl border border-white/10 bg-ink-900/60 px-1.5 py-1.5 text-center sm:px-3 sm:py-2">
+                                <div className="whitespace-nowrap text-[11px] text-neutral-400 sm:text-xs">{tr(tier.who)}</div>
+                                <div className="whitespace-nowrap text-sm font-semibold text-ember sm:text-base">{tier.price}</div>
+                              </div>
                             ))}
-                          </ul>
-                          {intro.note && <p className="mt-3 text-neutral-400">{tr(intro.note)}</p>}
+                          </div>
+                          {(intro.notes || intro.sign) && (
+                            <p className="mt-2.5 text-xs leading-snug text-neutral-500">
+                              {intro.notes?.map((n) => tr(n)).join(" ")}
+                              {intro.sign && <span className="italic text-neutral-400"> — {tr(intro.sign)}</span>}
+                            </p>
+                          )}
                         </div>
                       )}
-                      {intro.sign && <p className="mt-3 italic text-neutral-500">{tr(intro.sign)}</p>}
                     </div>
                   )}
 
