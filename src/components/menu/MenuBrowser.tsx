@@ -40,9 +40,11 @@ const INFO_SLUGS = new Set(["informacje", "odpowiedzialnosc"]);
 // Which items stay on sale while their category is closed is set per item in
 // the admin panel ("Zawsze dostępne").
 
-// Intro shown under a category heading (Polish source, auto-translated). Each
-// piece is translated separately, so the layout survives in every language.
-type T = { pl: string };
+// Intro shown under a category heading. Hand-written translations for the main
+// languages (switch instantly, no auto-translation); any other language falls
+// back to auto-translating the Polish source. Each piece is translated on its
+// own, so the layout survives in every language.
+type T = { pl: string; ru?: string; en?: string; de?: string; ua?: string };
 type Intro = {
   text: T;
   rule?: T; // headline rule
@@ -55,23 +57,55 @@ const CATEGORY_INTRO: Record<string, Intro> = {
   shisha: {
     text: {
       pl: "Shisha w Balance to chwila relaksu przygotowana przez doświadczonych Shisha Masterów, którzy dbają o idealny balans smaku i temperatury. Optymalny czas sesji to około 50–70 minut. Aby każda sesja zachowała swój najlepszy charakter, obowiązują u nas następujące zasady:",
+      ru: "Кальян в Balance — это момент отдыха, который готовят опытные кальянные мастера, следящие за идеальным балансом вкуса и температуры. Оптимальное время сессии — около 50–70 минут. Чтобы каждая сессия сохраняла свой лучший характер, у нас действуют следующие правила:",
+      en: "Shisha at Balance is a moment of relaxation prepared by experienced Shisha Masters who take care of the perfect balance of flavour and temperature. The optimal session lasts about 50–70 minutes. To keep every session at its best, the following rules apply:",
+      de: "Shisha im Balance ist ein Moment der Entspannung, zubereitet von erfahrenen Shisha-Mastern, die auf die perfekte Balance von Geschmack und Temperatur achten. Die optimale Sessiondauer beträgt etwa 50–70 Minuten. Damit jede Session ihren besten Charakter behält, gelten bei uns folgende Regeln:",
+      ua: "Кальян у Balance — це мить відпочинку, яку готують досвідчені кальянні майстри, що дбають про ідеальний баланс смаку й температури. Оптимальний час сесії — близько 50–70 хвилин. Щоб кожна сесія зберігала свій найкращий характер, у нас діють такі правила:",
     },
-    rule: { pl: "1 szisza — maksymalnie 3 osoby." },
+    rule: {
+      pl: "1 szisza — maksymalnie 3 osoby.",
+      ru: "1 кальян — максимум 3 человека.",
+      en: "1 shisha — maximum 3 people.",
+      de: "1 Shisha — maximal 3 Personen.",
+      ua: "1 кальян — максимум 3 особи.",
+    },
     condition: {
       pl: "Jeżeli grupa chce korzystać z jednej sziszy w większym składzie niż 3 osoby, obowiązuje minimalna wartość zamówienia:",
+      ru: "Если группа хочет пользоваться одним кальяном в составе больше 3 человек, действует минимальная сумма заказа:",
+      en: "If a group of more than 3 people wants to share one shisha, a minimum order value applies:",
+      de: "Möchte eine Gruppe von mehr als 3 Personen eine Shisha teilen, gilt ein Mindestbestellwert:",
+      ua: "Якщо група хоче користуватися одним кальяном у складі понад 3 особи, діє мінімальна сума замовлення:",
     },
     tiers: [
-      { who: { pl: "4 osoby" }, price: "250 zł" },
-      { who: { pl: "5–6 osób" }, price: "300 zł" },
-      { who: { pl: "7–9 osób" }, price: "450 zł" },
-      { who: { pl: "10+ osób" }, price: "550 zł" },
+      { who: { pl: "4 osoby", ru: "4 человека", en: "4 people", de: "4 Personen", ua: "4 особи" }, price: "250 zł" },
+      { who: { pl: "5–6 osób", ru: "5–6 человек", en: "5–6 people", de: "5–6 Personen", ua: "5–6 осіб" }, price: "300 zł" },
+      { who: { pl: "7–9 osób", ru: "7–9 человек", en: "7–9 people", de: "7–9 Personen", ua: "7–9 осіб" }, price: "450 zł" },
+      { who: { pl: "10+ osób", ru: "10+ человек", en: "10+ people", de: "10+ Personen", ua: "10+ осіб" }, price: "550 zł" },
     ],
     notes: [
-      { pl: "Minimalna wartość zamówienia dotyczy całej grupy, a nie pojedynczej osoby." },
-      { pl: "Jeżeli wartość zamówienia jest niższa od wymaganego minimum, należy uzupełnić zamówienie do wymaganej kwoty." },
-      { pl: "Zasady obowiązują wszystkich gości." },
+      {
+        pl: "Minimalna wartość zamówienia dotyczy całej grupy, a nie pojedynczej osoby.",
+        ru: "Минимальная сумма заказа относится ко всей группе, а не к каждому человеку отдельно.",
+        en: "The minimum order value applies to the whole group, not to each person.",
+        de: "Der Mindestbestellwert gilt für die gesamte Gruppe, nicht pro Person.",
+        ua: "Мінімальна сума замовлення стосується всієї групи, а не кожної особи окремо.",
+      },
+      {
+        pl: "Jeżeli wartość zamówienia jest niższa od wymaganego minimum, należy uzupełnić zamówienie do wymaganej kwoty.",
+        ru: "Если сумма заказа ниже требуемого минимума, заказ нужно дополнить до необходимой суммы.",
+        en: "If the order value is below the required minimum, the order must be topped up to that amount.",
+        de: "Liegt der Bestellwert unter dem Mindestbetrag, muss die Bestellung bis zu diesem Betrag ergänzt werden.",
+        ua: "Якщо сума замовлення нижча за потрібний мінімум, замовлення слід доповнити до необхідної суми.",
+      },
+      {
+        pl: "Zasady obowiązują wszystkich gości.",
+        ru: "Правила действуют для всех гостей.",
+        en: "These rules apply to all guests.",
+        de: "Die Regeln gelten für alle Gäste.",
+        ua: "Правила діють для всіх гостей.",
+      },
     ],
-    sign: { pl: "Zespół Balance" },
+    sign: { pl: "Zespół Balance", ru: "Команда Balance", en: "The Balance Team", de: "Das Balance-Team", ua: "Команда Balance" },
   },
 };
 
