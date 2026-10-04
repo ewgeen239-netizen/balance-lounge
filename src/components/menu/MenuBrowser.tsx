@@ -40,10 +40,24 @@ const INFO_SLUGS = new Set(["informacje", "odpowiedzialnosc"]);
 // Which items stay on sale while their category is closed is set per item in
 // the admin panel ("Zawsze dostępne").
 
-// Intro paragraph shown under a category heading (Polish source, auto-translated).
-const CATEGORY_INTRO: Record<string, { pl: string }> = {
+// Intro shown under a category heading (Polish source, auto-translated). Each
+// line is translated separately, so the rules keep their list layout in every language.
+type T = { pl: string };
+const CATEGORY_INTRO: Record<string, { text: T; rulesTitle?: T; rules?: T[]; note?: T; sign?: T }> = {
   shisha: {
-    pl: "Shisha w Balance to chwila relaksu przygotowana przez doświadczonych Shisha Masterów, którzy dbają o idealny balans smaku i temperatury. Optymalny czas sesji to około 50–70 minut. Aby każda sesja zachowała swój najlepszy charakter, obowiązuje u nas mała zasada: 1 shisha maksymalnie dla 3 osób. W kwestii regulacji ciepła prosimy o kontakt z obsługą. Niech ten wieczór stanie się chwilą prawdziwego relaksu. — Zespół Balance.",
+    text: {
+      pl: "Shisha w Balance to chwila relaksu przygotowana przez doświadczonych Shisha Masterów, którzy dbają o idealny balans smaku i temperatury. Optymalny czas sesji to około 50–70 minut.",
+    },
+    rulesTitle: { pl: "ZASADY DOTYCZĄCE SZISZY" },
+    rules: [
+      { pl: "1 szisza — maksymalnie 3 osoby" },
+      { pl: "4 osoby — minimalna wartość zamówienia 250 zł" },
+      { pl: "5–6 osób — minimalna wartość zamówienia 300 zł" },
+      { pl: "7–9 osób — minimalna wartość zamówienia 450 zł" },
+      { pl: "10+ osób — minimalna wartość zamówienia 550 zł" },
+    ],
+    note: { pl: "Zasady dotyczą całej grupy i obowiązują wszystkich gości." },
+    sign: { pl: "Zespół Balance." },
   },
 };
 
@@ -310,7 +324,26 @@ export function MenuBrowser({ categories }: { categories: CategoryDTO[] }) {
                     )}
                   </div>
                   {intro && (
-                    <p className="-mt-2 mb-7 max-w-3xl whitespace-pre-line text-sm leading-relaxed text-neutral-400">{tr(intro)}</p>
+                    <div className="-mt-2 mb-7 max-w-3xl text-sm leading-relaxed text-neutral-400">
+                      <p>{tr(intro.text)}</p>
+                      {intro.rules && (
+                        <div className="mt-4 rounded-2xl border border-white/10 bg-ink-800/40 p-4 sm:p-5">
+                          {intro.rulesTitle && (
+                            <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-ember">{tr(intro.rulesTitle)}</p>
+                          )}
+                          <ul className="space-y-1.5">
+                            {intro.rules.map((r, i) => (
+                              <li key={i} className="flex gap-2.5 text-neutral-200">
+                                <span className="text-ember">•</span>
+                                <span>{tr(r)}</span>
+                              </li>
+                            ))}
+                          </ul>
+                          {intro.note && <p className="mt-3 text-neutral-400">{tr(intro.note)}</p>}
+                        </div>
+                      )}
+                      {intro.sign && <p className="mt-3 italic text-neutral-500">{tr(intro.sign)}</p>}
+                    </div>
                   )}
 
                 {closed ? (
