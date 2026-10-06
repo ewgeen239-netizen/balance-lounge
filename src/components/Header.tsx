@@ -11,6 +11,7 @@ import { cn } from "@/lib/utils";
 
 const NAV = [
   { href: "/", key: "nav.home" },
+  { href: "/wydarzenia", key: "nav.events" },
   { href: "/menu", key: "nav.menu" },
   { href: "/about", key: "nav.about" },
   { href: "/account", key: "nav.account" },
@@ -77,13 +78,14 @@ export function Header() {
         </div>
 
         {/* Mobile / tablet nav row (top panel, no hamburger) */}
-        <nav className="mt-3 flex items-center justify-between gap-1 border-t border-white/5 pt-2.5 lg:hidden">
+        {/* Never wraps a label; if a language's words don't fit, the row scrolls sideways. */}
+        <nav className="mt-3 flex items-center justify-between gap-0.5 overflow-x-auto border-t border-white/5 pt-2.5 [scrollbar-width:none] lg:hidden [&::-webkit-scrollbar]:hidden">
           {NAV.map((n) => (
             <Link
               key={n.href}
               href={n.href}
               className={cn(
-                "rounded-full px-3 py-1.5 text-[13px] tracking-wide transition",
+                "shrink-0 whitespace-nowrap rounded-full px-2 py-1.5 text-[12px] tracking-wide transition sm:px-3 sm:text-[13px]",
                 pathname === n.href ? "bg-neon/15 text-neon" : "text-neutral-300 hover:text-neutral-50"
               )}
             >

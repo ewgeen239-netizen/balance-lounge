@@ -10,9 +10,11 @@ import { MenuPanel } from "./MenuPanel";
 import { ContentPanel } from "./ContentPanel";
 import { MembersPanel } from "./MembersPanel";
 import { ChangePasswordModal } from "./ChangePasswordModal";
+import { EventsAdminPanel } from "./EventsAdminPanel";
+import type { EventDTO } from "@/lib/events";
 import { Wordmark } from "../Wordmark";
 
-type Tab = "reservations" | "menu" | "content" | "members";
+type Tab = "reservations" | "menu" | "content" | "members" | "siteEvents";
 type Role = "owner" | "staff";
 
 export function AdminApp({
@@ -22,6 +24,7 @@ export function AdminApp({
   initialReservations,
   bar,
   about,
+  initialEvents,
 }: {
   adminName: string;
   role: Role;
@@ -29,6 +32,7 @@ export function AdminApp({
   initialReservations: AdminReservation[];
   bar: AdminBar;
   about: AdminAbout;
+  initialEvents: EventDTO[];
 }) {
   const router = useRouter();
   const [tab, setTab] = useState<Tab>("reservations");
@@ -45,6 +49,7 @@ export function AdminApp({
     ? [
         { id: "reservations", label: "Reservations" },
         { id: "menu", label: "Menu" },
+        { id: "siteEvents", label: "Wydarzenia" },
         { id: "content", label: "Site content" },
         { id: "members", label: "Members" },
       ]
@@ -87,6 +92,7 @@ export function AdminApp({
       <main className="mx-auto max-w-6xl px-5 py-8">
         {tab === "reservations" && <ReservationsPanel initial={initialReservations} />}
         {isOwner && tab === "menu" && <MenuPanel initial={initialCategories} />}
+        {isOwner && tab === "siteEvents" && <EventsAdminPanel initial={initialEvents} />}
         {isOwner && tab === "content" && <ContentPanel bar={bar} about={about} />}
         {isOwner && tab === "members" && <MembersPanel currentName={adminName} />}
       </main>

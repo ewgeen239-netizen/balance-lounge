@@ -29,3 +29,13 @@ export async function getMenu() {
     return [];
   }
 }
+
+/** Enabled events for the public site, serialised for client components. */
+export async function getPublicEvents() {
+  try {
+    const rows = await prisma.event.findMany({ where: { enabled: true }, orderBy: { startsAt: "asc" } });
+    return rows.map((e) => ({ ...e, startsAt: e.startsAt.toISOString(), endsAt: e.endsAt.toISOString(), createdAt: undefined, updatedAt: undefined }));
+  } catch {
+    return [];
+  }
+}

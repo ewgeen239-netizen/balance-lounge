@@ -1,12 +1,13 @@
 import { Hero } from "@/components/home/Hero";
 import { AboutSection } from "@/components/home/AboutSection";
 import { LocationReservation } from "@/components/home/LocationReservation";
-import { getBar, getAbout } from "@/lib/data";
+import { getBar, getAbout, getPublicEvents } from "@/lib/data";
+import { EventsStrip } from "@/components/home/EventsStrip";
 
 export const dynamic = "force-dynamic";
 
 export default async function HomePage() {
-  const [bar, about] = await Promise.all([getBar(), getAbout()]);
+  const [bar, about, events] = await Promise.all([getBar(), getAbout(), getPublicEvents()]);
 
   return (
     <>
@@ -22,6 +23,8 @@ export default async function HomePage() {
           }}
         />
       )}
+
+      <EventsStrip events={events} serverNow={Date.now()} />
 
       {bar && (
         <LocationReservation

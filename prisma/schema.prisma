@@ -130,3 +130,21 @@ model Upload {
   data      Bytes
   createdAt DateTime @default(now())
 }
+
+// Website events ("Nasze wydarzenia"). Text is written in Polish only and
+// auto-translated on the site. Status comes from the time window: upcoming
+// before startsAt, live until endsAt, then past. `enabled` hides it entirely.
+model Event {
+  id          Int      @id @default(autoincrement())
+  title       String
+  summary     String   @default("") // short text on the card
+  description String   @default("") // full text in the detail window
+  image       String   @default("")
+  startsAt    DateTime
+  endsAt      DateTime
+  enabled     Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([startsAt])
+}

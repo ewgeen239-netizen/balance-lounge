@@ -14,11 +14,12 @@ export default async function AdminPage() {
   // list stays current even if the scheduled job didn't run.
   await purgeOldReservations().catch(() => {});
 
-  const [categories, reservations, bar, about] = await Promise.all([
+  const [categories, reservations, bar, about, events] = await Promise.all([
     prisma.category.findMany({ orderBy: { order: "asc" }, include: { items: { orderBy: { order: "asc" } } } }),
     prisma.reservation.findMany({ orderBy: [{ date: "asc" }, { time: "asc" }] }),
     prisma.bar.findFirst(),
     prisma.aboutContent.findFirst(),
+    prisma.event.findMany({ orderBy: { startsAt: "desc" } }),
   ]);
 
   return (
@@ -29,6 +30,7 @@ export default async function AdminPage() {
       initialReservations={JSON.parse(JSON.stringify(reservations))}
       bar={JSON.parse(JSON.stringify(bar))}
       about={JSON.parse(JSON.stringify(about))}
+      initialEvents={JSON.parse(JSON.stringify(events))}
     />
   );
 }
