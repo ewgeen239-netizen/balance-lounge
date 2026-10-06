@@ -44,7 +44,7 @@ export function LocationReservation({ bar }: { bar: BarData }) {
           transition={{ duration: 0.6 }}
           className="glass rounded-3xl p-8 sm:p-10"
         >
-          <h3 className="wordmark accent-underline text-2xl text-neutral-50">{t("home.contact")}</h3>
+          <h3 className="page-title break-words accent-underline text-2xl text-neutral-50">{t("home.contact")}</h3>
 
           <div className="mt-8 grid gap-8 sm:grid-cols-2">
             <div>
@@ -94,7 +94,7 @@ export function LocationReservation({ bar }: { bar: BarData }) {
         >
           <div className="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-neon/20 blur-3xl" />
           <div className="relative">
-            <h3 className="wordmark text-2xl text-neutral-50">{t("home.reserveTitle")}</h3>
+            <h3 className="page-title break-words text-2xl text-neutral-50">{t("home.reserveTitle")}</h3>
             <p className="mt-4 text-neutral-300">{t("home.reserveText")}</p>
             <button onClick={open} className="btn-primary mt-8 w-full">{t("cta.bookTable")}</button>
           </div>

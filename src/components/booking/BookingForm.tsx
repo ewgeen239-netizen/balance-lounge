@@ -62,7 +62,7 @@ export function BookingForm({ hours, loggedIn }: { hours: HoursRow[]; loggedIn: 
             <path d="M20 6L9 17l-5-5" />
           </svg>
         </div>
-        <h2 className="wordmark text-2xl text-neutral-50">{t("book.success")}</h2>
+        <h2 className="page-title break-words text-2xl text-neutral-50">{t("book.success")}</h2>
         <p className="mt-3 text-neutral-400">{t("book.successText")}</p>
 
         <div className="mt-8 space-y-2 rounded-2xl border border-white/10 bg-ink-800/60 p-6 text-left text-sm">

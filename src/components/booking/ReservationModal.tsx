@@ -59,7 +59,7 @@ export function ReservationProvider({
               onClick={(e) => e.stopPropagation()}
             >
               <div className="mb-4 flex items-center justify-between">
-                <h2 className="wordmark text-2xl text-neutral-50 text-glow-ember">{t("book.title")}</h2>
+                <h2 className="page-title break-words text-2xl text-neutral-50 text-glow-ember">{t("book.title")}</h2>
                 <button
                   onClick={close}
                   aria-label="Close"

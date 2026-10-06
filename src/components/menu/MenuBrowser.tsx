@@ -350,13 +350,13 @@ export function MenuBrowser({ categories }: { categories: CategoryDTO[] }) {
               <div key={c.id}>
                 {superSection && (
                   <div className="mb-12 border-t border-white/10 pt-10">
-                    <h2 className="wordmark text-3xl text-neutral-50 sm:text-4xl">{tr(superSection.title)}</h2>
+                    <h2 className="page-title break-words text-3xl text-neutral-50 sm:text-4xl">{tr(superSection.title)}</h2>
                     <p className="mt-3 max-w-2xl whitespace-pre-line text-sm leading-relaxed text-neutral-400">{tr(superSection.desc)}</p>
                   </div>
                 )}
                 <section id={c.slug} className="relative scroll-mt-[170px] md:scroll-mt-[130px]">
                   <div className="mb-6 flex flex-wrap items-center gap-3 sm:mb-8">
-                    <h2 className="wordmark accent-underline text-2xl text-neutral-50 sm:text-3xl">{tr(c.name)}</h2>
+                    <h2 className="page-title break-words accent-underline text-2xl text-neutral-50 sm:text-3xl">{tr(c.name)}</h2>
                     {closed && (
                       openToday > 0 ? (
                         // Some items are sold every day — show how many, so guests
@@ -431,7 +431,7 @@ export function MenuBrowser({ categories }: { categories: CategoryDTO[] }) {
 
       {/* Damages liability — fixed notice, grouped by area, no prices (wg wyceny lokalu). */}
       <section className="container-x border-t border-white/10 pb-14 pt-12">
-        <h2 className="wordmark accent-underline text-2xl text-neutral-50 sm:text-3xl">{tr(DAMAGES.title)}</h2>
+        <h2 className="page-title break-words accent-underline text-2xl text-neutral-50 sm:text-3xl">{tr(DAMAGES.title)}</h2>
         <p className="mt-3 max-w-2xl text-sm text-neutral-400">{tr(DAMAGES.note)}</p>
         <div className="mt-8 space-y-8">
           {DAMAGES.groups.map((g) => (

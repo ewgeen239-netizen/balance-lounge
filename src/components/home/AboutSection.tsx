@@ -25,7 +25,7 @@ export function AboutSection({ about }: { about: AboutData }) {
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.7 }}
         >
-          <h2 className="wordmark accent-underline text-4xl text-neutral-50 sm:text-5xl">
+          <h2 className="page-title break-words accent-underline text-4xl text-neutral-50 sm:text-5xl">
             {tr(about.heading)}
           </h2>
           <p className="mt-6 text-sm uppercase tracking-[0.3em] text-ember/80">

@@ -29,7 +29,7 @@ export function AccountDashboard({
       <div className="glass flex flex-wrap items-center justify-between gap-4 rounded-3xl p-8">
         <div>
           <p className="text-sm text-neutral-400">{t("acc.hello")}</p>
-          <h2 className="wordmark text-2xl text-neutral-50">{name || email}</h2>
+          <h2 className="page-title break-words text-2xl text-neutral-50">{name || email}</h2>
           <p className="text-sm text-neutral-500">{email}</p>
         </div>
         <div className="flex gap-3">
@@ -38,7 +38,7 @@ export function AccountDashboard({
         </div>
       </div>
 
-      <h3 className="wordmark accent-underline mb-6 mt-12 text-xl text-neutral-50">{t("acc.history")}</h3>
+      <h3 className="page-title break-words accent-underline mb-6 mt-12 text-xl text-neutral-50">{t("acc.history")}</h3>
 
       {reservations.length === 0 ? (
         <p className="rounded-2xl border border-white/10 bg-ink-800/40 p-8 text-center text-neutral-500">
