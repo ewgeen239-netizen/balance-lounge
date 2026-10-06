@@ -6,7 +6,7 @@ import { getPublicEvents } from "@/lib/data";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "Nasze wydarzenia — BALANCE",
+title: "Nasze wydarzenia — BALANCE",
   description: "Wieczory tematyczne, muzyka i wyjątkowe okazje w BALANCE Cocktails & Shisha w Szczecinie.",
 };
 
