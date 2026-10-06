@@ -3,8 +3,10 @@ import { Montserrat, Cormorant_Garamond } from "next/font/google";
 import "./globals.css";
 import { LangProvider } from "@/components/LangProvider";
 
+// latin-ext carries Polish letters (ą ę ł ś ż …) and cyrillic the RU/UA text;
+// without them those characters fall back to a different system font.
 const montserrat = Montserrat({
-  subsets: ["latin"],
+  subsets: ["latin", "latin-ext", "cyrillic"],
   weight: ["300", "400", "700", "800"],
   variable: "--font-mont",
   display: "swap",
@@ -12,7 +14,7 @@ const montserrat = Montserrat({
 
 // Premium serif used only for the header brand logotype.
 const cormorant = Cormorant_Garamond({
-  subsets: ["latin"],
+  subsets: ["latin", "latin-ext", "cyrillic"],
   weight: ["400", "500", "600", "700"],
   variable: "--font-serif",
   display: "swap",

@@ -39,6 +39,14 @@ body {
   letter-spacing: 0.42em;
   text-indent: 0.42em;
 }
+/* Page titles ("Menu", "Nasze wydarzenia"…): same brand face as .wordmark, but
+   with moderate tracking so longer and two-line titles stay easy to read. */
+.page-title {
+  font-family: var(--font-display);
+  font-weight: 300;
+  letter-spacing: 0.12em;
+  line-height: 1.15;
+}
 /* Subtitle: Montserrat Light, caps, wide tracking */
 .wordmark-sub {
   font-family: var(--font-display);
