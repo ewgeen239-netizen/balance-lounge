@@ -41,14 +41,14 @@ export function Header() {
     >
       <div className="container-x py-3.5 sm:py-4">
         {/* Top row */}
-        <div className="flex items-center justify-between gap-3">
+        <div className="flex items-center justify-between gap-2 sm:gap-3">
           {/* Brand lockup — premium serif logotype */}
           <Link href="/" aria-label="BALANCE — Coctails & Shisha" className="group flex shrink-0 flex-col items-center justify-center leading-none">
-            <Wordmark className="h-[18px] w-auto transition sm:h-[22px]" />
+            <Wordmark className="h-[15px] w-auto transition min-[360px]:h-[18px] sm:h-[22px]" />
             <span className="mt-2 flex items-center gap-2 text-[7px] uppercase tracking-[0.4em] text-ember/70 transition-colors group-hover:text-ember sm:text-[8px]">
-              <span className="h-px w-3 bg-gradient-to-r from-transparent to-ember/60 sm:w-4" />
+              <span className="hidden h-px w-3 bg-gradient-to-r from-transparent to-ember/60 min-[390px]:block sm:w-4" />
               Coctails &amp; Shisha
-              <span className="h-px w-3 bg-gradient-to-l from-transparent to-ember/60 sm:w-4" />
+              <span className="hidden h-px w-3 bg-gradient-to-l from-transparent to-ember/60 min-[390px]:block sm:w-4" />
             </span>
           </Link>
 
@@ -60,12 +60,12 @@ export function Header() {
           </nav>
 
           {/* Right controls */}
-          <div className="flex items-center gap-2 sm:gap-3.5">
+          <div className="flex shrink-0 items-center gap-1.5 sm:gap-3.5">
             <LanguageSwitcher />
             <button
               onClick={openReservation}
               aria-label={t("cta.reserve")}
-              className="group relative inline-flex items-center justify-center overflow-hidden rounded-full px-3 py-2 text-[11px] font-semibold uppercase tracking-[0.15em] text-white transition sm:px-6 sm:py-2.5 sm:text-xs"
+              className="group relative inline-flex items-center justify-center overflow-hidden rounded-full px-2 py-2 text-[11px] min-[360px]:px-3 font-semibold uppercase tracking-[0.15em] text-white transition sm:px-6 sm:py-2.5 sm:text-xs"
               style={{ background: "linear-gradient(135deg, #ff2d3a, #c47a2f)" }}
             >
               <span className="absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100" style={{ background: "linear-gradient(135deg, #ff5a63, #e6a15a)" }} />

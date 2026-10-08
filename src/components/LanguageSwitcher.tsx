@@ -23,7 +23,7 @@ export function LanguageSwitcher({ className }: { className?: string }) {
       key={l}
       onClick={() => { setLang(l); setOpen(false); }}
       className={cn(
-        "inline-flex h-7 min-w-[24px] items-center justify-center rounded-full px-1 text-xs font-semibold leading-none transition sm:min-w-[30px] sm:px-2",
+        "inline-flex h-7 min-w-[22px] items-center justify-center rounded-full px-0.5 text-xs font-semibold leading-none transition sm:min-w-[30px] sm:px-2",
         lang === l ? "bg-neon text-white shadow-glow" : "text-neutral-400 hover:text-neutral-100"
       )}
       aria-pressed={lang === l}
@@ -34,14 +34,14 @@ export function LanguageSwitcher({ className }: { className?: string }) {
 
   return (
     <div ref={ref} className={cn("relative", className)}>
-      <div className="flex items-center gap-0.5 rounded-full border border-white/10 bg-ink-800/60 p-1">
+      <div className="flex items-center rounded-full border border-white/10 bg-ink-800/60 p-1 sm:gap-0.5">
         {MAIN_LANGS.map(pill)}
-        <span className="mx-0.5 h-4 w-px shrink-0 bg-white/15" aria-hidden />
+        <span className="mx-0.5 hidden h-4 w-px shrink-0 bg-white/15 min-[360px]:block" aria-hidden />
         <button
           onClick={() => setOpen((o) => !o)}
           aria-label="More languages"
           className={cn(
-            "flex h-7 w-6 shrink-0 items-center justify-center rounded-full transition hover:bg-white/10 hover:text-neon",
+            "flex h-7 w-5 shrink-0 items-center sm:w-6 justify-center rounded-full transition hover:bg-white/10 hover:text-neon",
             EXTRA_LANGS.includes(lang as (typeof EXTRA_LANGS)[number]) ? "text-neon" : "text-neutral-200"
           )}
         >

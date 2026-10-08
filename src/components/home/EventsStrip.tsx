@@ -43,9 +43,12 @@ export function EventsStrip({ events, serverNow }: { events: EventDTO[]; serverN
             )}
           </p>
         </div>
-        <Link href="/wydarzenia" className="btn-ghost relative hidden shrink-0 text-sm sm:inline-flex">
-          {t("events.title")} →
-        </Link>
+        {/* .btn-ghost is unlayered CSS and beats the `hidden` utility, so the wrapper does the hiding. */}
+        <div className="relative hidden shrink-0 sm:block">
+          <Link href="/wydarzenia" className="btn-ghost text-sm">
+            {t("events.title")} →
+          </Link>
+        </div>
         <span aria-hidden className="pointer-events-none relative flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-ember/40 text-ember sm:hidden">
           →
         </span>
