@@ -36,12 +36,18 @@ export function EventsStrip({ events, serverNow }: { events: EventDTO[]; serverN
                   {live ? t("events.live") : t("events.next")}:
                 </span>{" "}
                 {tr({ pl: next.title })}
-                <span className="text-neutral-500"> · {formatEventRange(next.startsAt, next.endsAt, LANG_ISO[lang])}</span>
+                <span className="hidden text-neutral-500 sm:inline"> · {formatEventRange(next.startsAt, next.endsAt, LANG_ISO[lang])}</span>
               </>
             ) : (
               t("events.strip")
             )}
           </p>
+          {/* On phones the date gets its own line so a long title can't push it out of view. */}
+          {next && (
+            <p className="mt-0.5 truncate text-xs text-neutral-500 sm:hidden">
+              {formatEventRange(next.startsAt, next.endsAt, LANG_ISO[lang])}
+            </p>
+          )}
         </div>
         {/* .btn-ghost is unlayered CSS and beats the `hidden` utility, so the wrapper does the hiding. */}
         <div className="relative hidden shrink-0 sm:block">
