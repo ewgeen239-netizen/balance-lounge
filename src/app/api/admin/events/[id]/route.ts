@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { prisma } from "@/lib/db";
 import { requireOwner } from "@/lib/adminGuard";
 import { parseEventInput } from "@/lib/eventInput";
+import { queueChange } from "@/lib/push";
 
 export async function PATCH(req: Request, { params }: { params: { id: string } }) {
   const denied = await requireOwner();
@@ -19,6 +20,8 @@ export async function PATCH(req: Request, { params }: { params: { id: string } }
   if (endsAt <= startsAt) return NextResponse.json({ error: "end_before_start" }, { status: 400 });
 
   const event = await prisma.event.update({ where: { id }, data: parsed.data });
+  // A hidden event is announced when it is first shown (each event only once).
+  if (event.enabled && !current.enabled) await queueChange("event", id);
   return NextResponse.json(event);
 }
 

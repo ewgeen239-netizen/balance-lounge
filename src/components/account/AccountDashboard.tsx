@@ -4,16 +4,20 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { useLang } from "@/components/LangProvider";
 import { StatusBadge } from "@/components/StatusBadge";
+import { LoyaltyPanel } from "./LoyaltyPanel";
+import type { LoyaltyDTO } from "@/lib/loyalty";
 
 type Resv = { id: number; date: string; time: string; guests: number; zone: string; status: string; comment: string };
 
 export function AccountDashboard({
   name,
   email,
+  loyalty,
   reservations,
 }: {
   name: string;
   email: string;
+  loyalty: LoyaltyDTO;
   reservations: Resv[];
 }) {
   const { t } = useLang();
@@ -37,6 +41,8 @@ export function AccountDashboard({
           <button onClick={logout} className="btn-ghost">{t("acc.logout")}</button>
         </div>
       </div>
+
+      <LoyaltyPanel initial={loyalty} />
 
       <h3 className="page-title break-words accent-underline mb-6 mt-12 text-xl text-neutral-50">{t("acc.history")}</h3>
 

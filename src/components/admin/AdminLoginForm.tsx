@@ -42,7 +42,6 @@ export function AdminLoginForm() {
       <button type="submit" disabled={loading} className="btn-primary w-full disabled:opacity-50">
         {loading ? "…" : "Log in"}
       </button>
-      <p className="text-center text-xs text-neutral-500">Default: admin / balance123 — change on first login.</p>
     </form>
   );
 }

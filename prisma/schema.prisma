@@ -101,6 +101,11 @@ model GuestUser {
   passwordHash String
   createdAt    DateTime      @default(now())
   reservations Reservation[]
+  // Loyalty points: running balance (changed atomically) + ledger for history.
+  points         Int           @default(0)
+  installBonusAt DateTime? // when the "install the app" bonus was granted (once)
+  pointsEntries  PointsEntry[]
+  coupons        Coupon[]
 }
 
 model TranslationCache {
@@ -131,6 +136,13 @@ model Upload {
   createdAt DateTime @default(now())
 }
 
+// Shared website/iOS events, promotions, discount rules and mobile presentation.
+model MobileContent {
+  id        Int      @id @default(1)
+  data      String   @default("{}")
+  updatedAt DateTime @updatedAt
+}
+
 // Website events ("Nasze wydarzenia"). Text is written in Polish only and
 // auto-translated on the site. Status comes from the time window: upcoming
 // before startsAt, live until endsAt, then past. `enabled` hides it entirely.
@@ -147,4 +159,86 @@ model Event {
   updatedAt   DateTime @updatedAt
 
   @@index([startsAt])
+}
+
+// ---- Web Push (installed PWA notifications) ----
+
+// One row per browser/device that turned notifications on. `topics` is the
+// visitor's own choice (consent per purpose): events | menu | promo.
+model PushSubscription {
+  id         Int       @id @default(autoincrement())
+  endpoint   String    @unique
+  p256dh     String
+  auth       String
+  lang       String    @default("pl")
+  topics     String    @default("[]") // JSON: ("events" | "menu" | "promo")[]
+  consentAt  DateTime  @default(now()) // when the current topic choice was given
+  lastSentAt DateTime?
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+}
+
+// Content changes waiting to be announced. Sent as one digest once the admin
+// has stopped editing for a while, so ten price edits make one notification.
+model PushOutbox {
+  id        Int       @id @default(autoincrement())
+  kind      String // event | item | price | category
+  refId     Int
+  oldPrice  Float? // price before the first unsent change (kind = price)
+  createdAt DateTime  @default(now())
+  sentAt    DateTime?
+
+  @@index([sentAt, createdAt])
+}
+
+// What was sent, for the admin panel.
+model PushLog {
+  id        Int      @id @default(autoincrement())
+  topic     String
+  source    String // auto | manual | schedule
+  title     String
+  body      String
+  url       String   @default("/")
+  sent      Int      @default(0)
+  failed    Int      @default(0)
+  createdAt DateTime @default(now())
+}
+
+// Automatic "come and visit" invitations sent by the daily cron.
+model PushConfig {
+  id          Int       @id @default(1)
+  autoPromo   Boolean   @default(false)
+  promoDays   String    @default("[5,6]") // JSON: weekdays 0=Sun … 6=Sat
+  lastPromoAt DateTime?
+  updatedAt   DateTime  @updatedAt
+}
+
+// ---- Loyalty: points ledger and coupons bought with points ----
+
+model PointsEntry {
+  id        Int       @id @default(autoincrement())
+  guestId   Int
+  guest     GuestUser @relation(fields: [guestId], references: [id], onDelete: Cascade)
+  amount    Int // + earned, − spent
+  reason    String // install | coupon | admin
+  note      String    @default("")
+  createdAt DateTime  @default(now())
+
+  @@index([guestId, createdAt])
+}
+
+model Coupon {
+  id        Int       @id @default(autoincrement())
+  code      String    @unique // shown to staff, e.g. BAL-7KQ2M
+  guestId   Int
+  guest     GuestUser @relation(fields: [guestId], references: [id], onDelete: Cascade)
+  reward    String // key in src/content/rewards.ts
+  title     String // Polish title at the time it was bought
+  cost      Int
+  createdAt DateTime  @default(now())
+  expiresAt DateTime
+  usedAt    DateTime?
+  usedBy    String    @default("") // staff username
+
+  @@index([guestId])
 }

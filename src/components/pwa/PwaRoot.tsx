@@ -1,0 +1,167 @@
+"use client";
+
+import { useCallback, useEffect, useState } from "react";
+import { usePathname, useRouter } from "next/navigation";
+import { useLang } from "@/components/LangProvider";
+import { useConsent } from "@/components/consent/CookieConsent";
+import { BottomSheet } from "./BottomSheet";
+import { InstallGuide, type InstallEvent } from "./InstallGuide";
+import { InstallPrompt } from "./InstallPrompt";
+import { PushSheet } from "./PushSheet";
+import { PushToast, Toast } from "./PushToast";
+import { fill } from "@/lib/i18n";
+import { INSTALL_BONUS, LOYALTY_LIVE } from "@/content/rewards";
+import { POINTS_CHANGED } from "@/components/account/LoyaltyPanel";
+import { AUTO_TOPICS } from "@/lib/pushTopics";
+import {
+  OPEN_INSTALL_GUIDE, OPEN_PUSH_SETTINGS, PUSH_ENABLED_EVENT, enablePush, isStandalone, local, platform,
+  pushSupported, readPushState, registerServiceWorker, updatePush, type Platform,
+} from "@/lib/pushClient";
+
+const COLLAPSED_KEY = "balance_pwa_collapsed";
+const LANG_KEY = "balance_push_lang";
+
+/**
+ * Installed-app (PWA) layer, mounted once in the layout:
+ * - registers the service worker;
+ * - home page in a browser: "add to home screen" card → instructions;
+ * - installed app: turns notifications on with the guest's first tap (after the
+ *   cookie choice) — iOS shows its permission prompt only in answer to a tap —
+ *   then a short "notifications on" message slides up;
+ * - footer "Notifications" link: topic settings and switching off;
+ * - installed app with a logged-in guest: claims the "install the app" points
+ *   bonus (the server grants it once per account);
+ * - keeps the notification language in step with the site language.
+ */
+export function PwaRoot() {
+  const pathname = usePathname();
+  const router = useRouter();
+  const { t, lang } = useLang();
+  const consent = useConsent();
+
+  const [ready, setReady] = useState(false);
+  const [plat, setPlat] = useState<Platform>("desktop");
+  const [standalone, setStandalone] = useState(false);
+  const [collapsed, setCollapsed] = useState(false);
+  const [installed, setInstalled] = useState(false);
+  const [installEvent, setInstallEvent] = useState<InstallEvent | null>(null);
+  const [guide, setGuide] = useState(false);
+  const [settings, setSettings] = useState(false);
+  const [toast, setToast] = useState(false);
+  const [bonusToast, setBonusToast] = useState(false);
+
+  useEffect(() => {
+    registerServiceWorker();
+    setPlat(platform());
+    setStandalone(isStandalone());
+    setCollapsed(local.get(COLLAPSED_KEY) === "1");
+    setReady(true);
+
+    const onPrompt = (e: Event) => { e.preventDefault(); setInstallEvent(e as InstallEvent); };
+    const onInstalled = () => setInstalled(true);
+    const onGuide = () => setGuide(true);
+    const onPush = () => setSettings(true);
+    const onEnabled = () => setToast(true);
+    window.addEventListener("beforeinstallprompt", onPrompt);
+    window.addEventListener("appinstalled", onInstalled);
+    window.addEventListener(OPEN_INSTALL_GUIDE, onGuide);
+    window.addEventListener(OPEN_PUSH_SETTINGS, onPush);
+    window.addEventListener(PUSH_ENABLED_EVENT, onEnabled);
+    return () => {
+      window.removeEventListener("beforeinstallprompt", onPrompt);
+      window.removeEventListener("appinstalled", onInstalled);
+      window.removeEventListener(OPEN_INSTALL_GUIDE, onGuide);
+      window.removeEventListener(OPEN_PUSH_SETTINGS, onPush);
+      window.removeEventListener(PUSH_ENABLED_EVENT, onEnabled);
+    };
+  }, []);
+
+  // Installed app: the first tap after the cookie choice turns notifications on.
+  // Only while the permission was never answered — a refusal, or switching off
+  // in the footer settings, is never overridden.
+  useEffect(() => {
+    if (!ready || !standalone || !consent || !pushSupported() || Notification.permission !== "default") return;
+    const onTap = () => {
+      document.removeEventListener("click", onTap, true);
+      enablePush(AUTO_TOPICS, lang).then((p) => { if (p === "granted") local.set(LANG_KEY, lang); }).catch(() => undefined);
+    };
+    document.addEventListener("click", onTap, true);
+    return () => document.removeEventListener("click", onTap, true);
+  }, [ready, standalone, consent, lang]);
+
+  // Installed app: claim the install bonus. Re-checked on each page change, so
+  // logging in inside the app collects it straight away. A guest who is not
+  // logged in gets a 401 and nothing happens; a granted bonus is never repeated.
+  useEffect(() => {
+    if (!LOYALTY_LIVE || !ready || !standalone || pathname.startsWith("/admin")) return;
+    fetch("/api/account/loyalty", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ action: "install" }),
+    })
+      .then((r) => (r.ok ? r.json() : null))
+      .then((j) => {
+        if (!j?.granted) return;
+        setBonusToast(true);
+        window.dispatchEvent(new Event(POINTS_CHANGED));
+      })
+      .catch(() => undefined);
+  }, [ready, standalone, pathname]);
+
+  // Notifications follow the language the visitor reads the site in.
+  useEffect(() => {
+    if (!ready || !pushSupported() || Notification.permission !== "granted" || local.get(LANG_KEY) === lang) return;
+    readPushState().then(async (s) => {
+      if (!s.topics.length) return;
+      await updatePush(s.topics, lang);
+      local.set(LANG_KEY, lang);
+    }).catch(() => undefined);
+  }, [ready, lang]);
+
+  const closeGuide = useCallback(() => setGuide(false), []);
+  const closeSettings = useCallback(() => setSettings(false), []);
+  const closeToast = useCallback(() => setToast(false), []);
+  const openSettings = useCallback(() => setSettings(true), []);
+  const closeBonus = useCallback(() => setBonusToast(false), []);
+  const openAccount = useCallback(() => router.push("/account"), [router]);
+
+  if (pathname.startsWith("/admin")) return null;
+
+  const showCard = ready && !standalone && !installed && pathname === "/" && !!consent;
+
+  return (
+    <>
+      {showCard && (
+        <InstallPrompt
+          collapsed={collapsed}
+          onCollapse={() => { setCollapsed(true); local.set(COLLAPSED_KEY, "1"); }}
+          onOpen={() => setGuide(true)}
+        />
+      )}
+
+      <BottomSheet open={guide} onClose={closeGuide} label={t("install.sheetTitle")}>
+        <InstallGuide
+          platform={plat}
+          installEvent={installEvent}
+          onInstalled={() => { setInstalled(true); setGuide(false); }}
+          onDone={closeGuide}
+        />
+      </BottomSheet>
+
+      <BottomSheet open={settings} onClose={closeSettings} label={t("push.settings")}>
+        <PushSheet onClose={closeSettings} />
+      </BottomSheet>
+
+      <PushToast open={toast} onClose={closeToast} onChange={openSettings} />
+      <Toast
+        open={bonusToast && !toast}
+        onClose={closeBonus}
+        title={fill(t("loy.toastTitle"), { n: INSTALL_BONUS })}
+        text={t("loy.toastText")}
+        actionLabel={t("loy.see")}
+        onAction={openAccount}
+        icon={<span className="text-base font-semibold">+</span>}
+      />
+    </>
+  );
+}

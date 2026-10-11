@@ -2,6 +2,7 @@
 
 import { useLang } from "@/components/LangProvider";
 import { openCookieSettings } from "@/lib/consent";
+import { openPushSettings } from "@/lib/pushClient";
 
 /** For visitors reading in another language: the Polish text is the binding one. */
 export function BindingNote() {
@@ -16,6 +17,15 @@ export function CookieSettingsButton() {
   return (
     <button onClick={openCookieSettings} className="btn-ghost text-sm">
       {t("footer.cookies")}
+    </button>
+  );
+}
+
+export function PushSettingsButton() {
+  const { t } = useLang();
+  return (
+    <button onClick={openPushSettings} className="btn-ghost text-sm">
+      {t("push.settings")}
     </button>
   );
 }

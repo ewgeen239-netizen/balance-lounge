@@ -7,6 +7,8 @@ import { useLang } from "@/components/LangProvider";
 import { parseJSON, formatPrice, cn } from "@/lib/utils";
 import { ItemModal } from "./ItemModal";
 import { buildGroups } from "@/lib/menuGroups";
+import { ShishaFlavors } from "./ShishaFlavors";
+import { SHISHA_FLAVORS_LIVE } from "@/content/shishaFlavors";
 
 export type MenuItemDTO = {
   id: number;
@@ -44,7 +46,7 @@ const INFO_SLUGS = new Set(["informacje", "odpowiedzialnosc"]);
 // languages (switch instantly, no auto-translation); any other language falls
 // back to auto-translating the Polish source. Each piece is translated on its
 // own, so the layout survives in every language.
-type T = { pl: string; ru?: string; en?: string; de?: string; ua?: string };
+export type T = { pl: string; ru?: string; en?: string; de?: string; ua?: string };
 type Intro = {
   text: T;
   rule?: T; // headline rule
@@ -53,7 +55,7 @@ type Intro = {
   notes?: T[];
   sign?: T;
 };
-const CATEGORY_INTRO: Record<string, Intro> = {
+export const CATEGORY_INTRO: Record<string, Intro> = {
   shisha: {
     text: {
       pl: "Shisha w Balance to chwila relaksu przygotowana przez doświadczonych Shisha Masterów, którzy dbają o idealny balans smaku i temperatury. Optymalny czas sesji to około 50–70 minut. Aby każda sesja zachowała swój najlepszy charakter, obowiązują u nas następujące zasady:",
@@ -398,6 +400,8 @@ export function MenuBrowser({ categories }: { categories: CategoryDTO[] }) {
                     </div>
                   )}
 
+                  {SHISHA_FLAVORS_LIVE && c.slug === "shisha" && !q && <ShishaFlavors items={c.items} onOpen={setSelected} />}
+
                 {closed ? (
                   <>
                     {/* Items sold every day stay open even when the category is closed. */}
@@ -430,7 +434,7 @@ export function MenuBrowser({ categories }: { categories: CategoryDTO[] }) {
       </div>
 
       {/* Damages liability — fixed notice, grouped by area, no prices (wg wyceny lokalu). */}
-      <section className="container-x border-t border-white/10 pb-14 pt-12">
+      <section id="uszkodzenia" className="container-x scroll-mt-[170px] border-t border-white/10 pb-14 pt-12 md:scroll-mt-[130px]">
         <h2 className="page-title break-words accent-underline text-2xl text-neutral-50 sm:text-3xl">{tr(DAMAGES.title)}</h2>
         <p className="mt-3 max-w-2xl text-sm text-neutral-400">{tr(DAMAGES.note)}</p>
         <div className="mt-8 space-y-8">

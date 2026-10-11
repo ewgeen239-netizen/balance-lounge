@@ -86,7 +86,45 @@ Uploaded photos are then stored in Blob and served from its CDN. The upload rout
 it falls back to writing into `public/uploads`. The admin photo field also accepts
 any external image URL.
 
-## 6. QR code
+## 6. Installable app (PWA) + push notifications
+
+The site installs as an app (Safari → Share → "Add to Home Screen"; Chrome →
+"Install app") and can send notifications about new events, menu changes and
+invitations. On iPhone, notifications work only in the installed app (iOS 16.4+).
+
+1. Generate VAPID keys **once** (changing them later silently cuts off every
+   existing subscriber):
+
+   ```bash
+   npx web-push generate-vapid-keys
+   ```
+
+2. Add them in Vercel → Project → Settings → Environment Variables (Production):
+
+   | Name                           | Value                                      |
+   |--------------------------------|--------------------------------------------|
+   | `NEXT_PUBLIC_VAPID_PUBLIC_KEY` | the public key                             |
+   | `VAPID_PRIVATE_KEY`            | the private key (keep secret)              |
+   | `VAPID_SUBJECT`                | `mailto:kontakt@balancecocktails.pl`       |
+
+   `NEXT_PUBLIC_…` is baked in at build time — redeploy after adding it.
+
+3. Deploy. `prisma db push` in the build adds the tables `PushSubscription`,
+   `PushOutbox`, `PushLog`, `PushConfig`.
+
+How it works:
+
+- Admin → **Powiadomienia**: subscriber counts, ready-made invitations, own
+  messages, automatic invitations on chosen weekdays, history.
+- New events, new menu items, new categories and price changes are queued and
+  sent as one digest 10 minutes after the last edit (checked on page views,
+  by the daily cron, or "Wyślij teraz" in the admin).
+- Cron `/api/cron/push` (vercel.json, daily 15:00 UTC): leftover queue, the
+  automatic invitation, removal of subscriptions dead for 12 months.
+- Privacy policy section 7 describes all of it; update `POLICY_EFFECTIVE_DATE`
+  in `src/content/privacyPolicy.ts` when you publish.
+
+## 7. QR code
 
 Point guests to the deployed URL:
 

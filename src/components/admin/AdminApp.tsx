@@ -10,11 +10,15 @@ import { MenuPanel } from "./MenuPanel";
 import { ContentPanel } from "./ContentPanel";
 import { MembersPanel } from "./MembersPanel";
 import { ChangePasswordModal } from "./ChangePasswordModal";
+import { MobileContentPanel } from "./MobileContentPanel";
 import { EventsAdminPanel } from "./EventsAdminPanel";
+import { PushAdminPanel } from "./PushAdminPanel";
+import { CouponsPanel } from "./CouponsPanel";
+import { LOYALTY_LIVE } from "@/content/rewards";
 import type { EventDTO } from "@/lib/events";
 import { Wordmark } from "../Wordmark";
 
-type Tab = "reservations" | "menu" | "content" | "members" | "siteEvents";
+type Tab = "reservations" | "menu" | "content" | "members" | "events" | "siteEvents" | "push" | "coupons";
 type Role = "owner" | "staff";
 
 export function AdminApp({
@@ -50,10 +54,13 @@ export function AdminApp({
         { id: "reservations", label: "Reservations" },
         { id: "menu", label: "Menu" },
         { id: "siteEvents", label: "Wydarzenia" },
+        { id: "push", label: "Powiadomienia" },
+        ...(LOYALTY_LIVE ? [{ id: "coupons" as Tab, label: "Kupony" }] : []),
+        { id: "events", label: "Events & offers" },
         { id: "content", label: "Site content" },
         { id: "members", label: "Members" },
       ]
-    : [{ id: "reservations", label: "Reservations" }];
+    : [{ id: "reservations", label: "Reservations" }, ...(LOYALTY_LIVE ? [{ id: "coupons" as Tab, label: "Kupony" }] : [])];
 
   return (
     <div className="min-h-screen bg-ink-950">
@@ -73,7 +80,7 @@ export function AdminApp({
             <button onClick={logout} className="btn-ghost px-3 py-1.5 text-xs sm:px-4">Log out</button>
           </div>
         </div>
-        <div className="mx-auto flex max-w-6xl gap-1 overflow-x-auto px-5">
+        <div className="mx-auto hidden max-w-6xl gap-1 overflow-x-auto px-5 sm:flex">
           {tabs.map((tb) => (
             <button
               key={tb.id}
@@ -89,14 +96,20 @@ export function AdminApp({
         </div>
       </header>
 
-      <main className="mx-auto max-w-6xl px-5 py-8">
+      <main className="mx-auto max-w-6xl px-5 pb-28 pt-8 sm:pb-8">
         {tab === "reservations" && <ReservationsPanel initial={initialReservations} />}
         {isOwner && tab === "menu" && <MenuPanel initial={initialCategories} />}
         {isOwner && tab === "siteEvents" && <EventsAdminPanel initial={initialEvents} />}
+        {isOwner && tab === "push" && <PushAdminPanel />}
+        {LOYALTY_LIVE && tab === "coupons" && <CouponsPanel />}
+        {isOwner && tab === "events" && <MobileContentPanel />}
         {isOwner && tab === "content" && <ContentPanel bar={bar} about={about} />}
         {isOwner && tab === "members" && <MembersPanel currentName={adminName} />}
       </main>
 
+      <nav aria-label="Admin sections" className="fixed inset-x-0 bottom-0 z-50 flex overflow-x-auto border-t [scrollbar-width:none] [&::-webkit-scrollbar]:hidden border-white/10 bg-ink-950/95 px-2 pb-[max(12px,env(safe-area-inset-bottom))] pt-3 backdrop-blur-xl sm:hidden">
+        {tabs.map(tb => <button key={tb.id} onClick={() => setTab(tb.id)} aria-current={tab === tb.id ? "page" : undefined} className={cn("min-h-12 min-w-max flex-1 shrink-0 whitespace-nowrap rounded-xl px-3 text-[10px] font-medium", tab === tb.id ? "bg-neon/10 text-ember" : "text-neutral-400")}>{tb.label}</button>)}
+      </nav>
       {showChangePw && <ChangePasswordModal onClose={() => setShowChangePw(false)} />}
     </div>
   );

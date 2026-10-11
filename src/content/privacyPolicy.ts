@@ -15,7 +15,7 @@ export const COMPANY = {
   phone: "729 559 179",
 };
 
-export const POLICY_EFFECTIVE_DATE = "1 października 2026 r.";
+export const POLICY_EFFECTIVE_DATE = "11 października 2026 r.";
 
 export type PolicyBlock =
   | { p: string }
@@ -66,6 +66,12 @@ export const POLICY: PolicySection[] = [
               `Do usunięcia konta — usuniemy je na Twoją prośbę przesłaną e-mailem na ${C.email}`,
             ],
             [
+              "Program punktowy w koncie gościa (punkty i kupony)",
+              "saldo i historia punktów, kupony (kod, nagroda, data ważności i wykorzystania), data odebrania bonusu za instalację aplikacji",
+              "art. 6 ust. 1 lit. b RODO — świadczenie usługi programu punktowego w ramach konta",
+              "Do usunięcia konta; kupony i historia punktów są usuwane razem z kontem",
+            ],
+            [
               "Kontakt z nami (telefon, e-mail, komunikatory)",
               "dane, które nam przekażesz",
               "art. 6 ust. 1 lit. f RODO — nasz prawnie uzasadniony interes: odpowiedź na wiadomość",
@@ -88,6 +94,18 @@ export const POLICY: PolicySection[] = [
               "adres IP i dane przeglądarki przekazywane Google",
               "art. 6 ust. 1 lit. a RODO — Twoja zgoda",
               "Do cofnięcia zgody; po stronie Google — zgodnie z jego polityką",
+            ],
+            [
+              "Powiadomienia w aplikacji BALANCE — tematy „Wydarzenia” oraz „Menu i ceny”",
+              "techniczny adres subskrypcji (endpoint) i klucze szyfrujące wygenerowane przez przeglądarkę, wybrany język, wybrane tematy, data wyrażenia zgody, data ostatniego wysłanego powiadomienia",
+              "art. 6 ust. 1 lit. a RODO — Twoja zgoda; art. 398 ust. 1 ustawy z dnia 12 lipca 2024 r. — Prawo komunikacji elektronicznej",
+              "Do cofnięcia zgody (wyłączenia powiadomień), usunięcia aplikacji lub wygaśnięcia subskrypcji zgłoszonego przez usługę push; subskrypcje, na które przez 12 miesięcy nie doszło żadne powiadomienie, usuwamy automatycznie",
+            ],
+            [
+              "Powiadomienia w aplikacji BALANCE — temat „Zaproszenia i oferty” (informacja handlowa, marketing bezpośredni)",
+              "jak wyżej",
+              "art. 6 ust. 1 lit. a RODO w zw. z art. 398 ust. 1 Prawa komunikacji elektronicznej — Twoja zgoda na powiadomienia, obejmująca także ten temat; możesz go wyłączyć osobno",
+              "Jak wyżej",
             ],
             [
               "Ustalenie, dochodzenie lub obrona roszczeń",
@@ -116,6 +134,7 @@ export const POLICY: PolicySection[] = [
           "LINK Mobility Poland sp. z o.o. (SMSAPI, Polska) — wysyłka SMS-ów z potwierdzeniem rezerwacji,",
           "Telegram (Telegram FZ-LLC, Zjednoczone Emiraty Arabskie) — powiadomienia dla obsługi lokalu o nowej rezerwacji (imię, telefon, termin),",
           "Google Ireland Limited (Irlandia) — mapa na stronie, wyłącznie po wyrażeniu zgody,",
+          "operator usługi push, z której korzysta Twoja przeglądarka — Apple Inc. (USA, Apple Push Notification service), Google LLC (USA, Firebase Cloud Messaging), Mozilla Corporation (USA) lub Microsoft Corporation (USA, Windows Push Notification Services) — dostarczanie powiadomień, wyłącznie po wyrażeniu zgody; treść powiadomień jest szyfrowana (standard Web Push, RFC 8291), więc operator widzi jedynie techniczny adres urządzenia,",
           "biuro rachunkowe — obsługa księgowa.",
         ],
       },
@@ -145,7 +164,7 @@ export const POLICY: PolicySection[] = [
           "ograniczenia przetwarzania (art. 18 RODO),",
           "przenoszenia danych (art. 20 RODO),",
           "sprzeciwu wobec przetwarzania opartego na prawnie uzasadnionym interesie (art. 21 RODO),",
-          "cofnięcia zgody w dowolnym momencie — bez wpływu na zgodność z prawem przetwarzania przed jej cofnięciem; zgody na pliki cookie zmienisz w „Ustawieniach cookie” w stopce strony,",
+          "cofnięcia zgody w dowolnym momencie — bez wpływu na zgodność z prawem przetwarzania przed jej cofnięciem; zgody na pliki cookie zmienisz w „Ustawieniach cookie”, a zgody na powiadomienia — w „Powiadomieniach” w stopce strony,",
           "wniesienia skargi do Prezesa Urzędu Ochrony Danych Osobowych (ul. Stawki 2, 00-193 Warszawa, uodo.gov.pl).",
         ],
       },
@@ -170,6 +189,8 @@ export const POLICY: PolicySection[] = [
             ["balance_admin", "BALANCE", "logowanie do panelu obsługi (tylko personel)", "niezbędne", "30 dni"],
             ["— (bez cookie)", "Vercel Web Analytics", "anonimowe statystyki odwiedzin", "statystyki — za zgodą", "nie zapisuje cookie"],
             ["np. NID, AEC", "Google (mapa)", "wyświetlenie mapy Google; Google może zapisać własne cookie", "treści zewnętrzne — za zgodą", "zgodnie z polityką Google"],
+            ["Service Worker (sw.js)", "BALANCE", "dodanie strony do ekranu jako aplikacji i odbiór powiadomień; nie zapisuje kopii stron ani danych o Tobie", "niezbędne", "do usunięcia aplikacji lub danych witryny"],
+            ["balance_pwa_collapsed, balance_push_lang (pamięć przeglądarki)", "BALANCE", "zapamiętanie zwinięcia karty „Dodaj na ekran” i języka powiadomień", "niezbędne (funkcjonalne)", "do wyczyszczenia danych witryny"],
           ],
         },
       },
@@ -179,8 +200,36 @@ export const POLICY: PolicySection[] = [
     ],
   },
   {
+    id: "powiadomienia",
+    title: "7. Aplikacja BALANCE i powiadomienia",
+    blocks: [
+      {
+        p: "Stronę możesz dodać do ekranu telefonu lub komputera jako aplikację (tzw. PWA). Instalacja nie wymaga konta ani podawania danych — aplikacja wyświetla tę samą stronę w osobnym oknie.",
+      },
+      {
+        p: "Powiadomienia wysyłamy wyłącznie po Twojej zgodzie. Po otwarciu zainstalowanej aplikacji, przy pierwszym stuknięciu, telefon wyświetla systemowe pytanie, czy BALANCE może wysyłać powiadomienia. Jeśli się zgodzisz, włączamy wszystkie trzy tematy opisane niżej i od razu pokazujemy komunikat „Powiadomienia włączone” z przyciskiem „Zmień”. Każdy temat możesz w każdej chwili wyłączyć osobno w „Powiadomieniach” w stopce strony. Jeśli odmówisz, nie zapytamy ponownie. Tematy:",
+      },
+      {
+        ul: [
+          "„Wydarzenia” — informacja o nowym wydarzeniu w lokalu,",
+          "„Menu i ceny” — nowe pozycje i kategorie w menu oraz zmiany cen (zmiany wprowadzone w krótkim odstępie czasu łączymy w jedno powiadomienie),",
+          "„Zaproszenia i oferty” — zaproszenia do odwiedzenia lokalu; to informacja handlowa (marketing bezpośredni). Wysyłamy je zwykle nie częściej niż 2 razy w tygodniu. Jeśli nie chcesz ich dostawać, wyłącz ten temat w „Powiadomieniach” — pozostałe działają dalej.",
+        ],
+      },
+      {
+        p: "Zgodę możesz w każdej chwili zmienić lub cofnąć: w „Powiadomieniach” w stopce strony (zmiana tematów lub wyłączenie wszystkich), w ustawieniach telefonu lub przeglądarki albo przez usunięcie aplikacji. Po wyłączeniu powiadomień niezwłocznie usuwamy dane subskrypcji z naszej bazy. Cofnięcie zgody nie wpływa na zgodność z prawem powiadomień wysłanych wcześniej.",
+      },
+      {
+        p: "Zapisujemy tylko dane potrzebne do dostarczenia powiadomienia i udokumentowania zgody (opisane w punkcie 2). Nie łączymy ich z kontem gościa ani z rezerwacjami, nie profilujemy i nie sprawdzamy, czy powiadomienie zostało otwarte. Teksty powiadomień w innych językach niż polski mogą być tłumaczone automatycznie.",
+      },
+      {
+        p: "Zgoda jest dobrowolna — bez niej możesz w pełni korzystać ze strony, aplikacji i rezerwacji.",
+      },
+    ],
+  },
+  {
     id: "zmiany",
-    title: "7. Zmiany polityki prywatności",
+    title: "8. Zmiany polityki prywatności",
     blocks: [
       {
         p: `Politykę aktualizujemy, gdy zmieniają się przepisy lub sposób działania strony. Aktualna wersja obowiązuje od ${POLICY_EFFECTIVE_DATE}`,

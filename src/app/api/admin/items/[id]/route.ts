@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/db";
 import { requireOwner } from "@/lib/adminGuard";
+import { queueChange } from "@/lib/push";
 
 const asJSON = (v: unknown) => (typeof v === "string" ? v : JSON.stringify(v));
 
@@ -22,10 +23,11 @@ export async function PATCH(req: Request, { params }: { params: { id: string } }
   if (body.categoryId !== undefined) data.categoryId = Number(body.categoryId);
   if (body.order !== undefined) data.order = Number(body.order);
 
-  const exists = await prisma.menuItem.findUnique({ where: { id }, select: { id: true } });
+  const exists = await prisma.menuItem.findUnique({ where: { id }, select: { id: true, price: true } });
   if (!exists) return NextResponse.json({ error: "not_found" }, { status: 404 });
 
   const item = await prisma.menuItem.update({ where: { id }, data });
+  if (item.price !== exists.price) await queueChange("price", id, exists.price);
   return NextResponse.json(item);
 }
 

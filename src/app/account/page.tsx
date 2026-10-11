@@ -4,6 +4,8 @@ import { prisma } from "@/lib/db";
 import { AuthForm } from "@/components/account/AuthForm";
 import { AccountDashboard } from "@/components/account/AccountDashboard";
 import { PageHeading } from "@/components/PageHeading";
+import { InstallBonus } from "@/components/account/InstallBonus";
+import { getLoyalty, type LoyaltyDTO } from "@/lib/loyalty";
 
 export const dynamic = "force-dynamic";
 
@@ -11,11 +13,13 @@ export default async function AccountPage() {
   const session = await getGuestSession();
 
   let guest = null;
+  let loyalty: LoyaltyDTO = { points: 0, installBonus: false, coupons: [], history: [] };
   if (session) {
     guest = await prisma.guestUser.findUnique({
       where: { id: Number(session.sub) },
       include: { reservations: { orderBy: [{ date: "desc" }, { time: "desc" }] } },
     });
+    if (guest) loyalty = await getLoyalty(guest.id).catch(() => loyalty);
   }
 
   return (
@@ -26,6 +30,7 @@ export default async function AccountPage() {
           <AccountDashboard
             name={guest.name}
             email={guest.email ?? ""}
+            loyalty={loyalty}
             reservations={guest.reservations.map((r) => ({
               id: r.id,
               date: r.date,
@@ -38,6 +43,9 @@ export default async function AccountPage() {
           />
         ) : (
           <>
+            <div className="mx-auto mb-6 max-w-md">
+              <InstallBonus received={false} loggedIn={false} />
+            </div>
             <AuthForm />
             {/* Staff entrance — kept well below the form so guests don't hit it by mistake. */}
             <div className="mt-24 flex justify-center">

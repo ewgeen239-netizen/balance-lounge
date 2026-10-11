@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/db";
 import { requireOwner } from "@/lib/adminGuard";
+import { queueChange } from "@/lib/push";
 
 const asJSON = (v: unknown, fb: string) =>
   v === undefined ? fb : typeof v === "string" ? v : JSON.stringify(v);
@@ -25,5 +26,6 @@ export async function POST(req: Request) {
       order: count,
     },
   });
+  await queueChange("item", item.id);
   return NextResponse.json(item, { status: 201 });
 }

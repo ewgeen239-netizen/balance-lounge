@@ -1,3 +1,6 @@
+import { NewsSection } from "@/components/home/NewsSection";
+import { readMobileMetadata } from "@/lib/mobile-data";
+import { emptyContent } from "@/lib/mobile-contract";
 import { Hero } from "@/components/home/Hero";
 import { AboutSection } from "@/components/home/AboutSection";
 import { LocationReservation } from "@/components/home/LocationReservation";
@@ -7,11 +10,13 @@ import { EventsStrip } from "@/components/home/EventsStrip";
 export const dynamic = "force-dynamic";
 
 export default async function HomePage() {
-  const [bar, about, events] = await Promise.all([getBar(), getAbout(), getPublicEvents()]);
+  const [bar, about, mobile, events] = await Promise.all([getBar(), getAbout(), readMobileMetadata().catch(() => ({ data: { content: emptyContent } })), getPublicEvents()]);
 
   return (
     <>
       <Hero image={bar?.heroImage ?? "/hero.webp"} neon={bar?.heroNeon ?? "YOU'RE IN THE RIGHT PLACE"} />
+
+      <NewsSection content={mobile.data.content || emptyContent} />
 
       {about && (
         <AboutSection

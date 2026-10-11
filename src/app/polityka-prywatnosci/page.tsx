@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Fragment } from "react";
 import { PageHeading } from "@/components/PageHeading";
-import { BindingNote, CookieSettingsButton } from "@/components/consent/PolicyBits";
+import { BindingNote, CookieSettingsButton, PushSettingsButton } from "@/components/consent/PolicyBits";
 import { POLICY, POLICY_EFFECTIVE_DATE, type PolicyBlock } from "@/content/privacyPolicy";
 
 export const metadata: Metadata = {
@@ -101,6 +101,7 @@ export default function PrivacyPolicyPage() {
               <div className="space-y-4">
                 {s.blocks.map((b, i) => <Block key={i} block={b} />)}
                 {s.id === "cookies" && <CookieSettingsButton />}
+                {s.id === "powiadomienia" && <PushSettingsButton />}
               </div>
             </section>
           ))}

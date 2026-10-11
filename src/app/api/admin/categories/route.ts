@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/db";
 import { requireAdmin, requireOwner } from "@/lib/adminGuard";
+import { queueChange } from "@/lib/push";
 
 export async function GET() {
   const denied = await requireAdmin();
@@ -30,6 +31,7 @@ export async function POST(req: Request) {
       order: count,
     },
   });
+  await queueChange("category", cat.id);
   return NextResponse.json(cat, { status: 201 });
 }
 

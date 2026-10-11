@@ -24,6 +24,8 @@ import { Footer } from "@/components/Footer";
 import { ReservationProvider } from "@/components/booking/ReservationModal";
 import { ScrollReset } from "@/components/ScrollReset";
 import { CookieConsent } from "@/components/consent/CookieConsent";
+import { PwaRoot } from "@/components/pwa/PwaRoot";
+import { kickPushQueue } from "@/lib/push";
 import { getBar } from "@/lib/data";
 import { getGuestSession } from "@/lib/auth";
 import { parseJSON, type HoursRow } from "@/lib/utils";
@@ -44,6 +46,9 @@ export const metadata: Metadata = {
     apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
   },
   manifest: "/manifest.webmanifest",
+  // Home-screen app on iPhone: own window, dark status bar, short name under the icon.
+  appleWebApp: { capable: true, title: "BALANCE", statusBarStyle: "black" },
+  formatDetection: { telephone: false },
 };
 
 // Dark browser UI (Android address bar, iOS status bar area) to match the site.
@@ -57,6 +62,8 @@ export default async function RootLayout({
   children: React.ReactNode;
 }) {
   const [bar, guest] = await Promise.all([getBar(), getGuestSession()]);
+  // Announce queued menu/event changes in the background once editing has gone quiet.
+  kickPushQueue();
   const hours = parseJSON<HoursRow[]>(bar?.hours, []);
 
   return (
@@ -78,6 +85,8 @@ export default async function RootLayout({
           </ReservationProvider>
           {/* Cookie banner/settings; also loads Vercel Analytics only after consent. */}
           <CookieConsent />
+          {/* Installed app: "add to home screen" card, notification consent and settings. */}
+          <PwaRoot />
         </LangProvider>
       </body>
     </html>
