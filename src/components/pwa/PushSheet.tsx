@@ -14,7 +14,7 @@ import {
  * Notification settings behind the footer "Notifications" link: change topics,
  * switch everything off, or turn notifications on where they are still off.
  */
-export function PushSheet({ onClose }: { onClose: () => void }) {
+export function PushSheet({ onClose, blocked = false }: { onClose: () => void; blocked?: boolean }) {
   const { t, lang } = useLang();
   const [state, setState] = useState<PushState | null>(null);
   const [picked, setPicked] = useState<PushTopic[]>([]);
@@ -108,6 +108,10 @@ export function PushSheet({ onClose }: { onClose: () => void }) {
         <div className="mt-5">{blocker}</div>
       ) : (
         <>
+          {/* The phone refused the subscription although the site permission looks granted. */}
+          {blocked && !subscribed && (
+            <p className="mt-3 rounded-2xl border border-neon/30 bg-neon/10 px-4 py-3 text-sm leading-relaxed text-neutral-200">{t("push.denied")}</p>
+          )}
           <p className="mt-3 text-sm leading-relaxed text-neutral-400">
             {(subscribed ? t("push.statusOn") : t("push.statusOff")) + " "}
             {t("push.text")}

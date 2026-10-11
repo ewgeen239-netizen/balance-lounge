@@ -12,6 +12,8 @@ export const OPEN_PUSH_SETTINGS = "balance:push-settings";
 export const OPEN_INSTALL_GUIDE = "balance:install-guide";
 /** Fired after this device was subscribed, so the layout can show the "notifications on" toast. */
 export const PUSH_ENABLED_EVENT = "balance:push-enabled";
+/** Set when the guest switches notifications off in the settings — the reminder then stays away. */
+export const PUSH_OFF_KEY = "balance_push_off";
 export const openPushSettings = () => window.dispatchEvent(new Event(OPEN_PUSH_SETTINGS));
 export const openInstallGuide = () => window.dispatchEvent(new Event(OPEN_INSTALL_GUIDE));
 
@@ -107,6 +109,7 @@ export async function enablePush(topics: PushTopic[], lang: Lang): Promise<Notif
     (await reg.pushManager.getSubscription()) ??
     (await reg.pushManager.subscribe({ userVisibleOnly: true, applicationServerKey: keyBytes(key) }));
   await api({ action: "save", subscription: sub.toJSON(), topics, lang });
+  local.set(PUSH_OFF_KEY, "");
   window.dispatchEvent(new CustomEvent(PUSH_ENABLED_EVENT, { detail: topics }));
   return "granted";
 }
@@ -121,6 +124,7 @@ export async function updatePush(topics: PushTopic[], lang: Lang): Promise<void>
 
 /** Withdraws consent: forget the device on our side and drop the browser subscription. */
 export async function disablePush(): Promise<void> {
+  local.set(PUSH_OFF_KEY, "1");
   const sub = await currentSubscription();
   if (!sub) return;
   await api({ action: "remove", endpoint: sub.endpoint }).catch(() => null);

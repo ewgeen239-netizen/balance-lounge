@@ -9,12 +9,13 @@ import { InstallGuide, type InstallEvent } from "./InstallGuide";
 import { InstallPrompt } from "./InstallPrompt";
 import { PushSheet } from "./PushSheet";
 import { PushToast, Toast } from "./PushToast";
+import { PushNudge, type NudgeState } from "./PushNudge";
 import { fill } from "@/lib/i18n";
 import { INSTALL_BONUS, LOYALTY_LIVE } from "@/content/rewards";
 import { POINTS_CHANGED } from "@/components/account/LoyaltyPanel";
 import { AUTO_TOPICS } from "@/lib/pushTopics";
 import {
-  OPEN_INSTALL_GUIDE, OPEN_PUSH_SETTINGS, PUSH_ENABLED_EVENT, enablePush, isStandalone, local, platform,
+  OPEN_INSTALL_GUIDE, OPEN_PUSH_SETTINGS, PUSH_ENABLED_EVENT, PUSH_OFF_KEY, enablePush, isStandalone, local, platform,
   pushSupported, readPushState, registerServiceWorker, updatePush, type Platform,
 } from "@/lib/pushClient";
 
@@ -28,6 +29,8 @@ const LANG_KEY = "balance_push_lang";
  * - installed app: turns notifications on with the guest's first tap (after the
  *   cookie choice) — iOS shows its permission prompt only in answer to a tap —
  *   then a short "notifications on" message slides up;
+ * - installed app: a reminder stays at the bottom until notifications are
+ *   allowed (or, if the phone blocks them, explains how to unblock);
  * - footer "Notifications" link: topic settings and switching off;
  * - installed app with a logged-in guest: claims the "install the app" points
  *   bonus (the server grants it once per account);
@@ -49,6 +52,7 @@ export function PwaRoot() {
   const [settings, setSettings] = useState(false);
   const [toast, setToast] = useState(false);
   const [bonusToast, setBonusToast] = useState(false);
+  const [nudge, setNudge] = useState<NudgeState>(null);
 
   useEffect(() => {
     registerServiceWorker();
@@ -81,13 +85,45 @@ export function PwaRoot() {
   // in the footer settings, is never overridden.
   useEffect(() => {
     if (!ready || !standalone || !consent || !pushSupported() || Notification.permission !== "default") return;
-    const onTap = () => {
+    const onTap = (e: MouseEvent) => {
+      if ((e.target as Element | null)?.closest?.("[data-push-nudge]")) return; // the reminder's own button asks
       document.removeEventListener("click", onTap, true);
       enablePush(AUTO_TOPICS, lang).then((p) => { if (p === "granted") local.set(LANG_KEY, lang); }).catch(() => undefined);
     };
     document.addEventListener("click", onTap, true);
     return () => document.removeEventListener("click", onTap, true);
   }, [ready, standalone, consent, lang]);
+
+  // Reminder until notifications are on. Re-checked whenever the guest comes
+  // back to the app (e.g. from iOS Settings) and after each change. Switching
+  // them off in the footer settings is respected: no reminder then.
+  const checkNudge = useCallback(async () => {
+    if (!standalone || !consent || !pushSupported() || local.get(PUSH_OFF_KEY) === "1") return setNudge(null);
+    const p = Notification.permission;
+    if (p === "denied") return setNudge("blocked");
+    if (p === "default") return setNudge("ask");
+    const s = await readPushState().catch(() => null);
+    setNudge(s && s.topics.length ? null : "ask");
+  }, [standalone, consent]);
+
+  useEffect(() => {
+    if (!ready) return;
+    checkNudge();
+    const onVisible = () => { if (document.visibilityState === "visible") checkNudge(); };
+    document.addEventListener("visibilitychange", onVisible);
+    window.addEventListener(PUSH_ENABLED_EVENT, checkNudge);
+    return () => {
+      document.removeEventListener("visibilitychange", onVisible);
+      window.removeEventListener(PUSH_ENABLED_EVENT, checkNudge);
+    };
+  }, [ready, checkNudge]);
+
+  // Straight from the tap, so iOS shows its permission prompt.
+  const enableFromNudge = useCallback(() => {
+    enablePush(AUTO_TOPICS, lang)
+      .then((p) => { if (p === "granted") local.set(LANG_KEY, lang); else setNudge(p === "denied" ? "blocked" : "ask"); })
+      .catch(() => setNudge("blocked"));
+  }, [lang]);
 
   // Installed app: claim the install bonus. Re-checked on each page change, so
   // logging in inside the app collects it straight away. A guest who is not
@@ -119,7 +155,7 @@ export function PwaRoot() {
   }, [ready, lang]);
 
   const closeGuide = useCallback(() => setGuide(false), []);
-  const closeSettings = useCallback(() => setSettings(false), []);
+  const closeSettings = useCallback(() => { setSettings(false); checkNudge(); }, [checkNudge]);
   const closeToast = useCallback(() => setToast(false), []);
   const openSettings = useCallback(() => setSettings(true), []);
   const closeBonus = useCallback(() => setBonusToast(false), []);
@@ -149,9 +185,12 @@ export function PwaRoot() {
       </BottomSheet>
 
       <BottomSheet open={settings} onClose={closeSettings} label={t("push.settings")}>
-        <PushSheet onClose={closeSettings} />
+        <PushSheet onClose={closeSettings} blocked={nudge === "blocked"} />
       </BottomSheet>
 
+      <div data-push-nudge>
+        <PushNudge state={settings ? null : nudge} onEnable={enableFromNudge} onHowTo={openSettings} />
+      </div>
       <PushToast open={toast} onClose={closeToast} onChange={openSettings} />
       <Toast
         open={bonusToast && !toast}
