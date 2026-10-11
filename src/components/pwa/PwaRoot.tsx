@@ -25,7 +25,8 @@ const LANG_KEY = "balance_push_lang";
 /**
  * Installed-app (PWA) layer, mounted once in the layout:
  * - registers the service worker;
- * - home page in a browser: "add to home screen" card → instructions;
+ * - in a browser: "add to home screen" card on the home page and a small
+ *   iPhone button on every other page → instructions;
  * - installed app: turns notifications on with the guest's first tap (after the
  *   cookie choice) — iOS shows its permission prompt only in answer to a tap —
  *   then a short "notifications on" message slides up;
@@ -163,13 +164,16 @@ export function PwaRoot() {
 
   if (pathname.startsWith("/admin")) return null;
 
-  const showCard = ready && !standalone && !installed && pathname === "/" && !!consent;
+  // The full card greets visitors on the home page; every other page shows the
+  // small iPhone button, so "how to install" is one tap away on every tab.
+  const showCard = ready && !standalone && !installed && !!consent;
+  const onHome = pathname === "/";
 
   return (
     <>
       {showCard && (
         <InstallPrompt
-          collapsed={collapsed}
+          collapsed={!onHome || collapsed}
           onCollapse={() => { setCollapsed(true); local.set(COLLAPSED_KEY, "1"); }}
           onOpen={() => setGuide(true)}
         />
