@@ -26,13 +26,22 @@ export type PushMessage = { title: string; body: string; url: string; tag?: stri
 type Source = "auto" | "manual" | "schedule";
 
 let vapid: boolean | null = null;
+/** Sets up the VAPID keys once. A bad env value disables notifications — it must never break a page. */
 export function pushConfigured(): boolean {
   if (vapid !== null) return vapid;
   const pub = process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY;
   const priv = process.env.VAPID_PRIVATE_KEY;
   if (!pub || !priv) return (vapid = false);
-  webpush.setVapidDetails(process.env.VAPID_SUBJECT || "mailto:kontakt@balancecocktails.pl", pub, priv);
-  return (vapid = true);
+  // The subject must be a mailto: or https: URL; accept a bare e-mail too.
+  let subject = (process.env.VAPID_SUBJECT || "").trim() || "mailto:kontakt@balancecocktails.pl";
+  if (!/^(mailto:|https:)/i.test(subject)) subject = subject.includes("@") ? `mailto:${subject}` : `https://${subject}`;
+  try {
+    webpush.setVapidDetails(subject, pub, priv);
+    return (vapid = true);
+  } catch (e) {
+    console.error("push: invalid VAPID settings, notifications disabled", e);
+    return (vapid = false);
+  }
 }
 
 const asLang = (l: string): Lang => ((LANGS as readonly string[]).includes(l) ? (l as Lang) : "pl");
@@ -262,9 +271,13 @@ export async function flushOutbox(force = false): Promise<{ sent: number; waitin
 // Page views check the queue in the background, at most once a minute per server instance.
 let lastKick = 0;
 export function kickPushQueue(): void {
-  if (Date.now() - lastKick < 60_000 || !pushConfigured()) return;
-  lastKick = Date.now();
-  waitUntil(flushOutbox().catch(() => undefined));
+  try {
+    if (Date.now() - lastKick < 60_000 || !pushConfigured()) return;
+    lastKick = Date.now();
+    waitUntil(flushOutbox().catch(() => undefined));
+  } catch {
+    /* never let notifications break page rendering */
+  }
 }
 
 // ---------------------------------------------------------------------------
