@@ -57,9 +57,9 @@ function EventCard({ event, status, onOpen }: { event: EventDTO; status: EventSt
         past ? "border-white/5 hover:border-white/15" : "border-white/10 hover:border-ember/40 hover:shadow-card"
       )}
     >
-      <div className="relative aspect-[16/10] overflow-hidden bg-ink-800">
+      <div className="relative aspect-[16/9] overflow-hidden bg-ink-800">
         {event.image ? (
-          <EventImage src={event.image} dim={past} lazy className="h-full w-full transition duration-500 group-hover:scale-[1.02]" />
+          <EventImage src={event.image} dim={past} lazy className="h-full w-full" />
         ) : (
           <div className="flex h-full items-center justify-center text-4xl text-ember/30">✦</div>
         )}
@@ -111,7 +111,7 @@ export function EventModal({ event, status, onClose }: { event: EventDTO; status
         {/* Whole photo, whatever its shape, without pushing the text off a phone screen. */}
         <div className="relative bg-ink-800">
           {event.image ? (
-            <EventImage src={event.image} dim={status === "past"} className="h-[min(48vh,420px)] w-full" />
+            <EventImage src={event.image} dim={status === "past"} className="aspect-[16/9] w-full" />
           ) : (
             <div className="h-24" />
           )}
