@@ -6,6 +6,7 @@ import { useLang } from "@/components/LangProvider";
 import { useReservation } from "@/components/booking/ReservationModal";
 import { LANG_ISO } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
+import { EventImage } from "./EventImage";
 import { eventStatus, formatEventRange, paragraphs, sortEvents, type EventDTO, type EventStatus } from "@/lib/events";
 
 /** Re-evaluates statuses every minute, so an event flips to "live"/"past" on its own. */
@@ -58,16 +59,7 @@ function EventCard({ event, status, onOpen }: { event: EventDTO; status: EventSt
     >
       <div className="relative aspect-[16/10] overflow-hidden bg-ink-800">
         {event.image ? (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img
-            src={event.image}
-            alt=""
-            loading="lazy"
-            className={cn(
-              "h-full w-full object-cover transition duration-500 group-hover:scale-[1.03]",
-              past && "brightness-[0.45] grayscale"
-            )}
-          />
+          <EventImage src={event.image} dim={past} lazy className="h-full w-full transition duration-500 group-hover:scale-[1.02]" />
         ) : (
           <div className="flex h-full items-center justify-center text-4xl text-ember/30">✦</div>
         )}
@@ -116,10 +108,12 @@ export function EventModal({ event, status, onClose }: { event: EventDTO; status
         className="max-h-[92vh] w-full max-w-2xl overflow-y-auto rounded-t-3xl border border-white/10 bg-ink-900 shadow-card sm:rounded-3xl"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="relative aspect-[16/9] bg-ink-800">
-          {event.image && (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img src={event.image} alt="" className={cn("h-full w-full object-cover", status === "past" && "brightness-50 grayscale")} />
+        {/* Whole photo, whatever its shape, without pushing the text off a phone screen. */}
+        <div className="relative bg-ink-800">
+          {event.image ? (
+            <EventImage src={event.image} dim={status === "past"} className="h-[min(48vh,420px)] w-full" />
+          ) : (
+            <div className="h-24" />
           )}
           <div className="absolute left-4 top-4"><StatusBadge status={status} /></div>
           <button

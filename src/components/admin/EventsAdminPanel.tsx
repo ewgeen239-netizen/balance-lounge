@@ -1,7 +1,8 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { ImageUpload } from "./ImageUpload";
+import { EventImage } from "@/components/events/EventImage";
 import { cn } from "@/lib/utils";
 import { eventStatus, formatEventRange, sortEvents, type EventDTO, type EventStatus } from "@/lib/events";
 
@@ -94,8 +95,7 @@ export function EventsAdminPanel({ initial }: { initial: EventDTO[] }) {
       >
         <button onClick={() => setEditing(e)} className="group relative aspect-[16/9] bg-ink-800 text-left" title="Edytuj">
           {e.image ? (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img src={e.image} alt="" className={cn("h-full w-full object-cover", st === "past" && "brightness-[0.45] grayscale")} />
+            <EventImage src={e.image} dim={st === "past"} className="h-full w-full" />
           ) : (
             <span className="flex h-full items-center justify-center text-3xl text-ember/30">✦</span>
           )}
@@ -198,7 +198,18 @@ function EventEditor({
     endTime: toTime(init.end),
   });
   const [saving, setSaving] = useState(false);
+  const [uploading, setUploading] = useState(false);
   const [error, setError] = useState("");
+  // Unsaved changes are never thrown away silently.
+  const [initialForm] = useState(() => JSON.stringify(f));
+  const dirty = JSON.stringify(f) !== initialForm;
+  const closeEditor = useCallback(() => {
+    if (dirty && !confirm("Zamknąć bez zapisywania? Wpisane dane zostaną utracone.")) return;
+    onClose();
+  }, [dirty, onClose]);
+  // Close on the backdrop only when the click started there too — a text
+  // selection that ends outside the window must not close it.
+  const downOnBackdrop = useRef(false);
   const set = <K extends keyof typeof f>(k: K, v: (typeof f)[K]) => setF((x) => ({ ...x, [k]: v }));
 
   const start = fromLocal(f.startDate, f.startTime);
@@ -226,27 +237,56 @@ function EventEditor({
   }
 
   useEffect(() => {
-    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") onClose(); };
+    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") closeEditor(); };
+    // A photo dropped next to the photo field would make the browser open the
+    // file and leave the page with everything typed so far — ignore such drops.
+    const stop = (e: DragEvent) => e.preventDefault();
     document.addEventListener("keydown", onKey);
-    return () => document.removeEventListener("keydown", onKey);
-  }, [onClose]);
+    window.addEventListener("dragover", stop);
+    window.addEventListener("drop", stop);
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      window.removeEventListener("dragover", stop);
+      window.removeEventListener("drop", stop);
+    };
+  }, [closeEditor]);
 
   async function save() {
     setError("");
     if (f.title.trim().length < 2) return setError("Podaj nazwę wydarzenia.");
     if (!validWindow) return setError("Koniec musi być później niż początek.");
+    if (uploading) return setError("Poczekaj, aż zdjęcie się wgra.");
     setSaving(true);
     const body = {
       title: f.title, summary: f.summary, description: f.description, image: f.image, enabled: f.enabled,
       startsAt: start.toISOString(), endsAt: end.toISOString(),
     };
-    const res = await fetch(event ? `/api/admin/events/${event.id}` : "/api/admin/events", {
-      method: event ? "PATCH" : "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(body),
-    });
+    let res: Response;
+    try {
+      res = await fetch(event ? `/api/admin/events/${event.id}` : "/api/admin/events", {
+        method: event ? "PATCH" : "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body),
+      });
+    } catch {
+      setSaving(false);
+      return setError("Brak połączenia — nic nie zostało zapisane. Sprawdź internet i kliknij jeszcze raz (dane w formularzu zostają).");
+    }
     setSaving(false);
-    if (!res.ok) return setError("Nie udało się zapisać. Sprawdź pola i spróbuj ponownie.");
+    if (!res.ok) {
+      const code = ((await res.json().catch(() => ({}))) as { error?: string }).error;
+      return setError(
+        res.status === 401 || res.status === 403
+          ? "Sesja wygasła. Zaloguj się ponownie w nowej karcie, wróć tutaj i kliknij jeszcze raz — dane w formularzu zostają."
+          : code === "title_required"
+            ? "Podaj nazwę wydarzenia (min. 2 znaki)."
+            : code === "end_before_start"
+              ? "Koniec musi być później niż początek."
+              : code?.endsWith("_invalid")
+                ? "Sprawdź datę i godzinę."
+                : "Nie udało się zapisać. Spróbuj ponownie — dane w formularzu zostają."
+      );
+    }
     const e = await res.json();
     onSaved({ ...e, startsAt: new Date(e.startsAt).toISOString(), endsAt: new Date(e.endsAt).toISOString() });
   }
@@ -254,11 +294,15 @@ function EventEditor({
   const preview = validWindow ? { startsAt: start.toISOString(), endsAt: end.toISOString() } : null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-start justify-center overflow-y-auto bg-black/70 p-4 backdrop-blur-sm" onClick={onClose}>
+    <div
+      className="fixed inset-0 z-50 flex items-start justify-center overflow-y-auto bg-black/70 p-4 backdrop-blur-sm"
+      onMouseDown={(e) => { downOnBackdrop.current = e.target === e.currentTarget; }}
+      onClick={(e) => { if (downOnBackdrop.current && e.target === e.currentTarget) closeEditor(); }}
+    >
       <div className="my-6 w-full max-w-2xl rounded-3xl border border-white/10 bg-ink-900 p-5 shadow-card sm:p-6" onClick={(e) => e.stopPropagation()}>
         <div className="mb-5 flex items-center justify-between">
           <h3 className="text-lg font-medium text-neutral-50">{event ? "Edytuj wydarzenie" : "Nowe wydarzenie"}</h3>
-          <button onClick={onClose} className="text-neutral-400 hover:text-neon">✕</button>
+          <button onClick={closeEditor} aria-label="Zamknij" className="text-neutral-400 hover:text-neon">✕</button>
         </div>
 
         <div className="space-y-4">
@@ -277,7 +321,7 @@ function EventEditor({
             <textarea value={f.description} onChange={(e) => set("description", e.target.value)} rows={5} placeholder={"Program wieczoru, line-up, dress code…\nKażdy akapit w nowej linii."} className="input text-sm" />
           </div>
 
-          <ImageUpload value={f.image} onChange={(url) => set("image", url)} label="Zdjęcie" />
+          <ImageUpload value={f.image} onChange={(url) => set("image", url)} label="Zdjęcie" onBusyChange={setUploading} />
 
           {/* Time window */}
           <div className="rounded-2xl border border-white/10 bg-ink-800/40 p-4">
@@ -335,9 +379,9 @@ function EventEditor({
         <div className="mt-6 flex flex-wrap items-center justify-between gap-3">
           {onDelete ? <button onClick={onDelete} className="text-sm text-neutral-500 hover:text-neon">Usuń wydarzenie</button> : <span />}
           <div className="flex gap-2">
-            <button onClick={onClose} className="btn-ghost text-sm">Anuluj</button>
-            <button onClick={save} disabled={saving} className="btn-primary text-sm disabled:opacity-50">
-              {saving ? "Zapisywanie…" : event ? "Zapisz" : "Dodaj"}
+            <button onClick={closeEditor} className="btn-ghost text-sm">Anuluj</button>
+            <button onClick={save} disabled={saving || uploading} className="btn-primary text-sm disabled:opacity-50">
+              {saving ? "Zapisywanie…" : uploading ? "Czekam na zdjęcie…" : event ? "Zapisz" : "Dodaj"}
             </button>
           </div>
         </div>
