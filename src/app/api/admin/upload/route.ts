@@ -4,6 +4,7 @@ import path from "path";
 import { put } from "@vercel/blob";
 import { requireOwner } from "@/lib/adminGuard";
 import { prisma } from "@/lib/db";
+import { isVideoFile } from "@/lib/media";
 
 export async function POST(req: Request) {
   const denied = await requireOwner();
@@ -12,7 +13,11 @@ export async function POST(req: Request) {
   const form = await req.formData();
   const file = form.get("file");
   if (!(file instanceof File)) return NextResponse.json({ error: "no_file" }, { status: 400 });
-  if (file.size > 6 * 1024 * 1024) return NextResponse.json({ error: "too_large" }, { status: 400 });
+  // Videos normally go straight to Blob (see ./video); this route takes them
+  // only where there is no Blob store — local dev, which has no size limit.
+  const video = isVideoFile(file);
+  if (video && process.env.VERCEL && !process.env.BLOB_READ_WRITE_TOKEN) return NextResponse.json({ error: "video_needs_blob" }, { status: 400 });
+  if (file.size > (video ? 200 : 6) * 1024 * 1024) return NextResponse.json({ error: "too_large" }, { status: 400 });
 
   const ext = (file.name.split(".").pop() || "jpg").toLowerCase().replace(/[^a-z0-9]/g, "");
   const filename = `${Date.now()}-${Math.random().toString(36).slice(2, 8)}.${ext}`;

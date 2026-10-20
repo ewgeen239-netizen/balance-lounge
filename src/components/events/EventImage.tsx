@@ -1,12 +1,15 @@
 /* eslint-disable @next/next/no-img-element */
 import { cn } from "@/lib/utils";
+import { isVideoUrl } from "@/lib/media";
+import { EventVideo } from "./EventVideo";
 
 /**
- * An event photo of any proportions shown in full (never cropped). The box
- * keeps its own size; the space the photo doesn't cover is filled with a
- * blurred, darkened copy of the same photo instead of empty bars.
+ * An event photo (or video) of any proportions shown in full (never cropped).
+ * The box keeps its own size; the space the media doesn't cover is filled with
+ * a blurred, darkened copy of the same media instead of empty bars.
  */
-export function EventImage({ src, dim = false, lazy = false, className }: { src: string; dim?: boolean; lazy?: boolean; className?: string }) {
+export function EventImage({ src, dim = false, lazy = false, controls = false, className }: { src: string; dim?: boolean; lazy?: boolean; controls?: boolean; className?: string }) {
+  if (isVideoUrl(src)) return <EventVideo src={src} dim={dim} controls={controls} className={className} />;
   return (
     <div className={cn("relative overflow-hidden bg-ink-800", className)}>
       <img

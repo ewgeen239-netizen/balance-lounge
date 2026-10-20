@@ -108,10 +108,10 @@ export function EventModal({ event, status, onClose }: { event: EventDTO; status
         className="max-h-[92vh] w-full max-w-2xl overflow-y-auto rounded-t-3xl border border-white/10 bg-ink-900 shadow-card sm:rounded-3xl"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Whole photo, whatever its shape, without pushing the text off a phone screen. */}
+        {/* Whole photo or video, whatever its shape, without pushing the text off a phone screen. */}
         <div className="relative bg-ink-800">
           {event.image ? (
-            <EventImage src={event.image} dim={status === "past"} className="aspect-[16/9] w-full" />
+            <EventImage src={event.image} dim={status === "past"} controls className="aspect-[16/9] w-full" />
           ) : (
             <div className="h-24" />
           )}

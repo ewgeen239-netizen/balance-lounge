@@ -321,7 +321,7 @@ function EventEditor({
             <textarea value={f.description} onChange={(e) => set("description", e.target.value)} rows={5} placeholder={"Program wieczoru, line-up, dress code…\nKażdy akapit w nowej linii."} className="input text-sm" />
           </div>
 
-          <ImageUpload value={f.image} onChange={(url) => set("image", url)} label="Zdjęcie" onBusyChange={setUploading} />
+          <ImageUpload value={f.image} onChange={(url) => set("image", url)} label="Zdjęcie lub wideo" allowVideo onBusyChange={setUploading} />
 
           {/* Time window */}
           <div className="rounded-2xl border border-white/10 bg-ink-800/40 p-4">
@@ -381,7 +381,7 @@ function EventEditor({
           <div className="flex gap-2">
             <button onClick={closeEditor} className="btn-ghost text-sm">Anuluj</button>
             <button onClick={save} disabled={saving || uploading} className="btn-primary text-sm disabled:opacity-50">
-              {saving ? "Zapisywanie…" : uploading ? "Czekam na zdjęcie…" : event ? "Zapisz" : "Dodaj"}
+              {saving ? "Zapisywanie…" : uploading ? "Czekam na plik…" : event ? "Zapisz" : "Dodaj"}
             </button>
           </div>
         </div>
