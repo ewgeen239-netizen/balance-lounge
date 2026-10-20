@@ -107,7 +107,7 @@ export function AdminApp({
         {isOwner && tab === "members" && <MembersPanel currentName={adminName} />}
       </main>
 
-      <nav aria-label="Admin sections" className="fixed inset-x-0 bottom-0 z-50 flex overflow-x-auto border-t [scrollbar-width:none] [&::-webkit-scrollbar]:hidden border-white/10 bg-ink-950/95 px-2 pb-[max(12px,env(safe-area-inset-bottom))] pt-3 backdrop-blur-xl sm:hidden">
+      <nav aria-label="Admin sections" className="fixed inset-x-0 bottom-0 z-40 flex overflow-x-auto border-t [scrollbar-width:none] [&::-webkit-scrollbar]:hidden border-white/10 bg-ink-950/95 px-2 pb-[max(12px,env(safe-area-inset-bottom))] pt-3 backdrop-blur-xl sm:hidden">
         {tabs.map(tb => <button key={tb.id} onClick={() => setTab(tb.id)} aria-current={tab === tb.id ? "page" : undefined} className={cn("min-h-12 min-w-max flex-1 shrink-0 whitespace-nowrap rounded-xl px-3 text-[10px] font-medium", tab === tb.id ? "bg-neon/10 text-ember" : "text-neutral-400")}>{tb.label}</button>)}
       </nav>
       {showChangePw && <ChangePasswordModal onClose={() => setShowChangePw(false)} />}
